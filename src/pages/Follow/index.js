@@ -3,9 +3,15 @@ import { Header, Footer, Content } from "antd/lib/layout/layout";
 import React, { useState} from 'react';
 import './index.scss'
 import { UserOutlined} from '@ant-design/icons';
-const fakeDataUrl = `https://randomuser.me/api/?results=1&inc=name,gender,email,nat,picture&noinfo`;
+// import { useParams } from "react-router-dom";
+// import { reaction } from "mobx";
+// import { useStore } from "@/store"; 
+// import { http } from "@/utils"
+// import { reaction } from "mobx";
 
-
+const id = 1;
+const fakeDataUrl = 'http://127.0.0.1:5000/cont/'+id+'/followList'
+// const fakeDataUrl1 = "http://127.0.0.1:5000/cont/test"
 
 const tabList = [
     {
@@ -18,122 +24,116 @@ const tabList = [
     }
 ];
 
+// function GetLikeList(id){
+//     const {user} = useStore();
+//     return user.GetLikeList(id);
+// }
+
+global.unfollowList = ''
+
+class Company extends React.Component{          // company follow tab 
 
 
-class Company extends React.Component{
-
-    state = {
-        companyLikeList:[ 
-            {
-                id: 1,
-                avatar: 'avatar link',
-                name: 'company A',
-                description: 'description of company a',
-                follow: 'Follow'
-            },
-            {
-                id: 2,
-                avatar: 'avatar link',
-                name: 'company B',
-                description: 'description of company b',
-                follow: 'Follow'
-            },
-        ],
-        loading: false,
-        initialLoading: true 
+    constructor(){
+        super()
+        
+        this.state = {
+            companyLikeList: [
+                {
+                    OrganizationId: "",
+                    OrganizationName: "",
+                    Description:"",
+                    Icon:"",
+                    follow: ""
+                }
+            ],
+            unfollowList: [],
+        }
     }
 
-    clickFollowHandler = (curItem) =>{
-        console.log(curItem)    
+    componentDidMount(){
+        fetch(fakeDataUrl, {
+            method: 'GET',
+            //params: id
+        })
+            .then(res => {return res.json()})
+            .then(data => {
+                this.setState({
+                    companyLikeList: data.message
+                    //companyLikeList: useStore().GetLikeList(1)
+                })
+            })
+    }
+   
+    
+    clickFollowHandler = (curItem) =>{  
 
-        const {id, follow} = curItem
+        const {OrganizationId, follow} = curItem
 
         this.setState({
             companyLikeList: this.state.companyLikeList.map(item =>{ 
-                if(item.id === id){
+                if(item.OrganizationId === OrganizationId){
                     return{
                         ...item,
-                        follow: follow === 'Follow' ? 'Unfollow' : 'Follow'     // switch follow status
+                        follow: 
+                            follow === 'follow' ? 'unfollow' : 'follow'     // switch follow status
                     }
                 }
                 else{
                     return item
                 }
-                
-            })
+            }),
+        })
+
+        // Renew the unfollow list
+        this.state.companyLikeList.map((item) =>  {
+            if(item.OrganizationId === OrganizationId && item.follow === 'follow'){
+                this.setState({
+                    unfollowList: [...this.state.unfollowList, OrganizationId]
+                })
+                global.unfollowList = [...global.unfollowList,  OrganizationId]
+                // console.log(global.unfollowList)
+            }
+            if(item.OrganizationId === OrganizationId && item.follow === 'unfollow'){
+                console.log("unfollow -> follow")
+                this.setState({
+                    unfollowList: this.state.unfollowList.filter((item) => item !== OrganizationId)
+                })
+                global.unfollowList = global.unfollowList.filter((item) => item !== OrganizationId)
+                // console.log(global.unfollowList)
+            }
         })
     }
 
-    // onLoadMoreHandler = (curItem) => {    
-        
-    //     const {laoding, initLoading} = curItem
-
-    //     this.setState({
-    //         loading: this.state.loading = false
-    //         // setLoading(true);
-
-
-    //     })
-     
-    //     setList(
-    //     data.concat(
-    //         [...new Array(count)].map(() => ({
-    //         loading: true,
-    //         name: {},
-    //         picture: {},
-    //         })),
-    //     ),
-    //     );
-    //     fetch(fakeDataUrl)
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //         const newData = data.concat(res.results);
-    //         setData(newData);
-    //         setList(newData);
-    //         setLoading(false); // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-    //         // In real scene, you can using public method of react-virtualized:
-    //         // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-
-    //         window.dispatchEvent(new Event('resize'));
-    //     });
-    // };
-
-    loadMore =
-        !this.state.initLoading && !this.state.loading ? (
-        <div
-            style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-            }}
-        >
-            <Button onClick={this.onLoadMoreHandler}>loading more</Button>
-        </div>
-        ) : null;
+    returnUnfollowList = () => {
+        return this.unfollowList
+    }
 
     render(){
         return <div>
-            <List
-                itemLayout="horizontal"
-                //loadMore={this.loadMore}
-                dataSource={this.state.companyLikeList}
-                renderItem={(item) => (
-                <List.Item>
-                    <List.Item.Meta
-                    avatar={<Avatar size={45} icon={<UserOutlined />} />}
-                    title={<a href="@">{item.name}</a>}
-                    description={item.description}
-                    />
-                    <Button onClick={() => this.clickFollowHandler(item)}>{item.follow}</Button>
-                </List.Item>
-                )}
-            />
+            {/* <div className="backButton"><CompanyBack unfollowList = {this.state.unfollowList}/></div> */}
+            <div>
+                <List
+                    itemLayout="horizontal"
+                    //loadMore={this.loadMore}
+                    dataSource={this.state.companyLikeList}
+                    renderItem={(item) => (
+                    <List.Item>
+                        <List.Item.Meta
+                        avatar={<Avatar size={45} icon={<UserOutlined />} />}
+                        title={<a href="@">{item.OrganizationName}</a>}
+                        description={item.Description}
+                        />
+                        <Button onClick={() => this.clickFollowHandler(item)}>{item.follow === 'follow' ? 'unfollow' : 'follow'} </Button>
+                    </List.Item>
+                    )}
+                />
+            </div>
         </div>
     }
 }
 
-class Individual extends React.Component{
+class Individual extends React.Component{    // individual follow tab
     render(){
         return <div>
             Individual
@@ -141,14 +141,44 @@ class Individual extends React.Component{
     }
 }
 
-const loadContents = (currTab) => {
+
+const loadContents = (currTab) => {            // determine which tab to show
     if(currTab === 'Company'){
       return <div><Company/></div>
     }
     return <div><Individual/></div>
-  }
+}
 
-   
+const clickBackHandler =  (currTab) => {
+    if(currTab === 'Company'){
+        //console.log(global.unfollowList)
+        //console.log("sfds")
+        // global.unfollowList.map((item) => {
+        //     console.log(item)
+        // })
+
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: JSON.stringify({
+                company: global.unfollowList, 
+                Individual: []
+            })
+            //body: {"title": 1}
+        };
+
+        fetch(fakeDataUrl, requestOptions)
+        .then(res =>  res.json())
+        .then(data => {
+            console.log(data)
+        });
+
+      }
+    else{
+        console.log("individual")
+    }
+}
 
 const Follow = () => {
     const [activeTabKey, setActiveTabKey] = useState('tab1');
@@ -157,8 +187,6 @@ const Follow = () => {
       setActiveTabKey(key);
     };
   
-
-
     return(
         <Layout>
             <Header></Header>
@@ -172,9 +200,13 @@ const Follow = () => {
                     width: '100%',
                     }}
                     title="Follow"
-                    extra={<a href="../MyPage">Back</a>}
                     tabList={tabList}
                     activeTabKey={activeTabKey}
+                    extra={
+                        // <Button  href="../MyPage" onClick={clickBackHandler()}>Back</Button>
+                        <Button onClick = {() => clickBackHandler(activeTabKey)}>Back</Button>
+                        //backButton(activeTabKey)
+                    }
                     onTabChange={(key) => {
                         onTab1Change(key);  
                     }}

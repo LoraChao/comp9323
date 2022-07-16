@@ -7,7 +7,8 @@ def create_database():
     conn = pymysql.connect(host=DB_URL,
                            user=DB_ACCOUNT,
                            password=DB_PASSWORD)
-    conn.cursor().execute('''create database if not exists demo''')
+    conn.cursor().execute('''drop database if exists wellbeing''')
+    conn.cursor().execute('''create database if not exists wellbeing''')
     conn.close()
     db = pymysql.connect(
         host=DB_URL,
@@ -25,21 +26,23 @@ def create_database():
     `OrganizationId` int NOT NULL AUTO_INCREMENT,
     `OrganizationName` varchar(255) DEFAULT NULL,
     `Password` varchar(255) NOT NULL,
+    `Description` varchar(255)  DEFAULT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`OrganizationId`)
     );
     '''
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456"),
-    (2, "Enterprise", "qwerty"),
-    (3, "Company", "zxcvbn");
+    (1, "Anonymous", "123456","good",""),
+    (2, "Enterprise", "qwerty","we are rich","/src/assets/sad.png"),
+    (3, "Company", "zxcvbn","","");
     '''
-
+    
     Individual_table = '''
     CREATE TABLE IF NOT EXISTS `Individual` (
     `IndividualId` int NOT NULL AUTO_INCREMENT,
-    `IndividualName` varchar(255) DEFAULT NULL, 
+    `IndividualName` varchar(255) NOT NULL, 
     `Password` varchar(255) NOT NULL,
     `Preference` varchar(255) DEFAULT NULL,
     `Occupation` varchar(255) DEFAULT NULL,
@@ -49,9 +52,9 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (4, "Anonymous", "123456", "computer", "IT"),
-    (5, "John", "qwerty", "economy", "Financial Analyst"),
-    (6, "Elen", "zxcvbn", "mechanical", "Mechanical Engineers");
+    (1, "Anonymous", "123456", "computer", "IT"),
+    (2, "John", "qwerty", "economy", "Financial Analyst"),
+    (3, "Elen", "zxcvbn", "mechanical", "Mechanical Engineers");
     '''
 
     Organization_offer = '''
@@ -72,37 +75,73 @@ def create_database():
     (3, 3, "90,000 per year", "7h per day", "mechanical");
     '''
 
- 
     Individual_prefer = '''
     CREATE TABLE IF NOT EXISTS `IndividualPrefer` (
     `PreferID` int NOT NULL AUTO_INCREMENT,
     `IndividualId` int NOT NULL,
-    `ContentID` int NOT NULL,
+    `ArticleID` int NOT NULL,
+    `Type` varchar(255) NOT NULL,
     PRIMARY KEY (`PreferID`)
     );
     ''' 
-    
+
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1),
-    (2, 2, 2),
-    (3, 3, 3);
+    (1, 1, 1, "article"),
+    (2, 1, 2, "article"),
+    (3, 2, 2, "article");
     '''
-    content_table = '''
-    CREATE TABLE IF NOT EXISTS `Content` (
-    `ContentID` int NOT NULL AUTO_INCREMENT,
-    `ContentLink` varchar(255) NOT NULL,
-    `ContentLikeNum` int NOT NULL,
-    `ContentTag` varchar(255) NOT NULL,
-    PRIMARY KEY (`ContentID`));'''
+    Vedio_table = '''
+    CREATE TABLE IF NOT EXISTS `Vedio` (
+    `VedioID` int NOT NULL AUTO_INCREMENT,
+    `VedioLink` varchar(255) NOT NULL,
+    `VedioLikeNum` int NOT NULL,
+    `VedioTag` varchar(255) NOT NULL,
+    PRIMARY KEY (`VedioID`));'''
     
-    insert_content = '''
-    INSERT INTO `Content` VALUES 
-    (1, "1", 0, "1"),
-    (2, "2", 0, "2"),
-    (3, "3", 0, "3");
-    '''
+    insert_vedio = ''''''
 
+    Article_table = '''
+    CREATE TABLE IF NOT EXISTS `Article` (
+    `ArticleID` int NOT NULL AUTO_INCREMENT,
+    `Article` TEXT,
+    `ArticleLikeNum` int NOT NULL,
+    `ArticleTag` varchar(255) NOT NULL,
+    PRIMARY KEY (`ArticleID`));'''
+
+    insert_article = '''
+    INSERT INTO `Article` VALUES 
+    (1, "asd", 0, "computer"),
+    (2, "fdgsdfgdf", 0, "economy"),
+    (3, "asdfasdfsfasdf",0, "mechanical");
+    '''
+    FollowList_ind ='''
+    CREATE TABLE IF NOT EXISTS `indfollowlist` (
+    `FollowID` int NOT NULL AUTO_INCREMENT,
+    `IndividualID` int NOT NULL,
+    `indID` int NOT NULL,
+    PRIMARY KEY (`followID`));
+    '''
+    insert_follow_ind = '''
+    INSERT INTO `FollowList` VALUES 
+    (1, 1, 1),
+    (2, 1, 2),
+    (3, 2, 2);
+    '''
+    FollowList_org ='''
+    CREATE TABLE IF NOT EXISTS `orgfollowlist` (
+    `FollowID` int NOT NULL AUTO_INCREMENT,
+    `IndividualID` int NOT NULL,
+    `orgID` int NOT NULL,
+    PRIMARY KEY (`followID`));
+    '''
+    insert_follow_org = '''
+    INSERT INTO `FollowList` VALUES 
+    (1, 1, 1),
+    (2, 1, 2),
+    (3, 2, 2);
+    '''
+    
     Individual_mood = '''
     CREATE TABLE IF NOT EXISTS `Mood` (
     `MoodID` int NOT NULL AUTO_INCREMENT,
@@ -124,8 +163,10 @@ def create_database():
     c.execute(Organization_table)
     c.execute(Individual_table)
     c.execute(Organization_offer)
-    c.execute(content_table)
+    c.execute(Article_table)
     c.execute(Individual_prefer)
+    c.execute(FollowList_ind)
+    c.execute(FollowList_org)
     c.execute(Individual_mood)
 
 #insert data
@@ -137,11 +178,15 @@ def create_database():
     db.commit()
     c.execute(insert_individualPrefer)
     db.commit()
+    c.execute(insert_article)
+    db.commit()
+    c.execute(insert_follow_org)
+    db.commit()
+    c.execute(insert_follow_ind)
+    db.commit()
     c.execute(insert_mood)
     db.commit()
-    c.execute(insert_content)
-    db.commit()
-    
+     
     c.close()
 
     return True

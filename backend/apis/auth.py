@@ -39,7 +39,7 @@ class IndividualRegister(Resource):
                 }
                 return output, 403
             else:
-                IndividualID = 0
+                IndividualID = 100
                 sql = "INSERT INTO individual VALUES ({},'{}', '{}', '{}', '{}');".format(IndividualID, IndividualName, Password, Preference, Occupation)
                 sql_command(sql)
                 select_sql = f"SELECT IndividualID FROM Individual WHERE IndividualName='{IndividualName}';"
@@ -75,7 +75,7 @@ class OrganizationRegister(Resource):
                 }
                 return output, 403
             else:
-                OrganizationID = 0
+                OrganizationID = 101
                 sql = "INSERT INTO organization VALUES ({},'{}','{}');".format(OrganizationID, OrganizationName, Password)
                 sql_command(sql)
                 select_sql = f"SELECT OrganizationID FROM organization WHERE OrganizationName='{OrganizationName}';"
@@ -110,28 +110,6 @@ class Login(Resource):
         result_from_org = sql_command(org_sql)
 
 
-        ###method1
-        # if not result_from_user and not result_from_org:
-        #     output = {
-        #             "Message": "Name not signup as individual or organization"
-        #     }
-        #     return output, 404
-        # else:
-        #     # print("user",result_from_user)
-        #     # print("org", result_from_org)
-        #     if Password == result_from_user[0][0] or Password == result_from_org[0][0]:
-        #         output = {
-        #             "message": "success",
-        #             "name": result_from_user[0][1],
-        #             "id": result_from_user[0][2]
-        #         }
-        #         return output, 200
-        #     else:
-        #         output = {
-        #                 "message": "Wrong password"
-        #         }
-        #         return output, 403
-        ###method2
         if result_from_user:
             type_flag = 'individual'
         elif result_from_org:

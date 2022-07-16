@@ -1,6 +1,6 @@
 # MySQL database
 DB_ACCOUNT = 'root'
-DB_PASSWORD = 'YOUR DATABASE PASSWORD'
-DB_NAME = 'YOUR DATABASE NAME'
+DB_PASSWORD = 'lglrzxya'
+DB_NAME = 'wellbeing'
 DB_URL = 'localhost'
 DB_PORT = 3306
