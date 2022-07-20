@@ -216,7 +216,7 @@ const Follow = () => {
 
             </Content>
 
-            <Footer>Footer</Footer>
+            <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
         </Layout>
     )
     

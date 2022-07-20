@@ -4,6 +4,7 @@ import MyPage from '@/pages/MyPage';
 import Follow from '@/pages/Follow';
 import JobPreference from '@/pages/JobPreference';
 import Test from '@/pages/Test';
+import ArticleDetails from '@/pages/ArticleDetails';
 import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/MyPage' element={<MyPage />}></Route>
           <Route path='MyPage/Follow' element={<Follow />}></Route>
           <Route path='MyPage/JobPreference' element={<JobPreference />}></Route>
+          <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
           <Route path='/Test' element={<Test />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
