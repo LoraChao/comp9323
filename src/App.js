@@ -8,6 +8,7 @@ import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
 import Signup_organizational from '@/pages/Signup_organizational';
+import Details_personal from '@/pages/Details_personal';	
 
 //import React from 'react';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
           <Route path='/signup' element={<Signup_individual />}></Route>
           <Route path='/signup_organizational' element={<Signup_organizational />}></Route>
+          <Route path='/profile' element={<Details_personal />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
