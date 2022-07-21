@@ -3,6 +3,10 @@ try:
     from flask_app import app
     import apis.auth
     import apis.content
+    import apis.homepage
+    import apis.mood
+    import apis.offer
+
     app.run(debug=True)
 except ImportError as e:
     print(e)
