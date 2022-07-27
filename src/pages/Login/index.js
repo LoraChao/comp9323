@@ -12,9 +12,9 @@ class Login_individual extends PureComponent {
     constructor(props) {
       super(props)
       this.state = {
-        username: '',
-        password: '',
-        usertype: 'individual',
+        username: '', //string
+        password: '', //string
+        usertype: 'individual', //string
       }
     }
   
