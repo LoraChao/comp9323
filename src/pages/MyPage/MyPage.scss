@@ -23,16 +23,28 @@
 
 
 }
-.user-name::after {
-    content: '';
-    display: block;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background: url('~@/assets/sad.png') no-repeat center center;
-    background-size: cover;
+// .user-name::after {
+//     content: '';
+//     display: block;
+//     display: inline-block;
+//     width: 25px;
+//     height: 25px;
+//     background: url('~@/assets/sad.png') no-repeat center center;
+//     background-size: cover;
+// }
+
+
+.moodselect{
+    align-items: bottom;  
 }
 
+.happy{
+    //background: url('~@/assets/sad.png');
+    // background-size: cover;
+    background-size: 30px;
+    background-image: url('~@/assets/sad.png');
+    background-repeat: no-repeat;
+}
 
 .user-identity{
     position: absolute;

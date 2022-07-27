@@ -5,6 +5,8 @@ import Follow from '@/pages/Follow';
 import JobPreference from '@/pages/JobPreference';
 import Test from '@/pages/Test';
 import ArticleDetails from '@/pages/ArticleDetails';
+import ArticleList from '@/pages/ArticleList';
+import JobDetails from '@/pages/JobDetails';
 import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
@@ -28,12 +30,13 @@ function App() {
           <Route path='MyPage/Follow' element={<Follow />}></Route>
           <Route path='MyPage/JobPreference' element={<JobPreference />}></Route>
           <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
+          <Route path='/JobDetails' element={<JobDetails />}></Route>
           <Route path='/Test' element={<Test />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
           <Route path='/signup' element={<Signup_individual />}></Route>
           <Route path='/signup_organizational' element={<Signup_organizational />}></Route>
-          <Route path='/profile' element={<Details_personal />}></Route>
+          <Route path='MyPage/ArticleList' element={<ArticleList />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

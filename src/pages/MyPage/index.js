@@ -1,6 +1,6 @@
 import './MyPage.scss'
 import React from 'react';
-import { Layout, Avatar, Button, Card, Space, List} from "antd"
+import { Layout, Avatar, Button, Card, Space, List, Rate} from "antd"
 import { UserOutlined} from '@ant-design/icons';
 
 
@@ -35,28 +35,51 @@ const articleData = [
     },
 ];
 
-  
 
 const MyPage = () => {
     return (
         <Layout>
             <Header style={{ height:'150px'}}>
                 <div className="header-content">
-                    <div className="user-icon">
-                        <Avatar size={100} icon={<UserOutlined />} />
-                    </div>
+                    <table>
+                        <td style={{width:'250px', height:'150px'}}>
+                            <tr>
+                                <div className="user-icon">
+                                    <Avatar size={100} icon={<UserOutlined />} />
+                                </div>
+                            </tr>
+                        </td>
 
-                    <span className="user-name">Micky Mouse</span>
-                    <br/>
-                    <span className="user-identity">UNSW, Student, IT</span>
-                    
+                        <td style={{width:'250px', height:'150px'}}> 
+                            <span className="user-name">Micky Mouse</span>
+                            <br/>
+                            <span className="user-identity">UNSW, Student, IT</span>
+                        </td>
 
-                    <div className="edit">
-                        <Button type="dashed"> edit</Button>
-                    </div>
-                    <div className="logout">
-                        <Button type="dashed"> logout</Button>
-                    </div> 
+                        <td style={{width:'220px', height:'150px'}}>
+                            <tr style={{height:"30px"}}></tr>
+                            <tr>
+                                <h2 style={{color:"white"}}>Mark today's mood!</h2>
+                            </tr>
+                        </td>
+                        <td style={{width:'250px', height:'150px'}}>
+                            <tr style={{height:"30px"}}></tr>
+                            <tr > 
+                                <div className='moodselect'>
+                                    <Rate /> 
+                                </div>
+                            </tr>
+                        </td>
+
+                        <td> 
+                            <div className="edit">
+                                <Button type="dashed"> edit</Button>
+                            </div>
+                            <div className="logout">
+                                <Button type="dashed"> logout</Button>
+                            </div> 
+                        </td>
+                    </table>
                 </div>
             </Header>
             
@@ -151,46 +174,8 @@ const MyPage = () => {
                 </Card>
 
                 <Card
-                    title="Released"
-                    extra={<a href="@">More</a>}
-                    style={{
-                        width: '100%',
-                        textAlign: 'left',
-                    }}
-                    type="inner"
-                >
-                    <List
-                        itemLayout="horizontal"
-                        dataSource={articleData}
-                        renderItem={(item) => (
-                        <List.Item>
-                            <List.Item.Meta
-                            avatar={
-                                <img width={80} alt="logo" 
-                                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>}
-                                title={<a href="@">{item.title}</a>}
-                                description={item.description}
-                            />
-                            <Space
-                                direction="horizontal"
-                                size="middle"
-                                style={{
-                                display: 'flex',
-                                }}
-                            >
-                                <div><Button>Edit</Button></div>
-                                <div><Button>Check</Button></div>
-                            </Space>
-                        </List.Item>
-                        
-                        )}
-                    />
-                    
-                </Card>
-
-                <Card
                     title="Liked"
-                    extra={<a href="@">More</a>}
+                    extra={<a href="./MyPage/ArticleList">More</a>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -216,7 +201,7 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <div><Button>Check</Button></div>
+                                <div><Button href='./ArticleDetails'>Check</Button></div>
                             </Space>
                         </List.Item>
                         
