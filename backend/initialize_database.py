@@ -112,9 +112,9 @@ def create_database():
 
     insert_article = '''
     INSERT INTO `Article` VALUES 
-    (1, "asd", 0, "computer"),
-    (2, "fdgsdfgdf", 0, "economy"),
-    (3, "asdfasdfsfasdf",0, "mechanical");
+    (1,"a", "asd", 0, "computer"),
+    (2,"b", "fdgsdfgdf", 0, "economy"),
+    (3,"c", "asdfasdfsfasdf",0, "mechanical");
     '''
     FollowList_ind ='''
     CREATE TABLE IF NOT EXISTS `indfollowlist` (
