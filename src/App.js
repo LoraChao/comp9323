@@ -12,7 +12,7 @@ import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
 import Signup_organizational from '@/pages/Signup_organizational';
 import Details_personal from '@/pages/Details_personal';	
-
+import JobRelease from '@/pages/Job_Release';	
 //import React from 'react';
 
 //import { Button } from 'antd';
@@ -37,6 +37,8 @@ function App() {
           <Route path='/signup' element={<Signup_individual />}></Route>
           <Route path='/signup_organizational' element={<Signup_organizational />}></Route>
           <Route path='MyPage/ArticleList' element={<ArticleList />}></Route>
+          <Route path='/profile' element={<Details_personal />}></Route>
+          <Route path='/release' element={<JobRelease />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
