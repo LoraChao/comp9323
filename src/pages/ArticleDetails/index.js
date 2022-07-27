@@ -1,6 +1,6 @@
 import './ArticleDetails.scss'
-import { Button, PageHeader, Row, Tag, Typography } from 'antd';
-import { Header, Footer, Content } from "antd/lib/layout/layout";
+import { Button, PageHeader, Tag, Typography } from 'antd';
+import { Footer, Content } from "antd/lib/layout/layout";
 import React from 'react';
 const { Paragraph } = Typography;
 
@@ -37,8 +37,8 @@ const ArticleDetails = () => (
         extra={[
         <Button key="3">Like</Button>,
         <Button key="2">Follow</Button>,
-        <Button key="1" type="primary">
-            Share
+        <Button key="1" type="primary" href='./MyPage'>
+            Back
         </Button>,
         ]}
         avatar={{
