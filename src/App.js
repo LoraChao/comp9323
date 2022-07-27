@@ -26,15 +26,15 @@ function App() {
           {/* create route path and relations */} 
           {/* <Route path='/' element={<FrontPage />}></Route> */} {/* this spare is for the main page */}
           <Route path='/MyPage' element={<MyPage />}></Route>
-          <Route path='MyPage/Follow' element={<Follow />}></Route>
-          <Route path='MyPage/JobPreference' element={<JobPreference />}></Route>
+          <Route path='/Follow' element={<Follow />}></Route>
+          <Route path='/JobPreference' element={<JobPreference />}></Route>
           <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
           <Route path='/Test' element={<Test />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
           <Route path='/signup' element={<Signup_individual />}></Route>
           <Route path='/signup_organizational' element={<Signup_organizational />}></Route>
-          <Route path='MyPage/ArticleList' element={<ArticleList />}></Route>
+          <Route path='/ArticleList' element={<ArticleList />}></Route>
           <Route path='/profile' element={<Details_personal />}></Route>
           <Route path='/release' element={<JobRelease />}></Route>
         </Routes>

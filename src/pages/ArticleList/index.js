@@ -28,7 +28,7 @@ const ArticleList = () => (
             }}>
             <Card
                 title="Liked"
-                extra={<a href="./">Back</a>}
+                extra={<a href="./MyPage">Back</a>}
                 style={{
                     width: '100%',
                     textAlign: 'left',
