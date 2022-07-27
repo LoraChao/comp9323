@@ -123,7 +123,7 @@ def create_database():
     PRIMARY KEY (`followID`));
     '''
     insert_follow_ind = '''
-    INSERT INTO `FollowList` VALUES 
+    INSERT INTO `indFollowList` VALUES 
     (1, 1, 1),
     (2, 1, 2),
     (3, 2, 2);
@@ -136,7 +136,7 @@ def create_database():
     PRIMARY KEY (`followID`));
     '''
     insert_follow_org = '''
-    INSERT INTO `FollowList` VALUES 
+    INSERT INTO `orgFollowList` VALUES 
     (1, 1, 1),
     (2, 1, 2),
     (3, 2, 2);

@@ -35,10 +35,8 @@ class Signup_individual extends PureComponent {
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input class="btn" type="submit" value="Log in"
-                    onClick={() => {
-                      this.handleLogin()
-                    }}></input>
+                    <input class="btn" type="submit" value="Sign up"
+                    ></input>
                 </form>    
             </div>
             <div class="msg">

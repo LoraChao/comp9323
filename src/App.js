@@ -11,6 +11,7 @@ import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
 import Signup_organizational from '@/pages/Signup_organizational';
+import Details_personal from '@/pages/Details_personal';	
 
 //import React from 'react';
 
