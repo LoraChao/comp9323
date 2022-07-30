@@ -1,0 +1,107 @@
+.ant-layout {
+    height: 100%;
+}
+ 
+.header-content {
+    height:150px;
+    background: rgb(13, 59, 56);
+    position: relative;
+}
+
+.user-icon {
+    position: absolute;
+    top: 40px;
+    left: 120px;   
+}
+
+.user-name{
+    position: absolute;
+    color: white;
+    top: 40px;
+    left:250px;
+    font-size: 30px;
+
+
+}
+.user-name::after {
+    content: '';
+    display: block;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url('~@/assets/sad.png') no-repeat center center;
+    background-size: cover;
+}
+
+
+.user-identity{
+    position: absolute;
+    color: white;
+    top: 80px;
+    left:250px;
+    font-size: 20px;
+}
+
+
+.edit{
+    position:absolute;
+    right:120px;
+    top:90px;
+}
+
+.logout{
+    position:absolute;
+    right:30px;
+    top:90px;
+}
+
+#job-company{
+    font-size: 23px;
+}
+
+#job-position{
+    font-size: 15px;
+    line-height: 3px;
+}
+
+.text-under-avatar{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+
+.button-in-cols {
+    // vertical-align: middle;
+    // display: table-cell;
+    // text-align: center;
+    padding-top:20px;
+}
+
+.display-wrapper {
+    background-color: #fff;
+    width: 70%;
+    height: 80%;
+    color: #000;
+    border-radius: 15px;
+    position: relative;
+    font-size: 20px;
+    text-indent: 10%;
+    text-align: left;
+    top: -5%;
+    left: 50%;
+    bottom: 20%;
+    padding-bottom: 50px;
+    transform: translate(-50%, 10%);
+}
+
+.description {
+    position: relative;
+    text-indent: 0%;
+    width: 80%;
+    left: 0%;
+    font-size:20px;
+    text-align: left;
+    transform: translate(15%, 0%);
+    
+}
