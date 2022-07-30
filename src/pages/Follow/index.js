@@ -204,7 +204,7 @@ const Follow = () => {
                     activeTabKey={activeTabKey}
                     extra={
                         // <Button  href="../MyPage" onClick={clickBackHandler()}>Back</Button>
-                        <Button href="../MyPage" onClick = {() => clickBackHandler(activeTabKey)}>Back</Button>
+                        <Button href="./MyPage" onClick = {() => clickBackHandler(activeTabKey)}>Back</Button>
                         //backButton(activeTabKey)
                     }
                     onTabChange={(key) => {

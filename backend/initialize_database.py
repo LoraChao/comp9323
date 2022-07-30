@@ -104,6 +104,8 @@ def create_database():
     Article_table = '''
     CREATE TABLE IF NOT EXISTS `Article` (
     `ArticleID` int NOT NULL AUTO_INCREMENT,
+    `ArticleTitle` varchar(255) NOT NULL,
+    `Author` varchar(255) NOT NULL,
     `Article` TEXT,
     `ArticleLikeNum` int NOT NULL,
     `ArticleTag` varchar(255) NOT NULL,
@@ -111,9 +113,9 @@ def create_database():
 
     insert_article = '''
     INSERT INTO `Article` VALUES 
-    (1, "asd", 0, "computer"),
-    (2, "fdgsdfgdf", 0, "economy"),
-    (3, "asdfasdfsfasdf",0, "mechanical");
+    (1,"a", "asd", 0, "computer"),
+    (2,"b", "fdgsdfgdf", 0, "economy"),
+    (3,"c", "asdfasdfsfasdf",0, "mechanical");
     '''
     FollowList_ind ='''
     CREATE TABLE IF NOT EXISTS `indfollowlist` (

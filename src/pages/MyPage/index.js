@@ -87,7 +87,7 @@ const MyPage = () => {
                 <Card
                     title="Follow"
                     extra={
-                        <a href='./MyPage/Follow' >More</a>
+                        <a href='/Follow' >More</a>
                     }
                     style={{
                         width: '100%',
@@ -175,7 +175,7 @@ const MyPage = () => {
 
                 <Card
                     title="Liked"
-                    extra={<a href="./MyPage/ArticleList">More</a>}
+                    extra={<a href="/ArticleList">More</a>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -201,7 +201,7 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <div><Button href='./ArticleDetails'>Check</Button></div>
+                                <div><Button href='/ArticleDetails'>Check</Button></div>
                             </Space>
                         </List.Item>
                         

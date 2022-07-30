@@ -4,6 +4,11 @@ import MyPage from '@/pages/MyPage';
 import Follow from '@/pages/Follow';
 import JobPreference from '@/pages/JobPreference';
 import Test from '@/pages/Test';
+<<<<<<< HEAD
+=======
+import ArticleDetails from '@/pages/ArticleDetails';
+import ArticleList from '@/pages/ArticleList';
+>>>>>>> edce9cc52d918c91387ec0acef8b2f12b1c76b71
 import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
@@ -27,13 +32,15 @@ function App() {
           {/* create route path and relations */} 
           {/* <Route path='/' element={<FrontPage />}></Route> */} {/* this spare is for the main page */}
           <Route path='/MyPage' element={<MyPage />}></Route>
-          <Route path='MyPage/Follow' element={<Follow />}></Route>
-          <Route path='MyPage/JobPreference' element={<JobPreference />}></Route>
+          <Route path='/Follow' element={<Follow />}></Route>
+          <Route path='/JobPreference' element={<JobPreference />}></Route>
+          <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
           <Route path='/Test' element={<Test />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
           <Route path='/signup' element={<Signup_individual />}></Route>
           <Route path='/signup_organizational' element={<Signup_organizational />}></Route>
+          <Route path='/ArticleList' element={<ArticleList />}></Route>
           <Route path='/profile' element={<Details_personal />}></Route>
           <Route path='/release' element={<JobRelease />}></Route>
           <Route path='/check' element={<JobCheck />}></Route>
