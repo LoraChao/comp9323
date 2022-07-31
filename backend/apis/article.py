@@ -29,7 +29,7 @@ class ArticleGet(Resource):
 
         if not result_from_article:
             output = {
-                "message": "Wrong title"
+                "message": "false"
             }
             return output, 403
         else:

@@ -28,14 +28,14 @@ class IndividualRegister(Resource):
         # Occupation = request.form['Occupation']
         if IndividualName == "" or Password == "":
             output = {
-                "message": "You need to fill in the complete information"
+                "message": "false"
             }
             return output, 400
         else:
             sql = f"SELECT * FROM individual WHERE IndividualName='{IndividualName}';"
             if sql_command(sql):
                 output = {
-                    "message": "Name already used"
+                    "message": "false"
                 }
                 return output, 403
             else:
@@ -64,14 +64,14 @@ class OrganizationRegister(Resource):
         Password = request.form['password']
         if OrganizationName == "" or Password == "":
             output = {
-                "Message": "You need to fill in the complete information"
+                "message": "false"
             }
             return output, 400
         else:
             sql = f"SELECT * FROM organization WHERE OrganizationName='{OrganizationName}';"
             if sql_command(sql):
                 output = {
-                    "Message": "Name already used"
+                    "message": "false"
                 }
                 return output, 403
             else:
@@ -102,7 +102,7 @@ class Login(Resource):
         # Password  = request.form["Password"]
         if Name == "" or Password == "":
             output = {
-                "message": "Missing name or password"
+                "message": "false"
             }
             return output, 400
 
@@ -118,7 +118,7 @@ class Login(Resource):
             type_flag = 'organization'
         else:
             output = {
-                "message": "Preference not signup as individual / organization"
+                "message": "false"
             }
             return output, 403
 
@@ -134,7 +134,7 @@ class Login(Resource):
                 return output, 200
             else:
                 output = {
-                    "message": "Wrong password"
+                    "message": "false"
                 }
                 return output, 403
         else:
@@ -150,7 +150,7 @@ class Login(Resource):
                 return output, 200
             else:
                 output = {
-                    "message": "Wrong password"
+                    "message": "false"
                 }
                 return output, 403
 
@@ -227,7 +227,7 @@ class Organization_details(Resource):
             type_flag = 'organization'
         else:
             output = {
-                "message": " not signup as individual / organization"
+                "message": "false"
             }
             return output, 403
 
@@ -241,6 +241,6 @@ class Organization_details(Resource):
             return output, 200
         else:
             output = {
-                "message": "fail"
+                "message": "false"
             }
             return output, 403

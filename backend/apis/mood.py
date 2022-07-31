@@ -26,7 +26,7 @@ class PostDairy(Resource):
         Mood = data['Mood']
         if IndividualId == "" or RecordTime == "" or Mood == "":
             output = {
-                "message": "You need to fill in the complete information"
+                "message": "false"
             }
             return output, 400
         else:
@@ -55,7 +55,7 @@ class SearchDairy(Resource):
         Date = data["RecordTime"]
         if IndividualId == "":
             output = {
-                "message": "Missing ID"
+                "message": "false"
             }
             return output, 400
         
@@ -64,7 +64,7 @@ class SearchDairy(Resource):
        
         if not result_from_dairy:
             output = {
-                "message": "Offer not post"
+                "message": "false"
             }
             return output, 403
         for day in result_from_dairy:
@@ -79,7 +79,7 @@ class SearchDairy(Resource):
                 return output, 200
             else:
                 output = {
-                    "message": "Dairy not post"
+                    "message": "false"
                 }
                 return output, 403
 
@@ -99,7 +99,7 @@ class SearchDairy(Resource):
 
         if not result_from_dairy:
             output = {
-                "message": "Wrong ID"
+                "message": "false"
             }
             return output, 403
 
