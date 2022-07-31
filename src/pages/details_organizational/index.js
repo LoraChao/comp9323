@@ -17,7 +17,6 @@ class Details_organizational extends PureComponent{
       field_name: '', //int
       scale_name: '', //string
       description_name: '', //string
-      usertype: 'organizational', //string
     }
   }
   render(){

@@ -45,7 +45,7 @@ class JobRelease extends PureComponent{
       autoComplete="off"
       style = {{height: 1000}}
     >
-      <form method="post" action="http://127.0.0.1:5000/auth/login">
+      <form method="post" action="http://127.0.0.1:5000/offer/post/organization">
       <div>
       <TextField
           id="position_id"
