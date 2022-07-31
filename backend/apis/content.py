@@ -69,7 +69,7 @@ class PreferList(Resource):
             if sql_command(ind_sql):
                 type='article'
                 like_sql = f"INSERT IGNORE INTO IndividualPrefer VALUES ({individualID},{ArticleID},{type});"
-                count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID ={ArticleID}"
+                count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID ={ArticleID};"
                 try:
                     sql_command(like_sql)
                     sql_command(count_sql)
