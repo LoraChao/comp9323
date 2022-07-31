@@ -60,7 +60,7 @@ class PreferList(Resource):
             return output, 404
 
     @cont.doc(description = 'add new like')
-    @cont.expect(follow_org_moedl)
+    @cont.expect(follow_org_model)
     def post(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
@@ -91,7 +91,7 @@ class PreferList(Resource):
             return output, 404
 
     @cont.doc(description = 'delete a like')
-    @cont.expect(follow_org_moedl)
+    @cont.expect(follow_org_model)
     def delete(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
@@ -156,7 +156,7 @@ class orgFollowList(Resource):
 
             
     @cont.doc(description = 'add new org follow')
-    @cont.expect(follow_org_moedl)
+    @cont.expect(follow_org_model)
     def post(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
@@ -184,7 +184,7 @@ class orgFollowList(Resource):
             return output, 404
 
     @cont.doc(description = 'delete new follow')
-    @cont.expect(follow_model)
+    @cont.expect(follow_org_model)
     def delete(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
@@ -242,7 +242,7 @@ class indFollowList(Resource):
             return output, 404
 
     @cont.doc(description = 'add new ind follow')
-    @cont.expect(follow_ind_moedl)
+    @cont.expect(follow_ind_model)
     def post(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
@@ -270,7 +270,7 @@ class indFollowList(Resource):
             return output, 404
 
     @cont.doc(description = 'delete new ind follow')
-    @cont.expect(follow_model)
+    @cont.expect(follow_ind_model)
     def delete(self,individualID):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
