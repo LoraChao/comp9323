@@ -46,15 +46,16 @@ def create_database():
     `Password` varchar(255) NOT NULL,
     `Preference` varchar(255) DEFAULT NULL,
     `Occupation` varchar(255) DEFAULT NULL,
+    `Emo` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`IndividualId`)
     );
     '''
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "computer", "IT"),
-    (2, "John", "qwerty", "economy", "Financial Analyst"),
-    (3, "Elen", "zxcvbn", "mechanical", "Mechanical Engineers");
+    (1, "Anonymous", "123456", "computer", "IT", 0),
+    (2, "John", "qwerty", "economy", "Financial Analyst", 0),
+    (3, "Elen", "zxcvbn", "mechanical", "Mechanical Engineers", 0);
     '''
 
     Organization_offer = '''
@@ -113,9 +114,9 @@ def create_database():
 
     insert_article = '''
     INSERT INTO `Article` VALUES 
-    (1,"a", "asd", 0, "computer"),
-    (2,"b", "fdgsdfgdf", 0, "economy"),
-    (3,"c", "asdfasdfsfasdf",0, "mechanical");
+    (1,"title1","a", "asd", 0, "computer"),
+    (2,"title2","b", "fdgsdfgdf", 0, "economy"),
+    (3,"title3","c", "asdfasdfsfasdf",0, "mechanical");
     '''
     FollowList_ind ='''
     CREATE TABLE IF NOT EXISTS `indfollowlist` (
