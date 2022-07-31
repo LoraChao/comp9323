@@ -1,14 +1,9 @@
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import MyPage from '@/pages/MyPage';
-import Follow from '@/pages/Follow';
+import FollowInd from '@/pages/FollowInd';
+import FollowOrg from '@/pages/FollowOrg';
 import JobPreference from '@/pages/JobPreference';
-import Test from '@/pages/Test';
-<<<<<<< HEAD
-=======
-import ArticleDetails from '@/pages/ArticleDetails';
-import ArticleList from '@/pages/ArticleList';
->>>>>>> edce9cc52d918c91387ec0acef8b2f12b1c76b71
 import Login_individual from '@/pages/Login';
 import Login_organizational from '@/pages/Login_organizational';
 import Signup_individual from '@/pages/Signup';
@@ -17,6 +12,8 @@ import Details_personal from '@/pages/Details_personal';
 import JobRelease from '@/pages/Job_Release';	
 import JobCheck from '@/pages/Job_check';	
 import Details_organizational from '@/pages/details_organizational';
+import ArticleDetails from '@/pages/ArticleDetails';
+import ArticleList from '@/pages/ArticleList';
 
 //import React from 'react';
 
@@ -32,10 +29,10 @@ function App() {
           {/* create route path and relations */} 
           {/* <Route path='/' element={<FrontPage />}></Route> */} {/* this spare is for the main page */}
           <Route path='/MyPage' element={<MyPage />}></Route>
-          <Route path='/Follow' element={<Follow />}></Route>
+          <Route path='/FollowInd' element={<FollowInd />}></Route>
+          <Route path='/FollowOrg' element={<FollowOrg />}></Route>
           <Route path='/JobPreference' element={<JobPreference />}></Route>
           <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
-          <Route path='/Test' element={<Test />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
           <Route path='/signup' element={<Signup_individual />}></Route>

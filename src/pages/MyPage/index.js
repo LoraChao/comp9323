@@ -1,7 +1,11 @@
 import './MyPage.scss'
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import { Layout, Avatar, Button, Card, Space, List, Rate} from "antd"
 import { UserOutlined} from '@ant-design/icons';
+
+const followOrgURL = 'http://127.0.0.1:5000/cont/1/orgFollowList'
+const followIndURL = 'http://127.0.0.1:5000/cont/1/indFollowList'
+
 
 
 const {  Header, Content, Footer} = Layout;
@@ -37,57 +41,68 @@ const articleData = [
 
 
 const MyPage = () => {
+    const [followIndData, setIndData ] = useState(0);
+    const [followOrgData, setOrgData ] = useState(0);
+
+    useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        }
+
+        const getFollowOrgData = async (followOrgURL) => {
+            fetch(followOrgURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setOrgData(json)                             // 接到数据后按格式调整data.ind_follow
+            }) 
+        }
+
+        getFollowOrgData(followOrgURL);
+    },[])
+    
+    
+    const preferJobList = followOrgData.org_follow                                           
+    console.log(preferJobList)                                                                 
+
+    
+    //console.log(orgList)
+
     return (
         <Layout>
-            <Header style={{ height:'150px'}}>
-                <div className="header-content">
-                    <table>
-                        <td style={{width:'250px', height:'150px'}}>
-                            <tr>
-                                <div className="user-icon">
-                                    <Avatar size={100} icon={<UserOutlined />} />
-                                </div>
-                            </tr>
-                        </td>
-
-                        <td style={{width:'250px', height:'150px'}}> 
-                            <span className="user-name">Micky Mouse</span>
-                            <br/>
-                            <span className="user-identity">UNSW, Student, IT</span>
-                        </td>
-
-                        <td style={{width:'220px', height:'150px'}}>
-                            <tr style={{height:"30px"}}></tr>
-                            <tr>
-                                <h2 style={{color:"white"}}>Mark today's mood!</h2>
-                            </tr>
-                        </td>
-                        <td style={{width:'250px', height:'150px'}}>
-                            <tr style={{height:"30px"}}></tr>
-                            <tr > 
-                                <div className='moodselect'>
-                                    <Rate /> 
-                                </div>
-                            </tr>
-                        </td>
-
-                        <td> 
-                            <div className="edit">
-                                <Button type="dashed"> edit</Button>
-                            </div>
-                            <div className="logout">
-                                <Button type="dashed"> logout</Button>
-                            </div> 
-                        </td>
-                    </table>
+            <Header className="myPage_header">
+                <div className="user_icon">
+                    <Avatar size={100} icon={<UserOutlined />} />
                 </div>
+
+                <div>
+                    <span className="user_name">Micky Mouse</span>
+                    <span className="user_identity">UNSW, Student, IT</span>
+                </div>
+
+                <div className="moodselect">
+                    <h2 style={{color:"white"}}>Mark today's mood!</h2>
+                </div>
+                
+                <div className="rate">
+                    <Rate /> 
+                </div>
+
+                <div className="edit">
+                    <Button type="dashed"> edit</Button>
+                </div>
+
+                <div className="logout">
+                                <Button type="dashed"> logout</Button>
+                </div> 
+
             </Header>
-            
+
             <Content style={{ padding: '0 50px'}}>
                 <Card
-                    title="Follow"
+                    title="Follow Individual"
                     extra={
-                        <a href='/Follow' >More</a>
+                        <a href='/FollowInd' >More</a>
                     }
                     style={{
                         width: '100%',
@@ -105,7 +120,9 @@ const MyPage = () => {
                     >
                         <div className="text-under-avatar">
                             <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
+                            {/* <span style={{display:"block"}}>user</span> */}
+                            <span style={{display:"block"}}>name</span>
+                            preferJobList
                         </div>
                         <div className="text-under-avatar">
                             <Avatar size={60} icon={<UserOutlined />} />
@@ -145,6 +162,36 @@ const MyPage = () => {
                         </div>
                     </Space>
                 </Card>
+                
+                <Card
+                    title="Followed Company"
+                    extra={<a href="./MyPage/JobPreference">More</a>}
+                    style={{
+                        width: '100%',
+                        textAlign: 'left',
+                    }}
+                    type="inner"
+                >
+                    <List
+                        itemLayout="horizontal"
+                        //dataSource={companyData}
+                        dataSource={preferJobList}
+                        
+                        renderItem={(item) => (
+                        <List.Item>
+                            <List.Item.Meta
+                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            // title={<a href="@">{item.title}</a>}
+                            title={<a href="@">{item.OrganizationName}</a>}             // 把这个替换成对应的属性
+                            description={item.Description}
+                            />
+                            <div><Button>check</Button></div>
+                        </List.Item>
+                        
+                        )}
+                    />
+                    
+                </Card>
 
                 <Card
                     title="Job Preference"
@@ -157,13 +204,16 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        dataSource={companyData}
+                        //dataSource={companyData}
+                        dataSource={preferJobList}
+                        
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
-                            title={<a href="@">{item.title}</a>}
-                            description={item.description}
+                            // title={<a href="@">{item.title}</a>}
+                            title={<a href="@">{item.OrganizationName}</a>}             // 把这个替换成对应的属性
+                            description={item.Description}
                             />
                             <div><Button>check</Button></div>
                         </List.Item>

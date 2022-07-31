@@ -3,11 +3,6 @@ import { Header, Footer, Content } from "antd/lib/layout/layout";
 import React, { useState} from 'react';
 import './index.scss'
 import { UserOutlined} from '@ant-design/icons';
-// import { useParams } from "react-router-dom";
-// import { reaction } from "mobx";
-// import { useStore } from "@/store"; 
-// import { http } from "@/utils"
-// import { reaction } from "mobx";
 
 const id = 1;
 const fakeDataUrl = 'http://127.0.0.1:5000/cont/'+id+'/followList'
@@ -29,7 +24,7 @@ const tabList = [
 //     return user.GetLikeList(id);
 // }
 
-global.unfollowList = ''
+global.unfollowList = ''            // for collecting item change from status "follow"  ->  "unfollow"
 
 class Company extends React.Component{          // company follow tab 
 
@@ -37,7 +32,7 @@ class Company extends React.Component{          // company follow tab
     constructor(){
         super()
         
-        this.state = {
+        this.state = {                          // data structure
             companyLikeList: [
                 {
                     OrganizationId: "",
@@ -51,7 +46,7 @@ class Company extends React.Component{          // company follow tab
         }
     }
 
-    componentDidMount(){
+    componentDidMount(){                        //  get company's follow list by GET function
         fetch(fakeDataUrl, {
             method: 'GET',
             //params: id
@@ -85,7 +80,7 @@ class Company extends React.Component{          // company follow tab
             }),
         })
 
-        // Renew the unfollow list
+        // Renew the unfollow list for submission
         this.state.companyLikeList.map((item) =>  {
             if(item.OrganizationId === OrganizationId && item.follow === 'follow'){
                 this.setState({
@@ -150,7 +145,7 @@ const loadContents = (currTab) => {            // determine which tab to show
 }
 
 const clickBackHandler =  (currTab) => {
-    if(currTab === 'Company'){
+    if(currTab === 'Company'){                      // submit unfollow list of company by DELETE request 
         //console.log(global.unfollowList)
         //console.log("sfds")
         // global.unfollowList.map((item) => {
@@ -175,12 +170,12 @@ const clickBackHandler =  (currTab) => {
         });
 
       }
-    else{
+    else{                                       // submit unfollow list of individual by DELETE request 
         console.log("individual")
     }
 }
 
-const Follow = () => {
+const FollowInd = () => {
     const [activeTabKey, setActiveTabKey] = useState('tab1');
   
     const onTab1Change = (key) => {
@@ -207,11 +202,11 @@ const Follow = () => {
                         <Button href="./MyPage" onClick = {() => clickBackHandler(activeTabKey)}>Back</Button>
                         //backButton(activeTabKey)
                     }
-                    onTabChange={(key) => {
+                    onTabChange={(key) => {             
                         onTab1Change(key);  
                     }}
                 >
-                    {loadContents(activeTabKey)}
+                    {loadContents(activeTabKey)}       
         </Card>
 
             </Content>
@@ -224,6 +219,4 @@ const Follow = () => {
 }
 
 
-
-
-export default Follow
+export default FollowInd

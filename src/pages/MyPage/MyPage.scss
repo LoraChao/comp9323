@@ -2,56 +2,51 @@
     height: 100%;
 }
  
-.header-content {
-    height:150px;
-    background: rgb(13, 59, 56);
-    position: relative;
+// .header-content {
+//     height:150px;
+//     background: rgb(13, 59, 56);
+//     position: relative;
+// }
+
+.myPage_header{
+    height: 150px;
 }
 
-.user-icon {
+.user_icon {
     position: absolute;
     top: 40px;
     left: 120px;   
 }
 
-.user-name{
+.user_name{
     position: absolute;
     color: white;
-    top: 40px;
+    top: 50px;
     left:250px;
     font-size: 30px;
-
-
 }
-// .user-name::after {
-//     content: '';
-//     display: block;
-//     display: inline-block;
-//     width: 25px;
-//     height: 25px;
-//     background: url('~@/assets/sad.png') no-repeat center center;
-//     background-size: cover;
-// }
+
+.user_identity{
+    position: absolute;
+    color: white;
+    top: 90px;
+    left:250px;
+    font-size: 20px;
+}
 
 
 .moodselect{
-    align-items: bottom;  
+    align-items: bottom; 
+    position:absolute;
+    right:420px;
+    top:90px; 
 }
 
-.happy{
-    //background: url('~@/assets/sad.png');
-    // background-size: cover;
-    background-size: 30px;
-    background-image: url('~@/assets/sad.png');
-    background-repeat: no-repeat;
-}
 
-.user-identity{
-    position: absolute;
-    color: white;
-    top: 80px;
-    left:250px;
-    font-size: 20px;
+.rate{
+    position:absolute;
+    right:280px;
+    top:90px;
 }
 
 

@@ -1,4 +1,4 @@
-import './ArticleList.scss'
+import './FollowOrg.scss'
 import { Layout, Card, List, Button, Space, Tag} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
@@ -28,7 +28,7 @@ const articleListData = [                                                       
 
 
 
-const ArticleList = () => {
+const FollowOrg = () => {
     
     const [data, setData ] = useState(0);
 
@@ -112,4 +112,4 @@ const ArticleList = () => {
 
 
 
-export default ArticleList
+export default FollowOrg

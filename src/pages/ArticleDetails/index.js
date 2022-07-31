@@ -27,6 +27,16 @@ const wordContent = (
 );
 
 
+const articleData = [
+    {
+      ArticleName: 'Article_1',
+      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+      tag: 'tag of this article',
+      ArticleID: 1,
+      AuthorIcon: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    },
+];
+
 const ArticleDetails = () => (
 
     <PageHeader
@@ -35,14 +45,11 @@ const ArticleDetails = () => (
         subTitle=" "
         tags={<Tag color="blue">Experience</Tag>}
         extra={[
-        <Button key="3">Like</Button>,
-        <Button key="2">Follow</Button>,
-        <Button key="1" type="primary" href='./MyPage'>
-            Back
-        </Button>,
+        <Button key="1">Like</Button>,
+
         ]}
         avatar={{
-        src: 'https://avatars1.githubusercontent.com/u/8186664?s=460&v=4',
+        src: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4",
         }}
     >
     
