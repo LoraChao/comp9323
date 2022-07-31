@@ -65,27 +65,32 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "computer", "IT", "", "", "", "", "", "", "","", "", 0),
-    (2, "John", "qwerty", "economy", "Financial Analyst", "", "", "", "", "", "", "","", "", 0),
-    (3, "Elen", "zxcvbn", "mechanical", "Mechanical Engineers", "", "", "", "", "", "", "","", "", 0);
+    (1, "Anonymous", "123456", "", "", "", "", "", "", "", "", "","", "", 0),
+    (2, "John", "qwerty", "", "", "", "", "", "", "", "", "","", "", 0),
+    (3, "Elen", "zxcvbn", "", "", "", "", "", "", "", "", "","", "", 0);
     '''
 
     Organization_offer = '''
     CREATE TABLE IF NOT EXISTS `Offer` (
     `OfferId` int NOT NULL AUTO_INCREMENT,
     `OrganizationId` int NOT NULL,
-    `Salary` varchar(255) NOT NULL,
-    `Working hours` varchar(255) NOT NULL,
-    `Tag` varchar(255) NOT NULL,
+    `CompanyName` varchar(255) DEFAULT NULL,
+    `Position` varchar(255) DEFAULT NULL,
+    `WorkingLocation` varchar(255) DEFAULT NULL,
+    `Working hours` varchar(255) DEFAULT NULL,
+    `Salary` varchar(255) DEFAULT NULL,
+    `Responsibility` varchar(255) DEFAULT NULL,
+    `Requirement` varchar(255) DEFAULT NULL,
+    `Contact` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`OfferId`)
     );
     '''
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "100,000 per year", "7h per day", "computer"),
-    (2, 2, "80,000 per year", "7h per day", "economy"),
-    (3, 3, "90,000 per year", "7h per day", "mechanical");
+    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "", ""),
+    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "", ""),
+    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "");
     '''
 
     Individual_prefer = '''
@@ -173,6 +178,7 @@ def create_database():
     (2, 2, "01/02/2022", "Bad"),
     (3, 3, "01/03/2022", "Average");
     '''
+
 
 #create table
     c.execute(Organization_table)
