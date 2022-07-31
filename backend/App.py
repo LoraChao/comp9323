@@ -6,6 +6,7 @@ try:
     import apis.homepage
     import apis.mood
     import apis.offer
+    import apis.article
 
     app.run(debug=True)
 except ImportError as e:
