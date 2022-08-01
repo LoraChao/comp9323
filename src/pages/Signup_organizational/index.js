@@ -67,7 +67,7 @@ class Signup_organizational extends PureComponent {
               if (data.success){
                   let url =  "http://localhost:3000/profile";
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", res["userid"], 1)
+                  this.setcookie("userid", data["userid"], 1)
                   window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }
