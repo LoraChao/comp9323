@@ -38,9 +38,9 @@ def create_database():
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456","","","","",""),
-    (2, "Enterprise", "qwerty","","","","",""),
-    (3, "Company", "zxcvbn","","","","","");
+    (1, "Anonymous", "123456","","","","","",""),
+    (2, "Enterprise", "qwerty","","","","","",""),
+    (3, "Company", "zxcvbn","","","","","","");
     '''
     
     Individual_table = '''
@@ -67,9 +67,9 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "", "", "", "", "", "", "", "", "","", "", 0),
-    (2, "John", "qwerty", "", "", "", "", "", "", "", "", "","", "", 0),
-    (3, "Elen", "zxcvbn", "", "", "", "", "", "", "", "", "","", "", 0);
+    (1, "Anonymous", "123456", "", "", "", "", "", "", "", "", "","", "", 0,""),
+    (2, "John", "qwerty", "", "", "", "", "", "", "", "", "","", "", 0,""),
+    (3, "Elen", "zxcvbn", "", "", "", "", "", "", "", "", "","", "", 0,"");
     '''
 
     Organization_offer = '''
