@@ -40,6 +40,13 @@ const companyData = [
     },
 ];
 
+const userInfo = {
+    name: "Micky Mouse",
+    description: "unsw, it, student",
+    icon: <UserOutlined />,
+    mood: "average",
+}
+    
 
 function ArticleMoreButton(props){ 
     const articleId = props.articleId 
@@ -54,11 +61,23 @@ function ArticleMoreButton(props){
      )
 }
 
-function RateStar(){ 
-
-    const [value, setValue] = useState(2);
+function RateStar(){
     var date = new Date();
 
+    // get storage mood state
+    var initialMood;
+    if(userInfo.mood === "well"){
+        initialMood = 3
+    }
+    else if(userInfo.mood === "average"){
+        initialMood = 2
+    }
+    else{
+        initialMood = 1
+    }
+    const [value, setValue] = useState(initialMood);
+
+    // set new mood state
     useEffect(() => {
         var mood = ''
         if (value === 1)
@@ -97,7 +116,7 @@ function RateStar(){
 
 
     return (
-       <Rate defaultValue={2} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
+       <Rate defaultValue={initialMood} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
 
      );
 }
@@ -105,11 +124,13 @@ function RateStar(){
 
 const MyPage = () => {
 
+    // state of page data
     const [followIndData, setIndData ] = useState(0);
     const [followOrgData, setOrgData ] = useState(0);
     // const [preferJobData, setJobData ] = useState(0);
     const [preferArticleData, setArticleData ] = useState(0);
 
+    // GET page data
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -168,12 +189,12 @@ const MyPage = () => {
         <Layout>
             <Header className="myPage_header">
                 <div className="user_icon">
-                    <Avatar size={100} icon={<UserOutlined />} />
+                    <Avatar size={100} icon={userInfo.icon} />
                 </div>
 
                 <div>
-                    <span className="user_name">Micky Mouse</span>
-                    <span className="user_identity">UNSW, Student, IT</span>
+                    <span className="user_name">{userInfo.name}</span>
+                    <span className="user_identity">{userInfo.description}</span>
                 </div>
 
                 <div className="moodselect">

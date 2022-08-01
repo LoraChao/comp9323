@@ -59,9 +59,7 @@ function BackButton(){
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                "Company": [
-                    1
-                  ],
+                "Company": global.unfollowList
             })
         };
 
