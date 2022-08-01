@@ -156,4 +156,32 @@ class SearchOffer(Resource):
         #             "Requirement": result_from_offer[1][8],
         #             "Contact": result_from_offer[1][9]}
         #     }
+#             return output, 200
+
+@auth.route('/delete')
+class DeleteOffer(Resource):
+    @auth.response(200, 'OK')
+    @auth.response(400, 'Bad Request')
+    @auth.response(404, 'Not Found')
+    @auth.response(201, 'Created')
+    # @auth.expect(search_organizations_model)
+    def delete(self):
+        data = json.loads(request.get_data())
+        OrganizationId = data['OrganizationId']
+        OfferId= data['OfferId']
+
+        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"  # database_info
+        result_from_offer = sql_command(offer_sql)
+
+        if not result_from_offer:
+            output = {
+                "message": "false"
+            }
+            return output, 400
+        else:
+            delete_sql = f"DELETE FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"
+            sql_command(delete_sql)
+            output = {
+                "message": "true"
+            }
             return output, 200
