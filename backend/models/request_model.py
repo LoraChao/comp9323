@@ -51,14 +51,18 @@ search_dairy_model = api.model("dairy search", {
 })
 
 #shell's work
-follow_ind_model = api.model("ind followed update", {"indID":fields.Integer})
+prefer_model = api.model("article model",{
+    "articleID": fields.Integer
+})
 
-follow_org_model = api.model("org followed update", {"orgID":fields.Integer})
+post_follow_ind_model = api.model("ind followed update", {"indID":fields.Integer})
 
-follow_org_model = api.model("org follow delete", {
+post_follow_org_model = api.model("org followed update", {"orgID":fields.Integer})
+
+delete_follow_org_model = api.model("org follow delete", {
     "Company": fields.List(fields.Integer)
 })
 
-follow_ind_model = api.model("ind follow delete", {
+delete_follow_ind_model = api.model("ind follow delete", {
     "Individual": fields.List(fields.Integer)
 })
