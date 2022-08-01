@@ -244,3 +244,30 @@ class Organization_details(Resource):
                 "message": "false"
             }
             return output, 403
+        
+@auth.route('/brief/individual')
+class Individual_brief(Resource):
+    @auth.response(200, 'OK')
+    @auth.response(400, 'Bad Request')
+    @auth.response(404, 'Not Found')
+    @auth.response(201, 'Created')
+    # @auth.expect(login_model)
+    def get(self):
+        data = json.loads(request.get_data())
+        userId = data["userId"]
+        ind_sql = f"SELECT IndividualName, Email, Icon FROM Individual WHERE IndividualId='{userId}';"
+        result_sql = sql_command(ind_sql)
+
+        if not result_sql:
+            output = {
+                "message": "false"
+            }
+            return output, 403
+        else:
+            output = {
+                "message": "success",
+                "IndividualName": result_sql[0][0],
+                "Email:": result_sql[0][1],
+                "Icon": result_sql[0][2]
+            }
+            return output, 200
