@@ -2,29 +2,35 @@ import './ArticleList.scss'
 import { Layout, Card, List, Button, Space, Tag} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
-const articleListURL = 'http://127.0.0.1:5000/cont/1/indFollowList'                    // 链接要更新
+
+const currUserId = '1'
+const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+
+//const articleListURL = 'http://127.0.0.1:5000/article/get'
+
+const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
 
 
-const articleListData = [                                                               // 测试数据, 获取数据后删除
-    {
-      ArticleName: 'Article_1',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article',
-      ArticleID: 1
-    },
-    {
-      ArticleName: 'Article_2',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article', 
-      ArticleID: 2
-    },
-    {
-      ArticleName: 'Article_3',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article',
-      ArticleID: 3
-    },
-];
+// const articleListData = [                                                               
+//     {
+//       ArticleName: 'Article_1',
+//       ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this article',
+//       ArticleID: 1
+//     },
+//     {
+//       ArticleName: 'Article_2',
+//       ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this article', 
+//       ArticleID: 2
+//     },
+//     {
+//       ArticleName: 'Article_3',
+//       ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this article',
+//       ArticleID: 3
+//     },
+// ];
 
 
 
@@ -51,9 +57,8 @@ const ArticleList = () => {
     
     
 
-    const articleList = data.ind_follow                                             // 接到数据后按格式调整data.ind_follow
-    //const articleList = data 
-    console.log(articleList)
+    const articleList = data.message                                             
+    //console.log(articleList)
 
     return(
         <Layout>
@@ -64,7 +69,7 @@ const ArticleList = () => {
                     textAlign: 'left',
                 }}>
                 <Card
-                    title="Liked"
+                    title="Liked Articles"
                     extra={<a href="./MyPage">Back</a>}
                     style={{
                         width: '100%',
@@ -81,10 +86,10 @@ const ArticleList = () => {
                             <List.Item.Meta
                             avatar={
                                 <img width={80} alt="logo" 
-                                    src={item.ArticleIcon}/>}
-                                title={<a href="@">{item.IndividualName}</a>}
+                                    src={articlePic}/>}
+                                title={<a href="@">{item.ArticleTitle}</a>}
                                 //description={item.description}
-                                description={<Tag>{item.tag}</Tag>}
+                                description={<Tag>{item.ArticleTag}</Tag>}
                             />
                             <Space
                                 direction="horizontal"

@@ -164,6 +164,7 @@ class orgFollowList(Resource):
             ind_sql = f"SELECT * FROM Organization WHERE OrganizationID={orgID};"
             if sql_command(ind_sql):
                 follow_sql = f"insert into orgfollowlist (individualID,orgID) select {individualID},{orgID} where not exists(select individualID from orgfollowlist where individualID = {individualID} and orgID={orgID});"
+                # follow_sql = f”select * from orgfollowlist”
                 sql_command(follow_sql)
                 output = {
                     'message': 'well done'

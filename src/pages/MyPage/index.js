@@ -1,21 +1,30 @@
 import './MyPage.scss'
 import React, { useState, useEffect }  from 'react';
-import { Layout, Avatar, Button, Card, Space, List, Rate} from "antd"
+import { Layout, Avatar, Button, Card, Space, List, Rate, Tag} from "antd"
 import { UserOutlined} from '@ant-design/icons';
-
-import { Navigate, useNavigate } from 'react-router-dom';
+import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 
 const currUserId = '1'
 
 const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
 const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-const preferJobURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+// const preferJobURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+const postMoodStar = 'http://127.0.0.1:5000/mood/post'
 
 
 
 
 const {  Header, Content, Footer} = Layout;
+
+const customIcons = {
+    1: <FrownOutlined />,
+    2: <MehOutlined />,
+    3: <SmileOutlined />,
+};
+
 const companyData = [
     {
       title: 'Microsoft',
@@ -31,25 +40,6 @@ const companyData = [
     },
 ];
 
-const articleData = [
-    {
-      articleId: '1',
-      title: 'Article_1',
-      description: 'Description of this post, Description of this post' 
-    },
-    {
-      articleId: '2',
-      title: 'Article_2',
-      description: 'Description of this post, Description of this post' 
-    },
-    {   
-      articleId: '3',
-      title: 'Video_1',
-      description: 'Description of this post, Description of this post' 
-    },
-];
-
-
 
 function ArticleMoreButton(props){ 
     const articleId = props.articleId 
@@ -62,14 +52,63 @@ function ArticleMoreButton(props){
     return (
        <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
      )
-   }
+}
+
+function RateStar(){ 
+
+    const [value, setValue] = useState(2);
+    var date = new Date();
+
+    useEffect(() => {
+        var mood = ''
+        if (value === 1)
+            {
+                mood = 'bad'
+            }
+            else if (value === 2)
+            {
+                mood = 'average'
+            }
+            else
+            {
+                mood = 'well'
+            }
+
+        const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                            "IndividualId": currUserId,
+                            "RecordTime": date,
+                            "Mood": mood
+                    })
+                };
+
+        const postMoodRate = async (postMoodStar) => {
+            fetch(postMoodStar, requestOptions)
+                    .then(res =>  res.json())
+                    .then(data => {
+                        console.log(data)
+                    });
+        }
+
+        postMoodRate(postMoodStar);
+    },[value])
+
+
+    return (
+       <Rate defaultValue={2} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
+
+     );
+}
    
 
 const MyPage = () => {
 
     const [followIndData, setIndData ] = useState(0);
     const [followOrgData, setOrgData ] = useState(0);
-    //const [preferJobData, setJobData ] = useState(0);
+    // const [preferJobData, setJobData ] = useState(0);
+    const [preferArticleData, setArticleData ] = useState(0);
 
     useEffect(() => {
         const requestOptions = {
@@ -97,21 +136,31 @@ const MyPage = () => {
         //     fetch(preferJobURL, requestOptions)
         //     .then(res =>  res.json())
         //     .then(json =>{
-        //         setJobData(json)                             // 接到数据后按格式调整data.ind_follow
+        //         setJobData(json)                                     
         //     }) 
         // }
 
+        const getPreferArticleData = async (preferArticleURL) => {
+            fetch(preferArticleURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setArticleData(json)                                     
+            }) 
+        }
+
+
         getFollowOrgData(followOrgURL);
         getFollowIndData(followIndURL);
-        // getPreferJobData(preferJobURL);
+        // getPreferJobData(preferArticleURL);
+        getPreferArticleData(preferArticleURL);
     },[])
     
-    
-    const preferJobList = followOrgData.org_follow  
+
+    const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow  
-    const followIndList = followIndData.ind_follow    
-    //const preferJobList = followIndData.ind_follow                                           
-    //console.log(preferJobData)                                                                 
+    // const preferJobList = preferJobData.message                                       // 这个等子越prefer job的出来
+    const preferArticleList = preferArticleData.message                                           
+    //console.log(followIndList)                                                                 
 
 
 
@@ -132,7 +181,8 @@ const MyPage = () => {
                 </div>
                 
                 <div className="rate">
-                    <Rate /> 
+                    {/* <Rate onClick={() => {handleRateClick("1")}}/>  */}
+                    <RateStar/>
                 </div>
 
                 <div className="edit">
@@ -205,7 +255,7 @@ const MyPage = () => {
                 </Card>
 
                 <Card
-                    title="Job Preference"
+                    title="Preferred Jobs"
                     extra={<a href="./MyPage/JobPreference">More</a>}
                     style={{
                         width: '100%',
@@ -215,15 +265,15 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        //dataSource={companyData}
-                        dataSource={preferJobList}
+                        dataSource={companyData}
+                        //dataSource={preferJobList}
                         
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
                             // title={<a href="@">{item.title}</a>}
-                            title={<a href="@">{item.OrganizationName}</a>}             // 把这个替换成对应的属性
+                            title={<a href="@">{item.OrganizationName}</a>}             
                             description={item.Description}
                             />
                             <div><Button>check</Button></div>
@@ -235,7 +285,7 @@ const MyPage = () => {
                 </Card>
 
                 <Card
-                    title="Liked"
+                    title="Liked Articles"
                     extra={<a href="/ArticleList">More</a>}
                     style={{
                         width: '100%',
@@ -245,15 +295,16 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        dataSource={articleData}
+                        // dataSource={articleData}
+                        dataSource={preferArticleList}
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={
                                 <img width={80} alt="logo" 
                                     src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>}
-                                title={<a href="@">{item.title}</a>}
-                                description={item.description}
+                                title={<a href="@">{item.ArticleTitle}</a>}
+                                description={<Tag>{item.ArticleTag}</Tag>}
                             />
                             <Space
                                 direction="horizontal"
