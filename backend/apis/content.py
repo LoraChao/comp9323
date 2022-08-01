@@ -68,7 +68,7 @@ class PreferList(Resource):
             ind_sql = f"SELECT * FROM Article WHERE ArticleID={ArticleID};"
             if sql_command(ind_sql):
                 type='article'
-                like_sql = f"INSERT IGNORE INTO IndividualPrefer VALUES ({individualID},{ArticleID},{type});"
+                like_sql = f"INSERT IGNORE INTO IndividualPrefer VALUES (0,{individualID},{ArticleID},{type});"
                 count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID ={ArticleID};"
                 try:
                     sql_command(like_sql)
@@ -163,11 +163,8 @@ class orgFollowList(Resource):
             orgID = request.json['orgID']
             ind_sql = f"SELECT * FROM Organization WHERE OrganizationID={orgID};"
             if sql_command(ind_sql):
-                follow_sql = f"INSERT IGNORE INTO orgfollowlist VALUES ({individualID},{orgID});"
-                try:
-                    sql_command(follow_sql)
-                except:
-                    pass
+                follow_sql = f"INSERT IGNORE INTO orgfollowlist VALUES (0,{individualID},{orgID});"
+                sql_command(follow_sql)
                 output = {
                     'message': 'well done'
                 }
@@ -192,11 +189,7 @@ class orgFollowList(Resource):
             if orgID_list:
                 for orgID in orgID_list:
                     follow_sql = f"DELETE from orgFollowList WHERE individualID = {individualID} AND orgID = {orgID};"
-                    try:
-                        sql_command(follow_sql)
-                        pass
-                    except:
-                        pass
+                    sql_command(follow_sql)
                 output = {
                     'message': 'well done'
                 }
@@ -249,11 +242,8 @@ class indFollowList(Resource):
             indID = request.json['indID']
             ind_sql = f"SELECT * FROM Individual WHERE IndividualID={indID};"
             if sql_command(ind_sql):
-                follow_sql = f"INSERT IGNORE INTO indfollowlist VALUES ({individualID},{indID});"
-                try:
-                    sql_command(follow_sql)
-                except:
-                    pass
+                follow_sql = f"INSERT IGNORE INTO indfollowlist VALUES (0,{individualID},{indID});"
+                sql_command(follow_sql)
                 output = {
                     'message': 'well done'
                 }
@@ -278,11 +268,7 @@ class indFollowList(Resource):
             if indID_list:
                 for indID in indID_list:
                     follow_sql = f"DELETE from indFollowList WHERE individualID = {individualID} AND indID = {indID};"
-                    try:
-                        sql_command(follow_sql)
-                        pass
-                    except:
-                        pass
+                    sql_command(follow_sql)
                 output = {
                     'message': 'well done'
                 }
