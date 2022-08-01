@@ -31,6 +31,7 @@ def create_database():
     `Field` varchar(255) DEFAULT NULL,
     `Scale` varchar(255) DEFAULT NULL,
     `Description` varchar(255) DEFAULT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`OrganizationId`)
     );
     '''
@@ -59,6 +60,7 @@ def create_database():
     `Professional` varchar(255) DEFAULT NULL,
     `CV` varchar(255) DEFAULT NULL,
     `Emo` varchar(255) DEFAULT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`IndividualId`)
     );
     '''
