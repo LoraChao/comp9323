@@ -135,7 +135,7 @@ class orgFollowList(Resource):
             if result_from_db:
                 org_follow = []
                 for e in result_from_db:
-                    org_sql = f"SELECT OrganizationId,OrganizationName,Description,Icon FROM Organization WHERE OrganizationId='{e[0]}';"
+                    org_sql = f"SELECT * FROM Organization WHERE OrganizationId='{e[0]}';"
                     result_from_db = sql_result_with_decription(org_sql)
                     result_from_db['follow'] = 'follow'
                     org_follow.append(result_from_db)
@@ -222,7 +222,7 @@ class indFollowList(Resource):
             if result_from_db:
                 ind_follow = []
                 for e in result_from_db:
-                    ind_sql = f"SELECT IndividualId,IndividualName,Occupation FROM Individual WHERE IndividualID='{e[0]}';"
+                    ind_sql = f"SELECT * FROM Individual WHERE IndividualID='{e[0]}';"
                     result_from_db = sql_result_with_decription(ind_sql)
                     result_from_db['follow'] = 'follow'
                     ind_follow.append(result_from_db)
