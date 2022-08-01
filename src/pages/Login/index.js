@@ -91,12 +91,13 @@ class Login_individual extends PureComponent {
           data => {
               if (data.success){
                   let url =  "http://localhost:3000/mypage";
-                  window.location.replace(url)
+                  
                   document.cookie = "userid" = JSON.stringify(res.data.id)
                   localStorage.setItem('userdata', JSON.stringify(res.data.id))
                   localStorage.setItem('islogin', "1")
                   this.setcookie('islogin', '1', 1)
                   this.setcookie("userid", JSON.stringify(res.data.id))
+                  window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }
       )

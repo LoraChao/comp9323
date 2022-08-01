@@ -65,6 +65,15 @@ class Login_organizational extends PureComponent {
       )
     }
   
+    setcookie(name, value, days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
     getConnect() {
       let text = {username: this.state.username, password: this.state.password};//获取数据
       // console.log(text);
@@ -77,9 +86,12 @@ class Login_organizational extends PureComponent {
           data => {
               if (data.success){
                   let url =  "http://localhost:3000/mypage";
-                  window.location.replace(url)
+                  document.cookie = "userid" = JSON.stringify(res.data.id)
                   localStorage.setItem('userdata', JSON.stringify(res.data.id))
                   localStorage.setItem('islogin', "1")
+                  this.setcookie('islogin', '1', 1)
+                  this.setcookie("userid", res[userid])
+                  window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }
       )
