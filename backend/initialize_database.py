@@ -211,6 +211,7 @@ def create_database():
     c.execute(FollowList_ind)
     c.execute(FollowList_org)
     c.execute(Individual_mood)
+    c.execute(Individual_preferOffer)
 
 #insert data
     c.execute(insert_organization)
@@ -228,6 +229,8 @@ def create_database():
     c.execute(insert_follow_ind)
     db.commit()
     c.execute(insert_mood)
+    db.commit()
+    c.execute(insert_individualPreferOffer)
     db.commit()
      
     c.close()
