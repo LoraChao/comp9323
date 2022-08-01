@@ -26,7 +26,7 @@ class FollowButton extends React.Component{    // individual follow tab
         })
         //console.log(id)
 
-        //  TODO:  更新delete列表
+        //  renew unfollow list
         if(global.unfollowList.includes(id)){
             global.unfollowList = global.unfollowList.filter((item) => item !== id)
             //console.log("add:", global.unfollowList)

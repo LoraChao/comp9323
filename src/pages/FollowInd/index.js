@@ -1,222 +1,181 @@
-import { Layout, Card, List, Avatar, Button} from "antd"
-import { Header, Footer, Content } from "antd/lib/layout/layout";
-import React, { useState} from 'react';
-import './index.scss'
-import { UserOutlined} from '@ant-design/icons';
+import './FollowInd.scss'
+import { Layout, Card, List, Button, Space} from "antd"
+import { Footer, Content, Header } from "antd/lib/layout/layout";
+import React, { useState, useEffect }  from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const id = 1;
-const fakeDataUrl = 'http://127.0.0.1:5000/cont/'+id+'/followList'
-// const fakeDataUrl1 = "http://127.0.0.1:5000/cont/test"
+const currUserId = '1'
 
-const tabList = [
-    {
-        key: 'Company',
-        tab: 'Company'
-    },
-    {
-        key: 'Individual',
-        tab: 'Individual'
+
+const indFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 
+const deleteIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
+const addIndFollowListURL = "http://127.0.0.1:5000/cont/1/indFollowList"                 // For testing: Post new follow request 
+
+global.unfollowList = []
+
+
+class FollowButton extends React.Component{    // individual follow tab
+
+    state = {
+        follow: 1
     }
-];
 
-// function GetLikeList(id){
-//     const {user} = useStore();
-//     return user.GetLikeList(id);
-// }
+    handleClick(id){
+      this.setState({
+        follow: (this.state.follow + 1)%2
+        })
+        //console.log(id)
 
-global.unfollowList = ''            // for collecting item change from status "follow"  ->  "unfollow"
-
-class Company extends React.Component{          // company follow tab 
-
-
-    constructor(){
-        super()
-        
-        this.state = {                          // data structure
-            companyLikeList: [
-                {
-                    OrganizationId: "",
-                    OrganizationName: "",
-                    Description:"",
-                    Icon:"",
-                    follow: ""
-                }
-            ],
-            unfollowList: [],
+        //  renew unfollow list
+        if(global.unfollowList.includes(id)){
+            global.unfollowList = global.unfollowList.filter((item) => item !== id)
+            //console.log("add:", global.unfollowList)
+        }
+        else{
+            global.unfollowList.push(id)
+            //console.log("add:", global.unfollowList)
         }
     }
 
-    componentDidMount(){                        //  get company's follow list by GET function
-        fetch(fakeDataUrl, {
-            method: 'GET',
-            //params: id
-        })
-            .then(res => {return res.json()})
-            .then(data => {
-                this.setState({
-                    companyLikeList: data.message
-                    //companyLikeList: useStore().GetLikeList(1)
-                })
-            })
-    }
-   
-    
-    clickFollowHandler = (curItem) =>{  
-
-        const {OrganizationId, follow} = curItem
-
-        this.setState({
-            companyLikeList: this.state.companyLikeList.map(item =>{ 
-                if(item.OrganizationId === OrganizationId){
-                    return{
-                        ...item,
-                        follow: 
-                            follow === 'follow' ? 'unfollow' : 'follow'     // switch follow status
-                    }
-                }
-                else{
-                    return item
-                }
-            }),
-        })
-
-        // Renew the unfollow list for submission
-        this.state.companyLikeList.map((item) =>  {
-            if(item.OrganizationId === OrganizationId && item.follow === 'follow'){
-                this.setState({
-                    unfollowList: [...this.state.unfollowList, OrganizationId]
-                })
-                global.unfollowList = [...global.unfollowList,  OrganizationId]
-                // console.log(global.unfollowList)
-            }
-            if(item.OrganizationId === OrganizationId && item.follow === 'unfollow'){
-                console.log("unfollow -> follow")
-                this.setState({
-                    unfollowList: this.state.unfollowList.filter((item) => item !== OrganizationId)
-                })
-                global.unfollowList = global.unfollowList.filter((item) => item !== OrganizationId)
-                // console.log(global.unfollowList)
-            }
-        })
-    }
-
-    returnUnfollowList = () => {
-        return this.unfollowList
-    }
-
     render(){
         return <div>
-            {/* <div className="backButton"><CompanyBack unfollowList = {this.state.unfollowList}/></div> */}
-            <div>
-                <List
-                    itemLayout="horizontal"
-                    //loadMore={this.loadMore}
-                    dataSource={this.state.companyLikeList}
-                    renderItem={(item) => (
-                    <List.Item>
-                        <List.Item.Meta
-                        avatar={<Avatar size={45} icon={<UserOutlined />} />}
-                        title={<a href="@">{item.OrganizationName}</a>}
-                        description={item.Description}
-                        />
-                        <Button onClick={() => this.clickFollowHandler(item)}>{item.follow === 'follow' ? 'unfollow' : 'follow'} </Button>
-                    </List.Item>
-                    )}
-                />
-            </div>
+            <Button onClick={() => {this.handleClick(this.props.id)}}> 
+                {this.state.follow === 1 ? 'unfollow' : 'follow'}
+            </Button>
         </div>
+        
     }
 }
 
-class Individual extends React.Component{    // individual follow tab
-    render(){
-        return <div>
-            Individual
-        </div>
-    }
-}
+function BackButton(){ 
 
+    // for re-navigation
+    const navigate = useNavigate()
 
-const loadContents = (currTab) => {            // determine which tab to show
-    if(currTab === 'Company'){
-      return <div><Company/></div>
-    }
-    return <div><Individual/></div>
-}
-
-const clickBackHandler =  (currTab) => {
-    if(currTab === 'Company'){                      // submit unfollow list of company by DELETE request 
-        //console.log(global.unfollowList)
-        //console.log("sfds")
-        // global.unfollowList.map((item) => {
-        //     console.log(item)
-        // })
-
-        const requestOptions = {
+    // click back handler
+    const handleBackClick = () =>{ 
+        
+        const requestOptions = {                                                        //  send DELETE request
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
-            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: JSON.stringify({
-                company: global.unfollowList, 
-                Individual: []
+                "Individual": global.unfollowList
             })
-            //body: {"title": 1}
         };
 
-        fetch(fakeDataUrl, requestOptions)
+        fetch(deleteIndFollowListURL, requestOptions)
         .then(res =>  res.json())
         .then(data => {
             console.log(data)
         });
 
-      }
-    else{                                       // submit unfollow list of individual by DELETE request 
-        console.log("individual")
+        // Jump back to myPage
+        navigate(`/MyPage?currUserId=${currUserId}`, {replace: true})
+
+        // const postOptions = {                                                       // For testing: send POST to add new follower 
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({
+        //         "indID": 1
+        //     })
+        // };
+
+        // fetch(addIndFollowListURL, postOptions)
+        // .then(res =>  res.json())
+        // .then(data => {
+        //     console.log("add:",data)
+        // });
+
+        // console.log(deleteList)
     }
+    return (
+       <Button onClick={() => {handleBackClick()}}>Back</Button>
+     )
 }
 
 const FollowInd = () => {
-    const [activeTabKey, setActiveTabKey] = useState('tab1');
-  
-    const onTab1Change = (key) => {
-      setActiveTabKey(key);
-    };
-  
+
+    // set state for storing ind like list
+    const [data, setData ] = useState(0);
+
+    // for send GET request to get follow ind list
+    useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        }
+
+        const getData = async (indFollowListURL) => {
+            fetch(indFollowListURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setData(json)
+            }) 
+        }
+
+        getData(indFollowListURL);
+
+
+    },[])
+    
+    const indFollowList = data.ind_follow                                           
+    //console.log(data)
+
+
     return(
         <Layout>
-            <Header></Header>
+                <Header></Header>
 
-            <Content style={{ 
-                padding: '0 50px',
-                textAlign: 'left',
-            }}>
+                <Content style={{ 
+                    padding: '0 50px',
+                    textAlign: 'left',
+                }}>
                 <Card
+                    title="Followed Individuals"
+                    extra={<BackButton />}
                     style={{
-                    width: '100%',
+                        width: '100%',
+                        textAlign: 'left',
                     }}
-                    title="Follow"
-                    tabList={tabList}
-                    activeTabKey={activeTabKey}
-                    extra={
-                        // <Button  href="../MyPage" onClick={clickBackHandler()}>Back</Button>
-                        <Button href="./MyPage" onClick = {() => clickBackHandler(activeTabKey)}>Back</Button>
-                        //backButton(activeTabKey)
-                    }
-                    onTabChange={(key) => {             
-                        onTab1Change(key);  
-                    }}
+                    type="inner"
                 >
-                    {loadContents(activeTabKey)}       
-        </Card>
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={indFollowList}                                  
+                        renderItem={(item) => (
+                        <List.Item>
+                            <List.Item.Meta
+                            avatar={
+                                <img width={80} alt="logo" 
+                                    src={item.ArticleIcon}/>}
+                                title={<a href="@">{item.IndividualName}</a>}
+                                description={item.Email}
+                            />
+                            <Space
+                                direction="horizontal"
+                                size="middle"
+                                style={{
+                                display: 'flex',
+                                }}
+                            >
+                                <div><Button href={item.ArticleLink}>Check</Button></div>
+                                <FollowButton id={item.IndividualId}/>
+                            </Space>
+                        </List.Item>
+                        
+                        )}
+                    />
+                        
+                    </Card>   
 
-            </Content>
+                </Content>
 
-            <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
-        </Layout>
+                <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
+            </Layout>
     )
-    
 
-}
+};
+
 
 
 export default FollowInd
