@@ -2,12 +2,6 @@ import React, { PureComponent } from 'react'
 import './Signup_organizational.scss'
 
 class Signup_organizational extends PureComponent {
-    componentDidMount() {
-      let localStorage = window.localStorage
-      if (localStorage.islogin === '1') {
-        this.props.history.replace('/home')
-      }
-    }
   
     constructor(props) {
       super(props)
@@ -23,7 +17,6 @@ class Signup_organizational extends PureComponent {
           <div class="login-wrapper">
             <div class="header">Company Signup</div>
             <div class="form-wrapper">
-                <form action="http://127.0.0.1:5000/auth/signup/organization" method="post">
                     <input type="text" name="username" placeholder="username" class="input-item" 
                     value={this.state.username}
                     onChange={(e) => {
@@ -34,11 +27,10 @@ class Signup_organizational extends PureComponent {
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input class="btn" type="submit" value="Log in"
+                    <input class="btn" type="submit" value="Sign up"
                     onClick={() => {
-                      this.handleLogin()
-                    }}></input>
-                </form>    
+                      this.getConnect()
+                    }}></input> 
             </div>
             <div class="msg">
                 An individual user?
@@ -53,14 +45,33 @@ class Signup_organizational extends PureComponent {
       )
     }
   
-    handleLogin() {
-      if (this.state.username && this.state.password) {
-        this.props.history.replace('/Mypage')
-        window.localStorage.islogin = '1'
-        alert('Welcome')
-      } else {
-        alert('Please prompt username and password!')
+    setcookie(name, value, days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
       }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    getConnect() {
+      let text = {username: this.state.username, password: this.state.password};//获取数据
+      // console.log(text);
+      let send = JSON.stringify(text);//将对象转成json字符串
+      fetch("http://127.0.0.1:5000/auth/signup/organization", {
+          method: "POST",
+          headers: {"Content-Type": "application/json;charset=utf-8"},
+          body: send
+      }).then(res => res.json()).then(
+          data => {
+              if (data.success){
+                  let url =  "http://localhost:3000/profile";
+                  this.setcookie('islogin', '1', 1)
+                  this.setcookie("userid", res["userid"], 1)
+                  window.location.replace(url)
+              }else window.alert("Authorization failure, incorrect username or password")
+          }
+      )
     }
   }
   
