@@ -2,30 +2,35 @@ import './FollowOrg.scss'
 import { Layout, Card, List, Button, Space, Tag} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
-const articleListURL = 'http://127.0.0.1:5000/cont/1/indFollowList'                    // 链接要更新
+const orgFollowListURL = 'http://127.0.0.1:5000/cont/1/orgFollowList'                    // 链接这个id怎么处理？
+const deleteOrgFollowListURL = 'http://127.0.0.1:5000/cont/1/orgFollowList'
 
 
-const articleListData = [                                                               // 测试数据, 获取数据后删除
-    {
-      ArticleName: 'Article_1',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article',
-      ArticleID: 1
-    },
-    {
-      ArticleName: 'Article_2',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article', 
-      ArticleID: 2
-    },
-    {
-      ArticleName: 'Article_3',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article',
-      ArticleID: 3
-    },
-];
 
+class FollowButton extends React.Component{    // individual follow tab
+
+    state = {
+        follow: 1
+    }
+
+    handleClick(id){
+      this.setState({
+        follow: (this.state.follow + 1)%2
+        })
+        console.log(id)
+
+        //  TODO:  更新delete列表
+    }
+
+    render(){
+        return <div>
+            <Button onClick={() => {this.handleClick(this.props.id)}}> 
+                {this.state.follow === 1 ? 'unfollow' : 'follow'}
+            </Button>
+        </div>
+        
+    }
+}
 
 
 const FollowOrg = () => {
@@ -38,22 +43,43 @@ const FollowOrg = () => {
             headers: {'Content-Type': 'application/json'},
         }
 
-        const getData = async (articleListURL) => {
-            fetch(articleListURL, requestOptions)
+        const getData = async (orgFollowListURL) => {
+            fetch(orgFollowListURL, requestOptions)
             .then(res =>  res.json())
             .then(json =>{
                 setData(json)
             }) 
         }
 
-        getData(articleListURL);
+        getData(orgFollowListURL);
     },[])
     
-    
 
-    const articleList = data.ind_follow                                             // 接到数据后按格式调整data.ind_follow
-    //const articleList = data 
-    console.log(articleList)
+    const orgFollowList = data.org_follow                                           
+    //console.log(orgFollowList)
+    //console.log(data)
+
+    const handleBackClick = (deleteList) =>{ 
+        
+        // send delete request
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: JSON.stringify({
+                "Company": [
+                    0
+                  ],
+            })
+            //body: {"title": 1}
+        };
+
+        fetch(deleteOrgFollowListURL, requestOptions)
+        .then(res =>  res.json())
+        .then(data => {
+            console.log(data)
+        });
+    }
 
     return(
         <Layout>
@@ -64,8 +90,9 @@ const FollowOrg = () => {
                     textAlign: 'left',
                 }}>
                 <Card
-                    title="Liked"
-                    extra={<a href="./MyPage">Back</a>}
+                    title="Follow Organizations"
+                    extra={<a onClick={() => {handleBackClick("unfollowList")}}>Back</a>}
+                    //href="./MyPage" 
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -74,17 +101,16 @@ const FollowOrg = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        //dataSource={articleListData}
-                        dataSource={articleList}                                  // 接到数据后将dataSource替换成这行
+                        dataSource={orgFollowList}                                  
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={
                                 <img width={80} alt="logo" 
                                     src={item.ArticleIcon}/>}
-                                title={<a href="@">{item.IndividualName}</a>}
-                                //description={item.description}
-                                description={<Tag>{item.tag}</Tag>}
+                                title={<a href="@">{item.OrganizationName}</a>}
+                                description={item.Description}
+                                //description={<Tag>{item.tag}</Tag>}
                             />
                             <Space
                                 direction="horizontal"
@@ -94,6 +120,8 @@ const FollowOrg = () => {
                                 }}
                             >
                                 <div><Button href={item.ArticleLink}>Check</Button></div>
+                                {/* {FollowButton(item.OrganizationId)} */}
+                                <FollowButton id={item.OrganizationId}/>
                             </Space>
                         </List.Item>
                         

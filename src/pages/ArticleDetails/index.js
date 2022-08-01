@@ -2,6 +2,8 @@ import './ArticleDetails.scss'
 import { Button, PageHeader, Tag, Typography } from 'antd';
 import { Footer, Content } from "antd/lib/layout/layout";
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 const { Paragraph } = Typography;
 
 
@@ -37,38 +39,47 @@ const articleData = [
     },
 ];
 
-const ArticleDetails = () => (
 
-    <PageHeader
-        title="Where and how to look for work"
-        className="site-page-header"
-        subTitle=" "
-        tags={<Tag color="blue">Experience</Tag>}
-        extra={[
-        <Button key="1">Like</Button>,
-
-        ]}
-        avatar={{
-        src: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4",
-        }}
-    >
+const ArticleDetails = () => {
     
-    <Content>
-        <div >
-            <img style={{minHeight:"10px", width:"30%"}}
-                src="https://gw.alipayobjects.com/zos/antfincdn/K%24NnlsB%26hz/pageHeader.svg"
-                alt="content"
-                />
-        </div>
-        <div style={{ textAlign:'left', margin:"40px 100px 0 80px", fontSize:'17px'}}> {wordContent}</div>
+    // console.log(this.props.match.params.id)
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const articleId =  params.get('articleId')
+    console.log(currUserId,articleId)
+
+    return(
+        <PageHeader
+            title="Where and how to look for work"
+            className="site-page-header"
+            subTitle=" "
+            tags={<Tag color="blue">Experience</Tag>}
+            extra={[
+            <Button key="1">Like</Button>,
+
+            ]}
+            avatar={{
+            src: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4",
+            }}
+        >
         
-        {/* {wordContent} */}
-    
-    </Content>
-    <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
-    </PageHeader>
+        <Content>
+            <div >
+                <img style={{minHeight:"10px", width:"30%"}}
+                    src="https://gw.alipayobjects.com/zos/antfincdn/K%24NnlsB%26hz/pageHeader.svg"
+                    alt="content"
+                    />
+            </div>
+            <div style={{ textAlign:'left', margin:"40px 100px 0 80px", fontSize:'17px'}}> {wordContent}</div>
+            
+            {/* {wordContent} */}
+        
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
+        </PageHeader>
+    )
 
-);
+};
 
 
 

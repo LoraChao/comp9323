@@ -23,106 +23,137 @@ class IndividualRegister(Resource):
     def post(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
-        OrganizationName = data['OrganizationName']
-        Salary = data['Salary']
-        Workinghours = data['Workinghours']
-        Tag = data['Tag']
-        if OrganizationId == "" or Salary == "" or Workinghours == "" or Tag == "":
+        CompanyName = data['company_name']
+        PositionName = data['position_name']
+        WorkLocation = data['working_location_name']
+        WorkHour = data['working_hour_name']
+        Salary = data['salary_name']
+        Responsibility = data['responsibility_name']
+        Requirement = data['requirement_name']
+        Contact = data['contact_name']
+        if OrganizationId == "":
             output = {
-                "message": "You need to fill in the complete information"
+                "message": "false"
             }
             return output, 400
         else:
             OfferId = 0
-            sql = "INSERT INTO offer VALUES ({}, {}, '{}', '{}', '{}', '{}');".format(OfferId, OrganizationId, OrganizationName, Salary, Workinghours, Tag)
+            sql = "INSERT INTO offer VALUES ({}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}','{}');".\
+                format(OfferId, OrganizationId, CompanyName, PositionName, WorkLocation, WorkHour, Salary, Responsibility, Requirement, Contact)
             sql_command(sql)
-            select_sql = f"SELECT OrganizationName FROM organization WHERE OrganizationId='{OrganizationId}';"
-            OrganizaitonName = sql_command(select_sql)[0][0]
             output = {
                 "message": "Success Post",
                 "OfferID": OfferId,
-                "OrganizationName": OrganizaitonName,
+                "OrganizationName": CompanyName,
                 "OrganizaitonID": OrganizationId
             }
-            return output, 201
+            return output, 200
 
 
-@auth.route('/search/organization')
+@auth.route('/search/brief')
 class SearchOffer(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
     @auth.expect(search_organizations_model)
-    def post(self):
+    def get(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
-        OrganizationName = data['OrganizationName']
-        if OrganizationId == "" or OrganizationName == "":
+        # OrganizationName = data['OrganizationName']
+        if OrganizationId == "":
             output = {
-                "message": "Missing name or password"
+                "message": "false"
             }
             return output, 400
         
-        offer_sql = f"SELECT OfferId, OrganizationId, Salary, Workinghours, Tag FROM Offer WHERE OfferId='{OrganizationName}';" #database_info
+        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
         result_from_offer = sql_command(offer_sql)
        
         if not result_from_offer:
             output = {
-                "message": "Offer not post"
+                "message": "false"
             }
-            return output, 403
-
-        if OrganizationId == result_from_offer[0][1]:
+            return output, 400
+        if len(result_from_offer) == 1:
             output = {
-                "message": "success",
-                "OfferId": result_from_offer[0][0],
-                "OrganizationId": OrganizationId,
-                "OrganizationName": OrganizationName,
-                "Salary" : result_from_offer[0][2],
-                "Workinghour" : result_from_offer[0][3],
-                "Tag" : result_from_offer[0][4]
+                0: {"offerId": result_from_offer[0][0],
+                    "CompanyName": result_from_offer[0][2],
+                    "Responsibility": result_from_offer[0][7]}
             }
-            return output, 200
+            return output, 400
         else:
             output = {
-                "message": "Offer not post"
+                0: {"offerId": result_from_offer[0][0],
+                    "CompanyName": result_from_offer[0][2],
+                    "Responsibility": result_from_offer[0][7]},
+                1: {"offerId": result_from_offer[1][0],
+                    "CompanyName": result_from_offer[1][2],
+                    "Responsibility": result_from_offer[1][7]}
             }
-            return output, 403
+            return output, 400
 
 
-@auth.route('/search/organization')
-class FollowOffer(Resource):
+@auth.route('/search/detail')
+class SearchOffer(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
-    # @auth.expect(follow_offer_model)
-    def post(self):
+    @auth.expect(search_organizations_model)
+    def get(self):
         data = json.loads(request.get_data())
-        OfferId = data['OfferId']
-        if OfferId == "":
+        OrganizationId = data['OrganizationId']
+        OfferId= data['OfferId']
+        if OrganizationId == "" or OfferId == "":
             output = {
-                "message": "No offer"
+                "message": "false"
             }
             return output, 400
 
-        offer_sql = f"SELECT OfferId, OrganizationName, Salary, Workinghours, Tag FROM Offer WHERE OfferId='{OfferId}';"  # database_info
+        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"  # database_info
         result_from_offer = sql_command(offer_sql)
 
         if not result_from_offer:
             output = {
-                "message": "Wrong OfferId"
+                "message": "false"
             }
-            return output, 403
-
-        if OfferId == result_from_offer[0][1]:
-            sql = "INSERT INTO follow_offer VALUES ({}, {}, '{}', '{}', '{}',);".format(OfferId, result_from_offer[1],
-                                                                                      result_from_offer[2], result_from_offer[3],
-                                                                                      result_from_offer[4])
-            sql_command(sql)
+            return output, 400
         else:
             output = {
-                "message": "Wrong OfferId"
+                "offerId": result_from_offer[0][0],
+                "OrganizationId": result_from_offer[0][1],
+                "CompanyName": result_from_offer[0][2],
+                "Position": result_from_offer[0][3],
+                "WorkingLocation": result_from_offer[0][4],
+                "WorkingHour": result_from_offer[0][5],
+                "Salary": result_from_offer[0][6],
+                "Responsibility": result_from_offer[0][7],
+                "Requirement": result_from_offer[0][8],
+                "Contact": result_from_offer[0][9]
             }
-            return output, 403
+            return output, 200
+        # else:
+        #     output = {
+        #         0: {"offerId": result_from_offer[0][0],
+        #             "OrganizationId": result_from_offer[0][1],
+        #             "CompanyName": result_from_offer[0][2],
+        #             "Position": result_from_offer[0][3],
+        #             "WorkingLocation": result_from_offer[0][4],
+        #             "WorkingHour": result_from_offer[0][5],
+        #             "Salary": result_from_offer[0][6],
+        #             "Responsibility": result_from_offer[0][7],
+        #             "Requirement": result_from_offer[0][8],
+        #             "Contact": result_from_offer[0][9]},
+        #         1: {"offerId": result_from_offer[1][0],
+        #             "OrganizationId": result_from_offer[1][1],
+        #             "CompanyName": result_from_offer[1][2],
+        #             "Position": result_from_offer[1][3],
+        #             "WorkingLocation": result_from_offer[1][4],
+        #             "WorkingHour": result_from_offer[1][5],
+        #             "Salary": result_from_offer[1][6],
+        #             "Responsibility": result_from_offer[1][7],
+        #             "Requirement": result_from_offer[1][8],
+        #             "Contact": result_from_offer[1][9]}
+        #     }
+            return output, 200
