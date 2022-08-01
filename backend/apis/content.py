@@ -68,7 +68,7 @@ class PreferList(Resource):
             ind_sql = f"SELECT * FROM Article WHERE ArticleID={ArticleID};"
             if sql_command(ind_sql):
                 type='article'
-                like_sql = f"INSERT IGNORE INTO IndividualPrefer VALUES (0,{individualID},{ArticleID},{type});"
+                like_sql = f"insert into IndividualPrefer (individualID,ArticleID,type) select {individualID},{ArticleID},{type} where not exists(select individualID from IndividualPrefer where individualID = {individualID} and ArticleID={ArticleID} and type={type});"
                 count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID ={ArticleID};"
                 try:
                     sql_command(like_sql)
@@ -163,7 +163,7 @@ class orgFollowList(Resource):
             orgID = request.json['orgID']
             ind_sql = f"SELECT * FROM Organization WHERE OrganizationID={orgID};"
             if sql_command(ind_sql):
-                follow_sql = f"INSERT IGNORE INTO orgfollowlist VALUES (0,{individualID},{orgID});"
+                follow_sql = f"insert into orgfollowlist (individualID,orgID) select {individualID},{orgID} where not exists(select individualID from orgfollowlist where individualID = {individualID} and orgID={orgID});"
                 sql_command(follow_sql)
                 output = {
                     'message': 'well done'
@@ -242,7 +242,7 @@ class indFollowList(Resource):
             indID = request.json['indID']
             ind_sql = f"SELECT * FROM Individual WHERE IndividualID={indID};"
             if sql_command(ind_sql):
-                follow_sql = f"INSERT IGNORE INTO indfollowlist VALUES (0,{individualID},{indID});"
+                follow_sql = f"insert into indfollowlist (individualID,indID) select {individualID},{indID} where not exists(select individualID from indfollowlist where individualID = {individualID} and indID={indID});"
                 sql_command(follow_sql)
                 output = {
                     'message': 'well done'
