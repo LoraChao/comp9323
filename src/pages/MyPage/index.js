@@ -3,8 +3,15 @@ import React, { useState, useEffect }  from 'react';
 import { Layout, Avatar, Button, Card, Space, List, Rate} from "antd"
 import { UserOutlined} from '@ant-design/icons';
 
-const followOrgURL = 'http://127.0.0.1:5000/cont/1/orgFollowList'
-const followIndURL = 'http://127.0.0.1:5000/cont/1/indFollowList'
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
+const currUserId = '1'
+
+const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
+const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
+const preferJobURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+
 
 
 
@@ -26,23 +33,43 @@ const companyData = [
 
 const articleData = [
     {
+      articleId: '1',
       title: 'Article_1',
       description: 'Description of this post, Description of this post' 
     },
     {
+      articleId: '2',
       title: 'Article_2',
       description: 'Description of this post, Description of this post' 
     },
-    {
+    {   
+      articleId: '3',
       title: 'Video_1',
       description: 'Description of this post, Description of this post' 
     },
 ];
 
 
+
+function ArticleMoreButton(props){ 
+    const articleId = props.articleId 
+    
+    const navigate = useNavigate()
+    function handleCheckArtileClick(id){
+        navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+    }
+
+    return (
+       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
+     )
+   }
+   
+
 const MyPage = () => {
+
     const [followIndData, setIndData ] = useState(0);
     const [followOrgData, setOrgData ] = useState(0);
+    //const [preferJobData, setJobData ] = useState(0);
 
     useEffect(() => {
         const requestOptions = {
@@ -54,19 +81,39 @@ const MyPage = () => {
             fetch(followOrgURL, requestOptions)
             .then(res =>  res.json())
             .then(json =>{
-                setOrgData(json)                             // 接到数据后按格式调整data.ind_follow
+                setOrgData(json)                             
             }) 
         }
 
+        const getFollowIndData = async (followIndURL) => {
+            fetch(followIndURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setIndData(json)                             
+            }) 
+        }
+
+        // const getPreferJobData = async (preferJobURL) => {
+        //     fetch(preferJobURL, requestOptions)
+        //     .then(res =>  res.json())
+        //     .then(json =>{
+        //         setJobData(json)                             // 接到数据后按格式调整data.ind_follow
+        //     }) 
+        // }
+
         getFollowOrgData(followOrgURL);
+        getFollowIndData(followIndURL);
+        // getPreferJobData(preferJobURL);
     },[])
     
     
-    const preferJobList = followOrgData.org_follow                                           
-    console.log(preferJobList)                                                                 
+    const preferJobList = followOrgData.org_follow  
+    const followOrgList = followOrgData.org_follow  
+    const followIndList = followIndData.ind_follow    
+    //const preferJobList = followIndData.ind_follow                                           
+    //console.log(preferJobData)                                                                 
 
-    
-    //console.log(orgList)
+
 
     return (
         <Layout>
@@ -100,72 +147,8 @@ const MyPage = () => {
 
             <Content style={{ padding: '0 50px'}}>
                 <Card
-                    title="Follow Individual"
-                    extra={
-                        <a href='/FollowInd' >More</a>
-                    }
-                    style={{
-                        width: '100%',
-                        textAlign: 'left',
-                    }}
-                    type="inner"
-                >
-                    <p>Company Users</p>
-                    <Space
-                        direction="horizontal"
-                        size="middle"
-                        style={{
-                        display: 'flex',
-                        }}
-                    >
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            {/* <span style={{display:"block"}}>user</span> */}
-                            <span style={{display:"block"}}>name</span>
-                            preferJobList
-                        </div>
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                    </Space>
-
-
-
-                    <p>Individual Users</p>
-                    <Space
-                        direction="horizontal"
-                        size="middle"
-                        style={{
-                        display: 'flex',
-                        }}
-                    >
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                        <div className="text-under-avatar">
-                            <Avatar size={60} icon={<UserOutlined />} />
-                            <span style={{display:"block"}}>user</span>
-                        </div>
-                    </Space>
-                </Card>
-                
-                <Card
-                    title="Followed Company"
-                    extra={<a href="./MyPage/JobPreference">More</a>}
+                    title="Followed Individuals"
+                    extra={<a href='/FollowInd'>More</a>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -175,7 +158,35 @@ const MyPage = () => {
                     <List
                         itemLayout="horizontal"
                         //dataSource={companyData}
-                        dataSource={preferJobList}
+                        dataSource={followIndList}
+                        
+                        renderItem={(item) => (
+                        <List.Item>
+                            <List.Item.Meta
+                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            title={<a href="@">{item.IndividualName}</a>}             // 把这个替换成对应的属性
+                            description={item.Occupation}
+                            />
+                            <div><Button>check</Button></div>
+                        </List.Item>
+                        
+                        )}
+                    />
+                    
+                </Card>
+                
+                <Card
+                    title="Followed Organisations"
+                    extra={<a href='/FollowOrg'>More</a>}
+                    style={{
+                        width: '100%',
+                        textAlign: 'left',
+                    }}
+                    type="inner"
+                >
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={followOrgList}
                         
                         renderItem={(item) => (
                         <List.Item>
@@ -251,7 +262,10 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <div><Button href='/ArticleDetails'>Check</Button></div>
+                                {/* <div><Button href='/ArticleDetails' onClick={() => {handleCheckArtileClick("1")}}>Check</Button></div>
+                                 */}
+                                 {/* <div><Button onClick={() => {handleCheckArtileClick("1")}}>Check</Button></div> */}
+                                <ArticleMoreButton articleId={item.articleId} />
                             </Space>
                         </List.Item>
                         

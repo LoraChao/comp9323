@@ -32,6 +32,7 @@ function App() {
           <Route path='/FollowInd' element={<FollowInd />}></Route>
           <Route path='/FollowOrg' element={<FollowOrg />}></Route>
           <Route path='/JobPreference' element={<JobPreference />}></Route>
+          {/* <Route path='/ArticleDetails' element={<ArticleDetails />}></Route> */}
           <Route path='/ArticleDetails' element={<ArticleDetails />}></Route>
           <Route path='/login' element={<Login_individual />}></Route>
           <Route path='/login_organizational' element={<Login_organizational />}></Route>
