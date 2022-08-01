@@ -35,7 +35,6 @@ class Login_organizational extends PureComponent {
           <div class="login-wrapper">
             <div class="header">Company Login</div>
             <div class="form-wrapper">
-                <form action="http://127.0.0.1:5000/auth/login" method="post">
                     <input type="text" name="username" placeholder="username" class="input-item" 
                     value={this.state.username}
                     onChange={(e) => {
@@ -50,7 +49,6 @@ class Login_organizational extends PureComponent {
                     onClick={() => {
                       this.handleLogin()
                     }}></input>
-                </form>    
             </div>
             <div class="msg">
                 An individual user?
@@ -86,11 +84,8 @@ class Login_organizational extends PureComponent {
           data => {
               if (data.success){
                   let url =  "http://localhost:3000/mypage";
-                  document.cookie = "userid" = JSON.stringify(res.data.id)
-                  localStorage.setItem('userdata', JSON.stringify(res.data.id))
-                  localStorage.setItem('islogin', "1")
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", res[userid])
+                  this.setcookie("userid", res["userid"], 1)
                   window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }
