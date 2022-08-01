@@ -9,12 +9,13 @@ import {
 import { message } from 'antd'
 
 class Login_individual extends PureComponent {
-    componentDidMount() {
-      let localStorage = window.localStorage
-      if (localStorage.islogin === '1') {
-        this.props.history.replace('/home')
-      }
+  checklogin() {
+    let localStorage = window.localStorage
+    if (localStorage.islogin === '0') {
+      let url =  "http://localhost:3000/login";
+      window.location.replace(url)
     }
+  }
 
     constructor(props) {
       super(props)
@@ -61,16 +62,7 @@ class Login_individual extends PureComponent {
         </div>  
       )
     }
-  
-    handleLogin() {
-      if (this.state.username && this.state.password) {
-        this.props.history.replace('/Mypage')
-        window.localStorage.islogin = '1'
-        alert('Welcome')
-      } else {
-        alert('Please prompt username and password!')
-      }
-    }
+
     getConnect() {
       let text = {username: this.state.username, password: this.state.password};//获取数据
       // console.log(text);

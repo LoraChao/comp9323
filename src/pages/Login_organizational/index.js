@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import './Login_organizational.scss'
 
 class Login_organizational extends PureComponent {
-    componentDidMount() {
+    checklogin() {
       let localStorage = window.localStorage
-      if (localStorage.islogin === '1') {
-        this.props.history.replace('/home')
+      if (localStorage.islogin === '0') {
+        let url =  "http://localhost:3000/login";
+        window.location.replace(url)
       }
     }
   
@@ -67,6 +68,7 @@ class Login_organizational extends PureComponent {
               if (data.success){
                   let url =  "http://localhost:3000/mypage";
                   window.location.replace(url)
+                  localStorage.setItem('userdata', JSON.stringify(res.data.id))
                   localStorage.setItem('islogin', "1")
               }else window.alert("Authorization failure, incorrect username or password")
           }
