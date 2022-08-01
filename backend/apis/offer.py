@@ -185,3 +185,77 @@ class DeleteOffer(Resource):
                 "message": "true"
             }
             return output, 200
+    
+@auth.route('/preferoffer')
+class SearchOffer(Resource):
+    @auth.response(200, 'OK')
+    @auth.response(400, 'Bad Request')
+    @auth.response(404, 'Not Found')
+    @auth.response(201, 'Created')
+    # @auth.expect(search_organizations_model)
+    def get(self):
+        data = json.loads(request.get_data())
+        userId = data['userId']
+        if userId == "":
+            output = {
+                "message": "false"
+            }
+            return output, 400
+
+        offer_sql = f"SELECT * FROM individualpreferoffer WHERE IndividualId='{userId}';"  # database_info
+        result_from_preferoffer = sql_command(offer_sql)
+
+        if not result_from_preferoffer:
+            output = {
+                "message": "false"
+            }
+            return output, 400
+
+        offerId_list = []
+        for i in result_from_preferoffer:
+            offerId_list.append(i[2])
+        # output = {
+        #     "message": "test",
+        #     "list": offerId_list
+        # }
+        if len(offerId_list) == 1:
+            offerId_1 = offerId_list[0]
+            output_sql = f"SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId ='{offerId_1}';"
+            result_from_offer = sql_command(output_sql)
+            output = {
+                "message": "success",
+                "offerId": offerId_1,
+                "organizationId": result_from_offer[0][1],
+                "companyname": result_from_offer[0][2],
+                "position": result_from_offer[0][3],
+                "Icon": result_from_offer[0][4],
+            }
+            return output, 200
+        else:
+            offerId_1 = offerId_list[0]
+            offerId_2 = offerId_list[1]
+            output_sql = f"SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId IN {(offerId_1, offerId_2)};"
+            # output = {
+            #     "sql": output_sql
+            # }
+            # return output, 200
+            result_from_offer = sql_command(output_sql)
+            output = {
+                "0": {
+                    "message": "success",
+                    "offerId": offerId_1,
+                    "organizationId": result_from_offer[0][1],
+                    "companyname": result_from_offer[0][2],
+                    "position": result_from_offer[0][3],
+                    "Icon": result_from_offer[0][4],
+                     },
+                "1": {
+                    "message": "success",
+                    "offerId": offerId_1,
+                    "organizationId": result_from_offer[1][1],
+                    "companyname": result_from_offer[1][2],
+                    "position": result_from_offer[1][3],
+                    "Icon": result_from_offer[1][4],
+                }
+            }
+            return output, 200
