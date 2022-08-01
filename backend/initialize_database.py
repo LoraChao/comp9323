@@ -101,16 +101,36 @@ def create_database():
     `IndividualId` int NOT NULL,
     `ArticleID` int NOT NULL,
     `Type` varchar(255) NOT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`PreferID`)
     );
     ''' 
 
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1, "article"),
-    (2, 1, 2, "article"),
-    (3, 2, 2, "article");
+    (1, 1, 1, "article", ""),
+    (2, 1, 2, "article", ""),
+    (3, 2, 2, "article", "");
     '''
+    
+    Individual_preferOffer = '''
+    CREATE TABLE IF NOT EXISTS `IndividualPreferOffer` (
+    `PreferID` int NOT NULL AUTO_INCREMENT,
+    `IndividualId` int NOT NULL,
+    `OfferID` int NOT NULL,
+    `Type` varchar(255) NOT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`PreferID`)
+    );
+    ''' 
+
+    insert_individualPreferOffer = '''
+    INSERT INTO `IndividualPreferOffer` VALUES 
+    (1, 1, 1, "Offer1", ""),
+    (2, 1, 2, "Offer2", ""),
+    (3, 2, 2, "Offer3", "");
+    '''
+    
     Vedio_table = '''
     CREATE TABLE IF NOT EXISTS `Vedio` (
     `VedioID` int NOT NULL AUTO_INCREMENT,
