@@ -84,15 +84,16 @@ def create_database():
     `Responsibility` varchar(255) DEFAULT NULL,
     `Requirement` varchar(255) DEFAULT NULL,
     `Contact` varchar(255) DEFAULT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`OfferId`)
     );
     '''
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "", ""),
-    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "", ""),
-    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "");
+    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "", "", ""),
+    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "", "", ""),
+    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "", "");
     '''
 
     Individual_prefer = '''
@@ -101,16 +102,15 @@ def create_database():
     `IndividualId` int NOT NULL,
     `ArticleID` int NOT NULL,
     `Type` varchar(255) NOT NULL,
-    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`PreferID`)
     );
     ''' 
 
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1, "article", ""),
-    (2, 1, 2, "article", ""),
-    (3, 2, 2, "article", "");
+    (1, 1, 1, "article"),
+    (2, 1, 2, "article"),
+    (3, 2, 2, "article");
     '''
     
     Individual_preferOffer = '''
@@ -119,16 +119,15 @@ def create_database():
     `IndividualId` int NOT NULL,
     `OfferID` int NOT NULL,
     `Type` varchar(255) NOT NULL,
-    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`PreferID`)
     );
     ''' 
 
     insert_individualPreferOffer = '''
     INSERT INTO `IndividualPreferOffer` VALUES 
-    (1, 1, 1, "Offer1", ""),
-    (2, 1, 2, "Offer2", ""),
-    (3, 2, 2, "Offer3", "");
+    (1, 1, 1, "Offer1"),
+    (2, 1, 2, "Offer2"),
+    (3, 2, 2, "Offer3");
     '''
     
     Vedio_table = '''
@@ -149,14 +148,16 @@ def create_database():
     `Article` TEXT,
     `ArticleLikeNum` int NOT NULL,
     `ArticleTag` varchar(255) NOT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`ArticleID`));'''
 
     insert_article = '''
     INSERT INTO `Article` VALUES 
-    (1,"title1","a", "asd", 0, "computer"),
-    (2,"title2","b", "fdgsdfgdf", 0, "economy"),
-    (3,"title3","c", "asdfasdfsfasdf",0, "mechanical");
+    (1,"title1","a", "asd", 0, "computer", ""),
+    (2,"title2","b", "fdgsdfgdf", 0, "economy", ""),
+    (3,"title3","c", "asdfasdfsfasdf",0, "mechanical", "");
     '''
+    
     FollowList_ind ='''
     CREATE TABLE IF NOT EXISTS `indfollowlist` (
     `FollowID` int NOT NULL AUTO_INCREMENT,
