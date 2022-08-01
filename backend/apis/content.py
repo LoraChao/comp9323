@@ -40,7 +40,7 @@ class PreferList(Resource):
             if result_from_db:
                 result = []
                 for e in result_from_db:
-                    org_sql = f"SELECT ArticleID,ArticleTitle,Auther,Article,ArticleTag FROM Article WHERE ArticleID='{e[0]}';"
+                    org_sql = f"SELECT ArticleID,ArticleTitle,Author,Article,ArticleTag FROM Article WHERE ArticleID='{e[0]}';"
                     result_from_db = sql_result_with_decription(org_sql)
                     result_from_db['follow'] = 'follow'
                     result.append(result_from_db)
