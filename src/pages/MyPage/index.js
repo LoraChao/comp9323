@@ -62,8 +62,7 @@ function ArticleMoreButton(props){
 }
 
 function RateStar(){
-    var date = new Date();
-
+    
     // get storage mood state
     var initialMood;
     if(userInfo.mood === "well"){
@@ -80,6 +79,7 @@ function RateStar(){
     // set new mood state
     useEffect(() => {
         var mood = ''
+        var date = new Date();
         if (value === 1)
             {
                 mood = 'bad'
@@ -234,8 +234,8 @@ const MyPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
-                            title={<a href="@">{item.IndividualName}</a>}             // 把这个替换成对应的属性
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
+                            title={<a href="@">{item.IndividualName}</a>}             
                             description={item.Occupation}
                             />
                             <div><Button>check</Button></div>
@@ -258,13 +258,12 @@ const MyPage = () => {
                     <List
                         itemLayout="horizontal"
                         dataSource={followOrgList}
-                        
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
                             // title={<a href="@">{item.title}</a>}
-                            title={<a href="@">{item.OrganizationName}</a>}             // 把这个替换成对应的属性
+                            title={<a href="@">{item.OrganizationName}</a>}             
                             description={item.Description}
                             />
                             <div><Button>check</Button></div>
@@ -334,9 +333,6 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                {/* <div><Button href='/ArticleDetails' onClick={() => {handleCheckArtileClick("1")}}>Check</Button></div>
-                                 */}
-                                 {/* <div><Button onClick={() => {handleCheckArtileClick("1")}}>Check</Button></div> */}
                                 <ArticleMoreButton articleId={item.articleId} />
                             </Space>
                         </List.Item>

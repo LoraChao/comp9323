@@ -1,5 +1,5 @@
 import './FollowInd.scss'
-import { Layout, Card, List, Button, Space} from "antd"
+import { Layout, Card, List, Button, Space, Avatar} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -145,9 +145,7 @@ const FollowInd = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={
-                                <img width={80} alt="logo" 
-                                    src={item.ArticleIcon}/>}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
                                 title={<a href="@">{item.IndividualName}</a>}
                                 description={item.Email}
                             />

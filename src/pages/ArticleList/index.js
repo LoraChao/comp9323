@@ -6,8 +6,6 @@ import React, { useState, useEffect }  from 'react';
 const currUserId = '1'
 const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
 
-//const articleListURL = 'http://127.0.0.1:5000/article/get'
-
 const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
 
 
@@ -79,8 +77,7 @@ const ArticleList = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        //dataSource={articleListData}
-                        dataSource={articleList}                                  // 接到数据后将dataSource替换成这行
+                        dataSource={articleList}                                  
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
