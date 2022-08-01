@@ -54,14 +54,23 @@ class Login_organizational extends PureComponent {
       )
     }
   
-    handleLogin() {
-      if (this.state.username && this.state.password) {
-        this.props.history.replace('/Mypage')
-        window.localStorage.islogin = '1'
-        alert('Welcome')
-      } else {
-        alert('Please prompt username and password!')
-      }
+    getConnect() {
+      let text = {username: this.state.username, password: this.state.password};//获取数据
+      // console.log(text);
+      let send = JSON.stringify(text);//将对象转成json字符串
+      fetch("http://127.0.0.1:5000/auth/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json;charset=utf-8"},
+          body: send
+      }).then(res => res.json()).then(
+          data => {
+              if (data.success){
+                  let url =  "http://localhost:3000/mypage";
+                  window.location.replace(url)
+                  localStorage.setItem('islogin', "1")
+              }else window.alert("Authorization failure, incorrect username or password")
+          }
+      )
     }
   }
   

@@ -1,5 +1,12 @@
 import React, { PureComponent } from 'react'
 import './Login_individual.scss'
+import { withRouter } from "react-router-dom"
+
+import {
+  BrowserRouter as Router,
+  Route
+ } from 'react-router-dom'
+import { message } from 'antd'
 
 class Login_individual extends PureComponent {
     componentDidMount() {
@@ -8,7 +15,7 @@ class Login_individual extends PureComponent {
         this.props.history.replace('/home')
       }
     }
-  
+
     constructor(props) {
       super(props)
       this.state = {
@@ -16,15 +23,16 @@ class Login_individual extends PureComponent {
         password: '', //string
         usertype: 'individual', //string
       }
-    }
-  
+    } 
     render() {
+      const { match, location, history } = this.props
+      
       return (
         <div className="container">
           <div class="login-wrapper">
             <div class="header">Individual Login</div>
             <div class="form-wrapper">
-                <form action="http://127.0.0.1:5000/auth/login" method="post">
+                {/* <form action="http://127.0.0.1:5000/auth/login" method="post"> */}
                     <input type="text" name="username" placeholder="username" class="input-item" 
                     value={this.state.username}
                     onChange={(e) => {
@@ -35,11 +43,11 @@ class Login_individual extends PureComponent {
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input class="btn" type="submit" value="Log in"
+                    <input class="btn" type="button" value="Log in"
                     onClick={() => {
-                      this.handleLogin()
+                      this.getConnect()
                     }}></input>
-                </form>    
+                {/* </form>     */}
             </div>
             <div class="msg">
                 An organization user?
@@ -62,6 +70,25 @@ class Login_individual extends PureComponent {
       } else {
         alert('Please prompt username and password!')
       }
+    }
+    getConnect() {
+      let text = {username: this.state.username, password: this.state.password};//获取数据
+      // console.log(text);
+      let send = JSON.stringify(text);//将对象转成json字符串
+      fetch("http://127.0.0.1:5000/auth/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json;charset=utf-8"},
+          body: send
+      }).then(res => res.json()).then(
+          data => {
+              if (data.success){
+                  let url =  "http://localhost:3000/mypage";
+                  window.location.replace(url)
+                  localStorage.setItem('userdata', JSON.stringify(res.data.id))
+                  localStorage.setItem('islogin', "1")
+              }else window.alert("Authorization failure, incorrect username or password")
+          }
+      )
     }
   }
   
