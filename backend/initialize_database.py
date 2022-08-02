@@ -161,7 +161,7 @@ def create_database():
     (6,"title6","a", "asd", 0, "Mental", ""),
     (7,"title7","b", "fdgsdgdf", 0, "Medicle", ""),
     (8,"title8","e", "sdffasdf",0, "Interview", ""),
-    (9,"title9","d", "asdff",0, "Skill", ""),
+    (9,"title9","d", "asdff",0, "Covid", ""),
     (10,"title10","c", "afasdf",0, "Fun", "");
     '''
     
