@@ -224,8 +224,8 @@ def create_database():
     ''' 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,1,1,0,0,0,0),
-    (2,2,0,2,0,0,0);
+    (1,1,1,0,0,0,0,0),
+    (2,2,0,2,0,0,0,0);
     '''
 
 #create table
