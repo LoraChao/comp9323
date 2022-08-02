@@ -233,6 +233,7 @@ def create_database():
     CREATE TABLE IF NOT EXISTS `Experts` (
     `ExpertsID` int NOT NULL AUTO_INCREMENT,
     `ExpertsName` varchar(255) DEFAULT NULL,
+    `Tag` varchar(255) DEFAULT NULL,
     `Introduce` varchar(255) DEFAULT NULL,
     `Email` varchar(255) DEFAULT NULL,
     `Icon` varchar(255) DEFAULT NULL,
@@ -242,9 +243,9 @@ def create_database():
 
     insert_Experts = '''
     INSERT INTO `Experts` VALUES
-    (1,"a","sdjkslajdklsjdl","sadasdas@gmail.com",""),
-    (2,"b","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
-    (3,"c","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
+    (1,"a","","sdjkslajdklsjdl","sadasdas@gmail.com",""),
+    (2,"b","","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
+    (3,"c","","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
     '''
 
     Sentence = '''
