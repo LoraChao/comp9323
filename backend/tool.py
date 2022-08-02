@@ -1,3 +1,4 @@
+from unittest import result
 import pymysql
 from config import *
 
@@ -17,7 +18,7 @@ def sql_command(command):
     db.close()
     return result
 
-def sql_result_with_decription(command):
+def sql_dicresult_with_decription(command):
     db = pymysql.connect(
         host=DB_URL,
         port=DB_PORT,
@@ -35,12 +36,18 @@ def sql_result_with_decription(command):
         col.append(v[0])
     db.commit()
     db.close()
+    result = []
+    if len(sql_result) > 1:
+        for e in sql_result:
+            result.append(one_result_package(col,e))
+        return result
+    else:
+        return one_result_package(col,sql_result[0])
 
-    result = result_package(col,sql_result[0])
-    return result
-
-def result_package(keys,values):
+def one_result_package(keys,values):
     result = {}
     for m,n in zip(keys,values):
         result[m] = n
     return result
+
+
