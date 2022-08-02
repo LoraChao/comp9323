@@ -108,9 +108,9 @@ def create_database():
 
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1, "article"),
-    (2, 1, 2, "article"),
-    (3, 2, 2, "article");
+    (1, 1, 1, "computer"),
+    (2, 1, 2, "economy"),
+    (3, 2, 2, "economy");
     '''
     
     Individual_preferOffer = '''
