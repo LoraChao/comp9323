@@ -44,6 +44,8 @@ class IndividualRegister(Resource):
                 sql_command(sql)
                 select_sql = f"SELECT IndividualID FROM Individual WHERE IndividualName='{IndividualName}';"
                 IndividualID = sql_command(select_sql)[0][0]
+                sql_taste = f"INSERT INTO taste (individualID) value ({IndividualID});"
+                sql_command(sql_taste)
                 output = {
                     "message": "Success register",
                     "individualID": IndividualID,
