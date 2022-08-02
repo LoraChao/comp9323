@@ -52,7 +52,13 @@ class SearchDairy(Resource):
     def get(self):
         data = json.loads(request.get_data())
         IndividualId = data['IndividualId']
-        Date = data["RecordTime"]
+        tmp_Date = data["RecordTime"][0:10].split("-")
+        # output = {
+        #     "message": tmp_Date
+        # }
+        # return output, 200
+        Date = tmp_Date[2]+'/'+tmp_Date[1]+'/'+tmp_Date[0]
+
         if IndividualId == "":
             output = {
                 "message": "false"
@@ -79,7 +85,7 @@ class SearchDairy(Resource):
                 return output, 200
             else:
                 output = {
-                    "message": "false"
+                    "message": "false",
                 }
                 return output, 403
 
