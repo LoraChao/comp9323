@@ -15,11 +15,11 @@ class IndividualRegister(Resource):
     @auth.expect(individual_model)
     @api.doc(description='Registration a new individual to database')
     def post(self):
-        # data = json.loads(request.get_data())
+        data = json.loads(request.get_data())
+        # IndividualName = request.form['username']
+        # Password = request.form['password']
         IndividualName = request.form['username']
         Password = request.form['password']
-        # Preference = request.form['Preference']
-        # Occupation = request.form['Occupation']
         if IndividualName == "" or Password == "":
             output = {
                 "message": "false"
@@ -53,9 +53,9 @@ class IndividualRegister(Resource):
 class OrganizationRegister(Resource):
     @auth.expect(organization_model)
     def post(self):
-        # data = json.loads(request.get_data())
-        OrganizationName = request.form['username']
-        Password = request.form['password']
+        data = json.loads(request.get_data())
+        OrganizationName = data['username']
+        Password = data['password']
         if OrganizationName == "" or Password == "":
             output = {
                 "message": "false"
