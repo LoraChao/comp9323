@@ -205,7 +205,7 @@ def create_database():
     Individual_taste = '''
     CREATE TABLE IF NOT EXISTS `Taste` (
     `TasteID` int NOT NULL AUTO_INCREMENT,
-    `IndividualId` int NOT NULL,
+    `individualId` int NOT NULL,
     `mental` int default 0,
     `medicle` int default 0,
     `interview` int default 0,
