@@ -253,7 +253,7 @@ class indFollowList(Resource):
             if result_from_db:
                 ind_follow = []
                 for e in result_from_db:
-                    ind_sql = f"SELECT * FROM Individual WHERE IndividualID ='{e['indID']}';"
+                    ind_sql = f"SELECT * FROM Individual WHERE IndividualID ='{e['IndID']}';"
                     result_from_db = sql_dicresult_with_decription(ind_sql)
                     ind_follow.extend(result_from_db)
                 output = {
