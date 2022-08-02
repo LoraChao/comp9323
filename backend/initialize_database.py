@@ -201,6 +201,19 @@ def create_database():
     (2, 2, "01/02/2022", "Bad"),
     (3, 3, "01/03/2022", "Average");
     '''
+    
+    Individual_taste = '''
+    CREATE TABLE IF NOT EXISTS `Taste` (
+    `TasteID` int NOT NULL AUTO_INCREMENT,
+    `IndividualId` int NOT NULL,
+    `mental` int default 0,
+    `medicle` int default 0,
+    `interview` int default 0,
+    `skill` int default 0,
+    `fun` int default 0,
+    PRIMARY KEY (`TasteID`)
+    );
+    ''' 
 
 
 #create table
@@ -213,6 +226,7 @@ def create_database():
     c.execute(FollowList_org)
     c.execute(Individual_mood)
     c.execute(Individual_preferOffer)
+    c.execute(Individual_taste)
 
 #insert data
     c.execute(insert_organization)
