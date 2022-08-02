@@ -90,7 +90,7 @@ class SearchDairy(Resource):
                 return output, 403
 
 @auth.route('/check')
-class SearchDairy(Resource):
+class CheckDairy(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
