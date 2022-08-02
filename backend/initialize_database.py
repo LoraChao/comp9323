@@ -155,13 +155,13 @@ def create_database():
     INSERT INTO `Article` VALUES 
     (1,"title1","a", "asd", 1, "Mental", ""),
     (2,"title2","b", "fdgsdfgdf", 2, "Medicle", ""),
-    (3,"title3","c", "asdfasdfsfasdf",0, "Interview", "");
-    (4,"title4","f", "asdfasdf",0, "Skill", "");
-    (5,"title5","g", "asfsfasdf",0, "Fun", "");
+    (3,"title3","c", "asdfasdfsfasdf",0, "Interview", ""),
+    (4,"title4","f", "asdfasdf",0, "Skill", ""),
+    (5,"title5","g", "asfsfasdf",0, "Fun", ""),
     (6,"title6","a", "asd", 0, "Mental", ""),
     (7,"title7","b", "fdgsdgdf", 0, "Medicle", ""),
-    (8,"title8","e", "sdffasdf",0, "Interview", "");
-    (9,"title9","d", "asdff",0, "Skill", "");
+    (8,"title8","e", "sdffasdf",0, "Interview", ""),
+    (9,"title9","d", "asdff",0, "Skill", ""),
     (10,"title10","c", "afasdf",0, "Fun", "");
     '''
     
