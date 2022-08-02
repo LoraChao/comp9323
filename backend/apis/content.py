@@ -20,10 +20,10 @@ cont = api.namespace('cont', description='Content Service')
 @cont.response(200, 'Ok')
 class RecommandationList(Resource):
     def get(self, individualID):
-        user_sql = f"SELECT Preference FROM individual WHERE IndividualID={individualID};"
-        result_from_db = sql_command(user_sql)
-        if result_from_db:
-            
+        user_sql = f"SELECT Preference FROM individual WHERE IndividualID = {individualID};"
+        if sql_command(user_sql):
+            taste_sql = f"SELECT * from Individual_taste WHERE IndividualID = {individualID};"
+            result_from_db = sql_dicresult_with_decription(taste_sql)
             return 200
 
      
@@ -36,13 +36,12 @@ class PreferList(Resource):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             prefer_sql = f"SELECT ArticleID FROM IndividualPrefer WHERE IndividualID={individualID};"
-            result_from_db = sql_command(prefer_sql)
+            result_from_db = sql_dicresult_with_decription(prefer_sql)
             if result_from_db:
                 result = []
                 for e in result_from_db:
-                    org_sql = f"SELECT ArticleID,ArticleTitle,Author,Article,ArticleTag FROM Article WHERE ArticleID='{e[0]}';"
-                    result_from_db = sql_result_with_decription(org_sql)
-                    result_from_db['follow'] = 'follow'
+                    org_sql = f"SELECT * FROM Article WHERE ArticleID = '{e['ArticleID']}';"
+                    result_from_db = sql_dicresult_with_decription(org_sql)
                     result.append(result_from_db)
                 output = {
                     'message': result,
@@ -65,16 +64,16 @@ class PreferList(Resource):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             ArticleID = request.json['articleID']
-            ind_sql = f"SELECT * FROM Article WHERE ArticleID={ArticleID};"
-            if sql_command(ind_sql):
-                type='article'
+            ind_sql = f"SELECT ArticleTag FROM Article WHERE ArticleID = {ArticleID};"
+            result_from_db = sql_dicresult_with_decription(ind_sql)
+            if result_from_db:
+                type = result_from_db['ArticleTag']
                 like_sql = f"insert into IndividualPrefer (individualID,ArticleID,type) select {individualID},{ArticleID},{type} where not exists(select individualID from IndividualPrefer where individualID = {individualID} and ArticleID={ArticleID} and type={type});"
-                count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID ={ArticleID};"
-                try:
-                    sql_command(like_sql)
-                    sql_command(count_sql)
-                except:
-                    pass
+                count_sql = f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID = {ArticleID}"
+                taste_sql = f"UPDATE Individual_taste {type} = {type} + 1 where individualID = {individualID};"
+                sql_command(like_sql)
+                sql_command(count_sql)
+                sql_command(taste_sql)
                 output = {
                     'message': 'well done'
                 }
@@ -100,12 +99,11 @@ class PreferList(Resource):
             if sql_command(ind_sql):
                 type='article'
                 like_sql = f"DELETE from IndividualPrefer WHERE individualID = {individualID} and ArticleID = {ArticleID};"
-                count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum - 1 where ArticleID ={ArticleID}"
-                try:
-                    sql_command(like_sql)
-                    sql_command(count_sql)
-                except:
-                    pass
+                count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum - 1 where ArticleID ={ArticleID};"
+                taste_sql = f"UPDATE Individual_taste {type} = {type} - 1 where individualID = {individualID};"
+                sql_command(like_sql)
+                sql_command(count_sql)
+                sql_command(taste_sql)
                 output = {
                     'message': 'well done'
                 }
@@ -131,13 +129,12 @@ class orgFollowList(Resource):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             follow_sql = f"SELECT orgID FROM orgfollowlist WHERE IndividualID={individualID};"
-            result_from_db = sql_command(follow_sql)
+            result_from_db = sql_dicresult_with_decription(follow_sql)
             if result_from_db:
                 org_follow = []
                 for e in result_from_db:
-                    org_sql = f"SELECT * FROM Organization WHERE OrganizationId='{e[0]}';"
-                    result_from_db = sql_result_with_decription(org_sql)
-                    result_from_db['follow'] = 'follow'
+                    org_sql = f"SELECT * FROM Organization WHERE OrganizationId ='{e['orgID']}';"
+                    result_from_db = sql_dicresult_with_decription(org_sql)
                     org_follow.append(result_from_db)
                 output = {
                     'org_follow': org_follow
@@ -164,7 +161,6 @@ class orgFollowList(Resource):
             ind_sql = f"SELECT * FROM Organization WHERE OrganizationID={orgID};"
             if sql_command(ind_sql):
                 follow_sql = f"insert into orgfollowlist (individualID,orgID) select {individualID},{orgID} where not exists(select individualID from orgfollowlist where individualID = {individualID} and orgID={orgID});"
-                # follow_sql = f”select * from orgfollowlist”
                 sql_command(follow_sql)
                 output = {
                     'message': 'well done'
@@ -212,13 +208,12 @@ class indFollowList(Resource):
         user_sql = f"SELECT individualName FROM individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             follow_sql = f"SELECT indID FROM indfollowlist WHERE IndividualID={individualID};"
-            result_from_db = sql_command(follow_sql)
+            result_from_db = sql_dicresult_with_decription(follow_sql)
             if result_from_db:
                 ind_follow = []
                 for e in result_from_db:
-                    ind_sql = f"SELECT * FROM Individual WHERE IndividualID='{e[0]}';"
-                    result_from_db = sql_result_with_decription(ind_sql)
-                    result_from_db['follow'] = 'follow'
+                    ind_sql = f"SELECT * FROM Individual WHERE IndividualID ='{e['ind']}';"
+                    result_from_db = sql_dicresult_with_decription(ind_sql)
                     ind_follow.append(result_from_db)
                 output = {
                     'ind_follow': ind_follow,
