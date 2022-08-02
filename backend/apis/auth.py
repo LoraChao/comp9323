@@ -16,10 +16,8 @@ class IndividualRegister(Resource):
     @api.doc(description='Registration a new individual to database')
     def post(self):
         data = json.loads(request.get_data())
-        # IndividualName = request.form['username']
-        # Password = request.form['password']
-        IndividualName = request.form['username']
-        Password = request.form['password']
+        IndividualName = data['username']
+        Password = data['password']
         if IndividualName == "" or Password == "":
             output = {
                 "message": "false"
@@ -34,7 +32,7 @@ class IndividualRegister(Resource):
                 return output, 403
             else:
                 IndividualID = 0
-                sql = "INSERT INTO individual VALUES ({},'{}', '{}';".format(IndividualID, IndividualName, Password)
+                sql = "INSERT INTO individual (IndividualId, IndividualName, Password) VALUES ({},'{}', '{}');".format(IndividualID, IndividualName, Password)
                 sql_command(sql)
                 select_sql = f"SELECT IndividualID FROM Individual WHERE IndividualName='{IndividualName}';"
                 IndividualID = sql_command(select_sql)[0][0]
@@ -43,7 +41,7 @@ class IndividualRegister(Resource):
                     "individualID": IndividualID,
                     "individualName": IndividualName
                 }
-                return output, 201
+                return output, 200
 
 #organization user's sign up
 @auth.route('/signup/organization', doc={"description": "new organization user registration"})
@@ -70,7 +68,7 @@ class OrganizationRegister(Resource):
                 return output, 403
             else:
                 OrganizationID = 0
-                sql = "INSERT INTO organization VALUES ({},'{}','{}');".format(OrganizationID, OrganizationName, Password)
+                sql = "INSERT INTO organization (OrganizationID, OrganizationName, Password) VALUES ({},'{}','{}');".format(OrganizationID, OrganizationName, Password)
                 sql_command(sql)
                 select_sql = f"SELECT OrganizationID FROM organization WHERE OrganizationName='{OrganizationName}';"
                 OrganizationID = sql_command(select_sql)[0][0]
@@ -79,7 +77,7 @@ class OrganizationRegister(Resource):
                     "OrganizationID": OrganizationID,
                     "OrganizationName": OrganizationName
                 }
-                return output, 201
+                return output, 200
 
 @auth.route('/login')
 class Login(Resource):
@@ -171,6 +169,7 @@ class Individual_details(Resource):
         achievement = data['achievement_name']
         professional = data['professional_name']
         cv = data['cv_name']
+        icon = data['icon_name']
 
         user_sql = f"SELECT IndividualID,IndividualName,Password FROM Individual WHERE IndividualName='{userName}';"  # database_info
         result_from_user = sql_command(user_sql)
@@ -184,8 +183,8 @@ class Individual_details(Resource):
             return output, 403
 
         if type_flag == 'individual':
-            sql = "UPDATE individual SET Title='{}',Name='{}',Gender='{}',Age='{}',Email='{}',Skill='{}',Education='{}',Experience='{}',Achievement='{}',Professional='{}',CV='{}' WHERE IndividualName = '{}';"\
-                .format(title, name, gender, age, email, skill, education, experience, achievement, professional, cv, userName)
+            sql = "UPDATE individual SET Title='{}',Name='{}',Gender='{}',Age='{}',Email='{}',Skill='{}',Education='{}',Experience='{}',Achievement='{}',Professional='{}',CV='{}', Icon='{}' WHERE IndividualName = '{}';"\
+                .format(title, name, gender, age, email, skill, education, experience, achievement, professional, cv, icon, userName)
             sql_command(sql)
             output = {
                 "message": "success"
@@ -213,6 +212,7 @@ class Organization_details(Resource):
         field = data['field_name']
         scale = data['scale_name']
         description = data['description_name']
+        icon = data['icon_name']
 
         org_sql = f"SELECT OrganizationID FROM Organization WHERE OrganizationName='{userName}';"  # database_info
         result_from_user = sql_command(org_sql)
@@ -226,8 +226,8 @@ class Organization_details(Resource):
             return output, 403
 
         if type_flag == 'organization':
-            sql = "UPDATE organization SET Companyname='{}',Location='{}',Field='{}',Scale='{}',Description='{}' WHERE OrganizationName = '{}';"\
-                .format(companyname, location, field, scale, description, userName)
+            sql = "UPDATE organization SET Companyname='{}',Location='{}',Field='{}',Scale='{}',Description='{}', Icon='{}' WHERE OrganizationName = '{}';"\
+                .format(companyname, location, field, scale, description, icon, userName)
             sql_command(sql)
             output = {
                 "message": "success"
@@ -239,16 +239,16 @@ class Organization_details(Resource):
             }
             return output, 403
 
-@auth.route('/brief/individual')
+@auth.route('/brief/individual/<int:userId>')
 class Individual_brief(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
-    @auth.expect(brief_individual_model)
-    def get(self):
-        data = json.loads(request.get_data())
-        userId = data["userId"]
+    # @auth.expect(brief_individual_model)
+    def get(self, userId):
+        # data = json.loads(request.get_data())
+        # userId = data["userId"]
         ind_sql = f"SELECT IndividualName, Email, Icon FROM Individual WHERE IndividualId='{userId}';"
         result_sql = sql_command(ind_sql)
 

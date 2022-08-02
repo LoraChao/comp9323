@@ -9,7 +9,7 @@ from flask_app import api
 
 offer = api.namespace('offer', description='Authentication Service')
 
-@offer.route('/post/organization', doc={"description": "post new offer"})
+@offer.route('/post/organization', methods=["POST"] ,doc={"description": "post new offer"})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
@@ -27,7 +27,7 @@ class IndividualRegister(Resource):
         Responsibility = data['responsibility_name']
         Requirement = data['requirement_name']
         Contact = data['contact_name']
-        Icon = data['Icon_name']
+        Icon = data['icon_name']
         if OrganizationId == "":
             output = {
                 "message": "false"
@@ -47,17 +47,15 @@ class IndividualRegister(Resource):
             return output, 200
 
 
-@offer.route('/search/brief',doc={"description": "post new offer"})
+@offer.route('/search/brief/<int:OrganizationId>',doc={"description": "search offer"})
 @api.response(200, 'OK')
 @api.response(400, 'Bad Request')
 @api.response(404, 'Not Found')
 @api.response(201, 'Created')
 class SearchOffer(Resource):
-    @offer.expect(search_organizations_model)
-    @api.doc(description='post a new offer to database')
-    def post(self):
-        data = json.loads(request.get_data())
-        OrganizationId = data['OrganizationId']
+    # @offer.expect(search_organizations_model)
+    @api.doc(description='search offer')
+    def get(self, OrganizationId):
         # OrganizationName = data['OrganizationName']
         if OrganizationId == "":
             output = {
@@ -65,7 +63,7 @@ class SearchOffer(Resource):
             }
             return output, 400
         
-        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
+        offer_sql = f"SELECT offerId, CompanyName, Responsibility FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
         result_from_offer = sql_command(offer_sql)
        
         if not result_from_offer:
@@ -73,36 +71,22 @@ class SearchOffer(Resource):
                 "message": "false"
             }
             return output, 400
-        if len(result_from_offer) == 1:
-            output = {
-                0: {"offerId": result_from_offer[0][0],
-                    "CompanyName": result_from_offer[0][2],
-                    "Responsibility": result_from_offer[0][7]}
-            }
-            return output, 400
         else:
             output = {
-                0: {"offerId": result_from_offer[0][0],
-                    "CompanyName": result_from_offer[0][2],
-                    "Responsibility": result_from_offer[0][7]},
-                1: {"offerId": result_from_offer[1][0],
-                    "CompanyName": result_from_offer[1][2],
-                    "Responsibility": result_from_offer[1][7]}
+                "message": "success",
+                "output": result_from_offer
             }
             return output, 400
 
 
-@offer.route('/search/detail')
+@offer.route('/search/detail/<int:OrganizationId>&<int:OfferId>')
 class SearchOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
-    @offer.expect(search_organizations_details_model)
-    def post(self):
-        data = json.loads(request.get_data())
-        OrganizationId = data['OrganizationId']
-        OfferId= data['OfferId']
+    # @offer.expect(search_organizations_details_model)
+    def get(self, OrganizationId, OfferId):
         if OrganizationId == "" or OfferId == "":
             output = {
                 "message": "false"
@@ -119,42 +103,10 @@ class SearchOffer(Resource):
             return output, 400
         else:
             output = {
-                "offerId": result_from_offer[0][0],
-                "OrganizationId": result_from_offer[0][1],
-                "CompanyName": result_from_offer[0][2],
-                "Position": result_from_offer[0][3],
-                "WorkingLocation": result_from_offer[0][4],
-                "WorkingHour": result_from_offer[0][5],
-                "Salary": result_from_offer[0][6],
-                "Responsibility": result_from_offer[0][7],
-                "Requirement": result_from_offer[0][8],
-                "Contact": result_from_offer[0][9]
+                "message": "success",
+                "output": result_from_offer
             }
             return output, 200
-        # else:
-        #     output = {
-        #         0: {"offerId": result_from_offer[0][0],
-        #             "OrganizationId": result_from_offer[0][1],
-        #             "CompanyName": result_from_offer[0][2],
-        #             "Position": result_from_offer[0][3],
-        #             "WorkingLocation": result_from_offer[0][4],
-        #             "WorkingHour": result_from_offer[0][5],
-        #             "Salary": result_from_offer[0][6],
-        #             "Responsibility": result_from_offer[0][7],
-        #             "Requirement": result_from_offer[0][8],
-        #             "Contact": result_from_offer[0][9]},
-        #         1: {"offerId": result_from_offer[1][0],
-        #             "OrganizationId": result_from_offer[1][1],
-        #             "CompanyName": result_from_offer[1][2],
-        #             "Position": result_from_offer[1][3],
-        #             "WorkingLocation": result_from_offer[1][4],
-        #             "WorkingHour": result_from_offer[1][5],
-        #             "Salary": result_from_offer[1][6],
-        #             "Responsibility": result_from_offer[1][7],
-        #             "Requirement": result_from_offer[1][8],
-        #             "Contact": result_from_offer[1][9]}
-        #     }
-        #     return output, 200
 
 @offer.route('/delete')
 class DeleteOffer(Resource):
@@ -162,7 +114,7 @@ class DeleteOffer(Resource):
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
-    @offer.expect(delete_offer_model)
+    # @offer.expect(delete_offer_model)
     def delete(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
@@ -184,23 +136,15 @@ class DeleteOffer(Resource):
             }
             return output, 200
 
-@offer.route('/preferoffer')
+@offer.route('/preferoffer/<int:userId>')
 class PerferOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
-    @offer.expect(preferoffer_model)
-    def post(self):
-        request.get_data(as_text=True)
+    # @offer.expect(preferoffer_model)
+    def get(self, userId):
         # data = request.args.to_dict()
-        data = json.loads(request.get_data())
-        userId = data['userId']
-        # userId = data.get("userId")
-        # output = {
-        #     "message": userId
-        # }
-        # return output, 200
         if userId == "":
             output = {
                 "message": "false"
@@ -219,48 +163,11 @@ class PerferOffer(Resource):
         offerId_list = []
         for i in result_from_preferoffer:
             offerId_list.append(i[2])
-        # output = {
-        #     "message": "test",
-        #     "list": offerId_list
-        # }
-        if len(offerId_list) == 1:
-            offerId_1 = offerId_list[0]
-            output_sql = f"SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId ='{offerId_1}';"
-            result_from_offer = sql_command(output_sql)
-            output = {
-                "message": "success",
-                "offerId": offerId_1,
-                "organizationId": result_from_offer[0][1],
-                "companyname": result_from_offer[0][2],
-                "position": result_from_offer[0][3],
-                "Icon": result_from_offer[0][4],
-            }
-            return output, 200
-        else:
-            offerId_1 = offerId_list[0]
-            offerId_2 = offerId_list[1]
-            output_sql = f"SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId IN {(offerId_1, offerId_2)};"
-            # output = {
-            #     "sql": output_sql
-            # }
-            # return output, 200
-            result_from_offer = sql_command(output_sql)
-            output = {
-                "0": {
-                    "message": "success",
-                    "offerId": offerId_1,
-                    "organizationId": result_from_offer[0][1],
-                    "companyname": result_from_offer[0][2],
-                    "position": result_from_offer[0][3],
-                    "Icon": result_from_offer[0][4],
-                     },
-                "1": {
-                    "message": "success",
-                    "offerId": offerId_1,
-                    "organizationId": result_from_offer[1][1],
-                    "companyname": result_from_offer[1][2],
-                    "position": result_from_offer[1][3],
-                    "Icon": result_from_offer[1][4],
-                }
-            }
-            return output, 200
+
+        output_sql = 'SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId in(%s)' % ','.join(['%s'] * len(offerId_list))
+        result_from_offer = search_list(output_sql, offerId_list)
+        output = {
+            "message": "success",
+            "output": result_from_offer
+        }
+        return output, 200

@@ -8,16 +8,14 @@ from flask_app import api
 
 article = api.namespace('article', description='Article Service')
 
-@article.route('/get')
+@article.route('/get/<int:articleId>')
 class ArticleGet(Resource):
     @article.response(200, 'OK')
     @article.response(400, 'Bad Request')
     @article.response(404, 'Not Found')
     @article.response(201, 'Created')
-    @article.expect(get_article_model)
-    def get(self):
-        data = json.loads(request.get_data())
-        articleId = data["Article_ID"]
+    # @article.expect(get_article_model)
+    def get(self, articleId):
 
         article_sql = f"SELECT * FROM article WHERE ArticleID='{articleId}';"  # database_info
         result_from_article = sql_command(article_sql)

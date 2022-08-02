@@ -38,17 +38,16 @@ class PostDairy(Resource):
             return output, 200
 
 
-@mood.route('/search')
+@mood.route('/search/<int:IndividualId>&<string:RecordTime>')
 class SearchDairy(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
-    @mood.expect(search_dairy_model)
-    def get(self):
-        data = json.loads(request.get_data())
-        IndividualId = data['IndividualId']
-        tmp_Date = data["RecordTime"][0:10].split("-")
+    # @mood.expect(search_dairy_model)
+    def get(self, IndividualId, RecordTime):
+        # data = json.loads(request.get_data())
+        tmp_Date = RecordTime[0:10].split("-")
         # output = {
         #     "message": tmp_Date
         # }
