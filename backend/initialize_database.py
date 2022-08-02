@@ -221,12 +221,50 @@ def create_database():
     `Covid` int default 0,
     PRIMARY KEY (`TasteID`)
     );
-    ''' 
+    '''
+
     insert_taste = '''
     INSERT INTO `Taste` VALUES
     (1,1,1,0,0,0,0,0),
     (2,2,0,2,0,0,0,0);
     '''
+
+    Experts = '''
+    CREATE TABLE IF NOT EXISTS `Experts` (
+    `ExpertsID` int NOT NULL AUTO_INCREMENT,
+    `ExpertsName` varchar(255) DEFAULT NULL,
+    `Introduce` varchar(255) DEFAULT NULL,
+    `Email` varchar(255) DEFAULT NULL,
+    `Icon` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`ExpertsID`)
+    );
+    '''
+
+    insert_Experts = '''
+    INSERT INTO `Experts` VALUES
+    (1,"a","sdjkslajdklsjdl","sadasdas@gmail.com",""),
+    (2,"b","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
+    (3,"c","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
+    '''
+
+    Sentence = '''
+    CREATE TABLE IF NOT EXISTS `Sentence` (
+    `SentenceID` int NOT NULL AUTO_INCREMENT,
+    `Content` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`SentenceID`)
+    );
+    '''
+
+    insert_sentence = '''
+    INSERT INTO `Sentence` VALUES
+    (1,"test1"),
+    (2,"test2"),
+    (3,"test3"),
+    (4,"test4"),
+    (5,"test5"),
+    (6,"test6");
+    '''
+
 
 #create table
     c.execute(Organization_table)
@@ -239,6 +277,8 @@ def create_database():
     c.execute(Individual_mood)
     c.execute(Individual_preferOffer)
     c.execute(Individual_taste)
+    c.execute(Experts)
+    c.execute(Sentence)
 
 #insert data
     c.execute(insert_organization)
@@ -260,6 +300,10 @@ def create_database():
     c.execute(insert_individualPreferOffer)
     db.commit()
     c.execute(insert_taste)
+    db.commit()
+    c.execute(insert_Experts)
+    db.commit()
+    c.execute(insert_sentence)
     db.commit()
     
     c.close()
