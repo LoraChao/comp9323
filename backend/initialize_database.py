@@ -108,9 +108,9 @@ def create_database():
 
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1, "computer"),
-    (2, 1, 2, "economy"),
-    (3, 2, 2, "economy");
+    (1, 1, 1, "Mental"),
+    (2, 1, 2, "Medicle"),
+    (3, 2, 2, "Medicle");
     '''
     
     Individual_preferOffer = '''
@@ -153,9 +153,16 @@ def create_database():
 
     insert_article = '''
     INSERT INTO `Article` VALUES 
-    (1,"title1","a", "asd", 0, "computer", ""),
-    (2,"title2","b", "fdgsdfgdf", 0, "economy", ""),
-    (3,"title3","c", "asdfasdfsfasdf",0, "mechanical", "");
+    (1,"title1","a", "asd", 1, "Mental", ""),
+    (2,"title2","b", "fdgsdfgdf", 2, "Medicle", ""),
+    (3,"title3","c", "asdfasdfsfasdf",0, "Interview", "");
+    (4,"title4","f", "asdfasdf",0, "Skill", "");
+    (5,"title5","g", "asfsfasdf",0, "Fun", "");
+    (6,"title6","a", "asd", 0, "Mental", ""),
+    (7,"title7","b", "fdgsdgdf", 0, "Medicle", ""),
+    (8,"title8","e", "sdffasdf",0, "Interview", "");
+    (9,"title9","d", "asdff",0, "Skill", "");
+    (10,"title10","c", "afasdf",0, "Fun", "");
     '''
     
     FollowList_ind ='''
@@ -205,16 +212,20 @@ def create_database():
     Individual_taste = '''
     CREATE TABLE IF NOT EXISTS `Taste` (
     `TasteID` int NOT NULL AUTO_INCREMENT,
-    `individualId` int NOT NULL,
-    `mental` int default 0,
-    `medicle` int default 0,
-    `interview` int default 0,
-    `skill` int default 0,
-    `fun` int default 0,
+    `IndividualId` int NOT NULL,
+    `Mental` int default 0,
+    `Medicle` int default 0,
+    `Interview` int default 0,
+    `Skill` int default 0,
+    `Fun` int default 0,
     PRIMARY KEY (`TasteID`)
     );
     ''' 
-
+    insert_taste = '''
+    INSERT INTO `Taste` VALUES
+    (1,1,1,0,0,0,0),
+    (2,2,0,2,0,0,0);
+    '''
 
 #create table
     c.execute(Organization_table)
@@ -247,7 +258,9 @@ def create_database():
     db.commit()
     c.execute(insert_individualPreferOffer)
     db.commit()
-     
+    c.execute(insert_taste)
+    db.commit()
+    
     c.close()
 
     return True
