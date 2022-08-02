@@ -55,7 +55,7 @@ class IndividualRegister(Resource):
 class SearchOffer(Resource):
     @offer.expect(search_organizations_model)
     @api.doc(description='post a new offer to database')
-    def get(self):
+    def post(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
         # OrganizationName = data['OrganizationName']
@@ -99,7 +99,7 @@ class SearchOffer(Resource):
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
     @offer.expect(search_organizations_details_model)
-    def get(self):
+    def post(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
         OfferId= data['OfferId']
@@ -191,9 +191,16 @@ class PerferOffer(Resource):
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
     @offer.expect(preferoffer_model)
-    def get(self):
+    def post(self):
+        request.get_data(as_text=True)
+        # data = request.args.to_dict()
         data = json.loads(request.get_data())
         userId = data['userId']
+        # userId = data.get("userId")
+        # output = {
+        #     "message": userId
+        # }
+        # return output, 200
         if userId == "":
             output = {
                 "message": "false"
