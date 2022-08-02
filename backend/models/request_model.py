@@ -29,7 +29,8 @@ offer_model = api.model("offer post", {
     "salary_name": fields.String,
     "responsibility_name": fields.String,
     "requirement_name": fields.String,
-    "contact_nam": fields.String
+    "contact_name": fields.String,
+    "icon_name": fields.String
 })
 
 search_organizations_model = api.model("search organization", {
@@ -67,7 +68,9 @@ post_individual_model = api.model("post individual model", {
     "education_name": fields.String,
     "experience_name": fields.String,
     "achievement_name": fields.String,
-    "professional_name": fields.String
+    "professional_name": fields.String,
+    "cv_name": fields.String,
+    "icon_name": fields.String,
 })
 
 post_organization_model = api.model("post organization model", {
@@ -77,10 +80,11 @@ post_organization_model = api.model("post organization model", {
     "field_name": fields.String,
     "scale_name": fields.String,
     "description_name": fields.String,
+    "icon_name": fields.String,
 })
 
 mood_check_model = api.model("check mood model", {
-    "InidividualId": fields.Integer
+    "IndividualId": fields.Integer
 })
 
 delete_offer_model = api.model("delete offer model", {
@@ -95,6 +99,11 @@ preferoffer_model = api.model("get prefer offer model", {
 get_article_model = api.model("get article model", {
     "Articel_ID": fields.Integer
 })
+
+test_model = api.model("get article model", {
+    "userId": fields.Integer,
+})
+
 
 #Jundi
 prefer_model = api.model("article model",{
