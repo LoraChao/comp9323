@@ -6,19 +6,15 @@ from models.request_model import *
 from tool import *
 from flask_app import api
 
-# define namespace
-auth = api.namespace('offer', description='Authentication Service')
 
-# auth api is for user registration and login
+offer = api.namespace('offer', description='Authentication Service')
 
-# route function
-# individual user's sign up
-@auth.route('/post/organization', doc={"description": "post new offer"})
+@offer.route('/post/organization', doc={"description": "post new offer"})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
 class IndividualRegister(Resource):
-    @auth.expect(offer_model)
+    @offer.expect(offer_model)
     @api.doc(description='post a new offer to database')
     def post(self):
         data = json.loads(request.get_data())
@@ -50,13 +46,13 @@ class IndividualRegister(Resource):
             return output, 200
 
 
-@auth.route('/search/brief')
+@offer.route('/search/brief')
 class SearchOffer(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    @auth.expect(search_organizations_model)
+    @offer.response(200, 'OK')
+    @offer.response(400, 'Bad Request')
+    @offer.response(404, 'Not Found')
+    @offer.response(201, 'Created')
+    @offer.expect(search_organizations_model)
     def get(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
@@ -94,13 +90,13 @@ class SearchOffer(Resource):
             return output, 400
 
 
-@auth.route('/search/detail')
+@offer.route('/search/detail')
 class SearchOffer(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    @auth.expect(search_organizations_model)
+    @offer.response(200, 'OK')
+    @offer.response(400, 'Bad Request')
+    @offer.response(404, 'Not Found')
+    @offer.response(201, 'Created')
+    @offer.expect(search_organizations_details_model)
     def get(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
@@ -156,15 +152,15 @@ class SearchOffer(Resource):
         #             "Requirement": result_from_offer[1][8],
         #             "Contact": result_from_offer[1][9]}
         #     }
-#             return output, 200
+        #     return output, 200
 
-@auth.route('/delete')
+@offer.route('/delete')
 class DeleteOffer(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    # @auth.expect(search_organizations_model)
+    @offer.response(200, 'OK')
+    @offer.response(400, 'Bad Request')
+    @offer.response(404, 'Not Found')
+    @offer.response(201, 'Created')
+    @offer.expect(delete_offer_model)
     def delete(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
@@ -185,14 +181,14 @@ class DeleteOffer(Resource):
                 "message": "true"
             }
             return output, 200
-    
-@auth.route('/preferoffer')
+
+@offer.route('/preferoffer')
 class SearchOffer(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    # @auth.expect(search_organizations_model)
+    @offer.response(200, 'OK')
+    @offer.response(400, 'Bad Request')
+    @offer.response(404, 'Not Found')
+    @offer.response(201, 'Created')
+    @offer.expect(preferoffer_model)
     def get(self):
         data = json.loads(request.get_data())
         userId = data['userId']

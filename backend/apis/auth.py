@@ -6,13 +6,7 @@ from models.request_model import *
 from tool import *
 from flask_app import api
 
-# define namespace
 auth = api.namespace('auth', description='Authentication Service')
-
-# auth api is for user registration and login
-
-# route function
-# individual user's sign up
 @auth.route('/signup/individual', doc={"description": "new individual user registration"})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
@@ -44,8 +38,6 @@ class IndividualRegister(Resource):
                 sql_command(sql)
                 select_sql = f"SELECT IndividualID FROM Individual WHERE IndividualName='{IndividualName}';"
                 IndividualID = sql_command(select_sql)[0][0]
-                sql_taste = f"INSERT INTO taste (individualID) value ({IndividualID});"
-                sql_command(sql_taste)
                 output = {
                     "message": "Success register",
                     "individualID": IndividualID,
@@ -163,7 +155,7 @@ class Individual_details(Resource):
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
-    # @auth.expect(login_model)
+    @auth.expect(post_individual_model)
     def post(self):
 
         data = json.loads(request.get_data())
@@ -211,7 +203,7 @@ class Organization_details(Resource):
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
-    # @auth.expect(login_model)
+    @auth.expect(post_organization_model)
     def post(self):
 
         data = json.loads(request.get_data())
@@ -246,14 +238,14 @@ class Organization_details(Resource):
                 "message": "false"
             }
             return output, 403
-        
+
 @auth.route('/brief/individual')
 class Individual_brief(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
     @auth.response(404, 'Not Found')
     @auth.response(201, 'Created')
-    # @auth.expect(login_model)
+    @auth.expect(brief_individual_model)
     def get(self):
         data = json.loads(request.get_data())
         userId = data["userId"]
@@ -273,3 +265,4 @@ class Individual_brief(Resource):
                 "Icon": result_sql[0][2]
             }
             return output, 200
+

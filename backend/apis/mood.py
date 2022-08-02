@@ -6,18 +6,14 @@ from models.request_model import *
 from tool import *
 from flask_app import api
 
-# define namespace
-auth = api.namespace('mood', description='mood Service')
+mood = api.namespace('mood', description='mood Service')
 
-# auth api is for user registration and login
-
-# route function
-@auth.route('/post', doc={"description": "post new mood"})
+@mood.route('/post', doc={"description": "post new mood"})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
 class PostDairy(Resource):
-    @auth.expect(post_dairy_model)
+    @mood.expect(post_dairy_model)
     @api.doc(description='post a new dairy to database')
     def post(self):
         data = json.loads(request.get_data())
@@ -42,13 +38,13 @@ class PostDairy(Resource):
             return output, 200
 
 
-@auth.route('/search')
+@mood.route('/search')
 class SearchDairy(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    @auth.expect(search_dairy_model)
+    @mood.response(200, 'OK')
+    @mood.response(400, 'Bad Request')
+    @mood.response(404, 'Not Found')
+    @mood.response(201, 'Created')
+    @mood.expect(search_dairy_model)
     def get(self):
         data = json.loads(request.get_data())
         IndividualId = data['IndividualId']
@@ -89,13 +85,13 @@ class SearchDairy(Resource):
                 }
                 return output, 403
 
-@auth.route('/check')
+@mood.route('/check')
 class CheckDairy(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    # @auth.expect(search_dairy_model)
+    @mood.response(200, 'OK')
+    @mood.response(400, 'Bad Request')
+    @mood.response(404, 'Not Found')
+    @mood.response(201, 'Created')
+    @mood.expect(mood_check_model)
     def post(self):
         data = json.loads(request.get_data())
         IndividualId = data['IndividualId']

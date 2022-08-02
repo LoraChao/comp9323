@@ -6,20 +6,15 @@ from models.request_model import *
 from tool import *
 from flask_app import api
 
-# define namespace
-auth = api.namespace('article', description='Article Service')
+article = api.namespace('article', description='Article Service')
 
-# auth api is for user registration and login
-
-# route function
-# individual user's sign up
-@auth.route('/get')
+@article.route('/get')
 class ArticleGet(Resource):
-    @auth.response(200, 'OK')
-    @auth.response(400, 'Bad Request')
-    @auth.response(404, 'Not Found')
-    @auth.response(201, 'Created')
-    # @auth.expect(follow_offer_model)
+    @article.response(200, 'OK')
+    @article.response(400, 'Bad Request')
+    @article.response(404, 'Not Found')
+    @article.response(201, 'Created')
+    @article.expect(get_article_model)
     def get(self):
         data = json.loads(request.get_data())
         articleId = data["Article_ID"]
