@@ -28,7 +28,7 @@ class RecommandationList(Resource):
             result_from_db = sql_dicresult_with_decription(taste_sql)[0]
             if result_from_db:
                 recommend_vector = {key:value for key,value in result_from_db.items() if key != "TasteID" and  key != "IndividualId"}
-                if sum(recommend_vector.values()) is not 0:
+                if sum(recommend_vector.values()) != 0:
                     for key,value in recommend_vector.items():
                         recommend_vector[key] = value*9//sum(recommend_vector.values())
                     if emo:
