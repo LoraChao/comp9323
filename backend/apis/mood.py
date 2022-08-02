@@ -40,10 +40,10 @@ class PostDairy(Resource):
 
 @mood.route('/search')
 class SearchDairy(Resource):
-    @mood.response(200, 'OK')
-    @mood.response(400, 'Bad Request')
-    @mood.response(404, 'Not Found')
-    @mood.response(201, 'Created')
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
     @mood.expect(search_dairy_model)
     def get(self):
         data = json.loads(request.get_data())
@@ -87,10 +87,10 @@ class SearchDairy(Resource):
 
 @mood.route('/check')
 class CheckDairy(Resource):
-    @mood.response(200, 'OK')
-    @mood.response(400, 'Bad Request')
-    @mood.response(404, 'Not Found')
-    @mood.response(201, 'Created')
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
     @mood.expect(mood_check_model)
     def post(self):
         data = json.loads(request.get_data())
