@@ -27,6 +27,7 @@ class IndividualRegister(Resource):
         Responsibility = data['responsibility_name']
         Requirement = data['requirement_name']
         Contact = data['contact_name']
+        Icon = data['Icon_name']
         if OrganizationId == "":
             output = {
                 "message": "false"
@@ -34,8 +35,8 @@ class IndividualRegister(Resource):
             return output, 400
         else:
             OfferId = 0
-            sql = "INSERT INTO offer VALUES ({}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}','{}');".\
-                format(OfferId, OrganizationId, CompanyName, PositionName, WorkLocation, WorkHour, Salary, Responsibility, Requirement, Contact)
+            sql = "INSERT INTO offer VALUES ({}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}','{}','{}');".\
+                format(OfferId, OrganizationId, CompanyName, PositionName, WorkLocation, WorkHour, Salary, Responsibility, Requirement, Contact, Icon)
             sql_command(sql)
             output = {
                 "message": "Success Post",
@@ -46,13 +47,14 @@ class IndividualRegister(Resource):
             return output, 200
 
 
-@offer.route('/search/brief')
+@offer.route('/search/brief',doc={"description": "post new offer"})
+@api.response(200, 'OK')
+@api.response(400, 'Bad Request')
+@api.response(404, 'Not Found')
+@api.response(201, 'Created')
 class SearchOffer(Resource):
-    @offer.response(200, 'OK')
-    @offer.response(400, 'Bad Request')
-    @offer.response(404, 'Not Found')
-    @offer.response(201, 'Created')
     @offer.expect(search_organizations_model)
+    @api.doc(description='post a new offer to database')
     def get(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
@@ -92,10 +94,10 @@ class SearchOffer(Resource):
 
 @offer.route('/search/detail')
 class SearchOffer(Resource):
-    @offer.response(200, 'OK')
-    @offer.response(400, 'Bad Request')
-    @offer.response(404, 'Not Found')
-    @offer.response(201, 'Created')
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
     @offer.expect(search_organizations_details_model)
     def get(self):
         data = json.loads(request.get_data())
@@ -156,10 +158,10 @@ class SearchOffer(Resource):
 
 @offer.route('/delete')
 class DeleteOffer(Resource):
-    @offer.response(200, 'OK')
-    @offer.response(400, 'Bad Request')
-    @offer.response(404, 'Not Found')
-    @offer.response(201, 'Created')
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
     @offer.expect(delete_offer_model)
     def delete(self):
         data = json.loads(request.get_data())
@@ -183,11 +185,11 @@ class DeleteOffer(Resource):
             return output, 200
 
 @offer.route('/preferoffer')
-class SearchOffer(Resource):
-    @offer.response(200, 'OK')
-    @offer.response(400, 'Bad Request')
-    @offer.response(404, 'Not Found')
-    @offer.response(201, 'Created')
+class PerferOffer(Resource):
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
     @offer.expect(preferoffer_model)
     def get(self):
         data = json.loads(request.get_data())
