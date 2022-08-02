@@ -218,7 +218,7 @@ def create_database():
     `Interview` int default 0,
     `Skill` int default 0,
     `Fun` int default 0,
-    `Covid` ind default 0,
+    `Covid` int default 0,
     PRIMARY KEY (`TasteID`)
     );
     ''' 
