@@ -141,6 +141,12 @@ const FollowOrg = () => {
                 >
                     <List
                         itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 10,
+                          }}
                         dataSource={orgFollowList}                                  
                         renderItem={(item) => (
                         <List.Item>

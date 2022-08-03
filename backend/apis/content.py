@@ -13,6 +13,26 @@ cont = api.namespace('cont', description='Content Service')
 
 # cont api is for content event
 
+@cont.route('/<int:individualID>/prefer/<int:articleID>', doc={'description': 'check like states'})
+@cont.response(400, 'Bad Request')
+@cont.response(404, 'Not Found')
+@cont.response(200, 'Ok')
+class CheckLikeStates(Resource):
+    def get(self, individualID,articleID):
+        user_sql = f"SELECT IndividualName FROM Individual WHERE IndividualID = {individualID};"
+        user = sql_command(user_sql)
+        if user:
+            check_url = f"SELECT * FROM IndividualPrefer WHERE IndividualID = {individualID} AND ArticleID = {articleID}"
+            if sql_command(check_url):
+                output = {'states': 1}
+                return output,200
+            else:
+                output = {'states': 1}
+                return output,200
+        else:
+            output = {'states': 2}
+            return output,404
+        
 #ziheng
 @cont.route('/<int:individualID>/recommandationList', doc={'description': 'get recommanded content list'})
 @cont.response(400, 'Bad Request')

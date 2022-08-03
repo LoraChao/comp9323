@@ -40,6 +40,30 @@ const companyData = [
     },
 ];
 
+// const c = [
+//       {
+//         "ArticleID": 1,
+//         "ArticleTitle": "t1",
+//         "Author": "a",
+//         "Article": "asd",
+//         "ArticleLikeNum": 1,
+//         "ArticleTag": "Mental",
+//         "Icon": ""
+//       },
+//       {
+//         "ArticleID": 2,
+//         "ArticleTitle": "t2",
+//         "Author": "b",
+//         "Article": "fdgsdfgdf",
+//         "ArticleLikeNum": 2,
+//         "ArticleTag": "Medicle",
+//         "Icon": ""
+//       }
+// ]
+
+
+  
+
 const userInfo = {
     name: "Micky Mouse",
     description: "unsw, it, student",
@@ -129,8 +153,9 @@ const MyPage = () => {
     const [followOrgData, setOrgData ] = useState(0);
     const [preferJobData, setJobData ] = useState(0);
     const [preferArticleData, setArticleData ] = useState(0);
+    const [preferArticleSlicedData, setArticleSlicedData ] = useState(0);
 
-    //var newData;
+
     // GET page data
     useEffect(() => {
         const requestOptions = {
@@ -167,8 +192,8 @@ const MyPage = () => {
             fetch(preferArticleURL, requestOptions)
             .then(res =>  res.json())
             .then(json =>{
-                setArticleData(json)      
-                //newData = preferArticleData;                               
+                setArticleData(json)           
+                setArticleSlicedData(json)                   
             }) 
         }
 
@@ -179,23 +204,13 @@ const MyPage = () => {
         getPreferArticleData(preferArticleURL);
     },[])
 
-    // const sliceItems(){
-
-    // }
     
 
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
     const preferJobList = preferJobData.output                                      
-    const preferArticleList = preferArticleData.message   
-    //const followOrgList1 = followOrgList.slice(1,3)                         
-    //console.log(preferJobList) 
-    //const arr1 = [];
-    // var arr;
-    // arr = preferArticleList.pop()
-    // const children = arr1.concat(arr);
-    //const children = preferArticleList.slice(0,1);
-    //console.log(children)                                                                 
+    const preferArticleList = preferArticleData.message                             
+                                                        
 
 
 
@@ -242,6 +257,12 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 3,
+                          }}
                         //dataSource={companyData}
                         dataSource={followIndList}
                         
@@ -271,6 +292,12 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 3,
+                          }}
                         dataSource={followOrgList}
                         renderItem={(item) => (
                         <List.Item>
@@ -300,6 +327,12 @@ const MyPage = () => {
                     <List
                         itemLayout="horizontal"
                         //dataSource={companyData}
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 3,
+                          }}
                         dataSource={preferJobList}
                         
                         renderItem={(item) => (
@@ -329,7 +362,13 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        // dataSource={articleData}
+                        //dataSource={preferArticleSlicedData}
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 3,
+                          }}
                         dataSource={preferArticleList}
                         renderItem={(item) => (
                         <List.Item>

@@ -121,7 +121,7 @@ class Login(Resource):
                     # "token": token,
                     "usergroup": 'individual',
                     "name": result_from_user[0][1],
-                    "id": result_from_user[0][0]
+                    "id": result_from_user[0][0],
                 }
                 return output, 200
             else:
@@ -137,7 +137,7 @@ class Login(Resource):
                     # "token": token,
                     "usergroup": type_flag,
                     "name": result_from_org[0][1],
-                    "id": result_from_org[0][0]
+                    "id": result_from_org[0][0],
                 }
                 return output, 200
             else:
@@ -262,6 +262,33 @@ class Individual_brief(Resource):
                 "message": "success",
                 "IndividualName": result_sql[0][0],
                 "Email:": result_sql[0][1],
+                "Icon": result_sql[0][2]
+            }
+            return output, 200
+
+@auth.route('/brief/organization/<int:userId>')
+class organization_brief(Resource):
+    @auth.response(200, 'OK')
+    @auth.response(400, 'Bad Request')
+    @auth.response(404, 'Not Found')
+    @auth.response(201, 'Created')
+    # @auth.expect(brief_individual_model)
+    def get(self, userId):
+        # data = json.loads(request.get_data())
+        # userId = data["userId"]
+        org_sql = f"SELECT Companyname, Location, Icon FROM organization WHERE OrganizationId='{userId}';"
+        result_sql = sql_command(org_sql)
+
+        if not result_sql:
+            output = {
+                "message": "false"
+            }
+            return output, 403
+        else:
+            output = {
+                "message": "success",
+                "Companyname": result_sql[0][0],
+                "Location:": result_sql[0][1],
                 "Icon": result_sql[0][2]
             }
             return output, 200
