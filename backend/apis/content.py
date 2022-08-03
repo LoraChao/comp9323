@@ -30,9 +30,9 @@ class RecommandationList(Resource):
                 recommend_vector = {key:value for key,value in result_from_db.items() if key != "TasteID" and  key != "IndividualId"}
                 if sum(recommend_vector.values()) != 0:
                     for key,value in recommend_vector.items():
-                        recommend_vector[key] = value*10//sum(recommend_vector.values())
+                        recommend_vector[key] = value*7//sum(recommend_vector.values())
                     if emo:
-                        if sum(recommend_vector.values()) <12:
+                        if sum(recommend_vector.values()) <9:
                             recommend_vector['Mental'] = recommend_vector['Mental'] + 1
                     recommendation = []
                     other = recommend_vector.keys()
