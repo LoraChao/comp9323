@@ -141,6 +141,12 @@ const FollowInd = () => {
                 >
                     <List
                         itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 10,
+                          }}
                         dataSource={indFollowList}                                  
                         renderItem={(item) => (
                         <List.Item>
