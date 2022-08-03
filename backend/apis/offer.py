@@ -169,8 +169,8 @@ class PerferOffer(Resource):
         for i in result_from_preferoffer:
             offerId_list.append(i[2])
 
-        output_sql = 'SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId in(%s)' % ','.join(['%s'] * len(offerId_list))
-        label_name = ["OfferId", "OrganizationId", "CompanyName", "Position", "Icon"]
+        output_sql = 'SELECT OfferId, OrganizationId, CompanyName, Requirement, Icon FROM offer WHERE offerId in(%s)' % ','.join(['%s'] * len(offerId_list))
+        label_name = ["OfferId", "OrganizationId", "CompanyName", "Requirement", "Icon"]
         result_from_offer = search_list(output_sql, offerId_list)
         output_res = output_list(result_from_offer,label_name)
 
