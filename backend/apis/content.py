@@ -27,7 +27,7 @@ class CheckLikeStates(Resource):
                 output = {'states': 1}
                 return output,200
             else:
-                output = {'states': 1}
+                output = {'states': 0}
                 return output,200
         else:
             output = {'states': 2}
