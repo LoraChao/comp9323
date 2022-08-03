@@ -23,7 +23,7 @@ class JobRelease extends PureComponent{
       responsibility_name: '', //string
       requirement_name: '', //string
       contact_name: '', //string
-      currUserId: '1',
+      OrganizationId: '1',
     }
   }
   render(){
@@ -187,6 +187,7 @@ class JobRelease extends PureComponent{
                       responsibility_name: this.state.responsibility_name,
                       requirement_name: this.state.requirement_name,
                       contact_name: this.state.contact_name
+                      icon_name: ''
                     };//获取数据
           // console.log(text);
           let send = JSON.stringify(text);//将对象转成json字符串
