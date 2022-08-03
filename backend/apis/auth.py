@@ -73,7 +73,7 @@ class OrganizationRegister(Resource):
                 select_sql = f"SELECT OrganizationID FROM organization WHERE OrganizationName='{OrganizationName}';"
                 OrganizationID = sql_command(select_sql)[0][0]
                 output = {
-                    "Message": "Success register",
+                    "message": "Success register",
                     "OrganizationID": OrganizationID,
                     "OrganizationName": OrganizationName
                 }
