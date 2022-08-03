@@ -10,7 +10,7 @@ const currUserId = '1'
 
 const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
 const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-// const preferJobURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId+''
 const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
 const postMoodStar = 'http://127.0.0.1:5000/mood/post'
 
@@ -127,15 +127,17 @@ const MyPage = () => {
     // state of page data
     const [followIndData, setIndData ] = useState(0);
     const [followOrgData, setOrgData ] = useState(0);
-    // const [preferJobData, setJobData ] = useState(0);
+    const [preferJobData, setJobData ] = useState(0);
     const [preferArticleData, setArticleData ] = useState(0);
 
+    //var newData;
     // GET page data
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
         }
+
 
         const getFollowOrgData = async (followOrgURL) => {
             fetch(followOrgURL, requestOptions)
@@ -153,35 +155,47 @@ const MyPage = () => {
             }) 
         }
 
-        // const getPreferJobData = async (preferJobURL) => {
-        //     fetch(preferJobURL, requestOptions)
-        //     .then(res =>  res.json())
-        //     .then(json =>{
-        //         setJobData(json)                                     
-        //     }) 
-        // }
+        const getPreferJobData = async (preferJobURL) => {
+            fetch(preferJobURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setJobData(json)                                     
+            }) 
+        }
 
         const getPreferArticleData = async (preferArticleURL) => {
             fetch(preferArticleURL, requestOptions)
             .then(res =>  res.json())
             .then(json =>{
-                setArticleData(json)                                     
+                setArticleData(json)      
+                //newData = preferArticleData;                               
             }) 
         }
 
 
         getFollowOrgData(followOrgURL);
         getFollowIndData(followIndURL);
-        // getPreferJobData(preferArticleURL);
+        getPreferJobData(preferJobURL);
         getPreferArticleData(preferArticleURL);
     },[])
+
+    // const sliceItems(){
+
+    // }
     
 
     const followIndList = followIndData.ind_follow   
-    const followOrgList = followOrgData.org_follow  
-    // const preferJobList = preferJobData.message                                       // 这个等子越prefer job的出来
-    const preferArticleList = preferArticleData.message                                           
-    //console.log(followIndList)                                                                 
+    const followOrgList = followOrgData.org_follow 
+    const preferJobList = preferJobData.output                                      
+    const preferArticleList = preferArticleData.message   
+    //const followOrgList1 = followOrgList.slice(1,3)                         
+    //console.log(preferJobList) 
+    //const arr1 = [];
+    // var arr;
+    // arr = preferArticleList.pop()
+    // const children = arr1.concat(arr);
+    //const children = preferArticleList.slice(0,1);
+    //console.log(children)                                                                 
 
 
 
@@ -285,16 +299,16 @@ const MyPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        dataSource={companyData}
-                        //dataSource={preferJobList}
+                        //dataSource={companyData}
+                        dataSource={preferJobList}
                         
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
                             // title={<a href="@">{item.title}</a>}
-                            title={<a href="@">{item.OrganizationName}</a>}             
-                            description={item.Description}
+                            title={<a href="@">{item.CompanyName}</a>}             
+                            description={<Tag>{item.Requirement}</Tag>}
                             />
                             <div><Button>check</Button></div>
                         </List.Item>
