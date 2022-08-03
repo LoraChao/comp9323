@@ -95,7 +95,7 @@ class SearchOffer(Resource):
             }
             return output, 400
 
-        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"  # database_info
+        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"
         result_from_offer = sql_command(offer_sql)
         label_name = ["OfferId", "OrganizationId", "CompanyName", "Position", "WorkingLocation", "Workinghours", "Salary", "Responsibility", "Requirement", "Contact", "Icon"]
 
@@ -179,3 +179,44 @@ class PerferOffer(Resource):
             "output": output_res
         }
         return output, 200
+
+@offer.route('/modify/organization', methods=["POST"] ,doc={"description": "modify offer"})
+@api.response(400, 'Bad Request')
+@api.response(403, 'Forbiddent')
+@api.response(201, 'Created')
+class UpdateOffer(Resource):
+    @offer.expect(update_offer_model)
+    @api.doc(description='update offer')
+    def post(self):
+        data = json.loads(request.get_data())
+        OfferId = data['OfferId']
+        OrganizationId = data['OrganizationId']
+        CompanyName = data['company_name']
+        PositionName = data['position_name']
+        WorkLocation = data['working_location_name']
+        WorkHours = data['working_hour_name']
+        Salary = data['salary_name']
+        Responsibility = data['responsibility_name']
+        Requirement = data['requirement_name']
+        Contact = data['contact_name']
+        Icon = data['icon_name']
+
+        offer_sql = f"SELECT OfferId FROM Offer WHERE OfferId='{OfferId}';"
+        offer_sql_res = sql_command(offer_sql)
+        if not offer_sql_res:
+            output = {
+                "message": "false"
+            }
+            return output, 400
+        else:
+            sql = "UPDATE offer SET OrganizationId='{}',CompanyName='{}',Position='{}',WorkingLocation='{}',\
+            WorkingHours='{}', Salary='{}', Responsibility='{}', Requirement='{}', Contact='{}', Icon='{}' WHERE OfferId = '{}';" \
+                .format(OrganizationId, CompanyName, PositionName, WorkLocation, WorkHours, Salary, Responsibility, Requirement, Contact, Icon, OfferId)
+            sql_command(sql)
+            output = {
+                "message": "Success Post",
+                "OfferID": OfferId,
+                "OrganizationName": CompanyName,
+                "OrganizaitonID": OrganizationId
+            }
+            return output, 200
