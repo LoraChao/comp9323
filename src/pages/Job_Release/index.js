@@ -34,9 +34,9 @@ class JobRelease extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username">Company Name</span>{/* 这里要读取用户数据 */}
+            <span className="username" >{this.company_name}</span>{/* 这里要读取用户数据 */}
             <br/>
-            <span className="user-identity">Company location</span>{/* 这里要读取用户数据 */}
+            <span className="user-identity" >{this.company_location}</span>{/* 这里要读取用户数据 */}
            
         </div>
     </Header>
