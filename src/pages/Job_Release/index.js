@@ -186,7 +186,7 @@ class JobRelease extends PureComponent{
                       salary_name: this.state.salary_name,
                       responsibility_name: this.state.responsibility_name,
                       requirement_name: this.state.requirement_name,
-                      contact_name: this.state.contact_name
+                      contact_name: this.state.contact_name,
                       icon_name: ''
                     };//获取数据
           // console.log(text);
