@@ -119,7 +119,7 @@ class DeleteOffer(Resource):
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
-    # @offer.expect(delete_offer_model)
+    @offer.expect(delete_offer_model)
     def delete(self):
         data = json.loads(request.get_data())
         OrganizationId = data['OrganizationId']
