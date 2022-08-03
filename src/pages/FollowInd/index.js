@@ -69,14 +69,14 @@ function BackButton(){
             console.log(data)
         });
 
-        // Jump back to myPage
+        //Jump back to myPage
         navigate(`/MyPage?currUserId=${currUserId}`, {replace: true})
 
         // const postOptions = {                                                       // For testing: send POST to add new follower 
         //     method: 'POST',
         //     headers: {'Content-Type': 'application/json'},
         //     body: JSON.stringify({
-        //         "indID": 1
+        //         "indID": 2
         //     })
         // };
 
@@ -86,7 +86,7 @@ function BackButton(){
         //     console.log("add:",data)
         // });
 
-        // console.log(deleteList)
+        //console.log(deleteList)
     }
     return (
        <Button onClick={() => {handleBackClick()}}>Back</Button>
