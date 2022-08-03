@@ -70,12 +70,12 @@ class Signup_individual extends PureComponent {
           body: send
       }).then(res => res.json()).then(
           data => {
-              if (data.success){
+              if (data['message'] === 'Success register'){
                   let url =  "http://localhost:3000/profile";
                   this.setcookie('islogin', '1', 1)
                   this.setcookie("userid", data["userid"], 1)
                   window.location.replace(url)
-              }else window.alert("Authorization failure, incorrect username or password")
+              }else window.alert("Username exists or invalid register info")
           }
       )
     }
