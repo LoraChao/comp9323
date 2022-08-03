@@ -12,7 +12,7 @@ class Details_personal extends PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
+      username: 'test7',
       title_name: '', //string
       name_name: '', //string
       gender_name: '', //string
@@ -50,7 +50,6 @@ class Details_personal extends PureComponent{
       autoComplete="off"
       style = {{height: 1000}}
     >
-      <form method="post" action="http://127.0.0.1:5000/auth/login">
       <div>
         <TextField
           id="title_id"
@@ -123,9 +122,9 @@ class Details_personal extends PureComponent{
           />
         <TextField
           id="skill_id"
-          label="Skill(separate with ',')"
+          label="Skill"
           name='skill_name'
-          placeholder="Python,C,Java"
+          placeholder="Computer Science/Mechanical/Biomedical"
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -220,7 +219,7 @@ class Details_personal extends PureComponent{
           this.getConnect()}}
         >Update</Button>
       </div>
-      </form>
+
     </Box>
     </Layout>
   );
@@ -236,9 +235,9 @@ class Details_personal extends PureComponent{
                       education_name: this.state.education_name, //string
                       experience_name: this.state.experience_name, //string
                       achievement_name: this.state.achievement_name, //string
-                      professional_summary_name: this.state.professional_summary_name, //string
+                      professional_name: this.state.professional_summary_name, //string
                       cv_name: this.state.cv_name, //string
-                      icon_name: this.state.icon_name,
+                      icon_name: this.state.icon_name
                       };//获取数据
           // console.log(text);
           let send = JSON.stringify(text);//将对象转成json字符串
