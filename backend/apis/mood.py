@@ -47,6 +47,11 @@ class SearchDairy(Resource):
     # @mood.expect(search_dairy_model)
     def get(self, IndividualId, RecordTime):
         # data = json.loads(request.get_data())
+        if len(RecordTime) < 9:
+            output = {
+                "message": "false"
+            }
+            return output, 400
         tmp_Date = RecordTime[0:10].split("-")
         # output = {
         #     "message": tmp_Date
