@@ -25,20 +25,21 @@ const customIcons = {
     3: <SmileOutlined />,
 };
 
-const companyData = [
-    {
-      title: 'Microsoft',
-      description: 'AI Developer' 
-    },
-    {
-      title: 'Amazon',
-      description: 'UI Developer' 
-    },
-    {
-      title: 'Google',
-      description: 'DevOps' 
-    },
-];
+//  test data
+// const companyData = [
+//     {
+//       title: 'Microsoft',
+//       description: 'AI Developer' 
+//     },
+//     {
+//       title: 'Amazon',
+//       description: 'UI Developer' 
+//     },
+//     {
+//       title: 'Google',
+//       description: 'DevOps' 
+//     },
+// ];
 
 // const c = [
 //       {
@@ -72,18 +73,38 @@ const userInfo = {
 }
     
 
-function ArticleMoreButton(props){ 
+function ArticleCheckButton(props){ 
     const articleId = props.articleId 
     
     const navigate = useNavigate()
     function handleCheckArtileClick(id){
-        navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
     }
 
     return (
        <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
      )
 }
+
+function ArticleMoreButton(){ 
+    
+    const navigate = useNavigate()
+    function ArticleMoreButton(id){
+       navigate(`/ArticleList?currUserId=${currUserId}`, {replace: true})
+    }
+
+    return (
+       <a onClick={() => {ArticleMoreButton()}}>More</a>
+     )
+}
+
+// function Kk(){ 
+    
+
+//     return (
+//        <a>More</a>
+//      )
+// }
 
 function RateStar(){
     
@@ -209,7 +230,7 @@ const MyPage = () => {
     const preferJobList = preferJobData.output                                      
     const preferArticleList = preferArticleData.message          
     
-    console.log(preferArticleList)
+    // console.log(preferArticleList)
                                                         
 
 
@@ -352,7 +373,8 @@ const MyPage = () => {
 
                 <Card
                     title="Liked Articles"
-                    extra={<a href="/ArticleList">More</a>}
+                    // extra={<a href="/ArticleList">More</a>}
+                    extra={<ArticleMoreButton/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -370,7 +392,9 @@ const MyPage = () => {
                           }}
                         dataSource={preferArticleList}
                         renderItem={(item) => (
-                        <List.Item>
+                        <List.Item
+                            key={item.ArticleID}
+                            >
                             <List.Item.Meta
                             avatar={
                                 <img width={80} alt="logo" 
@@ -385,7 +409,7 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <ArticleMoreButton articleId={item.ArticleID} />
+                                <ArticleCheckButton articleId={item.ArticleID} />
                             </Space>
                         </List.Item>
                         

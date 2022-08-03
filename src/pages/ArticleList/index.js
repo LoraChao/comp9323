@@ -2,12 +2,11 @@ import './ArticleList.scss'
 import { Layout, Card, List, Button, Space, Tag} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
-
-const currUserId = '1'
-const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-
+const currUserId = '1'
 
 // const articleListData = [                                                               
 //     {
@@ -30,10 +29,27 @@ const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZ
 //     },
 // ];
 
+function ArticleCheckButton(props){ 
+    const articleId = props.articleId 
+    
+    const navigate = useNavigate()
+    function handleCheckArtileClick(id){
+       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+    }
 
+    return (
+       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
+     )
+}
 
 const ArticleList = () => {
-    
+
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    //console.log("user id: ", currUserId)
+
+    const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+
     const [data, setData ] = useState(0);
 
     useEffect(() => {
@@ -77,9 +93,17 @@ const ArticleList = () => {
                 >
                     <List
                         itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 10,
+                          }}
                         dataSource={articleList}                                  
                         renderItem={(item) => (
-                        <List.Item>
+                        <List.Item
+                            key={item.ArticleID}
+                            >
                             <List.Item.Meta
                             avatar={
                                 <img width={80} alt="logo" 
@@ -95,7 +119,8 @@ const ArticleList = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <div><Button href={item.ArticleLink}>Check</Button></div>
+                                {/* <div><Button href={item.ArticleLink}>Check</Button></div> */}
+                                <ArticleCheckButton articleId={item.ArticleID} />
                             </Space>
                         </List.Item>
                         

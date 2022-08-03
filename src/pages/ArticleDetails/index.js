@@ -1,62 +1,110 @@
 import './ArticleDetails.scss'
-import { Button, PageHeader, Tag, Typography } from 'antd';
+import { Button, PageHeader, Tag } from 'antd';
 import React, { useState, useEffect }  from 'react';
 import { Footer, Content } from "antd/lib/layout/layout";
 import { useSearchParams } from 'react-router-dom';
 
-const { Paragraph } = Typography;
+global.like = 10
+// test data
+// const articleData = [                
+//     {
+//       ArticleName: 'Article_1',
+//       ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this article',
+//       ArticleID: 1,
+//       AuthorIcon: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+//     },
+// ];
 
 
-const wordContent = (
-  <>
-    <Paragraph>
-    Write a career plan. You’re more likely to find the perfect job if you’re clear on the direction you want to take your career in.
-    Sit down and write up a plan that encapsulates who you professionally are, must-have job attributes such as career progression
-     and working hours, and what organisations you’d like to work for. Keep your plan handy when applying for jobs to see how closely 
-     aligned they are. You might find that they’re realistically not even worth applying for!
-    </Paragraph>
-    <Paragraph>
-    Refresh your resume. It’s easy to merely update your resume with an extra few lines each time you change jobs, but if you really 
-    want to find a job that’s as far away as possible to your weekend shift work during high school, it’s time to give your resume a 
-    makeover.
-
-    It not only needs to look more professional and sophisticated than the earlier days of your career, it needs to provide a snapshot
-     of the best roles and experiences you’ve had into a concise one to two page document. Don’t be precious with it – make it reflect
-      who you have professionally become today!
-    </Paragraph>
-  </>
-);
 
 
-const articleData = [
-    {
-      ArticleName: 'Article_1',
-      ArticleIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-      tag: 'tag of this article',
-      ArticleID: 1,
-      AuthorIcon: "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-    },
-];
+
+// function handleClick(state){ 
+
+//     // console.log(state)
+//     if(state === 1){
+//       global.like = 0
+//     }
+//     else if(state === 0){
+//       global.like = 1
+//     }
+//     console.log(global.like)
+    
+// }
+
+// function LikeButton(props){ 
+//   var temp = 0;
+//   console.log(props.like)
+//   // if(props.like === 1){
+//   //   console.log("this is 1")
+//   //   global.temp = 1
+//   // }
+//   // else if(props.like === 0){
+//   //   console.log("this is 0")
+//   //   global.temp = 0
+//   // }
+//   // else if(props.like === 2){
+//   //   console.log("this is 2")
+//   //   global.temp = 2
+//   // }
+//   console.temp("temp", global.temp)
+//   const[like, setLike] = useState(temp)
+//   console.log("like",like)
+//   const handleClick = () =>{ 
+    
+//     setLike((like+1)%2)
+//     console.log(like)
+    
+//   }
+
+//   const loadWord = (like) => {
+//     if(like === 0){
+//       return <div>Like</div>
+//     }
+//     else if(like === 1){
+//       return <div>Unlike</div>
+//     }
+//     else if(like === 2){
+//       return <div>You can't like this article</div>
+//     }
+    
+
+//     //return isLoading && (<div>loading...</div>) 
+//   }
+
+//   return (
+//     <Button key="1" onClick={() => {handleClick()}}>{like === 1 ? 'unlike' : 'like'}  </Button>
+//     //<Button key="1" onClick={() => {handleClick()}}>{loadWord(like)}</Button>
+//    )
+// }
 
 
 const ArticleDetails = () => {
     
-    // console.log(this.props.match.params.id)
+
     const [params] = useSearchParams()
     const currUserId =  params.get('currUserId')
     const articleId =  params.get('articleId')
-    //console.log(currUserId,articleId)
+    console.log("user id: ", currUserId, " article id: ", articleId)
 
-    // const articleUrl = `http://127.0.0.1:5000/article/get/${articleId}`
+  
     const articleUrl = 'http://127.0.0.1:5000/article/get/'+articleId;
-    console.log(articleId)
+    const getLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+articleId;
+    const postLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList';
+    const deleteLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList';
+  
 
-    // state of page data
     const [articleData, setArticleData ] = useState(0);
+    const [likeData, setLikeData ] = useState(0);
     
     
     // GET page data
     useEffect(() => {
+
+        // const articleUrl = 'http://127.0.0.1:5000/article/get/'+articleId;
+        // const getLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+articleId;
+
         const requestOptions = {
             method: 'GET',
             headers: {'Content-Type': 'application/json'},
@@ -69,11 +117,89 @@ const ArticleDetails = () => {
                 setArticleData(json)                       
             }) 
         }
+
+        const getlikeData = async (getLikeUrl) => {
+          fetch(getLikeUrl, requestOptions)
+          .then(res =>  res.json())
+          .then(json =>{
+            setLikeData(json)                       
+          }) 
+      }
   
         getarticleData(articleUrl);
+        getlikeData(getLikeUrl);
+
       },[])
 
-    console.log(articleData)
+
+    function handleClick(currState){
+        // console.log("currState",currState)
+        if(currState.states === 0){
+
+          //console.log("0 -> 1")
+          setLikeData({states: 1})
+          //console.log(likeData)
+
+          const postOptions = {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                "articleID": articleId
+            })
+          }
+
+          const postLikeData = async (postLikeUrl) => {
+              fetch(postLikeUrl, postOptions)
+              .then(res =>  res.json())
+              .then(json =>{
+                console.log(json)                   
+              }) 
+          }
+    
+          postLikeData(postLikeUrl);
+        }
+
+        else if(currState.states === 1){
+          //console.log("1 -> 0")
+          setLikeData({states: 0})
+          //console.log(likeData)
+
+          const deleteOptions = {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                "articleID": articleId
+            })
+          }
+
+        const deleteLikeData = async (deleteLikeUrl) => {
+            fetch(deleteLikeUrl, deleteOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+              console.log(json)                   
+            }) 
+        }
+  
+        deleteLikeData(deleteLikeUrl);
+        }
+        
+        else if(currState.states === 2){
+          //console.log("keep 2")
+          //console.log(likeData)
+        }
+    }
+
+    const loadWord = (like) => {
+      if(like === 0){
+        return <div>Like</div>
+      }
+      else if(like === 1){
+        return <div>Unlike</div>
+      }
+      else if(like === 2){
+        return <div>You can't like this article</div>
+      }
+    }
 
     return(
         <PageHeader
@@ -82,7 +208,8 @@ const ArticleDetails = () => {
             subTitle=" "
             tags={<Tag color="blue">{articleData.label}</Tag>}
             extra={[
-            <Button key="1">Like</Button>,
+              //<LikeButton key="1" like={global.temp}/>,
+              <Button key="1" onClick={() => {handleClick(likeData)}}>{loadWord(likeData.states)}  </Button>
 
             ]}
             avatar={{
@@ -98,7 +225,6 @@ const ArticleDetails = () => {
                     />
             </div>
             <div style={{ textAlign:'left', margin:"40px 100px 0 80px", fontSize:'17px'}}> {articleData.wordContent}</div>
-            
             {/* {wordContent} */}
         
         </Content>
