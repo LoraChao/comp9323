@@ -62,19 +62,21 @@ class SearchOffer(Resource):
                 "message": "false"
             }
             return output, 400
-        
+        label_name = ["offerId", "CompanyName", "Responsibility"]
         offer_sql = f"SELECT offerId, CompanyName, Responsibility FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
         result_from_offer = sql_command(offer_sql)
-       
+        # result_from_offer = sql_dicresult_with_decription(offer_sql)
+        # test.extend(result_from_db)
         if not result_from_offer:
             output = {
                 "message": "false"
             }
             return output, 400
         else:
+            output_res = output_list(result_from_offer, label_name)
             output = {
                 "message": "success",
-                "output": result_from_offer
+                "output": output_res
             }
             return output, 400
 
@@ -95,6 +97,8 @@ class SearchOffer(Resource):
 
         offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"  # database_info
         result_from_offer = sql_command(offer_sql)
+        label_name = ["OfferId", "OrganizationId", "CompanyName", "Position", "WorkingLocation", "Workinghours", "Salary", "Responsibility", "Requirement", "Contact", "Icon"]
+
 
         if not result_from_offer:
             output = {
@@ -102,9 +106,10 @@ class SearchOffer(Resource):
             }
             return output, 400
         else:
+            output_res = output_list(result_from_offer, label_name)
             output = {
                 "message": "success",
-                "output": result_from_offer
+                "output": output_res
             }
             return output, 200
 
@@ -165,9 +170,12 @@ class PerferOffer(Resource):
             offerId_list.append(i[2])
 
         output_sql = 'SELECT OfferId, OrganizationId, CompanyName, Position, Icon FROM offer WHERE offerId in(%s)' % ','.join(['%s'] * len(offerId_list))
+        label_name = ["OfferId", "OrganizationId", "CompanyName", "Position", "Icon"]
         result_from_offer = search_list(output_sql, offerId_list)
+        output_res = output_list(result_from_offer,label_name)
+
         output = {
             "message": "success",
-            "output": result_from_offer
+            "output": output_res
         }
         return output, 200

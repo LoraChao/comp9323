@@ -41,9 +41,11 @@ class PostJob_ind(Resource):
 
             select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(rec_list))
             output_info = search_list(select_str, rec_list)
+            label_name = ["CompanyName","Position","Contact"]
+            output_res = output_list(output_info, label_name)
             output = {
                 "message": "success",
-                "output": output_info
+                "output": output_res
             }
             return output, 200
 
@@ -77,9 +79,6 @@ class PostSentencey(Resource):
 class PostExpert(Resource):
     @api.doc(description='get experts')
     def get(self, userId):
-        # data = json.loads(request.get_data())
-        # userId = data["userId"]
-        # userId = request.args.get("userId")
         if userId == "":
             return None
         else:
@@ -95,9 +94,11 @@ class PostExpert(Resource):
                 skill = result_from_skill[0][0]
                 skill_match_sql = f"SELECT * FROM experts WHERE Tag = '{skill}';"
                 skill_match = sql_command(skill_match_sql)
+                label_name = ["ExpertsId", "ExpertsName", "Tag", "Introduce", "Email", "Icon"]
+                output_res = output_list(skill_match, label_name)
                 output = {
                     "message": "success",
-                    "output": skill_match
+                    "output": output_res
                 }
                 return output, 200
 
