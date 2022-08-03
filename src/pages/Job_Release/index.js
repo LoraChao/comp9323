@@ -9,6 +9,8 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class JobRelease extends PureComponent{
+
+
   constructor(props) {
     super(props)
     this.state = {
@@ -21,6 +23,7 @@ class JobRelease extends PureComponent{
       responsibility_name: '', //string
       requirement_name: '', //string
       contact_name: '', //string
+      currUserId: '1',
     }
   }
   render(){
@@ -45,7 +48,6 @@ class JobRelease extends PureComponent{
       autoComplete="off"
       style = {{height: 1000}}
     >
-      <form method="post" action="http://127.0.0.1:5000/offer/post/organization">
       <div>
       <TextField
           id="position_id"
@@ -89,7 +91,7 @@ class JobRelease extends PureComponent{
         multiline
         variant="outlined"
         minRows={1}
-        style = {{top:80, width: 800}}
+        style = {{top:20, width: 800}}
         value={this.state.working_hour_name}
         onChange={(e) => {
           this.setState({ working_hour_name: e.target.value })
@@ -105,7 +107,7 @@ class JobRelease extends PureComponent{
         multiline
         variant="outlined"
         minRows={1}
-        style = {{top:80, width: 800}}
+        style = {{top:20, width: 800}}
         value={this.state.salary_name}
         onChange={(e) => {
           this.setState({ salary_name: e.target.value })
@@ -121,7 +123,7 @@ class JobRelease extends PureComponent{
         multiline
         variant="outlined"
         minRows={4}
-        style = {{top:140, width: 800}}
+        style = {{top:20, width: 800}}
         value={this.state.responsibility_name}
         onChange={(e) => {
           this.setState({ responsibility_name: e.target.value })
@@ -137,7 +139,7 @@ class JobRelease extends PureComponent{
         multiline
         variant="outlined"
         minRows={4}
-        style = {{top:140, width: 800}}
+        style = {{top:80, width: 800}}
         value={this.state.requirement_name}
         onChange={(e) => {
           this.setState({ requirement_name: e.target.value })
@@ -164,12 +166,43 @@ class JobRelease extends PureComponent{
         <Button variant="contained" 
         type='submit'
         style = {{left:250, top:230, width:200}}
+        onClick={() => {
+          this.publish()
+        }}
         >Release</Button>
       </div>
-      </form>
     </Box>
     </Layout>
   );
+        }
+        publish() {
+          let text = {
+                      OrganizationId: this.state.OrganizationId,
+                      company_name: this.state.company_name, 
+                      company_location: this.state.company_location,
+                      position_name: this.state.position_name,
+                      working_location_name: this.state.working_location_name,
+                      working_hour_name: this.state.working_hour_name,
+                      salary_name: this.state.salary_name,
+                      responsibility_name: this.state.responsibility_name,
+                      requirement_name: this.state.requirement_name,
+                      contact_name: this.state.contact_name
+                    };//获取数据
+          // console.log(text);
+          let send = JSON.stringify(text);//将对象转成json字符串
+          fetch("http://127.0.0.1:5000/offer/post/organization", {
+              method: "POST",
+              headers: {"Content-Type": "application/json;charset=utf-8"},
+              body: send
+          }).then(res => res.json()).then(
+              data => {
+                  if (data.success){
+                      window.alert("Offer Released!")
+                      let url =  "http://localhost:3000/mypage";
+                      window.location.replace(url)
+                  }else window.alert("Something went wrong")
+              }
+          )
         }
 }
 
