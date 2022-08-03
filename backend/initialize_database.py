@@ -169,7 +169,7 @@ def create_database():
     CREATE TABLE IF NOT EXISTS `indfollowlist` (
     `FollowID` int NOT NULL AUTO_INCREMENT,
     `IndividualID` int NOT NULL,
-    `indID` int NOT NULL,
+    `IndID` int NOT NULL,
     PRIMARY KEY (`followID`));
     '''
     insert_follow_ind = '''
@@ -182,7 +182,7 @@ def create_database():
     CREATE TABLE IF NOT EXISTS `orgfollowlist` (
     `FollowID` int NOT NULL AUTO_INCREMENT,
     `IndividualID` int NOT NULL,
-    `orgID` int NOT NULL,
+    `OrgID` int NOT NULL,
     PRIMARY KEY (`followID`));
     '''
     insert_follow_org = '''
