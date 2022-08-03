@@ -12,6 +12,7 @@ class Details_personal extends PureComponent{
   constructor(props) {
     super(props)
     this.state = {
+      username: '',
       title_name: '', //string
       name_name: '', //string
       gender_name: '', //string
@@ -23,7 +24,8 @@ class Details_personal extends PureComponent{
       achievement_name: '', //string
       professional_summary_name: '', //string
       cv_name: '', //string
-      usertype: 'individual', //string
+      icon_name: '',
+      usertype: 'individual' //string
     }
   }
   render(){
@@ -214,12 +216,45 @@ class Details_personal extends PureComponent{
         <Button variant="contained" 
         type='submit'
         style = {{left:250, top:230, width:200}}
+        onClick={() => {
+          this.getConnect()}}
         >Update</Button>
       </div>
       </form>
     </Box>
     </Layout>
   );
+        }
+        getConnect() {
+          let text = {username: this.state.username,
+                      title_name: this.state.title_name,
+                      name_name: this.state.name_name, //string
+                      gender_name: this.state.gender_name, //string
+                      age_name: this.state.age_name, //int
+                      email_name: this.state.email_name, //string
+                      skill_name: this.state.skill_name, //string
+                      education_name: this.state.education_name, //string
+                      experience_name: this.state.experience_name, //string
+                      achievement_name: this.state.achievement_name, //string
+                      professional_summary_name: this.state.professional_summary_name, //string
+                      cv_name: this.state.cv_name, //string
+                      icon_name: this.state.icon_name,
+                      };//获取数据
+          // console.log(text);
+          let send = JSON.stringify(text);//将对象转成json字符串
+          fetch("http://127.0.0.1:5000/auth/details/individual", {
+              method: "POST",
+              headers: {"Content-Type": "application/json;charset=utf-8"},
+              body: send
+          }).then(res => res.json()).then(
+              data => {
+                  if (data['message'] === 'success'){
+                      window.alert("Detail updated!")
+                      let url =  "http://localhost:3000/mypage";
+                      window.location.replace(url)
+                  }else window.alert("Something went wrong")
+              }
+          )
         }
 }
 
