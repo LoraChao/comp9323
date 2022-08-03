@@ -64,3 +64,13 @@ def search_list(str,list_input):
     db.close()
     return result
 
+def output_list(res, label_name):
+    output_tmp = {}
+    output_res = []
+    for i in res:
+        for m in range(len(label_name)):
+            output_tmp[label_name[m]] = i[m]
+        output_res.append(output_tmp)
+        output_tmp = {}
+    return output_res
+
