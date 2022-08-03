@@ -1,11 +1,10 @@
 import './ArticleDetails.scss'
 import { Button, PageHeader, Tag, Typography } from 'antd';
+import React, { useState, useEffect }  from 'react';
 import { Footer, Content } from "antd/lib/layout/layout";
-import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const { Paragraph } = Typography;
-
 
 
 const wordContent = (
@@ -46,14 +45,42 @@ const ArticleDetails = () => {
     const [params] = useSearchParams()
     const currUserId =  params.get('currUserId')
     const articleId =  params.get('articleId')
-    console.log(currUserId,articleId)
+    //console.log(currUserId,articleId)
+
+    // const articleUrl = `http://127.0.0.1:5000/article/get/${articleId}`
+    const articleUrl = 'http://127.0.0.1:5000/article/get/'+articleId;
+    console.log(articleId)
+
+    // state of page data
+    const [articleData, setArticleData ] = useState(0);
+    
+    
+    // GET page data
+    useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        }
+
+        const getarticleData = async (articleUrl) => {
+            fetch(articleUrl, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setArticleData(json)                       
+            }) 
+        }
+  
+        getarticleData(articleUrl);
+      },[])
+
+    console.log(articleData)
 
     return(
         <PageHeader
-            title="Where and how to look for work"
+            title={articleData.title}
             className="site-page-header"
             subTitle=" "
-            tags={<Tag color="blue">Experience</Tag>}
+            tags={<Tag color="blue">{articleData.label}</Tag>}
             extra={[
             <Button key="1">Like</Button>,
 
@@ -70,7 +97,7 @@ const ArticleDetails = () => {
                     alt="content"
                     />
             </div>
-            <div style={{ textAlign:'left', margin:"40px 100px 0 80px", fontSize:'17px'}}> {wordContent}</div>
+            <div style={{ textAlign:'left', margin:"40px 100px 0 80px", fontSize:'17px'}}> {articleData.wordContent}</div>
             
             {/* {wordContent} */}
         

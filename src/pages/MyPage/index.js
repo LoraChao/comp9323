@@ -153,7 +153,6 @@ const MyPage = () => {
     const [followOrgData, setOrgData ] = useState(0);
     const [preferJobData, setJobData ] = useState(0);
     const [preferArticleData, setArticleData ] = useState(0);
-    const [preferArticleSlicedData, setArticleSlicedData ] = useState(0);
 
 
     // GET page data
@@ -192,8 +191,7 @@ const MyPage = () => {
             fetch(preferArticleURL, requestOptions)
             .then(res =>  res.json())
             .then(json =>{
-                setArticleData(json)           
-                setArticleSlicedData(json)                   
+                setArticleData(json)                            
             }) 
         }
 
@@ -209,9 +207,10 @@ const MyPage = () => {
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
     const preferJobList = preferJobData.output                                      
-    const preferArticleList = preferArticleData.message                             
+    const preferArticleList = preferArticleData.message          
+    
+    console.log(preferArticleList)
                                                         
-
 
 
     return (
@@ -386,7 +385,7 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <ArticleMoreButton articleId={item.articleId} />
+                                <ArticleMoreButton articleId={item.ArticleID} />
                             </Space>
                         </List.Item>
                         
