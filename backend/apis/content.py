@@ -155,10 +155,10 @@ class PreferList(Resource):
     def delete(self,individualID):
         user_sql = f"SELECT IndividualName FROM Individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
-            ArticleID = request.json['articleID']
-            ind_sql = f"SELECT * FROM Article WHERE ArticleID={ArticleID};"
-            if sql_command(ind_sql):
-                type='article'
+            ind_sql = f"SELECT ArticleTag FROM Article WHERE ArticleID={ArticleID};"
+            result_from_db = sql_dicresult_with_decription(ind_sql)[0]
+            if result_from_db:
+                type = result_from_db['ArticleTag']
                 like_sql = f"DELETE from IndividualPrefer WHERE individualID = {individualID} and ArticleID = {ArticleID};"
                 count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum - 1 where ArticleID ={ArticleID};"
                 taste_sql = f"UPDATE Taste SET {type} = {type} - 1 where individualID = {individualID};"
