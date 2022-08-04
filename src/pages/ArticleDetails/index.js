@@ -17,9 +17,6 @@ import { useSearchParams } from 'react-router-dom';
 // ];
 
 
-
-
-
 const ArticleDetails = () => {
     
 
@@ -64,7 +61,7 @@ const ArticleDetails = () => {
           .then(json =>{
             setLikeData(json)                       
           }) 
-      }
+        }
   
         getarticleData(articleUrl);
         getlikeData(getLikeUrl);
@@ -148,7 +145,6 @@ const ArticleDetails = () => {
             subTitle=" "
             tags={<Tag color="blue">{articleData.label}</Tag>}
             extra={[
-              //<LikeButton key="1" like={global.temp}/>,
               <Button key="1" onClick={() => {handleClick(likeData)}}>{loadWord(likeData.states)}  </Button>
 
             ]}

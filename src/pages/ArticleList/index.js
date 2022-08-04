@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-const currUserId = '1'
+//const currUserId = '1'
 
 // const articleListData = [                                                               
 //     {
@@ -30,8 +30,12 @@ const currUserId = '1'
 // ];
 
 function ArticleCheckButton(props){ 
-    const articleId = props.articleId 
     
+    const articleId = props.articleId 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+
+
     const navigate = useNavigate()
     function handleCheckArtileClick(id){
        navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})

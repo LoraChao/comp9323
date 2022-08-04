@@ -1,6 +1,7 @@
 import './App.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import MyPage from '@/pages/MyPage';
+import OthersPage from '@/pages/OthersPage';
 import FollowInd from '@/pages/FollowInd';
 import FollowOrg from '@/pages/FollowOrg';
 import JobPreference from '@/pages/JobPreference';
@@ -29,6 +30,7 @@ function App() {
           {/* create route path and relations */} 
           {/* <Route path='/' element={<FrontPage />}></Route> */} {/* this spare is for the main page */}
           <Route path='/MyPage' element={<MyPage />}></Route>
+          <Route path='/OthersPage' element={<OthersPage />}></Route>
           <Route path='/FollowInd' element={<FollowInd />}></Route>
           <Route path='/FollowOrg' element={<FollowOrg />}></Route>
           <Route path='/JobPreference' element={<JobPreference />}></Route>
