@@ -4,7 +4,7 @@ import React, { useState, useEffect }  from 'react';
 import { Footer, Content } from "antd/lib/layout/layout";
 import { useSearchParams } from 'react-router-dom';
 
-global.like = 10
+
 // test data
 // const articleData = [                
 //     {
@@ -18,66 +18,6 @@ global.like = 10
 
 
 
-
-
-// function handleClick(state){ 
-
-//     // console.log(state)
-//     if(state === 1){
-//       global.like = 0
-//     }
-//     else if(state === 0){
-//       global.like = 1
-//     }
-//     console.log(global.like)
-    
-// }
-
-// function LikeButton(props){ 
-//   var temp = 0;
-//   console.log(props.like)
-//   // if(props.like === 1){
-//   //   console.log("this is 1")
-//   //   global.temp = 1
-//   // }
-//   // else if(props.like === 0){
-//   //   console.log("this is 0")
-//   //   global.temp = 0
-//   // }
-//   // else if(props.like === 2){
-//   //   console.log("this is 2")
-//   //   global.temp = 2
-//   // }
-//   console.temp("temp", global.temp)
-//   const[like, setLike] = useState(temp)
-//   console.log("like",like)
-//   const handleClick = () =>{ 
-    
-//     setLike((like+1)%2)
-//     console.log(like)
-    
-//   }
-
-//   const loadWord = (like) => {
-//     if(like === 0){
-//       return <div>Like</div>
-//     }
-//     else if(like === 1){
-//       return <div>Unlike</div>
-//     }
-//     else if(like === 2){
-//       return <div>You can't like this article</div>
-//     }
-    
-
-//     //return isLoading && (<div>loading...</div>) 
-//   }
-
-//   return (
-//     <Button key="1" onClick={() => {handleClick()}}>{like === 1 ? 'unlike' : 'like'}  </Button>
-//     //<Button key="1" onClick={() => {handleClick()}}>{loadWord(like)}</Button>
-//    )
-// }
 
 
 const ArticleDetails = () => {
@@ -165,7 +105,7 @@ const ArticleDetails = () => {
           //console.log(likeData)
 
           const deleteOptions = {
-              method: 'POST',
+              method: 'DELETE',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
                 "articleID": articleId
@@ -182,7 +122,7 @@ const ArticleDetails = () => {
   
         deleteLikeData(deleteLikeUrl);
         }
-        
+
         else if(currState.states === 2){
           //console.log("keep 2")
           //console.log(likeData)
