@@ -13,6 +13,8 @@ const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
 const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId+''
 const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
 const postMoodStar = 'http://127.0.0.1:5000/mood/post'
+const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
+
 
 
 
@@ -174,6 +176,7 @@ const MyPage = () => {
     const [followOrgData, setOrgData ] = useState(0);
     const [preferJobData, setJobData ] = useState(0);
     const [preferArticleData, setArticleData ] = useState(0);
+    const [userInfoData, setUserInfoData ] = useState(0);
 
 
     // GET page data
@@ -183,6 +186,13 @@ const MyPage = () => {
             headers: {'Content-Type': 'application/json'},
         }
 
+        const getUserInfoData = async (getUserInfo) => {
+            fetch(getUserInfo, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setUserInfoData(json)                             
+            }) 
+        }
 
         const getFollowOrgData = async (followOrgURL) => {
             fetch(followOrgURL, requestOptions)
@@ -221,6 +231,7 @@ const MyPage = () => {
         getFollowIndData(followIndURL);
         getPreferJobData(preferJobURL);
         getPreferArticleData(preferArticleURL);
+        getUserInfoData(getUserInfo);
     },[])
 
     
@@ -228,9 +239,11 @@ const MyPage = () => {
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
     const preferJobList = preferJobData.output                                      
-    const preferArticleList = preferArticleData.message          
+    const preferArticleList = preferArticleData.message    
+    const userInfo = userInfoData   
+          
     
-    // console.log(preferArticleList)
+    // console.log(userInfo)
                                                         
 
 
@@ -238,12 +251,12 @@ const MyPage = () => {
         <Layout>
             <Header className="myPage_header">
                 <div className="user_icon">
-                    <Avatar size={100} icon={userInfo.icon} />
+                    <Avatar size={100} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />
                 </div>
 
                 <div>
-                    <span className="user_name">{userInfo.name}</span>
-                    <span className="user_identity">{userInfo.description}</span>
+                    <span className="user_name">{userInfo.IndividualName}</span>
+                    <span className="user_identity">{userInfo.Emails}</span>
                 </div>
 
                 <div className="moodselect">
