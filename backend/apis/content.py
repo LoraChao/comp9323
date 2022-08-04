@@ -129,9 +129,9 @@ class PreferList(Resource):
             result_from_db = sql_dicresult_with_decription(ind_sql)[0]
             if result_from_db:
                 type = result_from_db['ArticleTag']
-                like_sql = f"insert into IndividualPrefer (individualID,ArticleID,type) select {individualID},{ArticleID},{type} where not exists(select individualID from IndividualPrefer where individualID = {individualID} and ArticleID={ArticleID} and type={type});"
-                count_sql = f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID = {ArticleID}"
-                taste_sql = f"UPDATE Taste {type} = {type} + 1 where individualID = {individualID};"
+                like_sql = f"INSERT INTO IndividualPrefer (individualID,ArticleID,type) SELECT {individualID},{ArticleID},'{type}' WHERE NOT EXISTS(SELECT individualID FROM IndividualPrefer WHERE individualID = {individualID} AND ArticleID={ArticleID} AND type='{type}');"
+                count_sql = f"UPDATE Article SET ArticleLikeNum = ArticleLikeNum + 1 WHERE ArticleID = {ArticleID}"
+                taste_sql = f"UPDATE SET Taste {type} = {type} + 1 where individualID = {individualID};"
                 sql_command(like_sql)
                 sql_command(count_sql)
                 sql_command(taste_sql)
