@@ -130,8 +130,8 @@ class PreferList(Resource):
             if result_from_db:
                 type = result_from_db['ArticleTag']
                 like_sql = f"INSERT INTO IndividualPrefer (individualID,ArticleID,type) SELECT {individualID},{ArticleID},'{type}' WHERE NOT EXISTS(SELECT individualID FROM IndividualPrefer WHERE individualID = {individualID} AND ArticleID={ArticleID} AND type='{type}');"
-                count_sql = f"UPDATE Article SET ArticleLikeNum = ArticleLikeNum + 1 WHERE ArticleID = {ArticleID}"
-                taste_sql = f"UPDATE SET Taste {type} = {type} + 1 where individualID = {individualID};"
+                count_sql = f"UPDATE Article SET ArticleLikeNum = ArticleLikeNum + 1 WHERE ArticleID = {ArticleID};"
+                taste_sql = f"UPDATE Taste SET {type} = {type} + 1 where individualID = {individualID};"
                 sql_command(like_sql)
                 sql_command(count_sql)
                 sql_command(taste_sql)
@@ -161,7 +161,7 @@ class PreferList(Resource):
                 type='article'
                 like_sql = f"DELETE from IndividualPrefer WHERE individualID = {individualID} and ArticleID = {ArticleID};"
                 count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum - 1 where ArticleID ={ArticleID};"
-                taste_sql = f"UPDATE Taste {type} = {type} - 1 where individualID = {individualID};"
+                taste_sql = f"UPDATE Taste SET {type} = {type} - 1 where individualID = {individualID};"
                 sql_command(like_sql)
                 sql_command(count_sql)
                 sql_command(taste_sql)
