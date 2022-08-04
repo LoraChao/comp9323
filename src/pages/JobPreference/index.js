@@ -1,124 +1,147 @@
-import { Layout,Card, List, Skeleton, Avatar, Button} from "antd";
-import React, { useState, useEffect} from 'react';
-import './JobPreference.scss';
-const count = 6;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+import './JobPreference.scss'
+import { Layout, Card, List, Button, Space, Tag} from "antd"
+import { Footer, Content, Header } from "antd/lib/layout/layout";
+import React, { useState, useEffect }  from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const {Header, Content, Footer} = Layout;
+const jobPic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+//const currUserId = '1'
 
-const SetContains = () => {
-    const [initLoading, setInitLoading] = useState(true);  
-    const [loading, setLoading] = useState(false);  
-    const [data, setData] = useState([]);   
-    const [list, setList] = useState([]);   
+// const jobListData = [                                                               
+//     {
+//       JobName: 'Job_1',
+//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this job',
+//       JobID: 1
+//     },
+//     {
+//       JobName: 'Job_2',
+//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this job', 
+//       JobID: 2
+//     },
+//     {
+//       JobName: 'Job_3',
+//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
+//       tag: 'tag of this job',
+//       JobID: 3
+//     },
+// ];
+
+function JobCheckButton(props){ 
+    
+    const OfferId = props.OfferId 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
 
 
-    useEffect(() => {               // Parse http file into json data when initialize the page
-        fetch(fakeDataUrl)              // and set it into "data" and "list", and set "initLoading" into true
-        .then((res) => res.json())
-        .then((res) => {
-            setInitLoading(false);
-            setData(res.results);
-            setList(res.results);
-        });
-    }, []);
+    const navigate = useNavigate()
+    function handleCheckJobClick(){
+       navigate(`/JobDetails?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})             // 替换职位详情的链接
+    }
 
-    const onLoadMore = () => {      
-        setLoading(true);
-        setList(
-        data.concat(
-            [...new Array(count)].map(() => ({
-            loading: true,
-            name: {},
-            picture: {},
-            })),
-        ),
-        );
-        fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-            const newData = data.concat(res.results);
-            setData(newData);
-            setList(newData);
-            setLoading(false); // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-            // In real scene, you can using public method of react-virtualized:
-            // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-
-            window.dispatchEvent(new Event('resize'));
-        });
-    };
-
-    const loadMore =
-        !initLoading && !loading ? (
-        <div
-            style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-            }}
-        >
-            <Button onClick={onLoadMore}>loading more</Button>
-        </div>
-        ) : null;
-
-    return <div>
-    <List
-        className="demo-loadmore-list"
-        loading={initLoading}
-        itemLayout="horizontal"
-        loadMore={loadMore}
-        dataSource={list}
-        renderItem={(item) => (
-            <List.Item>
-            <Skeleton avatar title={false} loading={item.loading} active>
-                <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name?.last}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-                <div>
-                <Button>
-                    Check
-                </Button>
-                </div>
-            </Skeleton>
-            </List.Item>
-    )}
-    />
-    </div>
+    return (
+       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+     )
 }
 
 const JobPreference = () => {
-    
-    return (
-        <Layout>
-            <Header></Header>
 
-            <Content style={{ 
-                padding: '0 50px',
-                textAlign: 'left',
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    //console.log("user id: ", currUserId)
+
+    const jobListURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId
+    
+
+    const [data, setData ] = useState(0);
+
+    useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        }
+
+        const getData = async (jobListURL) => {
+            fetch(jobListURL, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setData(json)
+            }) 
+        }
+
+        getData(jobListURL);
+    },[])
+    
+    
+
+    const jobList = data.output                                             
+    //console.log(jobList)
+
+    return(
+        <Layout>
+                <Header></Header>
+
+                <Content style={{ 
+                    padding: '0 50px',
+                    textAlign: 'left',
                 }}>
                 <Card
+                    title="Preferenced Jobs"
+                    extra={<a href="./MyPage">Back</a>}
                     style={{
-                    width: '100%',
+                        width: '100%',
+                        textAlign: 'left',
                     }}
-                    title="Job Preference"
-                    extra={<a href="../MyPage">Back</a>}                         
-
+                    type="inner"
                 >
-                    {SetContains()}
-                </Card>
-                
+                    <List
+                        itemLayout="horizontal"
+                        pagination={{
+                            onChange: (page) => {
+                              console.log(page);
+                            },
+                            pageSize: 10,
+                          }}
+                        dataSource={jobList}                                  
+                        renderItem={(item) => (
+                        <List.Item
+                            key={item.JobID}
+                            >
+                            <List.Item.Meta
+                            avatar={
+                                <img width={80} alt="logo" 
+                                    src={jobPic}/>}
+                                title={<a href="@">{item.CompanyName}</a>}
+                                //description={item.description}
+                                description={<Tag>{item.Requirement}</Tag>}
+                            />
+                            <Space
+                                direction="horizontal"
+                                size="middle"
+                                style={{
+                                display: 'flex',
+                                }}
+                            >
+                                {/* <div><Button href={item.JobLink}>Check</Button></div> */}
+                                <JobCheckButton OfferId={item.OfferId} />
+                            </Space>
+                        </List.Item>
+                        
+                        )}
+                    />
+                        
+                    </Card>   
 
-            </Content>
+                </Content>
 
-            <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
-        </Layout>
+                <Footer style={{ textAlign: 'center' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
+            </Layout>
     )
-}
+
+};
+
 
 
 export default JobPreference
-
-

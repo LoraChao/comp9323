@@ -82,6 +82,19 @@ function ArticleCheckButton(props){
      )
 }
 
+function JobCheckButton(props){ 
+    const OfferId = props.OfferId 
+    
+    const navigate = useNavigate()
+    function handleCheckJobClick(){
+       navigate(`/ArticleDetails?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        // 替换职位详情的链接
+    }
+
+    return (
+       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+     )
+}
+
 function ArticleMoreButton(){ 
     
     const navigate = useNavigate()
@@ -91,6 +104,18 @@ function ArticleMoreButton(){
 
     return (
        <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
+    )
+}
+
+function JobMoreButton(){ 
+    
+    const navigate = useNavigate()
+    function OfferMoreButton(id){
+       navigate(`/JobPreference?currUserId=${currUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
     )
 }
 
@@ -452,7 +477,8 @@ const MyPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    extra={<a href="./MyPage/JobPreference">More</a>}
+                    // extra={<a href="./MyPage/JobPreference">More</a>}
+                    extra={<JobMoreButton/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -478,7 +504,8 @@ const MyPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            <div><Button>check</Button></div>
+                            {/* <div><Button>check</Button></div> */}
+                            <JobCheckButton OfferId={item.OfferId} />
                         </List.Item>
                         
                         )}
