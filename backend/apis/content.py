@@ -155,6 +155,7 @@ class PreferList(Resource):
     def delete(self,individualID):
         user_sql = f"SELECT IndividualName FROM Individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
+            ArticleID = request.json['articleID']
             ind_sql = f"SELECT ArticleTag FROM Article WHERE ArticleID={ArticleID};"
             result_from_db = sql_dicresult_with_decription(ind_sql)[0]
             if result_from_db:
