@@ -136,7 +136,7 @@ class PreferList(Resource):
                 sql_command(count_sql)
                 sql_command(taste_sql)
                 output = {
-                    'message': 'well done'
+                    'message': 'POST well done'
                 }
                 return output,200
             else:
@@ -166,7 +166,7 @@ class PreferList(Resource):
                 sql_command(count_sql)
                 sql_command(taste_sql)
                 output = {
-                    'message': 'well done'
+                    'message': 'DELETE well done'
                 }
                 return output,200
             else:
