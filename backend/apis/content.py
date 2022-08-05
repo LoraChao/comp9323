@@ -298,19 +298,25 @@ class indFollowList(Resource):
         user_sql = f"SELECT IndividualName FROM Individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             indID = request.json['indID']
-            ind_sql = f"SELECT * FROM Individual WHERE IndividualID={indID};"
-            if sql_command(ind_sql):
-                follow_sql = f"INSERT INTO Indfollowlist (IndividualID,IndID) SELECT {individualID},{indID} WHERE NOT EXISTS (SELECT IndividualID FROM Indfollowlist WHERE IndividualID = {individualID} AND IndID={indID});"
-                sql_command(follow_sql)
-                output = {
-                    'message': 'well done'
-                }
-                return output,200
+            if indID != individualID:
+                ind_sql = f"SELECT * FROM Individual WHERE IndividualID={indID};"
+                if sql_command(ind_sql):
+                    follow_sql = f"INSERT INTO Indfollowlist (IndividualID,IndID) SELECT {individualID},{indID} WHERE NOT EXISTS (SELECT IndividualID FROM Indfollowlist WHERE IndividualID = {individualID} AND IndID={indID});"
+                    sql_command(follow_sql)
+                    output = {
+                        'message': 'well done'
+                    }
+                    return output,200
+                else:
+                    output = {
+                        'message': 'Please input vaild follow ind ID'
+                    }
+                    return output,404
             else:
                 output = {
-                    'message': 'Please input vaild follow ind ID'
-                }
-                return output,404
+                'message': 'You cannot follow yourself'
+            }
+            return output
         else:
             output = {
                 'message': 'Please input vaild user ID'
