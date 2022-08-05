@@ -15,35 +15,8 @@ const customIcons = {
     3: <SmileOutlined />,
 };
 
-    
-function ArticleCheckButton(props){ 
-    // get article's id
-    const articleId = props.articleId 
-    
-    // jump with article's id
-    const navigate = useNavigate()
-    function handleCheckArtileClick(){
-        navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
-    }
 
-    return (
-       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
-    )
-}
 
-function ArticleMoreButton(props){ 
-    // get current user's id
-    const checkUserId = props.checkUserId 
-
-    const navigate = useNavigate()
-    function ArtMoreButton(id){
-       navigate(`/ArticleList?checkUserId=${checkUserId}`, {replace: true})
-    }
-
-    return (
-       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
-    )
-}
 
 function IndCheckButton(props){ 
 
@@ -72,6 +45,21 @@ function IndividualMoreButton(){
     return (
         <Button type="link" onClick={() => {IndMoreButton()}}>More</Button>
     )
+}
+
+function OrganizationCheckButton(props){                                            // 这个链接要换成子恒的
+
+    // get user's id want to check
+    const checkUserId = props.checkUserId 
+    
+    const navigate = useNavigate()
+    function handleCheckIndClick(){
+        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
 }
 
 function OrganizationMoreButton(){ 
@@ -114,6 +102,35 @@ function JobMoreButton(){
 
     return (
        <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
+    )
+}
+
+function ArticleCheckButton(props){ 
+    // get article's id
+    const articleId = props.articleId 
+    
+    // jump with article's id
+    const navigate = useNavigate()
+    function handleCheckArtileClick(){
+        navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+    }
+
+    return (
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
+    )
+}
+
+function ArticleMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
+
+    const navigate = useNavigate()
+    function ArtMoreButton(id){
+       navigate(`/ArticleList?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
     )
 }
 
@@ -422,7 +439,7 @@ const OthersPage = () => {
                             title={<a href="@">{item.OrganizationName}</a>}             
                             description={item.Description}
                             />
-                            <div><Button>check</Button></div>
+                            <OrganizationCheckButton checkUserId={item.OrganizationId}/>
                         </List.Item>
                         
                         )}
