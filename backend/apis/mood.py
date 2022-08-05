@@ -72,7 +72,7 @@ class SearchDairy(Resource):
                 "message": "success get",
                 "IndividualId": IndividualId,
                 "RecordTime": Date,
-                "Mood": "average"
+                "Mood": 2
             }
             return output, 200
         for day in result_from_dairy:
@@ -114,9 +114,9 @@ class CheckDairy(Resource):
         count_well = 0
         count_bad = 0
         for day in result_from_dairy:
-            if day[3].lower() == 'well':
+            if day[3] == 3:
                 count_well += 1
-            if day[3].lower() == 'bad':
+            if day[3].lower() == 1:
                 count_bad += 1
             # return day[3].upper()
 
@@ -125,7 +125,7 @@ class CheckDairy(Resource):
             sql_command(sql)
             output = {
                 "message": "success get",
-                "mood": "bad",
+                "mood": 1,
                 "well day": count_well,
                 "bad day": count_bad
             }
@@ -135,7 +135,7 @@ class CheckDairy(Resource):
             sql_command(sql)
             output = {
                 "message": "success get",
-                "mood": "well",
+                "mood": 3,
                 "well day": count_well,
                 "bad day": count_bad
             }
