@@ -404,7 +404,6 @@ const OthersPage = () => {
                             title={<a href="@">{item.IndividualName}</a>}             
                             description={item.Occupation}
                             />
-                            {/* <div><Button>check</Button></div> */}
                             <IndCheckButton checkUserId={item.IndividualId} />
                         </List.Item>
                         
