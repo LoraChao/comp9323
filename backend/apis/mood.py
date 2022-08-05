@@ -20,6 +20,7 @@ class PostDairy(Resource):
         IndividualId = data['IndividualId']
         RecordTime = data['RecordTime']
         Mood = data['Mood']
+
         if IndividualId == "" or RecordTime == "" or Mood == "":
             output = {
                 "message": "false"
@@ -27,7 +28,9 @@ class PostDairy(Resource):
             return output, 400
         else:
             MoodID = 0
-            sql = "INSERT INTO mood VALUES ({}, '{}', '{}', '{}');".format(MoodID, IndividualId, RecordTime, Mood)
+            tmp_Date = RecordTime[0:10].split("-")
+            Date = tmp_Date[2] + '/' + tmp_Date[1] + '/' + tmp_Date[0]
+            sql = "INSERT INTO mood VALUES ({}, '{}', '{}', '{}');".format(MoodID, IndividualId, Date, Mood)
             sql_command(sql)
             output = {
                 "message": "success post",
@@ -53,10 +56,6 @@ class SearchDairy(Resource):
             }
             return output, 400
         tmp_Date = RecordTime[0:10].split("-")
-        # output = {
-        #     "message": tmp_Date
-        # }
-        # return output, 200
         Date = tmp_Date[2]+'/'+tmp_Date[1]+'/'+tmp_Date[0]
 
         if IndividualId == "":
