@@ -157,8 +157,8 @@ class JobCheck extends PureComponent{
     super(props)
     this.state = {
       currUserId:'',
-      offer_id:''
-      organization_id:''
+      offer_id:'',
+      organization_id:'',
       company_name: '',//data[0]['CompanyName'], //string
       company_location:'', //data[0]['CompanyName'], //string
       position_name:'', //data[0]['Position'],
@@ -230,14 +230,14 @@ class JobCheck extends PureComponent{
         onClick={() => {
           this.Tohomepage()
         }}
-        >Home</Button>
+        >Back to Home</Button>
         <Button variant="contained" 
         type='submit'
         style = {{left:100, top:230, width:200}}
         onClick={() => {
           this.Toprofilepage()
         }}
-        >Profile</Button>
+        >Back to Profile</Button>
       </div>
     </content>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}></Footer>
