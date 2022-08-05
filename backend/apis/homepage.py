@@ -173,7 +173,7 @@ class Getorg_ind(Resource):
             skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
             result_from_skill = sql_command(skill_sql)
 
-            offer_sql = f"SELECT OrganizationName, Location, Field, Icon  FROM organization WHERE Description = '{result_from_skill[0][0]}';"
+            offer_sql = f"SELECT OrganizationName, Location, Field, Icon  FROM organization WHERE Field = '{result_from_skill[0][0]}';"
             result_from_offer = sql_command(offer_sql)
             label_name = ["OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(result_from_offer, label_name)
