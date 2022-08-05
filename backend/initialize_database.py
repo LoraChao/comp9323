@@ -308,6 +308,18 @@ def create_database():
     db.commit()
     c.execute(initialize_article.Mental_article)
     db.commit()
+    c.execute(initialize_article.Mental_article)
+    db.commit()
+    c.execute(initialize_article.Covid_article)
+    db.commit()
+    c.execute(initialize_article.Fun_article)
+    db.commit()
+    c.execute(initialize_article.Interview_article)
+    db.commit()
+    c.execute(initialize_article.Medicle_article)
+    db.commit()
+    c.execute(initialize_article.Skill_article)
+    db.commit()
     
     c.close()
 
