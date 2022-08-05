@@ -62,8 +62,8 @@ class SearchOffer(Resource):
                 "message": "false"
             }
             return output, 400
-        label_name = ["offerId", "CompanyName", "Responsibility"]
-        offer_sql = f"SELECT offerId, CompanyName, Responsibility FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
+        label_name = ["offerId", "CompanyName", "Responsibility", "Requirement"]
+        offer_sql = f"SELECT offerId, CompanyName, Responsibility, Requirement FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
         result_from_offer = sql_command(offer_sql)
         # result_from_offer = sql_dicresult_with_decription(offer_sql)
         # test.extend(result_from_db)
