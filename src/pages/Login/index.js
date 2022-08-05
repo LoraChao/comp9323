@@ -35,7 +35,7 @@ class Login_individual extends PureComponent {
     } 
     render() {
       const { match, location, history } = this.props
-      this.checklogin()
+      // this.checklogin()
       return (
         <div className="container">
           <div class="login-wrapper">
