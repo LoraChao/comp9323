@@ -79,9 +79,9 @@ function IndCheckButton(props){
     // get user's id want to check
     const checkUserId = props.checkUserId 
     
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckIndClick(){
-        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 // 要新开一页
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 // 要新开一页
     }
 
     return (

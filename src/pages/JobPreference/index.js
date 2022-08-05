@@ -13,9 +13,9 @@ function JobCheckButton(props){
     const OfferId = props.OfferId 
 
     // jump with params: job's id
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckJobClick(){
-       navigate(`/check?offer_id=${OfferId}`, {replace: true})             
+        window.open(`/check?offer_id=${OfferId}`, {replace: true})             
     }
 
     return (

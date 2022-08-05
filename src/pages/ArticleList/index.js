@@ -34,9 +34,9 @@ function ArticleCheckButton(props){
     const articleId = props.articleId 
 
     // jump with params: article's id
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckArtileClick(){
-       navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
     }
 
     return (
@@ -46,7 +46,7 @@ function ArticleCheckButton(props){
 
 const ArticleList = () => {
 
-    // get current article's id
+    // get user's id for checking
     const [params] = useSearchParams()
     const checkUserId =  params.get('checkUserId')
 

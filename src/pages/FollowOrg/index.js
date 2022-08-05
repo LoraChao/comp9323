@@ -83,9 +83,9 @@ function OrganizationCheckButton(props){                                        
     // get user's id want to check
     const checkUserId = props.checkUserId 
     
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckIndClick(){
-        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
     }
 
     return (

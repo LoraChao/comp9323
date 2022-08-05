@@ -65,9 +65,9 @@ function IndCheckButton(props){
     const checkUserId = props.checkUserId 
 
     // jump with params: target user's id
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckIndClick(){
-        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -94,9 +94,9 @@ function OrganizationCheckButton(props){                                        
     const checkUserId = props.checkUserId 
 
     // jump with params: target user's id
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckIndClick(){
-        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -124,9 +124,8 @@ function JobCheckButton(props){
     const OfferId = props.OfferId 
     
     // jump with params: 'job's id'
-    const navigate = useNavigate()
     function handleCheckJobClick(){
-        navigate(`/check?offer_id=${OfferId}`, {replace: true})        
+        window.open(`/check?offer_id=${OfferId}`, {replace: true})        
     }
 
     return (
@@ -153,9 +152,9 @@ function ArticleCheckButton(props){
     const articleId = props.articleId 
     
     // jump with article's id
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     function handleCheckArtileClick(){
-        navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
     }
 
     return (
