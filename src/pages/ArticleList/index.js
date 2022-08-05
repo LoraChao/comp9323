@@ -46,26 +46,13 @@ function ArticleCheckButton(props){
 
 const ArticleList = () => {
 
-    // get cookies
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        console.log(document.cookie)
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    
-    // get current user's id using cookies
-    const currUserId = getCookie('userid')
+    // get current article's id
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
 
 
     // apis
-    const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+    const articleListURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/preferList'
 
     const [data, setData ] = useState(0);
 

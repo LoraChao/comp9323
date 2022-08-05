@@ -40,8 +40,12 @@ const JobPreference = () => {
     // get current user's id using cookies
     const currUserId = getCookie('userid')
 
+    // get user's id for checking
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
     // apis
-    const jobListURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+currUserId
+    const jobListURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+checkUserId
     
 
     const [data, setData ] = useState(0);

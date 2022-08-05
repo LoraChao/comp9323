@@ -126,7 +126,11 @@ const FollowOrg = () => {
     // get current user's id using cookies
     const currUserId = getCookie('userid')
 
-    const orgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'              
+    // get user's id for checking
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
+    const orgFollowListURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/orgFollowList'              
 
 
     // set state for storing org like list

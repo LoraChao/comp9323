@@ -90,12 +90,14 @@ function JobCheckButton(props){
      )
 }
 
-function ArticleMoreButton(){ 
-    
-    // jump without params
+function ArticleMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
+        
+    // jump with params: 'current user id'
     const navigate = useNavigate()
     function ArtMoreButton(){
-       navigate('/ArticleList', {replace: true})
+       navigate(`/ArticleList?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -103,12 +105,13 @@ function ArticleMoreButton(){
     )
 }
 
-function JobMoreButton(){ 
+function JobMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
 
-    // jump without params
     const navigate = useNavigate()
     function OfferMoreButton(){
-       navigate('/JobPreference', {replace: true})
+       navigate(`/JobPreference?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -131,12 +134,13 @@ function IndCheckButton(props){
         )
 }
 
-function IndividualMoreButton(){ 
-
-    // jump without params
+function IndividualMoreButton(props){ 
+    // get target person's id
+    const checkUserId = props.checkUserId 
+    
     const navigate = useNavigate()
-    function IndMoreButton(){
-       navigate('/FollowInd', {replace: true})
+    function IndMoreButton(id){
+       navigate(`/FollowInd?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -144,12 +148,14 @@ function IndividualMoreButton(){
     )
 }
 
-function OrganizationMoreButton(){ 
+function OrganizationMoreButton(props){ 
+    // get target person's id
+    const checkUserId = props.checkUserId 
 
     // jump without params
     const navigate = useNavigate()
-    function OrgMoreButton(id){
-       navigate('/FollowOrg', {replace: true})
+    function OrgMoreButton(){
+       navigate(`/FollowOrg?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -337,7 +343,7 @@ const MyPage = () => {
     const userInfo = userInfoData 
     
     
-    console.log("get mood",userMoodValue)
+    //console.log(userMoodValue)
 
     return (
         <Layout>
@@ -377,7 +383,7 @@ const MyPage = () => {
             <Content style={{ padding: '0 50px'}}>
                 <Card
                     title="Followed Individuals"
-                    extra={<IndividualMoreButton/>}
+                    extra={<IndividualMoreButton checkUserId={currUserId} />}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -413,7 +419,7 @@ const MyPage = () => {
                 
                 <Card
                     title="Followed Organisations"
-                    extra = {<OrganizationMoreButton/>}
+                    extra = {<OrganizationMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -447,8 +453,7 @@ const MyPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    // extra={<a href="./MyPage/JobPreference">More</a>}
-                    extra={<JobMoreButton/>}
+                    extra={<JobMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -484,7 +489,7 @@ const MyPage = () => {
 
                 <Card
                     title="Liked Articles"
-                    extra={<ArticleMoreButton/>}
+                    extra={<ArticleMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',

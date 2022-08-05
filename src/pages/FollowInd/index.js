@@ -126,8 +126,12 @@ const FollowInd = () => {
     // get current user's id using cookies
     const currUserId = getCookie('userid')
 
+    // get user's id for checking
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
     // apis
-    const indFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'                 
+    const indFollowListURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/indFollowList'                 
    
     const [data, setData ] = useState(0);
 
