@@ -182,7 +182,7 @@ class JobCheck extends PureComponent{
             <span className="username">{this.state.company_name}</span>{/* 这里要读取用户数据 */}
             <br/>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-            <FollowButton/>
+            <LikeButton/>
         </div>
     </Header>
     <content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
