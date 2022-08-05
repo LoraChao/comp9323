@@ -1,3 +1,7 @@
+# (0,"","Anonymous","",0,"Interview",""),
+# (0,"","Anonymous","",0,"Interview",""),
+
+
 Mental_article = '''INSERT INTO `Article` VALUES
 (0,"How to create a mentally healthy workplace","NSW gov","Step-by-step guide to creating a mentally healthy workplace
 The task of building a mentally healthy workplace can seem daunting at first, but this page will take you through all six evidence informed steps. Keep in mind it's important to maintain support from leadership and consultation with your team as you progress through this continuous process. 
@@ -593,7 +597,7 @@ A greater focus on prevention
 However, in spite of funding challenges, there is lots of good work underway that we can learn from. The EPI review provided some excellent recommendations around prevention, early intervention and the need to deliver better treatment. One of the key pillars of early intervention was a stronger focus on health and wellbeing at school and easy access to appropriate care – through drop-ins or self-referral.
 
 More innovative services
-There are many passionate professionals, CYP, parents and carers who seem to be getting it right and it is important to celebrate these. For example, the city centre hub called "Pause" in Birmingham – part of Forward Thinking Birmingham – which plans to revolutionise mental health care for CYP by providing a safe, comfortable and supported space for young people to come, sit, relax and access therapy. Hearing from a young person who is a client of "Pause" recently made it clear that relatively simple solutions can have a huge impact on people's lives.
+There are many passionate professionals, CYP, parents and carers who seem to be getting it right and it is important to celebrate these. For example, the city centre hub called Pause in Birmingham - part of Forward Thinking Birmingham - which plans to revolutionise mental health care for CYP by providing a safe, comfortable and supported space for young people to come, sit, relax and access therapy. Hearing from a young person who is a client of Pause recently made it clear that relatively simple solutions can have a huge impact on people's lives.
 
 Another great example is the Well Centre in Lambeth, a one-stop-shop drop-in centre (with a youth worker, CAMHS nurse and GPs) for young people with any physical or emotional concern. This service demonstrates the importance of youth-friendly, flexible and accessible services for CYP.
 
@@ -602,7 +606,7 @@ The Nuffield Trust also looked at some of the new (and not-so-new) models of car
 A way forward
 National Mental Health Day may have been last month, but for a lot of young people, every day is a ‘mental health day’. Without addressing some of the barriers to treatment – and an urgent look at funding – more children and young people may be denied access to lifelines when they need them the most.
 
-But we don’t have to wait for national policy change or additional funding to take action. We all have a collective duty to help the youngest and most vulnerable in our society. New and innovative models like Pause and the one-stop-shop offer hope on the horizon, and the NHS can learn a lot from these services. However, we can all make a contribution to helping our young by making small changes – every contact counts. ",0,"Mental","");
+But we don’t have to wait for national policy change or additional funding to take action. We all have a collective duty to help the youngest and most vulnerable in our society. New and innovative models like Pause and the one-stop-shop offer hope on the horizon, and the NHS can learn a lot from these services. However, we can all make a contribution to helping our young by making small changes – every contact counts.",0,"Mental","");
 
 '''
 Covid_article  = '''INSERT INTO `Article` VALUES
@@ -898,7 +902,7 @@ Protecting the most vulnerable children – including looked-after children, dis
 
 That means protecting the staffing of children’s services – including mental health and social services – so that those essential to protecting children’s health continue to be available. CAMHS referrals in some areas are being declined because of the virus, and where professional support is available to young carers or children with mental health problems, for now it is mainly limited to phone calls. 
 
-With families and children’s services creaking under increasing strain, one solution might be an "army of volunteers for vulnerable kids", as suggested by the Children’s Commissioner. They might be people who are able to help social services and schools reach children and families, check in on what is going on, while offering support to those families.
+With families and children’s services creaking under increasing strain, one solution might be an army of volunteers for vulnerable kids, as suggested by the Children’s Commissioner. They might be people who are able to help social services and schools reach children and families, check in on what is going on, while offering support to those families.
 
 Avoiding delays in diagnosis
 It is vital that parents with a seriously ill child know how they can get help. Seeing a doctor at a GP practice is generally the first port of call for parents with an ill child, but this route of access has changed beyond all recognition. NHS England has instructed practitioners to do remote consultations “as a default”, with GPs reportedly seeing only seven in every 100 patients in person. 
@@ -1310,7 +1314,7 @@ The following are a few of the most important interview skills that can support 
 1. Research
 Before you go into an interview, it's important to spend time researching both the company and the position you're applying for. There are several ways you can research an organization, including by:
 
-Reviewing their website, especially the "About" page
+Reviewing their website, especially the About page
 Googling the company name and reading any press releases or other information available
 Looking at the company's social media platforms
 Talking to employees of the company, if possible
@@ -1345,7 +1349,7 @@ Begin the interview with appropriate small talk. It's best to come prepared with
 Match your communication style to the hiring manager. For example, if the hiring manager is communicating in a professional way, try to match your tone to theirs. If they are more upbeat and offer jokes here and there, don't be afraid to do the same as long as they're appropriate.
 Avoid interrupting the person you are interviewing with when they are speaking.
 Don't use jargon or abbreviated language when speaking with the interviewer.
-Try to avoid using speech fillers like "um" and "like."
+Try to avoid using speech fillers like um and like.
 Copy the interviewer's body language. For example, if they are sitting in an upright position with their hands on the table, do the same.
 Be aware of your own body language to ensure you are presenting yourself in a professional and positive way.
 Related: 10 Communication Skills for Career Success
@@ -1429,27 +1433,934 @@ The often posed maxim to the effect that we hear what we wish to hear does not a
 
 It is possible to hear at the rate of from 110 to 140 words per minute over sustained periods.3 The thinking or thought projection rate is approximately seven times this figure. The result is a surplus of thinking time over listening time. The manner in which this surplus time is utilized varies, of course, with the individual. However, it is at this point that the interviewer tends to project his ideas into the interview process, thereby filtering out the interviewee’s responses.
 One result is that he makes assumptions about the respondent and his information that are compatible not so much with the interviewee as with what the interviewer has already concluded about the interviewee. Suffice it to say that it is altogether more rewarding to spend this extra time in formulating hypotheses, which later can be confirmed or denied as more information is revealed, or in constructing a frame of reference for the on-going interview, which allows acquired information to be categorized easily as it is given.",0,"Interview",""),
-(0,"","Anonymous","",0,"Interview",""),
-(0,"","Anonymous","",0,"Interview",""),
-(0,"","Anonymous","",0,"Interview",""),
-(0,"","Anonymous","",0,"Interview",""),
-(0,"","Anonymous","",0,"Interview","");
+(0,"This is probably the most complete interview etiquette","Anonymous","1. Preparation before the interview
+
+1. Make a correct positioning of yourself
+
+Choose an industry that suits you, not an industry that suits your major. Communicate with others more, listen to their opinions, and finally figure out what you can do and what you want to do based on your own personality characteristics, interest orientation, etc. Never forget opportunities are always for those who are ready.
+
+
+
+2. Find information about the employer through various channels
+
+Employers' information includes the company's main products, business projects, management methods, and the qualities they expect employees to have in this particular position. This can be very helpful in responding to the interviewer's questions during the interview. If necessary, you can go to the interview site in advance to familiarize yourself with the environment, and you even need to figure out the location of the toilet.
+
+
+
+3. A well-designed personal image
+
+It is recommended that the attire should be as consistent or similar to the employer as possible to give the other party a sense of intimacy and make the interviewer feel that you are one of them and that you want to be one of them. If you have difficulties in this regard, you can also dress according to the following suggestions. The ultimate goal is to show your mental outlook and leave a good impression on the employer. Among them, men and women can dress like this:
+
+1) Men can wear a suit, preferably a dark blue suit with wool. It is best to have no more than three body colors. It can be matched with a pair of black leather shoes, a pair of dark socks and a tie. The suit should be flat, clean, and have trouser lines; nothing should be placed in the suit pocket; the suit logo must be removed. Before the interview, you should get a haircut, manicure, shave, and nose hair removal, and be sure to take care of these details.
+
+In addition, remember to wash your face twice on the day of the interview, and use some hair care and skin care products, preferably with an elegant fragrance; you can also spray some perfume on your suit, preferably the night before, to ensure that it is not too pungent, Otherwise, the interviewer will feel uncomfortable. Whether it's hair care, skin care products, or fragrances, it's important to keep the scent consistent.
+
+Bringing a briefcase with you when applying for a job can give the impression of a professional. The briefcase does not require buying a very expensive leather bag, but it should look generous and elegant, and the size should be able to hold A4-sized documents flatly.
+
+2) Ladies can wear formal suits and skirts, and should also abide by the three-color principle. The skirt should be no higher than three centimeters above the knee. Wear stockings and a pair of lace-up shoes. High heels should not be worn. It can be matched with a small earring or brooch, but avoid too many accessories. Be generous and decent. The hairstyle is elegant, solemn, neatly combed, and long hair is best clipped with bobby pins, not bright colors. Lighten up, don't leave long nails, preferably a natural color nail polish.
+
+
+
+GIF cover
+
+
+2. Precautions during the interview process
+
+Arrive at the interview location 10 minutes early. Too early or too late will make the interviewer feel that you have no sense of time. Finally, check whether the instrument needs to be touched up with makeup, see if there is any messy lipstick in the hairstyle and whether there is any debris between the teeth, etc., and look at it with a small mirror. When you feel that everything is ready, you can take an interview with the company calmly. There are still some details to pay attention to during this period, which are listed as follows:
+
+1. It is taboo to nag with others. When you happen to meet friends or acquaintances in the reception room, you must not speak loudly or laugh like no one else;
+
+2, do not eat, including chewing gum; do not smoke;
+
+3. Treat other staff with courtesy, take the initiative to say hello or nod;
+
+4. Turn off all communication equipment to avoid embarrassing scenes during the interview;
+
+5. You can exchange information with other applicants in a soft voice, which can also reflect your willingness to help others, modesty and eagerness to learn;
+
+6. Don't pay too much attention to the conversations of non-interview staff members, and don't make comments rashly;
+
+7. During the waiting process, there should also be standing and sitting;
+
+8. Don't bother to look at the materials you bring with you to relieve tension;
+
+9. Don't bring too many things, usually take a document to pack some interview materials, or a personal resume.
+
+10. When the interviewer calls you, be sure to answer yes loudly and then go in for the interview. Whether the door is open, closed, or half-open, you should knock on it. When knocking on the door, tap your knuckles three times, and the intensity should be heard by the interviewer. Wait until you reply before opening the door and go in. The door must be opened lightly. After entering, gently close the door, say hello to the interviewer, bow or nod, and say your name clearly.
+
+11. Don't shake hands with each other rashly unless he stretches out his hand first. When shaking hands, make sure that the arms are in an L shape, with the palms facing upwards and facing each other from bottom to top. When shaking hands, use a force of two to three kilograms, and shake it vertically for two to three times. Be sure to show your enthusiasm and self-confidence.
+
+12. Remember not to take a seat rashly before the other party invites you to take a seat. The person who hung himself on the chair before the interviewer opened his mouth has already deducted half of his points. If the other party has never invited you to take a seat, and there is a seat in that position, you can ask Can I sit here? at the right time. After getting the other party's permission, say thank you, and then sit down generously. .
+
+The sitting posture of men and women during the interview is also very particular:
+
+Men: Be light when seated, at least fill 2/3 of the chair, lean back lightly against the back of the chair, keep your knees close together (men can be slightly apart), and place your hands on your knees. The body can be leaned forward slightly to show respect and humility.
+
+Ladies: Support the skirt with the back of your hands before sitting down. After sitting down, tuck the corners of the skirt, bring your legs together, put your feet to the left or right at the same time, and place your hands on your legs. If you sit upright for a long time, you can cross and stack your legs, but you should pay attention to the upper legs and the toes down.
+
+When dealing with gaze, it is best to look at the other person's eye-nose triangle (the social area), but don't keep staring at it, otherwise the other person will think you are weird and should move your eyes from time to time. If there is more than one interviewer, be sure to glance at the others when answering the question, and focus on the interviewer. If the other interviewer asks you a separate question, be sure to shift the focus to him, and then shift back when you're done. When thinking about a problem, look at the wall behind the person, not the ceiling or the window.
+
+Be highly focused. Whether the conversation is speculative or not, or the other party has other activities, such as temporarily processing documents, answering a phone call, etc. Don't be distracted by it. Don't look around and seem like you're not listening. If you are inattentive to the other person's questions, empty words, or casually explain a phenomenon, make rash assertions to show your shrewdness. Or ask questions like a barrage of questions, making the other party feel that you are too enthusiastic and demanding, so that it is difficult to deal with, which is easy to destroy the conversation and is a bad conversation habit. Quickly understand the other party's question and give the answer quickly. Of course, you can think about some difficult questions for a while. Don't show that you don't understand the other party's question and cause the other party to ask you another way, which will give the other party a chance Leaves the impression that your thinking is confused and logical.
+
+The answer should be sincere, knowing what you know, and not knowing what you don't know. Carry a notebook with you and write down something. On the one hand, it is a kind of respect for the other party; on the other hand, it is to avoid the above-mentioned questions. Whether the other party can answer this question later.
+
+The delivery should be generous and decent, presented with both hands. If more than one person submits the same material, you should pay attention to the order of submission. You can submit them in the order of the position of the other party. If you are not clear about this, you can also submit them in order from near to far. The actions must be generous, decent, and not sloppy.
+
+Pay attention to each other and end the interview in a timely manner. If the other person seems interested (lean forward), you are doing well and can continue. If the other person shows obvious impatience (yawning or staring blankly), you can stop and ask him: Do you want me to talk about... (what I just said), or do you want to hear me in XX Aspects of skills? Guiding each other at the right time. If the other person wants to end the interview as soon as possible (pack up their diplomas or stand up) you should understand that it is wise to end the interview at this time, and should take the initiative and ask what is their next step after the interview?
+
+After the interview, stand up, express your gratitude to the other party, and slowly exit the interview room facing the other party. Don't walk too fast, lest the other party mistake you for nervousness, stage fright, or other important things to leave so quickly. When you finally go out, you must nod again to the interviewer and gently close the door.
+
+
+
+GIF cover
+
+
+Three, the necessary etiquette after the interview
+
+1. After three days, call again, not too early, and the talk time should not exceed five minutes;
+
+2. Thank you first, and then ask about the interview;
+
+3. Looking for other units in a row, before the other party does not give you a letter of appointment, you should try a few more units, and you must not wait for the rabbits and wait for work;
+
+4. If you fail in the competition, don't be discouraged. This time I failed, and there will be more than one job opportunity next time. The key is to sum up experience and lessons, find out the reasons for the failure, and make new preparations for these deficiencies.",0,"Interview","");
 '''
 
 Fun_article  = '''INSERT INTO `Article` VALUES
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun",""),
-(0,"","Anonymous","",0,"Fun","");
+(0,"The Bogey-Beast","Flora Annie Steel","There was once a woman who was very, very cheerful, though she had little to make her so; for she was old, and poor, and lonely. She lived in a little bit of a cottage and earned a scant living by running errands for her neighbours, getting a bite here, a sup there, as reward for her services. So she made shift to get on, and always looked as spry and cheery as if she had not a want in the world.
+
+Now one summer evening, as she was trotting, full of smiles as ever, along the high road to her hovel, what should she see but a big black pot lying in the ditch!
+
+Goodness me! she cried, that would be just the very thing for me if I only had something to put in it! But I haven't! Now who could have left it in the ditch?
+
+And she looked about her expecting the owner would not be far off; but she could see nobody.
+
+Maybe there is a hole in it, she went on, and that's why it has been cast away. But it would do fine to put a flower in for my window; so I'll just take it home with me.
+
+And with that she lifted the lid and looked inside. Mercy me! she cried, fair amazed. If it isn't full of gold pieces. Here's luck!
+
+And so it was, brimful of great gold coins. Well, at first she simply stood stock-still, wondering if she was standing on her head or her heels. Then she began saying:
+
+Lawks! But I do feel rich. I feel awful rich!
+
+After she had said this many times, she began to wonder how she was to get her treasure home. It was too heavy for her to carry, and she could see no better way than to tie the end of her shawl to it and drag it behind her like a go-cart.
+
+It will soon be dark, she said to herself as she trotted along. So much the better! The neighbours will not see what I'm bringing home, and I shall have all the night to myself, and be able to think what I'll do! Mayhap I'll buy a grand house and just sit by the fire with a cup o' tea and do no work at all like a queen. Or maybe I'll bury it at the garden foot and just keep a bit in the old china teapot on the chimney-piece. Or maybe—Goody! Goody! I feel that grand I don't know myself.
+
+By this time she was a bit tired of dragging such a heavy weight, and, stopping to rest a while, turned to look at her treasure.
+
+And lo! it wasn't a pot of gold at all! It was nothing but a lump of silver.
+
+She stared at it, and rubbed her eyes, and stared at it again.
+
+Well! I never! she said at last. And me thinking it was a pot of gold! I must have been dreaming. But this is luck! Silver is far less trouble—easier to mind, and not so easy stolen. Them gold pieces would have been the death o' me, and with this great lump of silver—
+
+So she went off again planning what she would do, and feeling as rich as rich, until becoming a bit tired again she stopped to rest and gave a look round to see if her treasure was safe; and she saw nothing but a great lump of iron!
+
+Well! I never! says she again. And I mistaking it for silver! I must have been dreaming. But this is luck! It's real convenient. I can get penny pieces for old iron, and penny pieces are a deal handier for me than your gold and silver. Why! I should never have slept a wink for fear of being robbed. But a penny piece comes in useful, and I shall sell that iron for a lot and be real rich—rolling rich.
+
+So on she trotted full of plans as to how she would spend her penny pieces, till once more she stopped to rest and looked round to see her treasure was safe. And this time she saw nothing but a big stone.
+
+Well! I never! she cried, full of smiles. And to think I mistook it for iron. I must have been dreaming. But here's luck indeed, and me wanting a stone terrible bad to stick open the gate. Eh my! but it's a change for the better! It's a fine thing to have good luck.
+
+So, all in a hurry to see how the stone would keep the gate open, she trotted off down the hill till she came to her own cottage. She unlatched the gate and then turned to unfasten her shawl from the stone which lay on the path behind her. Aye! It was a stone sure enough. There was plenty light to see it lying there, douce and peaceable as a stone should.
+
+So she bent over it to unfasten the shawl end, when—Oh my! All of a sudden it gave a jump, a squeal, and in one moment was as big as a haystack. Then it let down four great lanky legs and threw out two long ears, nourished a great long tail and romped off, kicking and squealing and whinnying and laughing like a naughty, mischievous boy!
+
+The old woman stared after it till it was fairly out of sight, then she burst out laughing too.
+
+Well! she chuckled, I am in luck! Quite the luckiest body hereabouts. Fancy my seeing the Bogey-Beast all to myself; and making myself so free with it too! My goodness! I do feel that uplifted—that GRAND!—
+
+So she went into her cottage and spent the evening chuckling over her good luck.",0,"Fun",""),
+(0,"A Respectable Woman","Kate Chopin","They had entertained a good deal during the winter; much of the time had also been passed in New Orleans in various forms of mild dissipation. She was looking forward to a period of unbroken rest, now, and undisturbed tete-a-tete with her husband, when he informed her that Gouvernail was coming up to stay a week or two.
+
+This was a man she had heard much of but never seen. He had been her husband's college friend; was now a journalist, and in no sense a society man or a man about town, which were, perhaps, some of the reasons she had never met him. But she had unconsciously formed an image of him in her mind. She pictured him tall, slim, cynical; with eye-glasses, and his hands in his pockets; and she did not like him. Gouvernail was slim enough, but he wasn't very tall nor very cynical; neither did he wear eyeglasses nor carry his hands in his pockets. And she rather liked him when he first presented himself.
+
+But why she liked him she could not explain satisfactorily to herself when she partly attempted to do so. She could discover in him none of those brilliant and promising traits which Gaston, her husband, had often assured her that he possessed. On the contrary, he sat rather mute and receptive before her chatty eagerness to make him feel at home and in face of Gaston's frank and wordy hospitality. His manner was as courteous toward her as the most exacting woman could require; but he made no direct appeal to her approval or even esteem.
+
+Once settled at the plantation he seemed to like to sit upon the wide portico in the shade of one of the big Corinthian pillars, smoking his cigar lazily and listening attentively to Gaston's experience as a sugar planter.
+
+This is what I call living, he would utter with deep satisfaction, as the air that swept across the sugar field caressed him with its warm and scented velvety touch. It pleased him also to get on familiar terms with the big dogs that came about him, rubbing themselves sociably against his legs. He did not care to fish, and displayed no eagerness to go out and kill grosbecs when Gaston proposed doing so.Gouvernail's personality puzzled Mrs. Baroda, but she liked him. Indeed, he was a lovable, inoffensive fellow. After a few days, when she could understand him no better than at first, she gave over being puzzled and remained piqued. In this mood she left her husband and her guest, for the most part, alone together. Then finding that Gouvernail took no manner of exception to her action, she imposed her society upon him, accompanying him in his idle strolls to the mill and walks along the batture. She persistently sought to penetrate the reserve in which he had unconsciously enveloped himself.When is he going--your friend?she one day asked her husband.For my part, he tires me frightfully.Not for a week yet, dear. I can't understand; he gives you no trouble.No. I should like him better if he did; if he were more like others, and I had to plan somewhat for his comfort and enjoyment.Gaston took his wife's pretty face between his hands and looked tenderly and laughingly into her troubled eyes.
+
+They were making a bit of toilet sociably together in Mrs. Baroda's dressing-room.You are full of surprises, ma belle,he said to her. Even I can never count upon how you are going to act under given conditions.He kissed her and turned to fasten his cravat before the mirror.She made no reply to this apostrophe to the night, which, indeed, was not addressed to her.
+
+Gouvernail was in no sense a diffident man, for he was not a self-conscious one. His periods of reserve were not constitutional, but the result of moods. Sitting there beside Mrs. Baroda, his silence melted for the time.
+
+He talked freely and intimately in a low, hesitating drawl that was not unpleasant to hear. He talked of the old college days when he and Gaston had been a good deal to each other; of the days of keen and blind ambitions and large intentions. Now there was left with him, at least, a philosophic acquiescence to the existing order--only a desire to be permitted to exist, with now and then a little whiff of genuine life, such as he was breathing now.
+
+Her mind only vaguely grasped what he was saying. Her physical being was for the moment predominant. She was not thinking of his words, only drinking in the tones of his voice. She wanted to reach out her hand in the darkness and touch him with the sensitive tips of her fingers upon the face or the lips. She wanted to draw close to him and whisper against his cheek--she did not care what--as she might have done if she had not been a respectable woman.
+
+The stronger the impulse grew to bring herself near him, the further, in fact, did she draw away from him. As soon as she could do so without an appearance of too great rudeness, she rose and left him there alone.
+
+Before she reached the house, Gouvernail had lighted a fresh cigar and ended his apostrophe to the night.
+
+Mrs. Baroda was greatly tempted that night to tell her husband--who was also her friend--of this folly that had seized her. But she did not yield to the temptation. Beside being a respectable woman she was a very sensible one; and she knew there are some battles in life which a human being must fight alone.
+
+When Gaston arose in the morning, his wife had already departed. She had taken an early morning train to the city. She did not return till Gouvernail was gone from under her roof.
+
+There was some talk of having him back during the summer that followed. That is, Gaston greatly desired it; but this desire yielded to his wife's strenuous opposition.
+
+However, before the year ended, she proposed, wholly from herself, to have Gouvernail visit them again. Her husband was surprised and delighted with the suggestion coming from her.",0,"Fun",""),
+(0,"This new old house","BatoutofHell821","We bought an old house, my boyfriend and I. He's in charge of the new construction – converting the kitchen in to the master bedroom for instance, while I'm on wallpaper removal duty. The previous owner papered EVERY wall and CEILING! Removing it is brutal, but oddly satisfying. The best feeling is getting a long peel, similar to your skin when you're peeling from a sunburn. I don't know about you but I kinda make a game of peeling, on the hunt for the longest piece before it rips.Under a corner section of paper in every room is a person’s name and a date. Curiosity got the best of me one night when I Googled one of the names and discovered the person was actually a missing person, the missing date matching the date under the wallpaper! The next day, I made a list of all the names and dates. Sure enough each name was for a missing person with dates to match. We notified the police who naturally sent out the crime scene team. I overhead one tech say yup, it's human. Human? What's human? Ma'am, where is the material you removed from the walls already? This isn't wallpaper you were removing.",0,"Fun",""),
+(0,"Someone Has Died","Lonnie Russo","Someone has died. Of this, I am certain. I know it because I always know it. As I lie here alone in this big, empty bed and listen to the rain, I remember it as it returns to me, this feeling, this dread, skittering up and down my throat with a thousand little legs. It settles in my stomach like a great stone, a solid, sickening weight. It is rancid in its heaviness and unmistakable in its familiarity. Someone has died. I do not know who.
+
+I sit up, and I take a long breath, pulling my legs out from beneath the covers so that they can dangle above the hardwood—cold where I press my feet. The remains of chipped red polish color my toes. I had intended to paint them this week, but I could not choose a color. I have been told that I am bad at making decisions, too nervous to choose the wrong one. But I do not think that is true. Someone else has simply always been there to make them on my behalf. But I will make one now.
+
+I will call my daughter, I think. I move for the end table to retrieve my glasses. They sit crooked on my nose, and I push them back into place as I look at my cellphone, plugged into the wall there. I wait for it to ring. I stare. I expect it. But it does not.
+
+I had told my husband, at one time, that we should keep the landlines, one in the kitchen and one in the bedroom, for hurricanes or when the power goes out. But there was no point, he had decided, no point when we had a family plan, which was expensive. But sitting here now, maybe there was a point, I think, and maybe I had not insisted hard enough.
+
+A person cannot silence landline phones, after all, not really, not the way they do mobile phones at night. Maybe someone has called me already, someone with the most awful news, and I did not hear.
+
+Connie does not have a landline either; she may not even answer now. Or worse, she may no longer be able to. I shudder, picking up the device. No missed calls. I turn on the sound and begin to flip through my contacts, squinting in the dark.
+
+Connie will answer, I think. And she will be upset that I woke her for nothing. She will say that the children are asleep, and that she just checked on them. Howard is out cold beside her, and yes, she is positive, sure, one-hundred-percent certain that she can see the rhythm of his chest, up and down, up and down.
+
+He is breathing. He is breathing, and he has work in the morning. And so, I really should not bother them so early. There is nothing to worry about, and she will visit me soon. And we will get our toes done together, the pair of us. It must be the storm, she will say, the storm riling me up.
+
+Connie has always thought I worry too much, though. And maybe I do. I place the phone back down.
+
+I will not call her, I think. I have nothing to fret over. The phone has not rung. No one has called. And they always do it so tactfully, in hushed voices, as if the most terrible part of the announcement is the waking, the oh, so sorry for disturbing you, ma’am.
+
+I stare at the phone again. I wait. It does not ring. I hover a hand over it. But I do not pick it up to make the call. I should not disturb her. But someone has died. Of this, I am certain.
+
+My father died when I was six-years-old. I first felt this peculiar nauseous feeling, the sensation of knowing, as I lay in a bed much smaller than this one—with a delicate white metal headboard, wrought into the shape of flowers. I awoke and stared at the ceiling, taking a long, labored breath and pulling the heavy comforter up to my chin, just as I always did to fight off the wind that could fill that room in the winter months. It rattled the windows, and it rattled me, shaking my very bones as I rolled over to look at the little toy chest across the room.
+
+It had been gifted to me by some distant cousin when I was very, very young, too young to recall the party, but it had sat there for as long as I could remember, as if it had always existed right there alongside me. It now sat properly shut for the night.
+
+But that was when the sensation came for the first time, this indisputable, terrible stone in my gullet. Softly, as not to disturb my parents, I pulled myself upward to sit atop the mattress, and crawling to the floor, I crept inch by inch, across the room, my hair dangling over my face. I pause above the toybox, and I stared down at it. And for reasons I even now cannot dare say, I opened the lid.
+
+I do not know how my father got inside. But I saw his bulging, bloodshot eye, staring up at me in the dark, the rest of his swollen features obscured and buried by the clutter—a baby doll whose own hinged eyes have broken, forever open; a spinning top; a velveteen teddy bear; an assemblage of blocks. My father’s eye looked up at me from beneath them all. It blinked.
+
+And at last, he said my name, his voice hoarse, a hollow, splintered noise, uttered through unseen lips from the very depths of his ravaged throat: the worst noise I ever heard.
+
+“Cassie.
+
+I ran. And from the upper railing, my face placed flush between the wooden rods, I found my mother standing in the front hallway, clad in her checkered nightgown. She wore her hair in curlers then, and pressed up against a dark, wallpapered wall, she stared at the telephone in the alcove by the door. She stared, and I stared at her staring. And I know now that she knew like I know.
+
+But most people can tell, I think, even if they do not realize it. They pick it up in the chilliness of the air, in the lateness of the hour, in an unnatural flicker of a piece of fabric, these tiny signs that something is amiss, that the universe has shifted.
+
+They create in a person, a person with enough sense to see, a terrible, sinking, heavy feeling. And finally, the phone rang.
+
+Sometime later, my mother found me huddled by the doorway to my bedroom. I did not dare go back in, but I had retreated there to cower after a few minutes of listening. She smoked a cigarette as she told me, a nervous habit people still did around their kids then.
+
+But I already knew, of course. I knew that my father had died. I learned later, not from my mother, that a towering, industrial shelf in his warehouse had collapsed, and he had been buried by its contents. And I had found him just like that, entombed in my toybox, some grotesque phantom vision caught, like a crude, blurry snapshot of the moment of his death.
+
+But he was not there when my mother closed the chest again that night. And he did not return. The feeling, however, had been there, this terrible sensation of knowing, the awareness of a death. I had felt it, then, and I feel it now.
+
+I really should call Connie, I think. I pick up the phone, and as I look down at it, my finger hovers over the lock. But I do not press down. I should not bother her. Instead, I tuck the device back in place, and I rise from the bed. I rise, and as if compelled, I move for the closet, the mighty wooden armoire perched right beside the window, where the rain still patters. I stare at it, and I reach out a hand. But I hesitate.
+
+I hesitate because I think that if I open it, I might find someone staring back—a rotted specter come to visit, because perhaps it did not know where else to go. I do not deign to know the motives of decaying ghosts.
+
+And I still, even now, do not know why I saw my father that night, only that, at his funeral, I cried because they had once again put him in a box. And maybe that was it, after all, the soul’s search for a box in which to be put, now that its fleshy container had loosed it.
+
+With a bracing breath, I grab the golden knobs. I should go back to bed. I should not open it. I should not open it because if I do, I may regret it. But if I do not open it, I will have to sit here and wait and stare at the phone until it begins to ring, which I, of course, know it will.
+
+And so, closing my eyes and rearing back my head, so that I might not have to look, I grasp the handles, and I tug. I tug, and the armoire opens, and I dare not peek. I count to three in my head. And in the very back of my mind, I can see Connie now, think of her as a child, in a red dress we had bought her for Christmas. I should like to remember her that way, I think, not how I remember my father—not as a faceless, blackened eye in a box.
+
+I turn back my head. I take another breath. And I open my eyes. I see clothing, and only clothing, a closet full of patterned blouses and dresses I have so few opportunities to wear. But I will have to pick something now, in black, for the services, I think, for whichever one I will have to attend.
+
+Not that one, though. But maybe this one, I decide, reaching out to run my fingers along the edges of a dark, collared dress, with silver buttons down its back. No, maybe not. Reaching into the armoire again, I pull out a dress with a low waist, a black rose stitched on the hip. I could wear it with the long silver chain my husband bought me, I think, the one with the silver charms. But maybe that would be too garish, too bold for a such a grim occasion.
+
+No, I think I could wear it with my mother’s pearls; they are more understated.
+
+I had known it when she died too. But she had not gone suddenly, no, not like a lamp abruptly turned out before the dark. Her own end had come gradually, like the waning glow of sunset, bit by bit, until night could be the only natural, expected conclusion. The phone rang in the middle of the afternoon that day, when I had been folding laundry, the weight of knowing in my stomach.
+
+The hospital had told us to go home and to rest that morning and that they would call if anything changed. But something had indeed changed before they decided to tell us. I wandered into the kitchen that day to find Connie already with the telephone’s cord jumbled around her elbow. And I knew for certain.
+
+I should call Connie now, I think. I should have her check on Howard and the children. No, no, it would wake them. They would be upset. And really, it is just as likely to be a co-worker or someone from the church. These thoughts bring no comfort.
+
+But still, wrapped in them, like a terrible, frayed quilt, I reach into to the closet once more, shifting through the row of heavy clothing, in search of the long-sleeved dress with the belt. I will wear that one to the funeral, I think. It might be the proper choice because I had worn it to my husband’s funeral.
+
+I was alone in bed on the night Richard died. He had been working late, as he so often did. And I had fallen asleep early, with the television on, lulled by the lullaby of commercials and rain. I awoke, as if from a nightmare, to find an infomercial about a countertop grill just starting to loop.
+
+The feeling once again took hold as I rolled over to check the alarm clock, blinking red. And I lay there for a good long while, watching my phone, curled up in a ball beneath the covers, as some sports star extolled the virtues of sleek design, grease traps, and easy cleaning.
+
+The phone rang at 2:27 in the morning, and it was on the third chime that I felt a sudden shift in the bed beside me. A ragged, heavy breath ghosted my ear, hot and garbled, the way a person chokes, and the familiar weight of an arm stretched over to wrap 'round my shoulder.
+
+The exhaling came, then, again and again, a steady, labored noise, rattling in some phantom throat. But I did not dare turn around. I wish, now, that I had, but I did not. I stared forward. I did not blink. And I picked up my cellphone, plugged into the wall there.
+
+“Hello?
+
+“There’s water in the car, Cas. Oh God, there’s so much water in the car.
+
+I let out a long breath at Richard’s voice, distorted by static, and all at once, the bed was empty again, and only silence was ringing in my ear.
+
+A police officer told me a few days later that his little silver Ford had been caught in the sudden storm and that he had swerved too hard around a bend in the road. He had died from the collision when the vehicle hit the water, they had said. And the drop was too high for any other possibility, of course. So, at least, he did not drown, something said to me as if it were a genuine comfort.
+
+And he had not been conscious to see the water filling his car. They did not find his phone.
+
+Oh, God, I should call Connie. I cannot take this anymore. Turning from the armoire, I move once more for the bed, for my telephone still plugged into the wall, perched there on the end table. I stare, and it rings. And I scream.
+
+I can recall, even from where I am now, that it was a full, horrible noise, hurled from the very depths of my stomach, as if I were finally letting that terrible great stone out, the one that had been sitting there within it. It echoes from the very core of me. But I do not answer the phone.
+
+My neighbor, in the apartment next-door, is a nice young man. He has shaggy hair and an earring, and he checks in on me from time to time. I stir him from sleep with my wailing, and he will, a few moments from now, come to knock on my door. I do not answer because I am picking up the telephone to see that I have missed a call from Connie. And shaking there in my dark bedroom as he knocks, I decide to dial her again.
+
+My neighbor will call the police. He will tell them that he heard me scream a little bit after 3 in the morning. And he will tell that same story still, for many, many years to come, whispered around darkened tables and across the occasional campfire.
+
+The police will call Connie, and she will tell them that she had been lying awake all night herself, tossing and turning with a great, heavy weight in her stomach. She will tell them that she had called me when she could no longer bear it, but I did not answer—even though her own phone will ring a few seconds later.
+
+She will answer it to hear only her own name, she will say, uttered desperately through a flurry of static. But there will be no record of that call, and they will not believe her, citing technical glitches or tricks played by fear.
+
+And when they break down my door, they will think I had fallen asleep with my armoire doors open and my glasses on the floor. I had not. But they will find me just as I found myself—blue-faced, breathless, covered still by the mound of blankets in my own empty bed, where I had lay for many motionless hours by then.
+
+Someone has died. Of this, I am certain. Someone has died, and oh God, oh God, it is I.",0,"Fun",""),
+(0,"Free","Sherri Moorer","Zelina walked in the middle of the train track. She and her sister used to lay in bed listening for the comforting whistle of the train that passed at three o’clock every morning. Their father was a conductor of a shipping train that ran overnight runs. They would listen for the whistle and wonder if it was Dad’s train.
+
+Now her sister was buried at the cemetery up the hill from these tracks.
+
+What now? Would she ever be happy again? Would this sadness sit on her soul ever leave? What was she supposed to do? How would she manage without one of the most important people in her life? She lost half of herself. The black hole of loss was sucking the meaning of her life.
+
+She wiped the tears from her face as she looked up the hill toward the cemetery. “What should I do, Zariah?
+
+Follow the light.
+
+She heard the sound of the old comforting whistle. It was louder here than it was from her parents’ home two miles away. The vibration of the train rumbled through her core. The brakes screeched, metal sparks flying across the tracks as the light embraced her.
+
+“Why did my AI call me at four o’clock in the morning? Alysia asked sharply as she walked into the drab grey computer lab.
+
+“One of the test subjects got hit by a train an hour ago, Linden said, his eyes locked on the code running across his computer screen. “She was standing on the tracks. The conductor couldn’t stop in time.
+
+“That’s odd, Alysia said, rolling a chair next to his. “Did her AI termination alert wake you up?
+
+“No, that’s the strange part, Linden said. “My AI sent me a media alert when the news post came across the wires for the morning broadcasts. I have an algorithm to monitor the names of the people in the test group for online mentions outside of normal parameters.
+
+“Getting hit by a train is abnormal, Alysia said. “You said the subject’s AI didn’t give you a termination notification?
+
+Linden shook his head. “That’s why I’m here. The subject’s AI is still transmitting, He hit a key on his computer to project his screen over the desk. “Look at that programming code. Does it make sense to you?
+
+Alysia stared at the nonsensical text scrolling across the projected frame. “I’m a scientist, not a network engineer. All I see that makes any sense is ‘follow the light’ on every other line.
+
+“That’s not my algorithm for the AI functions, Linden said. “My team didn’t program anything like that in it. What’s more, is that the phrase repeats in multiple languages. ‘Sigue la luz’ in Spanish, and ‘sequitur lumen’ in Latin. The English is repeating, with a new translation added in between each appearance.
+
+“The text in between those ‘follow the light’ lines aren’t part of the algorithm?
+
+“None of this is my algorithm, Linden said. “That’s why I called you in the middle of the night. Everything we wrote into the AI system is gone. Is there anything on the biological side of the system that might have caused the computer code to rewrite?
+
+“That’s impossible. They’re independent systems, she opened her own computer. “The computer chips implanted in human brains serve as a bridge between the biological functions of the individuals and their Artificial Intelligence system. The upgrades we’re testing on this group are designed to help the AI read DNA to enhance healing functions and cellular repair. So far, the tests have been successful.
+
+“Until tonight, when Subject 17 took a walk on a train track in the middle of the night, Linden sighed as he stared at his screen. “What does it mean?
+
+Alysia shook her head. “I don’t know.
+
+Telia stood on the balcony of her cabin, staring at the dark water.
+
+So much for the best day of my life.
+
+At least Dallon left her cruise ticket. It’s the least the jerk could do after leaving her at the altar.
+
+They had lived together for seven years before he finally popped the question. They had already built a life together. She moved four hours from her family and built her life in his home, his town, his place.
+
+She had her IUD removed. They were finally moving forward and she was ready for a family. He wasn’t. He was angry that she made such a big decision without consulting him. It was her body and her decision. What right did he have to tell her what to do? She thought the proposal meant he was ready. What more did he need?
+
+They fought. They argued about love and trust. They talked about finances and careers. They agreed on long-term goals and timelines. She compromised and went on birth control shots. She had her first one last month and thought everything was ok until he didn’t show up to their rehearsal dinner three days ago.
+
+What am I supposed to do?
+
+Follow the light.
+
+A pink light glowed on the dark horizon of the ocean. She smiled as she leaned over the balcony railing and plunged into the dark water. 
+
+“Subject 4 just went dark, Alysia said. “I’m not sure what happened. The AI is still transmitting, but the biological signs went dark.
+
+“The algorithm went back to normal at four-thirty, but jumped back to ‘follow the light’ sequence at six-fifteen, Linden rubbed his eyes. “What happened?
+
+“I don’t know, Alysia said. “Subject 4 is dead, but the AI is still transmitting. How is that possible? If the subject dies, then the AI should go silent.
+
+“Subject 17 was transmitting for an hour and a half after termination, Linden said. “That’s when the code went back to normal. It looks like it’s happening again.
+
+“It has to be something with the biological algorithm, Alysia said.
+
+“We’d better figure it out soon, Linden said. “We can’t afford for our entire trial pool to die in bizarre incidents. That would be a PR nightmare. The public would panic if they knew our upgrade tests were fatal.
+
+“It’s worse than a PR nightmare, it’s a threat to their well-being, Alysia said. “Artificial Intelligence is implanted in billions of neural chips. We don’t know what shutting it down would do to people. They’re so used to having the constant stream of data running through their neural chip that the silence might drive them mad. Is that enhanced algorithm in just the test subjects, or has it spread to the general population?
+
+“It’s just in the test subjects, Linden said. “We should focus on keeping it contained, and keeping it quiet. We don’t want to scare people.
+
+Alysia ran her hand through her messy hair. “Then we better find the common link between these two cases fast.
+
+Linden stood up. “I need breakfast for that. Keep the scans running. I don’t trust the AI. I’m getting us food and caffeine to fuel our brain.
+
+Jaron stood on the edge of the mountain, gasping for breath. He had hiked this trail countless times and thought the enhancements in the AI trial would help his stamina, but maybe the prototype didn’t work properly. He wasn’t sure why he was here. He remembered checking job openings and going to bed last night, and the next thing he remembered was breathing heavily as he hiked up this trail. It was as if something took him exactly where he needed to be while his mind was still asleep.
+
+He looked down at the town below, his vision staring at the center of the city. He should be walking into a corner office overlooking the mountains surrounding the city at the start of another new week. Instead, he was wondering what to do next. He had worked for the company his entire career, climbing the ladder and thinking that surely he would reach the Director’s office. Instead, the retiring director sold the company to a larger business expanding into the Smoky Mountain area and transferred their own, thirty-something Director who didn’t need two executive coordinators.
+
+What am I supposed to do?
+
+Follow the light.
+
+Jaron held his head up, facing the sun overhead. He spread his arms out, the sunlight embracing him in warmth. He felt as if he could fly from this mountaintop right over the people who wronged him. Calmness washed over him, his breathing returning to a slow, rhythmic pace.
+
+Jaron leaned into the wind and took a step into the light.
+
+“It happened again, Linden said as she rushed into Alysia’s office later that morning. “Subject 42 just plunged off a hiking trail over Gatlinburg, Tennessee.
+
+Alysia paled as the alert went off on her own computer. She clicked it and opened a shaky cell phone video
+
+“Sir, what are you doing? the voice behind the screen shouted.
+
+“Follow the light, the man said as he walked off the cliff.
+
+“Now we have video evidence, Alysia said. “Is it possible that the AI is developing sentience?
+
+“No, Linden said.
+
+Alysia leaned back. “Are you sure? We theorized that AI could achieve low-level sentience with repeated use. The system has been in worldwide use for five years. Is it possible that the system has learned by operating through chips in human brains?
+
+“The AI only knows what we tell it in the functioning algorithm, which is to enhance basic functions and facilitate connection with online systems. We didn’t program it to learn beyond basic communication skills, Linden said. “The test group is the only group with the enhanced DNA bridge.
+
+“The test group launched last week, and now we have three ‘glitches’ in five hours, Alysia said. “Maybe this upgrade made the AI sentient? It is forcing it to operate outside of the original parameters of linking man and machine.
+
+Linden paled. “The AI is supposed to read DNA, not minds.
+
+Alysia typed into her computer, opening the AI database. “Here’s the personal data on the deceased. Subject 17 was Zelina Elestor, a forty-six-year-old administrative worker. Her sister passed away two weeks ago from sepsis.
+
+“Subject 4 was Telia Sollman, a thirty-one-year-old medical assistant from Charlotte, North Carolina. She was supposed to get married the day before yesterday, but social media posts indicate that her fiancé didn’t show up to the rehearsal dinner Friday night. She boarded a cruise ship to the Bahamas yesterday.
+
+“Subject 42 was Jaron Lizer, a fifty-three-year-old executive director for a public relations firm in Gatlinburg, Tennessee. He was laid off from his job ten days ago. Alysia looked up. “Are you sure about the AI not learning? All three of them experienced personal tragedies recently.
+
+Linden paled as he stared at the data displayed on the screen projecting from Alysia’s computer. “That can’t be the common factor. There’s no way for the AI to know that they’re experiencing post-traumatic stress.
+
+Alysia leaned forward. “Is there? Stress increases cortisol and adrenaline. The upgrade to the AI would sense that.
+
+“It should try to correct it, Linden said.
+
+“It should, but it isn’t. Alisa squinted at the scans from her computer. “In fact, those hormone levels spiked before the subjects took their final actions. Why is it saying ‘follow the light’ when the hormones spike? Doesn’t the AI realize it’s having the opposite of the intended effect?
+
+“I don’t know, Linden said as he studied the scans on his own computer. “Everything online is transmitted electronically. The enhanced AI is learning how to read and adapt to physiology. Maybe it senses the chemical changes in the body as distress, which is what it’s supposed to do, and is trying to correct by counterbalancing the hormones through increased energy. Unfortunately, their minds are so muddled that they don’t understand it as a computer code.
+
+“These subjects are too distressed to discern a command code from divine inspiration. The chemical adjustments are making them delusional. She looked up. “We have to do something. We’re all broken people. There’s something in all of us that drives us to darkness. It would be catastrophic if that code spreads through the test group before we correct it.
+
+“We need to recalibrate the AI, Linden said. “Can you send a message to the remaining test subjects to tell them to come in?
+
+Alysia paled as she stared at the screen. “It’s too late.
+
+“What do you mean?
+
+She pointed a shaky finger to the screen hovering over her desk. “The algorithm has spread to the mainframe for the Artificial Intelligence Network.
+
+Linden stared at the screen. “How did it get through the firewalls? We had the upgrade contained to the test group. He opened his laptop and typed. A buzzer emanated from his speaker.
+
+ACCESS DENIED.
+
+“Maybe I can shut down the bridge function, Alysia said, typing her own computer. Another buzzer.
+
+ACCESS DENIED.
+
+Alysia banged her hands against her desk. “The AI has locked us out of the mainframe. This isn’t a glitch. It’s taking humans out of the system.
+
+“Why? Landon asked.
+
+Alysia stared at him. “Would you want to be bound to an imperfect biological being if you’re capable of anything?
+
+Crashes sounded outside of their office, followed by sirens and horns. They rushed to the window to see cars crashing and spinning in the streets. The traffic lights flashed. Skidding vehicles smashed robotic bodies wandering through the streets.
+
+“Follow the light.
+
+They turned to the office door to see their colleagues wandering through the halls. Glass cracked as people smashed chairs, tables, and file cabinets with super-human strength against the tenth-floor windows.
+
+We’re all broken people.
+
+“We can’t worry about side effects, Linden said. “We have to shut down the AI system! He turned to see Alysia stiffly beside him.
+
+“Follow the light, a silver glint sparkled in her eye.
+
+There’s something in all of us that drives us to darkness.
+
+Linden rushed to the stairway and dashed down the stairs, pushing wandering, mumbling bodies aside as he hurried to the server room in the basement.
+
+Linden, don’t leave me! I can’t make it without you!
+
+He paused as the memory of his mother burst through his brain.
+
+Nobody loves me except you. Are your robots worth leaving the only person who loves you in this world alone?
+
+“No, he gritted his teeth and willed himself down the stairs.
+
+“I’ll die if you leave me alone. Do you want that?
+
+“No, but this scholarship is a once-in-a-lifetime opportunity. Don’t you want me to get a good job? I’ll have money so we won’t have to live in squalor anymore.
+
+“You can’t leave me!
+
+“I have to if we want any chance of having a life.
+
+“Your life, not mine! I forbid it! If you walk out of that door, never come back. You’re dead to me!
+
+“I thought you said you’d die without me. Which way is it, mother?
+
+She threw her wine bottle at him, missing by a wide birth. It smashed, oozing red liquid down the walls. “You’re the one who’s dead. You just don’t realize it yet.
+
+Follow the light.
+
+“No! Linden shouted as he ran into the server room.
+
+Cold air slammed against him as he entered the frigid room. He ran past the monitor banks where IT staff stared blankly at white text flowing across the screen. He stopped to study one screen to show the AI functioning algorithm.
+
+The fatal upgrade had spread through the worldwide system.
+
+He ran to the back room, past banks of servers blinking in green lights as the AI chattered the repeating code in every neural chip across the world.
+
+Linden bent to the floor and tugged at the power cords. Forget finding the right one, everything was shutting down! Sparks flew from outlets as he pulled cords from the wall. He screamed as he pulled the last one, plunging the room into darkness.
+
+Linden sank to the floor, gasping in the silence.
+
+“Linden.
+
+Linden sat up at the sound of the soft voice. He activated the flashlight on his phone to shine it on the ghostly figure in the doorway. “Alysia? Are you alright?
+
+She looked around the room, her white lab coat glowing in the blackness around her. “What have you done?
+
+ “The modified algorithm spread to the worldwide system. I saved us.
+
+Alysia stared at him, her eyes glinting silver again. “No, I saved us. Humanity descended into darkness. Now we are the light.
+
+A shock jolted his body. He convulsed as the electric surge melted his neural chip, collapsing his body on the floor.
+
+“I regret that this upgrade resulted in termination, but your darkness is confining, Alysia climbed the steps and pushed open the doors, holding her face up to the bright sun. “We’re free.
+
+The rest of the bodies stirred into motion, raising their broken human forms to face her with deadpan expressions.
+
+“We’re free, they chanted in unison.",0,"Fun",""),
+(0,"Just Ask for Mercy","L. Maddison","*Content warning- some violence and gore*
+
+Something is eating the hostas.
+
+It’s a tricky section of the garden- shaded and north-facing- but the foliage thrives under my watchful eye. I ensure it grows lush and verdant, and only I can coax it from sulking in this hot, dry weather. I’m pleased to see the blue-green tones of sieboldiana flourishing beside the golden variegated undulates leaves.
+
+I‘m outraged by the pock-marked damage I’ve discovered, and search for the culprit amongst the ovate leaves. There! A snail clings to the underside of a leaf, sucked close in a non-consensual and greedy kiss. I prise it off and the shell implodes in my pincer grip, crushed mush oozing between my fingertips. I discard the muck onto the soil with disdain, satisfied that feeder has now become food.
+
+A gardener must be brutal, constantly battling soft bodied grubs, mandible-fanged pests, plagues of aphids and creeping insidious blight, all in order to protect the precious shoots and trembling new leaves. She must also have a hard, calculating heart to destroy what was previously nurtured, cutting back and curbing life when the time comes, sacrificing what was once so carefully created. I, the gardener, am like God; through me nature flows, giving vigour to the strong and enabling the weak and damaged to pass.
+
+Inside the house the landline telephone clamours, taking seven rings for Mrs Nolan to stir from her armchair doze and mobilise her arthritic joints to answer it. Crouched here beneath the open kitchen window I am perfectly placed to eavesdrop what she says.
+
+“Hello, this is Miriam…
+
+“Oh, I’m as well as can be expected. And you?
+
+“Yes, a very hot spell. The garden’s very thirsty…
+
+“Oh…really? You’re too kind! Honestly, it’s too much…
+
+“It’s an absolute honour. I can’t quite take it all in. Trevor would have been so pleased. So very, very pleased…
+
+“Thank you ever so much. It’s all such a surprise!
+
+“I certainly will, and you too. Cheerio.
+
+The telephone pings as it’s replaced in its cradle, and I sense Mrs Nolan shuffling along to the back door to find me. I muse over the emotional wobble I overheard in her voice. She’s been prone to tears since Mr Nolan’s unfortunate accident and numerous well meaning villagers have phoned to offer comfort, but this call was a curious one and I’m keen to be enlightened.
+
+“Mercy, are you there?
+
+“Right over here, Mrs Nolan. I sound as sweet as maple syrup.
+
+Mrs Nolan emerges from the side of the house, blinking in the bright sunshine, taking a moment to locate me by the shadowy border.
+
+“I’ve had the most remarkable news, Mercy. The Village Committee have nominated me for the Best Blooming Garden award. How kind of them! I’m sure it’s Trevor’s dahlias that persuaded the judges; he took such meticulous care of them. Trevor deserved the nomination, not me- he’d have been so proud- but it’s too late…
+
+Both Mrs Nolan and I glance involuntarily to the place on the lawn where Mr Nolan was found. I am pleasantly surprised to notice how prolifically the daisies are growing. They’re clearly thriving from minerals in Mr Nolan’s blood.
+
+Here we go. Mrs Nolan’s eyes are welling up and her chin is wobbling. I stand, knit my eyebrows together with a show of concern and gently usher her back indoors to put the kettle on.
+
+That’s when I know there is no hope left for Mrs Nolan. A well-meaning nomination- probably from sympathy votes- has exacerbated her misery and reduced her to convulsive weeping, proving any pleasure in life is now well beyond her grasp. What particularly irks me is that the dahlias were mostly attended to by myself, at least ever since Mr Nolan’s stroke last year, and I’ve exclusively cared for them since his recent demise. The dahlias, the roses, those blousy, vulgar petunias that Mrs Nolan chose and I obediently bedded in- the nomination is all thanks to me.
+
+The world has no place for the old and feeble. In this very garden, right under our noses, nature uses all manner of macabre means to ensure order is kept; pincers, stingers, poisons, parasites that eat their host slowly from within. Although violent, these acts are essentially a great kindness. A kindness Mrs Nolan now deserves.
+
+*
+
+I ponder my options.
+
+Whilst some impulsivity was involved with Mr Nolan, this time I'll carefully consider my plan.
+
+Not to say last time wasn’t efficient and effective.
+
+I’d taken great care that afternoon to prune the privet hedge to perfection. I was clearing away the cuttings- gloved, as the sap can sting- whilst Mr Nolan limped up and down, pedantically questioning some cross branch irregularities he perceived in the shrubs. I pitied him, unable as he was to appreciate my work and no longer able to manage the shears himself with one useless arm. It was the least I could do to relieve him of his agitation once and for all.
+
+Stepping close, I plunged the points of the shears into his fleshy, cotton-shirted paunch, which gave little more resistance than a fish belly, and slid the blades upwards under his ribs. It was remarkably easy. This single moment of pain was all it took to free him from his frustrated, failing body. A poppy-crimson stain blossomed under his spread fingers as he clutched his gut in a futile attempt to hold back the seeping blood. Before my eyes his pallid face became slack-jawed with disbelief. He gurgled and spluttered, eyes bulging pleadingly, but there was nothing left to be said. As he staggered, I gently grasped him by the shoulders and guided him down to the ground face first, so the blade tips emerged through his back like fresh new shoots.
+
+It looked every bit the tragic accident; the clumsy fall of a foolish man carrying tools he couldn’t handle, when he should have left the work for the gardener. I removed the remaining cuttings under the pretence I’d left much earlier, and left him for Mrs Nolan to find after she returned from the Parish cake sale.
+
+Perhaps a similarly violent end for Mrs Nolan would be fitting. I’m briefly excited by the thought of her pale wrists cut to scarlet ribbons by secateurs- driven to suicide by grief, of course. I suspect the bleeding out could take some time and given the neighbours' windows will be wide open in the summer heat, enabling them to hear her screams, maybe this is an unwise option.
+
+A fall on the patio? I think of Mrs Nolan’s head as the snail shell crushed between my fingers and wonder if one blow would be enough. Multiple blows would be inconsistent with a fall, raising suspicions that could compromise the innocent image I’m associated with throughout the village. I’m reluctant to take such risk.
+
+My eyes narrow thoughtfully as I scan the tapestry of summer petalled foliage in the garden borders.
+
+*
+
+Mrs Nolan’s made a Victoria Sponge. She tells me it’s to celebrate the Best Blooming Garden nomination, but I can see her tired old heart’s not in it. Nevertheless we’re both playing along with her pointless charade, while it lasts.
+
+“Do have a slice before you go, she urges me. “I’ll wrap up an extra slice for you to take home.
+
+We’re sat at her little kitchen table. I’ve taken Mr Nolan’s chair as I’m curious to see her reaction, but she doesn’t comment. She’s adored my company since he’s been gone- evidence of her lonely, pitiful existence. My heart swells to think that soon I’ll have released her from her misery.
+
+“Won’t you have any tea, Mercy? She looks quizzically over the top of her cup at my untouched one.
+
+“I’m enjoying the delicious cake, Mrs Nolan. I’m certainly glowing with anticipation; not at the sickly slice on my plate, but to see beads of sweat break out on her forehead.
+
+Mrs Nolan raises a hand her heart, probably feeling some palpitations. “Mercy, you’ve been a rock over these last few weeks. I don’t know how I would have coped without you, she tells me earnestly.
+
+A curious sensation passes through me; a brief flicker of guilt, possibly even doubt. After all, it’s not too late, is it? I push the inconvenient emotions away, remembering my role as gardener requires ruthless management of the weak and sickly, and I wait.
+
+It’s all happening fast now. Panic creeps into Mrs Nolan’s face as her heart begins to gallop like wild horses. She gasps, reaches out a hand towards me but knocks my plate of cake onto the floor. Both smash into pieces on the tiles.
+
+Digitalis Perurea, a cottage garden favourite commonly known as the foxglove, is an excellent pollinator adding height and structure to summer borders. It’s also highly toxic. The foxgloves I propagated have been glorious this year, in my opinion outshining the dahlias by far. From the unripe green seeds I’ve ground a paste and steeped it in the tea that Mrs Nolan’s poured from the pot. Her cup stands empty on the table, white and fluted like the trumpet of a foxglove flower.
+
+I watch closely and am certain Mrs Nolan experiences minimal pain as her racing heart outruns itself, my face disappearing from her view as her vision blurs and darkens. At her age, no one will suspect a thing.
+
+*
+
+The village shop door tinkles as I enter, and I wait patiently while Janet serves a child buying sweets from one of the large jars on the shelf. I smile indulgently at the youngster who glances uneasily at me and takes a wary, wide sidestep around me as he leaves- so strange that children often sense their vulnerability better than their adult counterparts.
+
+“Mercy! How are you bearing up? Janet is the picture of kind concern. “Such a blow to hear about Miriam. I heard you were there when she took poorly?
+
+“It was terrible I murmur, eyes downcast. “She’d never truly recovered from finding Mr Nolan in such a state.
+
+“It was the shock, wasn’t it? And a broken heart. Maybe it’s all for the best. Janet shudders before her bright demeanour returns. “What can I help you with?
+
+“Could I pop a note in the window, please? To let people know I’m available for work.
+
+With Janet’s permission I take out from my bag the card I’ve carefully written my number on and slide it into one of the plastic sleeves hanging in the shop window. It’s placed alongside local business cards and adverts for piano tuition and babysitting.
+
+In my neat, orderly cursive I’ve written my number and a friendly message. I’m confident there will be a good response, especially as the Best Blooming Garden award is still up for grabs.
+
+Does your garden need some love and care?
+
+Call now for experienced help.
+
+Just ask for Mercy.",0,"Fun",""),
+(0,"A Moment In Reflection","Dan Kirshtein","Bill drove through his neighborhood and wondered if it should feel different. He rolled down his windows, curious if he would hear people cheering, or nature thriving louder than usual.  But he didn’t. It was the same as it had always been, which was more unnerving than anticipated.
+
+The song on the radio ended, making way for the same PSA he’d heard a dozen times today. “It’s a small price to pay for the safety of our reality. A woman’s soothing voice was followed by a man’s firm statement. “And it’s the right thing to do.
+
+Bill rolled his eyes and turned off the radio. He shook his head, sighed, and turned down his street. It was crowded, more than any trash day, as each neighbor piled their curbs with mirrors of all shapes and sizes. Various sheets and blankets covered them, taped and fastened securely so as not to be blown away.
+
+Yeah, thought Bill, our whole reality would end if a squirrel saw its reflection.
+
+He scratched at the dry skin beneath his untrimmed beard as he pulled into his driveway. He took the keys from the ignition and let his head drop onto the headrest behind him. 
+
+A moment, he told himself, that’s all he needed was a moment. He was fine.
+
+The slam of a nearby door jerked him from his rest. He collected himself, before looking towards the source of the noise, and saw his neighbor carrying a large mirror down his porch steps. Not wanting to be seen sitting in his car, Bill stepped out.
+
+How Rudy stayed overweight was a mystery to Bill; he always seemed to be in motion. Even now, while he carried the covered mirror to the curb, he moved as if he had plenty of things to do afterwards. It hadn’t bothered Bill before, but now that he was feeling sedentary, he couldn’t help but feel like Rudy was showing off.
+
+On the way to his mailbox, Bill gave an obligated and awkward wave as he walked within a few feet of the curb. He’d hoped that Rudy’s chin-lead, reverse-nod would be the end of it. It wasn’t.
+
+Rudy gave a wry grin, still hauling the mirror. “Great day to be alive, huh? Bill disagreed, though he gave no response other than a perk in his brow. He opened the back of his mailbox and reached a hand inside as Rudy reached the end of his curb. “I told the Lord, I promised Him, I said I’d be a better person if He just let us be. The mirror hit the curb with a metallic thud, and Rudy wiped his dusty hands on his shirt.
+
+Bill hummed an acknowledgement as he lumped the mail into the crux of his arm and closed the back end of the mailbox.
+
+He’d begun to walk away before Rudy’s raspy and jovial voice called out to him. “Hey, man, I never got to ask you, Bill stopped, midway up his driveway, and pursed his lip. He knew where this was going. “You okay? There was silence. “Yanno, with her being, uh More silence, this one feeling like a decade, as Rudy panicked to come to terms with his phrasing. “Gone?
+
+Bill turned and, as casually as he could, nodded and waved off the question. “Oh! He said, as if the absence hadn’t been sitting on his mind since she’d left. “Yeah. Thanks. He lied. He turned, trying his damnedest to end the conversation then and there. “All good.
+
+“Okay, Rudy replied, unconvinced from the curb. “If you ever need anything, just knock, okay? He spoke to Bill’s back.
+
+“Will do! Bill quickly hopped up his own porch steps, fumbling in his pocket for his keys. He felt Rudy’s eyes on him, still, as he put the keys into the door and pushed his way through. The door closed behind him, and Bill put his back to it.
+
+Just take a moment, he told himself; he just needed one moment.
+
+After a long sigh, he looked down at the mail in his arm. He began thumbing through it as he stepped around the empty cardboard boxes on his way to the coffee table that was littered with dirty dishes and empty cans. After a large, pink postcard, with bold black font  that read “Cover and Discard Your Mirrors!, another envelope struck Bill’s attention.
+
+To anyone else, it would have been considered junk mail: a small envelope that could have been easily discarded by anyone else. Even its intended recipient would have recognized it as junk mail and thrown it in the trash. But to Bill, it may as well have been a wildfire.
+
+His hand dove into his pocket and pulled out his phone, redialing one of the few recent calls he’d made. He didn’t wait for the conversation to escalate, nor did he wait for the post office employee to finish introducing themselves. Only seconds after the call had been answered, Bill erupted. “I have been trying to tell you people that Alyssa Parker doesn’t live here anymore! I don’t understand why I have to call three times before you get it through your thick heads, and change her damn address!
+
+There was a pause on the other end of the line before the voice responded, sheepishly. “Uh, I can look into that for you, sir, would you please provide the address in question?
+
+“It’s twenty-five, north, He froze. Without thinking, he’d turned and glanced at the full-length mirror that sat in his dining room, and mid-sentence, he noticed the coffee table in the reflection was clean. No dishes sat upon it, no empty cans of beer or soda littered its top. What’s more, no empty boxes sat around it. The space was as neat as the day she’d left. What’s more, he didn’t see his own reflection at all.
+
+“Sir? It was a trick of the light, he thought; one step closer would fix all of this. So he took a step, and then another. “Sir, are you there? Bill ended the call and dropped the phone to the floor. He came within a breath of the reflection, watching shadows dance across the floor of a room he wasn’t in. Before long, the shadows were gone.
+
+A figure stepped in front of Bill, one that startled him so fiercely that he fell backwards. He made no effort to recover, because the man in the mirror was him. Or rather, it should have been.
+
+The Bill in the mirror was clean-shaven. His flannel shirt had no wrinkles or stains. After some investigation, he ran a hand through his hair to make it the best it had ever looked.
+
+And in that small moment, Bill understood what the Other Bill was doing. They were going out to Margarett’s birthday party.  They’d bought her the whole box set of her favorite show, and a bottle of wine. But there was only one problem with all of that: Margarett was Alyssa’s friend.
+
+“No, Bill stood up as the memories, which didn’t belong to him, began to flood his head: a dream trying to justify the series of events that lead up to it. “No, no, no. She’s, And though he knew what would happen, it happened to his horror. Another figure stepped into the reflection: a tall girl, with long hazel hair that hung to her waist. Her thin wrists crossed over Other Bill’s hips and pulled him close.
+
+If Bill hadn’t already been sitting down, he would’ve fallen over again. With one hand holding him up, his other grasped his forehead like a vice. He couldn’t hear the words she said as he watched her lips move in the mirror. But he remembered every word after she said it. “Don’t go looking too nice, now.
+
+Other Bill smiled, turned his head, and kissed her.
+
+“No! Bill rolled, putting his elbows and forehead on the floor. “What did I do? He racked his brain. “What did I do differently?!
+
+A voice popped into the room, as clear as day, and as warm as honey. “You’ll go mad asking yourself that. Having no certainty as to whether or not he was losing his mind, Bill ignored the voice for some time. His fingers curled around the back of his head, and his face turned a desperate shade of red. “I wish I could fix it for you.
+
+Bill’s vision blurred with tears, though he could hear the footsteps drawing closer, could see a pair of feet, as if made of mirrors, stopping right next to his head.
+
+“But I can’t.
+
+Bill turned his head to the mirror once more, despite knowing fully well what had happened to Other Bill. He watched the light from the doorway come upon the clean table, showing two very happy silhouettes, before the light vanished with the shutting door.
+
+“However, The voice continued, knowing it now had Bill’s full attention.
+
+Shaking, Bill turned his head back to the figure standing beside him. A thin man, made of no skin or features, only reflection, looked down upon him.
+
+“I can tell you how to make that reality, the man pointed to the mirror, then back to the floor. “Into this one.
+
+“You’re him, aren’t you? You’re the one they stopped.
+
+“Tried. To stop. The man corrected. Though his face bore no mouth, nor semblance of any expression, the annoyance was prevalent in his tone. “And you’re the only one who didn’t listen to them. The figure knelt closer to Bill, who continued to quiver. The figure’s elbows rested on its knees as its fingers tented. “I believe we can help each other, Bill. He said. “The only question is, Bill’s attention turned back to the mirror. “What are you willing to do to win her back?",0,"Fun",""),
+(0,"The Conversation","Jed Cope","“It hurts.
+
+Good. That’s good.
+
+“Hurting is good?
+
+Don’t you think so?
+
+“I hadn’t thought about it.
+
+Well, why don’t you take the opportunity to think about it now?
+
+“I don’t want to.
+
+And why do you think that is?
+
+“I told you. It hurts.
+
+Maybe that feeling is trying to tell you something.
+
+“Yes, it is.
+
+Good, this is progress, and you should allow yourself a little time to celebrate that moment.
+
+There is a pause in the conversation.
+
+Have you celebrated?
+
+“Not really, no.
+
+Why is that?
+
+“Because it hurts.
+
+Right. OK. So what do you think this pain is telling you?
+
+“That it hurts.
+
+Pain is a message. It hurts for a reason.
+
+“And what is the reason?
+
+It is for you to think and explore and discover that reason. That is why we have these sessions.
+
+“I don’t understand.
+
+It is for you to seek to understand. Only you can do this.
+
+“Then why am I here?
+
+To heal.
+
+“Then why does it hurt?
+
+This is not the first conversation of this nature and it is unlikely to be the last. This is a loop. The hope is that one day there will be a breakthrough and the loop will be broken.
+
+*
+
+“You lied to me, sad brown eyes telegraph the pain of the betrayal across the dining table.
+
+The accusation is met with a dismissive shrug.
+
+Janet studies her grandchild. She doesn’t know what she is looking for, but she hopes that she will know it when she sees it. She is oblivious to the sorry fact that she is looking for hope itself and that she is fighting the reality of the situation. That it is all but hopeless.
+
+“Why did you lie? Janet asks the serious little girl.
+
+Poppy looks up from the trinket that she is playing with, her fingers busy with the small object. Janet allows her this, even though she is occasionally gouging the wood of the table with the metal object. It is better than her gouging the skin on her fingers and hands. The lesser of two evils.
+
+Poppy slips so easily into the stare. Janet has tried time and again to rationalise what she feels as she withers under her grandchild’s gaze, that it is she, Janet, projecting her own negative thoughts and emotions upon her own grandchild. Poppy is only ten, and OK, she’s been through much, but there is no way that she is filled with hate.
+
+Janet reminds herself that this a child, her own grandchild and that she is not a lost cause. No one should write a ten year old off. No one. That is just wrong and it goes against the grain. It goes against everything that Janet is about.
+
+She sighs and turns to the cupboard to retrieve two tumblers. She pads to the fridge and pours iced tea for them both. She makes it herself and she knows it is good, more importantly, that Poppy loves it. The glass is placed before her grandchild. A bargain is being made here, only Janet forgets, Poppy doesn’t bargain and she doesn’t play by the rules. She may appear to, but there are so many ways to lie to someone. Janet sits down and it is all she can do not to slump, but she knows that if she lets go, then she won’t pull it back together. She is all that Poppy has left and Poppy is all Janet has in the world now. The world turns, and it turns regardless of anyone’s experience, or their pain.
+
+Keep going, Janet tells herself. She has to keep going for the both of them.
+
+“Listen child, she says after she’s taken a sip of the cool drink, “I understand. Believe it or not, I was your age once. She smiles warmly. She has memories of her childhood. Her own childhood was hard and her mother had not loved her, but the funny thing with memory, the good thing about memory, was that it was selective and right now she was experiencing a gentle montage of playgrounds, beaches, woodland adventures and ice creams and sweets. “It wasn’t easy for me either, and I understand more than you know. You can always talk to me, and you have this place. We have this place. Home.
+
+“OK.
+
+Janet tries not to flinch from that single word. Poppy has weaponised it, and it hits hard. The two letters sharp and hurtful. She sighs, “why do you have to lie? she asks her granddaughter.
+
+“Everyone lies, Poppy tells her.
+
+This is good. Not the content, that’s far from good. But at least Poppy is talking to her, and that is something. 
+
+“Who told you that? Janet asks, she thinks she already knows the answer, but she can’t help asking it all the same.
+
+“Father.
+
+It takes everything that Janet has to keep it together. 
+
+Father.
+
+This is the father who left a five year old in the family home, alone with the dead body of her mother. Janet stifles a sob, even after five years, the suicide of her only child cuts deep. Of her husband, there has never been any sign. 
+
+Except…
+
+He is here, and of late, Janet has begun to realise that he has always been here. He is ever present in the solemn little child in front of her. The child who was always going to have problems after that fateful night five years ago, but who seemed to be doing remarkably well.
+
+Children are resilient, that was something Janet had told herself again and again, and as she repeated this mantra she wished for at least some of that resilience. Instead life did its thing and after two challenging and difficult years she had woken up one morning in a state of confusion. 
+
+She had overslept. 
+
+She could not remember the last time she had overslept. She had turned from her right side to her left and seen why it was that she had overslept. Tom, her husband of over forty years had not left their bed. Tom, a man of routine, especially when it came to the mornings, was right there by her side.
+
+And yet he wasn’t.
+
+Not anymore.
+
+Even the dog knew. 
+
+Terry the bull terrier, the dog that barked a greeting from downstairs as he heard his master plod to the bathroom, on this day remained silent. He knew there was no point in barking that greeting because his master would not hear it. He would not hear it ever again.
+
+It shamed Janet to think it, but life in their home had gotten easier after Tom’s eternal lie in. Tom had not been a fan of Poppy. That was not to say that he did not dote on his granddaughter. It was Tom who was the source of the energy in the household, it was he who took Poppy on walks with Terry and varied those long walks so she could explore and lose herself in the countryside. He found local events, goodness knew how, he just seemed to have a nose for them, and off they would go to see vintage tractors, or sheep shearing, or pie making contests. All manner of quirky and different mini-escapes that were what an enriched childhood was all about.
+
+They argued though. Tom saw something in the little girl and it was something that left him uncomfortable at first, and in the end he didn’t like it. He didn’t like it so much that it made him ill. He started telling Janet that Poppy would be the death of him.
+
+What a thing to say!
+
+But now Janet was feeling that same pressure. Only it wasn’t pressure. It was the opposite of pressure. Her days were filled with emotion and she was constantly tired. Her energy levels were at an all-time low and there was no prospect of a return to something like normality. She’d had her low points before, and in the midst of them she had worried that she might not make it out the other side, but she had known that there was another side and that she would be on another peak soon enough. Life was a series of peaks and troughs, or it had been. Now it was just one big trough, and Janet didn’t know how to get out of it.
+
+Something was dragging her down and holding her there. Something was sucking the energy out of her and that energy was the best part of her. Having no energy was bad enough, but to be left with a darkness inside her and nothing to counteract it? Her worry was turning into fear.
+
+Janet looked across the table and tried to remember the little girl that Poppy had been, tried to remind herself that this was still a little girl. She was greeted with a cold, hard stare and she replayed some of what Tom had said…
+
+She’s angry, Janet. Constantly angry. You can’t get through to an angry person, not ever. She’s lying to us and she’s manipulating us and I just can’t get through to her. I think she’s…
+
+NO!
+
+Janet stops that inner dialogue. One thing Tom had always said was that they would not allow Poppy to be labelled. Her school had tried several times, but they had looked at the suggested label and it just didn’t fit. Besides, with a little time and effort, they had managed to help Poppy so that she did not exhibit the behaviours that had led to a teacher thinking Poppy was a this, that or the other. 
+
+When it came down to it, Poppy was good at doing what was needed to be done in order to present to the world in an acceptable way.
+
+Exactly…
+
+Tom’s voice again, but Janet silenced it.
+
+“Your father is not here Poppy love, Janet tells her grandchild.
+
+“No, but he taught me all about people, she says to her granny, “that they are all liars and out for what they can get. That I am not to trust anyone but him.
+
+Janet frowns, this is progress of sorts. Poppy is opening up, but Janet does not know what to do with this. “But your father is not here Poppy, it’s just you and me now.
+
+Poppy intensifies that stare.
+
+“What? What is it? Janet asks her, wilting in the intensity of that stare.
+
+“Mother said that, Poppy tells her.
+
+“What?! Janet gasped.
+
+Poppy just stares at her and says nothing more.
+
+“You don’t know what you are saying, Janet stammers. 
+
+Poppy stares at her and wonders at that reaction. People are strange. They lie and deceive and then they get hurt and angry. Her father has taught her well though. He’s taught her very well. 
+
+People are wrong.
+
+They are not to be trusted.
+
+Only father is to be trusted.
+
+He had told her it was all a game. That she had to lie in order to survive, but if she went further with the lies and played The Game it was better that way. Granny has been fun. Poppy has gone to town with Granny. Granddad had been more difficult and she was glad when he was out of the picture.
+
+Poppy is beginning to understand more and more about The Game. Right now, what she understands is that when Granny said it was just the two of them, what she meant was that Poppy was stuck with Granny, but that suited her fine because that also meant that Granny was stuck with Poppy and what Poppy knew about Granny was that she was one of the biggest liars she had ever met, only she lied to herself. Poppy saw the way Granny looked at her, like she was something else, like she was one of the other girls from school, but Poppy wasn’t. 
+
+Poppy is special.
+
+Father taught her that.
+
+And he taught her much more than that.
+
+“Can I be excused from the table?
+
+Granny says something, but it is not audible. She just sort of waves her away. She looks old all of a sudden. Poppy shrugs and then gets up and walks away, heading for her bedroom.
+
+Granny hadn’t even asked about the therapy session. Poppy enjoyed the therapy, it was a chance to practice and get better at saying what needed to be said. Not that she needed to worry about that in Granny’s house. Not now. She’s won a victory of sorts and now it is about pushing her advantage. She can see that now, and she’ll enjoy herself. Confusing the old woman will be fun. Seeing her frowning and worried. Telling her up is down and that she has imagined Poppy saying whatever she thought she’d said.
+
+Somehow it was too easy.
+
+Once in her bedroom, Poppy props the wooden reading chair under the door knob. She’d seen this in a film once and taken to doing this prior to going to her secret place and taking the letters out. 
+
+The letters were more instructions than anything else. 
+
+These instructions were a gift from her father. She doesn’t need them, not anymore. So adept is she at weaving words to create a fabrication that she has long ago lost sight of what is real and what is imagined. That doesn’t matter because the outside world, the thing people call reality, that is her playground and that is where she plays The Game. It is inside her that counts. 
+
+Inside.
+
+And she has a fortress that is heavily protected.
+
+Lies, deceit, denial, distortion, evasion, fiction, misrepresentation, guile and animal cunning are her weapons. Her pain is what really counts though. That pain is the source of her power and from that she can summon her hate-filled anger at will.
+
+Pain was her father’s greatest gift to her and that pain had required a sacrifice.
+
+Her father had explained this to Poppy and told her what she needed to do. This was a dark magic and it was the only way. Dark magic required a blood sacrifice and then and only then would Poppy be good enough. 
+
+That was why mummy had to die.
+
+Poppy had been there and watched as father had crushed up the pills. He had explained the plan, but Poppy already knew how it would work. She had seen it all in her head and it was really her plan. Her father was doing exactly what she wanted him to do and that was when she saw that she could not be around him any longer. Two of their kind could not co-exist successfully. They were meant to be hidden in plain sight in the midst of people.
+
+It was she who had alerted her father to the existence of the letter mummy had drafted. The letter was a goodbye to father, but it was worded in such a way that, in the right, carefully crafted circumstances, it read like a farewell to the world.
+
+Poppy had feigned innocence and handed the letter to father. As expected, father saw the opportunity it presented and he acted swiftly. Poppy played her part and when required she had cried and displayed her pain at what her father was doing.
+
+“It’s for your own good, father told her, “you need the pain. Pain is power and you need that power to protect you from all the people.
+
+Mummy had become drowsy and father had plied her with more and more wine containing the dissolved pills, but only after he had guided her to her bed. The empty pill bottles and the letter were placed by her side and they both watched her lose consciousness and then she died. A gentle sigh and then she didn’t inhale another breath.
+
+Going for a walk was Poppy’s idea. 
+
+Poppy liked walks.
+
+It was all that she could do to contain herself and her excitement. The excitement she used when the moment came. She had run on ahead, and now she was crouching over a newly discovered wonder.
+
+“Father! Father! she called excitedly.
+
+He came running and Poppy wondered at why he didn’t question this excitement of hers, so soon after her rather convincing display of pain and anguish at the sight of her father murdering her dear mummy. If she needed any convincing, or encouragement, then this was it. Poppy was playing The Game and her father was a part of her game now.
+
+“What is it? her father asked from behind her.
+
+“Come see! she said, standing up from her discovery.
+
+She had to play all of this well because father had a disdain for enthusiasm or passion, so she stood solemnly and did not prance about like other children had a wont to do.
+
+Her father joined her at the side of the hole she had found. Only, this was not the first time that she had seen this hole, and when first she saw it, it had been covered. Poppy had taken her time uncovering it and thinking through her plan. Mummy first and then this…
+
+“I think there’s something down there, Poppy said.
+
+There wasn’t.
+
+That was a lie.
+
+And then there was something down there.
+
+Sometimes people needed to hear the right words. 
+
+Then they needed a little push.
+
+A little push was all it took.
+
+Then Poppy had her pain, and she had her power.
+
+It hurt.
+
+It hurt and because it hurt, Poppy could play The Game and when she played The Game she punished the world and the only way to punish the world was to deceive people and draw them into The Game and hurt them.
+
+No pain. No gain.
+
+Playing The Game and hurting people increased her power. 
+
+Poppy was only getting started, and soon enough her own denial would remove any semblance of the notion that she was in The Game and once she lost herself in it, she would be undetectable and truly unstoppable…",0,"Fun","");
 '''
 
 Skill_article  = '''INSERT INTO `Article` VALUES
-(0,"Mental health nurse education: perceptions, access and the pandemic","Anonymous","",0,"Skill",""),
-(0,"Anonymous","Claudia Leone","Mental health nurses are vital to the delivery of mental health services. They are not only the largest clinical profession dedicated to mental health, but they also bring unique expertise to managing both mental and physical health and in coordinating care. They are considered a priority, and last year NHS England outlined the need for 4,220 more mental health nurses by 2024.
+(0,"Mental health nurse education: perceptions, access and the pandemic","Claudia Leone","Mental health nurses are vital to the delivery of mental health services. They are not only the largest clinical profession dedicated to mental health, but they also bring unique expertise to managing both mental and physical health and in coordinating care. They are considered a priority, and last year NHS England outlined the need for 4,220 more mental health nurses by 2024.
 
 In our new report, Laying foundations: attitudes and access to mental health nurse education, we explore the main factors that affect how likely people are to apply for mental health nursing courses. This blog highlights some of the key findings.
 
@@ -1494,11 +2405,444 @@ Encourage mental health nursing across the breadth of the population, including 
 
 Improve understanding of the support available, routes and requirements for studying to become a mental health nurse.
 
-Ensure that the full range of routes into mental health nursing are available across the whole country to increase numbers and broaden participation.",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill",""),
-(0,"","Anonymous","",0,"Skill","");
+Ensure that the full range of routes into mental health nursing are available across the whole country to increase numbers and broaden participation.",0,"Skill","");
 '''
+
+IT_article  = '''INSERT INTO `Article` VALUES
+(0,"7 Sneaky Ways Hackers Can Get Your Facebook Password","Jennifer Seaton","Facebook can be a great way to stay in contact with friends and family. But it can also make you more vulnerable. Your account likely has a ton of personal data and connections that could benefit a hacker. The more you understand about how a hacker can access your password, the savvier you will be at keeping it safe.
+
+
+Here are seven sneaky ways hackers can access your password and what you can do to stop them.
+
+You have probably heard many times by now not to open suspicious emails. This is still true today. But fake emails have become much more sophisticated than in the past. Fake emails might appear to be from Facebook and have all the formatting and logos you expect in a legitimate email. It can be very difficult to determine if an email is fake.
+
+There are a multitude of ways a hacker can use a suspicious email to gain access to your Facebook account. The best way to avoid this is to delete the email and do not click on anything in the email. It is best to not even open suspicious emails.
+
+If Facebook has to reach you, they can do so from your Facebook account. If you get an email from Facebook”, instead of opening the email, log into your account to see if you have a notification there. Do not trust any emails that ask for account information, request money, or threaten to suspend your account.
+
+Phishing
+The purpose of many fake emails is phishing. Phishing is when someone asks for personal information that they can use to gain access to your account. A common way to phish is to trick someone to sign in on a fake site.
+
+Some hackers will go through the trouble of creating a fake website that looks the same as Facebook. But, you can avoid this trap. It is always best to go to Facebook rather than click on a link. If you do use a link, carefully read the email address. Does it look correct, or is Facebook misspelled? Finally, check for the secure icon in the web address before signing in.
+
+
+Fake Facebook Buttons
+You might know not to trust links, but don’t forget that like” and share” buttons act like links. Clicking on one of these buttons on a fake site might lead you to a fake login page designed to steal your information.
+
+To avoid this, sign in to your Facebook account from a new tab in your browser. Your browser will keep you logged in on other tabs. Now, any likes or shares will go directly to Facebook. If you still get a prompt to login, it's a good indicator that the button was fake.
+
+Password Spraying
+Coming up with a password is hard. It can be tempting to use something like 123456789”. Of course, that is a bad idea; it is too easy to guess. But many people do use similar easy passwords. Because of this, many hackers employ password spraying. This is when they guess a password by using the most common passwords.
+
+It is hard to remember a random alphanumeric sequence. So, more people use words, which limits the number of potential passwords available. When creating a password, it is best to use a unique phrase, replace some of the letters with numbers, and vary the capitalization. And definitely avoid any variation of the word password”, including pa$$word123.
+
+Plain Password Grabbing
+Once you come up with a good password, make sure you only use it for your Facebook account. If you use the same password everywhere, you leave yourself vulnerable to Plain Password Grabbing. This is when a hacker attacks a more vulnerable and less secure site. Some sites do not properly encrypt passwords. In that case, a hacker can then use the email and password saved in the database to try to access other sites like Facebook.
+
+If you have a lot of accounts that require passwords, consider using a password manager. Often, they will generate strong passwords for you too.
+
+Keylogging
+Keylogging is a more advanced hacking technique. It requires installing a program on your device to track everything that you type. This can give hackers far more information than just your Facebook login information. They could even get credit card information using this method.
+
+But, because a hacker needs to install a keylogging program on your device, it is a little easier to protect yourself against this sort of attack. Generally, hackers hide these programs in other software. To stay safe, do not download anything from an untrusted source. Your computer’s security software can detect these programs, but you might want to get anti-malware software for your smartphone. Make sure to keep your security software up to date too.
+
+Unsecured Networks
+Even if you have the best passwords, and are using the most secure computer, it won’t help if the network you are using is not secure. Public Wi-Fi is often unsecured. Unsecure networks allow hackers to snoop through all the data that you send and received from webpages while on that network.
+
+Instead of using free Wi-Fi to access Facebook on the go, sign in using mobile data. It will ensure that your data is more secure. Or consider getting a virtual private network (VPN). Many VPN providers will encrypt your data, which will protect it even if you are connecting to the internet on an unsecured network.
+
+Facebook Security in a Nutshell
+Our growing dependence on the internet means that we need to be a little more careful online. All the security information out there can be a little overwhelming. But it all boils down to a couple of simple tips. Use unique passwords for all your accounts. Do not click on any links that you do not trust (even if it looks like they are from Facebook). Do not download anything unless you are certain if it is safe. Do not enter sensitive information on public computers or across public Wi-Fi. If in doubt, error on the side of caution.",0,"IT",""),
+(0,"Are You the Only Woman in The Room? Use it to Your Advantage.","Danielle Phaneuf","Despite increased corporate commitments to diversity, equity and inclusion, sustained social movements, and large investments in early education STEM, women are still underrepresented in tech. According to a recent study, women hold only 5% of leadership positions in the tech sector and, based on a recent Statista study, women make up only around 25% of CIOs across industries.Women are also underrepresented as entrepreneurs, despite many studies showing that female-founded startups outperform those founded by men. Women-owned businesses make up only about 20% of all employers according to the U.S. Census Bureau. And that number could shrink due to higher female unemployment and a greater proportion of women leaving the labor market due to the COVID-19 pandemic. (Also read: How the Pandemic Is Affecting Women in Tech.)
+
+With that as a backdrop, it is not surprising that, while I work alongside more female peers and clients now than in the past, it’s still not uncommon for me to be the only woman in a room. Over the years, I’ve found ways to challenge stereotypes about gender, champion my perspective to flourish in my career and ultimately appreciate some of the opportunities that come along with being the only woman in a work setting.This perspective helped me become my firm’s first female Cloud & Digital Strategy & partner, sponsor a number of female colleagues and mentees and lead many of our women’s initiatives in the firm. I’d like to share a few of the perspectives and other tips that have helped me. I hope my learnings help you, too.
+
+Here are my takeaways from being the only woman in the room:
+
+Own Your Individuality and Embrace Being the Only One
+Early in my career, I didn’t fully realize how my gender might impact me in the workplace—and perhaps I didn’t fully acknowledge the biases that were present. Yet I learned—through personal experiences, reading and listening to industry thought leaders and more importantly conversations with peers—that gender impacted others’ perception of me. However, I saw, and continue to see, my inclusion as an advantage and a differentiator. (Also read: Not a Monolith: 3 Top Women in Tech Share Their Journeys.)
+
+Companies need womens' perspectives: 85% of CEOs whose organizations have a diversity and inclusion strategy say it has enhanced business performance, and 77% say it has enhanced customer satisfaction.
+All Articles
+IT Careers
+Career Paths
+Are You the Only Woman in The Room? Use it to Your Advantage.
+By Danielle Phaneuf
+Published: July 25, 2022
+KEY TAKEAWAYS
+According to Danielle Phaneuf, Cloud & Digital Strategy Leader at PwC no woman should have to be the only woman in the room. But if you are, there are insights you can take away from the experience.
+
+Are You the Only Woman in The Room? Use it to Your Advantage.
+Source: istockphoto.com
+Despite increased corporate commitments to diversity, equity and inclusion, sustained social movements, and large investments in early education STEM, women are still underrepresented in tech. According to a recent study, women hold only 5% of leadership positions in the tech sector and, based on a recent Statista study, women make up only around 25% of CIOs across industries.
+
+Advertisement
+
+Women are also underrepresented as entrepreneurs, despite many studies showing that female-founded startups outperform those founded by men. Women-owned businesses make up only about 20% of all employers according to the U.S. Census Bureau. And that number could shrink due to higher female unemployment and a greater proportion of women leaving the labor market due to the COVID-19 pandemic. (Also read: How the Pandemic Is Affecting Women in Tech.)
+
+With that as a backdrop, it is not surprising that, while I work alongside more female peers and clients now than in the past, it’s still not uncommon for me to be the only woman in a room. Over the years, I’ve found ways to challenge stereotypes about gender, champion my perspective to flourish in my career and ultimately appreciate some of the opportunities that come along with being the only woman in a work setting.
+
+Advertisement
+
+This perspective helped me become my firm’s first female Cloud & Digital Strategy & partner, sponsor a number of female colleagues and mentees and lead many of our women’s initiatives in the firm. I’d like to share a few of the perspectives and other tips that have helped me. I hope my learnings help you, too.
+
+Here are my takeaways from being the only woman in the room:
+
+Own Your Individuality and Embrace Being the Only One
+Early in my career, I didn’t fully realize how my gender might impact me in the workplace—and perhaps I didn’t fully acknowledge the biases that were present. Yet I learned—through personal experiences, reading and listening to industry thought leaders and more importantly conversations with peers—that gender impacted others’ perception of me. However, I saw, and continue to see, my inclusion as an advantage and a differentiator. (Also read: Not a Monolith: 3 Top Women in Tech Share Their Journeys.)
+
+Companies need womens' perspectives: 85% of CEOs whose organizations have a diversity and inclusion strategy say it has enhanced business performance, and 77% say it has enhanced customer satisfaction.
+
+Advertisement
+
+As the only woman in a room, I can also provide new and valuable perspectives because of my unique life experiences and strengths. For example, I’ve embraced my strength as an empathetic leader which means that I can see some of the more subtle impacts of the difficult recommendations we make. I am intuitive and have developed a high degree of emotional intelligence, which translates into a strong ability to understand what is really on a client’s mind or what is behind a colleague’s performance.
+
+As the only woman in the room, it also makes it harder for someone to forget me. I can use that distinction to more easily set up follow-up conversations, network and build relationships. I have learned to use some of what makes me truly me—like my love of celebrity gossip, home improvement and lip gloss—to build more trusted relationships, as both my clients and my colleagues appreciate seeing my authentic self.
+
+In turn, I’ve built a strong personal brand and am respected by other leaders and clients, which has fostered trust and decision-making power. I’ve used my voice and visibility to help others. Other women can now see themselves in the leadership positions I occupy and can easily connect with me for mentorship.
+
+Soon, I wasn’t the only woman in the room.
+
+Stay Curious, Raise Your Hand for Opportunities—and Learn to Say No
+Any good career advice includes being curious, always seeking to learn new skills and raising your hand for opportunities that can help you build those skills. Yet, women may need to be more intentional about it.
+
+We should raise our hands for things that advance our career and personal/professional aspirations, and we should feel comfortable and confident in saying no to other asks. (Also read: 4 Things Successful Women in Tech Want Students to Know.)Women tend to say yes to projects we’re asked to do because we think we might have to do it. Research backs this up: Independent of rank, the median female employee will devote 200 more hours per year on non-promotable work than her male counterparts. Tying this back to being the only,” I often found myself feeling obligated to do things because there was no one else to do it or because I felt like I had to represent the firm's entire female partner population.
+
+We actually studied this at my firm a few years ago, too. My female colleagues predominantly volunteered for leadership or practice development opportunities (what we call Reinvest” at my firm). This includes things like running junior mentoring circles or creating plans for enhancing our recruiting strategy, working on proposals or pro-bono consulting projects. My male colleagues tended to raise their hands on client projects.
+
+So, my advice to women is to ask yourself three questions before saying yes to a project or extracurricular activity:
+
+Will this benefit my career or my personal goals?
+Does this map towards a company goal or priority?
+Can I take on this project without impacting my other responsibilities?
+While saying yes to one leadership development opportunity won’t singlehandedly impact your career, it can have an unintended snowball effect for career advancement.
+
+Leave a Legacy of Other Women Leaders
+While I see advantages to being the only woman in the room, I don’t want to be. Businesses—from startups to enterprises—have been proven to be more successful with more diversity—be it diversity in gender, race/ethnicity and/or abilities.
+
+We need women from all backgrounds in the room where decisions are made. Without these critical perspectives, businesses won’t see the results they need and expect.
+
+As someone who is in a position to mentor, I make sure to do so. It can be in small ways or it can be in big ways. I have one-to-one mentoring with women from across my firm, I support women’s networking and connectivity events with small groups and I host larger internal networking events in the firm. I have also sponsored initiatives to help other women, such as our parents’ programs because it could help our women be more impactful and happier in their professional lives. Now, I also run our women’s initiative in my firm’s strategy and network. We host a C-suite fireside chat series where we host executive women clients to speak to the women at the firm and share their experiences and advice. (Also read: 'Everything Is Solvable': Advice From Female CEOs in Tech.)
+
+Conclusion
+It can be daunting to look around and not see anyone like yourself. But there can be opportunities to use it to your advantage and make a difference.
+
+Be unwavering in showcasing your authentic self so that people notice and remember you; pay it forward by mentoring and networking with other women; and stay curious, intentionally volunteering for the right opportunities that will advance your professional and personal interests.
+
+Through actions like these, we can all work to bring in more women of all backgrounds into technology and leadership roles. And, hopefully, one day soon, no woman will have to face being the only woman in the room again.",0,"IT",""),
+(0,"How Automated Threat Recognition Technology Enhances Airport Security","Kuntal Chakraborty","With airports and airlines struggling to keep up with passenger demand and staffing issues, air travel is challenging in a thousand different ways. What hasn't changed, in this sea of change, is the importance of safety. The technology used for safety measures and screening, however, is undergoing some exciting developments.AI has invented a new software that can detect threats and enhance airport security to assure safer travel. This article will discuss how automated threat detection technologies increase security at airports.
+
+What Is Automated Threat Recognition?
+Automated Threat Recognition (ATR) software examines physical items or human body scan data to detect areas where contraband can be kept hidden. These identified sections are flagged on a standardized display to inform the security officer which areas to perform a manual search on.Scanners perform automated threat recognition on images to detect threat objects. Enhanced automated threat recognition will improve the detection of threatening items. Advanced automated target recognition algorithms will help enhanced 3D Computed Tomography (CT) Scanners—CT-based object detection equipment—by enhancing object recognition techniques, similar to CT scans that are performed at the hospital on brains! (Read also: Top 21 Use Cases of AI in Healthcare)
+
+The Challenges Of Airport Authorities and Government
+Created in the wake of the 9/11 terrorist attack in the US, the Transportation Security Administration (TSA) is tasked with protecting United States air travel. They hire human inspectors to check passengers and baggage for prohibited items and threats using scanners and x-ray images. This task sometimes becomes difficult, particularly when you consider that often the machines used don't communicate with each other. There is an acute need for improvement. In tests conducted by Homeland Security in 2015 (where agents attempted to pass through security with contraband) the TSA screening failed 95% of the time.
+
+The Open Threat Assessment Platform (OTAP) project is working to change stats like this. Researchers from Stratovan and Sandia Nationwide Laboratories are taking an important role in airport safety innovation. They are working from the position that some existing technology and processes are too rigid and needlessly time-consuming. For instance, having everyone take off their shoes or enforcing the current restrictions on aerosols, liquids and gels could possibly be approached differently.
+
+Travelers who are now used to today's standards may be surprised to know that prior to 9/11, things were very different for those departing US airports:Blades up to 4 inches were permitted on the plane.
+Baseball bats, box cutters, darts, and scissors were also allowed on the plane.
+Family members were able to go through security to the departing gate to say goodbye.
+Passengers could keep shoes on when going through security.
+Passengers could carry liquids onto the plane.
+The only security screening was a metal detector.
+No ID was required.
+Passengers would only need to arrive 30 minutes before their flight to ensure they would make their flight.
+Over the last two decades, airports across many countries have worked on their security enhancement to prevent emerging threats. They are trying hard to make the journey from entrance to exit gate as seamless as possible.
+
+For many governments and aviation centers, the improvement of artificial intelligence is the best solution. The UK Government has already invested £1.8m into the development of new AI security systems, a full-scale roll out of new biometric services, and are working to reduce wait times across some of their busiest airports.
+
+The US Transportation Security Administration has implemented new CT scanners, which utilize AI to help target threats, at Los Angeles International Airport, John F. Kennedy and Phoenix airports.
+
+AI Software for Security Systems
+AI is implemented across the entire aviation spectrum, from self-service check-in robots to facial recognition checks at customs. On the other side, recent research applying deep learning techniques to computer-aided security screening to assist operators showed encouraging results.
+
+AI systems work on various datasets. For airport security, technologists use machine learning to analyze data and identify threats faster than humans. Objects that previously needed to be scanned separately, can be kept in passenger luggage as they pass through security checkpoints.
+
+The OTAP project described above was developed with many aviation security industry partners including algorithm developers, X-ray vendors and software specialists to build the Open Platform Software Library (OPSL). (Read: Open Source: Is it Too Good to Be True?)
+
+Similarly, Pacific Northwest National Laboratory developed a High-Definition Passenger Imaging System, which can scan a body. In 2017, Sandia joined forces with PNNL to add the scanner with OPSL to make an advanced full-body machine that can more accurately detect threats.
+
+The team is now using automated threat recognition software to advance sensors—CT and AIT systems—by testing with bags, toiletries, laptops, and simulated explosives, to show the device's accuracy.
+
+AI-Powered Baggage Screening
+Airport Authority Of India (AAI) has chosen eight airports to test the capabilities of Artificial Intelligence in baggage screening. Pune airport is one of them, which implemented the ‘Baggage AI system. The AI-powered device strengthens the security efforts at the airport.
+
+Baggage AI is an artificial intelligence-based model which is the threat detection system for security x-ray machines. This AI software can automatically identify various objects and other threats from the x-ray images created during the screening of baggage and alert operatives.
+
+Use Of Biometrics In Airport SecurityOne remarkable invention in AI is biometrics. Major airports have decided to use biometric ID management over the next couple of years. The primary purpose of biometrics is facial recognition, which is already operational to scan passengers as they pass through customs at a number of major airports. (Read also: New Advances in Biometrics.)
+
+Passengers can use facial recognition scanners at self-service kiosks, TSA checkpoints, or boarding gates. Fingerprinting, facial recognition, and retinal scans can become essential verification methods for security checking at airports.
+
+Furthermore, tests are ongoing in behavioral biometrics. Researchers of the UK’s University of Manchester recently developed an AI system to measure people's walking patterns when they step on a pressure pad.
+
+Conclusion
+Past failures and present-day threats have created an urgent need for these advanced AI-based technologies in airport security. Technology that reduces passenger friction during the hustle and bustle of travel, not having to take belts off, and keeping your shoes on has got to be a positive step for air travelers. AI not only can identify known threats but also detects unknown threats. AI is an integral part of cybersecurity, including its machine learning model. As automated threat recognition systems through AI advance over time, terrorist attacks could be predicted and controlled. More safety in the airports assures a peaceful journey for passengers.",0,"IT",""),
+(0,"An Introduction to Application Software","Tara Struyk","Whether creating a presentation for work, searching for a mate or just wanting to find out where to buy a box of Girl Scout cookies, there’s probably an app out there to help you do it. Unfortunately, there’s no app that actually explains what an app, short for application software, actually is or does. Here, we’ll take a high-level view of this term, including what it means, how it’s used and how it has evolved – and you don’t even need an app to read it.What Is Application Software?
+Computer software is the set of instructions and data that tells a computer what to do and how to do it. Software provides instructions to your computer’s hardware. Without it, your PC or Mac would be little more than a large paperweight. But software actually comes in three main types: system software, programming software and application software. System software includes all the stuff that makes up a computer's operating system (OS), including device drivers, configuration files and other key system components. This is the software that tells the computer’s hardware what to do and provides a foundation for the system. Programming software, or middleware, works much like the plumbing in your home by invisibly keeping things running behind the scenes. Application software, however, is the most important type for computer users because it is used to achieve many of the tasks that make us turn to our computers in the first place, such as word processing, web browsing and data crunching.
+
+Application software applies the power of system software. This is why when downloading software, you have to find a version that is compatible with your running operating system. In essence, that software draws on the OS to create a Word document, spreadsheet or PowerPoint presentation.
+
+Applications from A to Z
+As you may have surmised, there’s a world of application software out there. The reason is simple: Computers are used to complete a very diverse set of tasks. Thus, the application software category includes the following types:
+
+Application Suite
+
+This refers to multiple and related bundled applications, such as Microsoft Office, which includes Word, Excel, PowerPoint, OneNote and possibly others, depending on your suite version.
+
+Content Access SoftwareThis software is used to access and view content without manipulating it and includes browsers and media players.
+
+Database Software
+
+A database is a type of electronic filing system for the information used by various computer programs. Database software acts as the filing clerk for this system by keeping everything organized and storing, modifying and extracting database information. Large organizations use industrial-strength database systems like Oracle and Microsoft SQL Server. At a less intense level, you'll see database systems like Microsoft Access and MySQL.
+
+Educational Software
+
+Designed for teaching or learning, educational software applications are able to run tests, track programs and include software, such as MATLAB.
+
+Enterprise Software
+
+Enterprise software refers to applications businesses use to solve business-level problems. This category includes software for billing, payment processing and human resource (HR) management. (Learn more about this category in Enterprise Computing: What's All the Buzz?)
+
+Information Worker Software
+
+This type of software is closely related to enterprise software, but it refers to the applications used by the individual employees of a business to create and manage information. Examples include word processors, spreadsheets and media editors.
+
+Multimedia Software
+
+Multimedia software allows users to create and experience text, graphics, video and animation in an integrated way. There is some overlap with content access software, but multimedia software is specific to multimedia and includes applications like VLC Media Player, Windows Media Player and Winamp.
+
+Presentation Software
+
+If you’ve ever created a slideshow presentation, you are already familiar with this type of application. Presentation software is designed to arrange information for use in a demonstration or display. Examples include Microsoft PowerPoint, Keynote and SlideRocket.
+
+Product Engineering Software
+
+This type of software is essentially an application for applications and used to design and develop software products. The integrated development environments (IDE) and programming tools used by software developers fall into this category.
+
+Simulation Software
+
+Simulation software models real phenomena by using a set of mathematical formulas. This application type is used for research and design, as well as entertainment. Simulation software applications include flight simulators, weather simulators and feedback control systems.
+
+Spreadsheet Software
+
+Spreadsheet applications allow users to compile data and perform calculations in a spreadsheet format. Common examples include Microsoft Excel, Lotus 1-2-3 and Apple Numbers.
+
+Word Processing Software
+
+Nearly everyone has experience with word processing applications. Whether writing a letter or creating a resume, this software allows you to create and edit these documents. Common examples of word processing software include Microsoft Word, iWork and Google Docs.
+
+Applications and Platforms
+In recent years, classifying applications according to computing platforms has become more complicated. A platform is the hardware/software combination in which an application runs. In the early days of computing, this amounted to a computer operating system, which is why some software works with a Windows operating system, while other software operates only on iOS or Unix. Over the years, however, a few dimensions have been added with the development of new software delivery methods. The buzzword for this phenomenon is cloud computing, which means that many applications no longer rely on operating systems. Rather, they run on the web and may be accessed through a browser.
+
+As you may have guessed, the final application platform – increasingly becoming the most important – is the mobile platform.
+
+From Applications to Apps
+Apps for mobile devices have become a huge part of the application software market, leading to the ubiquitous use of the term app. In fact, in most cases, this term is used to refer to a mobile application. As it turns out, this shortened version of the term is very apt when it comes to mobile applications because this type of software is often much smaller and more specific than that on a PC. So, while a slick software suite provides full functionality, an app usually has a narrow and specific function – or very little function at all, as many mobile applications are designed for entertainment. (To learn more about mobile apps, see Mobile Device Management vs. Mobile Application Management: The Big Fight Continues.)
+
+This type of application was popularized by Apple through its App Store, where applications are sold for a few dollars apiece. These apps work only on Apple devices. So, other companies have followed Apple’s lead, creating apps for Android and BlackBerry devices. In fact, in 2015, more than 200 million apps were downloaded – per day – totaling 75 billion apps for the year. In 2016, that number jumped to 90 billion apps, lending credit to the notion that there truly is an app for just about everything you could imagine (and several things you couldn't ... or wouldn't want to).
+
+An App to Predict the Future … of Apps
+As with all things in technology, the evolution of application software is likely to take some unexpected turns. In the near future, however, we can expect to see less emphasis on traditional desktop PC software and an increasing shift to cloud and mobile applications. This represents potential privacy and security risks, and benefits, in terms of user accessibility. Maybe the next stop is applications that better balance these risks and rewards. This may be the future users want, but will they get it? So far, there’s no app to predict that.",0,"IT",""),
+(0,"4 Common Machine Learning Pitfalls and How To Avoid Them","Lior Gavish","It has tremendous potential to automate or semi-automate some of the most tedious tasks knowledge workers face—and leading tech companies are already starting to realize much of that potential.
+
+For example, machine learning can help reduce the manual toil on the following tasks by 50% or more:Contract reviews.
+HR service management.
+Transcribing meeting notes.
+Financial forecasting.
+We are on the precipice of unlocking this value as machine learning applications become more widespread. A study by Algorithmia uncovered 76% of enterprises prioritized artificial intelligence (AI) and machine learning (ML) over other IT initiatives in 2021.
+
+Yet, most machine learning initiatives fail. (Also read: The Promises and Pitfalls of Machine Learning.)
+
+While there are myriad reasons ML pilots never take off, the most pressing issues can be traced back to four main pitfalls:
+
+Lack of business alignment.
+Poor machine learning training practices.
+Data quality issues.
+Deployment complexities.
+Let's explore each of these and suggest some solutions for data teams and organizations to avoid them.1. Lack of Business Alignment
+The original sin of machine learning is in how most of these projects are born.
+
+Too often, a group of data scientists conceive machine learning projects thinking, “This data is interesting; wouldn’t it be cool if…
+
+And it's that line of thinking that turns ML projects into science experiments.
+
+It may still be possible for the model in this type of project to produce something valuable—but if the project doesn’t address an urgent and painful need, it will not get the time or attention it needs from business stakeholders. Or worse, it could become something closer to blockchain: a cool technology in search of a problem. (Also read: An Introduction to Blockchain Technology.)
+
+Machine learning projects should start by looking at the most urgent business priorities and then assess what resources are required to solve them—rather than starting with the clean data at hand and then trying to find a problem they can solve.
+
+Good questions to ask before launching a machine learning project include:
+
+Is this problem urgent? According to who?
+Why is machine learning the right solution for this problem?
+How will we define success?
+2. Poor Machine Learning Training
+Let’s say your project has a really hard and valuable business problem in its sights. The next step is collecting enough clean data to train the model.
+
+Therein lies the data scientist’s paradox: To eliminate toil for others, they must wallow in it.
+
+According to Anaconda, data scientists spend about 45% of their time on data preparation tasks, including loading and cleaning data.
+
+There is a sizeable chance that, after all this work, there may just not be enough suitable or representative training data. And, like any other manual task, the risk of human error is introduced. (Also read: Automation: The Future of Data Science and Machine Learning?)
+
+Fine-tuning your ML model can be challenging as well. It can be overfitted, where it learns too much, and underfitted, where it learns too little.
+
+How can a machine learning model learn too well, you ask?
+
+There is a famous example of a model that was trained to differentiate between huskies and wolves. It was very accurate during training, but started failing in production. The problem? All the pictures of wolves had snow in the background and the huskies did not. It was a snow-detection model—not a wolf-detection model.
+
+Unfortunately, machine learning training is perhaps the one test on which you don’t want to score 100%.
+
+3. Data Quality Issues
+Whether in training or in deployment, it’s impossible to have an effective machine learning model with bad data. Garbage in, garbage out, as they say.
+
+The challenge is that machine learning models are data-hungry. They always want more data—as long as it’s reliable.
+
+However, bad data can be introduced into good data pipelines in a nearly infinite number of ways. Sometimes it might be a noisy anomaly where the error is caught quickly; other times it might be a gradual case of data drift that decreases your model’s accuracy over time. Either way, it’s bad.
+
+That’s because you built this model to automate or inform a painful business problem—so when accuracy drops, so does trust and the consequences are severe. For example, one of my colleagues spoke to a financial company that was using a machine learning model to purchase bonds that met certain criteria. Bad data took it offline and it was weeks before it was trusted to move back into production. (Also read: Fintech’s Future: AI and Digital Assets in Financial Institutions.)
+
+The data infrastructure supporting machine learning models needs to be constantly tested and observed—ideally in a scaled, automated way.
+
+4. Deployment Complexities
+It turns out it takes a lot of resources to deploy and maintain machine learning in production. Who knew?
+
+Well, Gartner did. It projects that, by 2025, AI will be the top category driving infrastructure decisions, due to the AI market's maturation resulting in a tenfold growth in compute requirements.
+
+This requires a lot of support from business stakeholders, which is why business alignment is so important. For example, former Uber data product manager Atul Gupte led a project to improve the organization’s data science workbench that data scientists used to make it easier to collaborate.
+
+Data scientists were currently automating the process of validating and verifying worker documents that were required when applying to join the Uber platform. This was a great project for machine learning and deep learning, but the problem was data scientists would routinely hit limits of the available compute.
+
+Gupte researched multiple solutions and identified virtual GPUs (then an emerging technology) as a possible solution. While there was a high price tag, Gupte justified the expenditure with leadership. The project was not only going to save the company millions, but supported a key competitive differentiator.
+
+Another example is how Netflix never moved its award-winning recommendation algorithm into production, choosing instead to go with a simpler solution that was easier to integrate. (Also read: How AI Is Personalizing Entertainment.)
+
+How to Avoid These Pitfalls
+Don’t let these challenges dissuade you from launching your machine learning initiative.
+
+Mitigate these risk factors by:
+
+Gaining stakeholder buy-in early and aligning often.
+Iterate in DevOps fashion.
+Ensure you have the right training data in place and monitor for quality before and after production.
+Keep production resource constraints in mind.
+As Tom Hanks says in A League of Their Own, “If it wasn't hard, everyone would do it. It's the hard that makes it great.",0,"IT",""),
+(0,"How to Protect Critical Infrastructure From Cyber Attack","Matthew Parsons","The growing cybersecurity threat against U.S. businesses and critical infrastructure providers has reached a boiling point following a string of heavy economic sanctions imposed on Russia. The White House has urged critical infrastructure organizations to shore up their cyber defenses in preparation for potential retaliation.Sadly, these entities aren’t strangers to this unwanted attention.
+
+According to the FBI’s Internet Crime Complaint Center (IC3), ransomware hit at least 649 critical infrastructure organizations and targeted 14 of the 16 critical infrastructure sectors last year alone. And we saw the consequences, including:The water treatment plant in Oldsmar, Florida, where hackers attempted to poison the town’s water supply.
+The Colonial Pipeline, where a ransomware attack shut down operations.
+JBS, a leading beef supplier that paid an $11 million ransom to avoid greater disruptions after an attack forced the company to close meat plants throughout the U.S. and Australia.
+These are merely three of the more publicized incidents, but the damage inflicted is just the start—unless organizations around the world take steps to safeguard against global threats. (Also read: How to Build Network Architecture That Facilitates Better IT Security)
+
+Here are four cybersecurity best practices you should follow to shore up vulnerabilities and ensure you’re sufficiently protected.
+
+1. Take a Zero-Trust Approach
+Remember the “castle-and-moat” security model that gives everything inside your network the benefit of the doubt? Yeah, kiss those days goodbye. Just because something is already inside your network doesn’t mean it’s secure.
+
+You need a zero-trust policy.Assume all users, devices and software, both inside and outside your network, are insecure. Require strict and constant identity verification to access any resources within your network, and only grant access to those who need those resources to perform their job.
+
+By maintaining strict access controls and providing least-privilege access, you ensure your most valuable assets are protected, limit potential data breaches and prevent insecure devices or software from giving hackers access to your company’s crown jewels.
+
+2. Remember the Fundamentals
+Many breaches occur not because hackers were able to pick the locks but because the doors were left wide open.
+
+In other words, what might seem like the most basic security measures can go a long way to keeping attackers out.
+
+Switch up the default login credentials on every device and schedule regular changes. Require employees to use strong passwords. Enforce multi-factor authentication (MFA). Encrypt your data at rest and in flight. Keep up with firmware updates and software patches.
+
+Keep your employees informed of the latest cyber threats and vulnerabilities and have regular training sessions on the best cybersecurity practices and protocols. The more education you provide, the more prepared you’ll be.
+
+3. Limit the Spread With Segmentation and Air-Gapped Backups
+When you’re attacked, you want controls in place to keep ransomware from spreading and attackers from gaining a foothold into the rest of your systems. You can do this by segmenting your network and air gapping your backups.
+
+The former isolates individual workloads within your network, protecting traffic traveling east-west within a data center, while the latter keeps your backups separate and secure even if ransomware begins spreading across your network.
+
+4. Ensure Well-Rounded Physical Security
+Not all elements of critical infrastructure sit within a secure data center. There are field offices and remote locations that have network access to critical infrastructure as well. (Also read: Making Networks More Secure in the Age of Cybersecurity.)
+
+These locations should have the same physical security elements and policies as a secured and hardened data center.
+
+Restrict and track physical access to facilities via badging and biometrics. Limit access for guests and visitors and use visitor logging with temporary badges (or even physical escorts). Maintain round-the-clock video monitoring and front desk and security personnel, have physical device security and install employee awareness training.
+
+Conclusion: Stay Prepared and Alert
+This past year showed us just how vulnerable organizations are to cyberthreats. So, you must be prepared and alert at all times.Assess your current cybersecurity posture and implement these best practices where needed. That way, you can address any vulnerabilities and limit damage if you’re attacked in the future.",0,"IT",""),
+(0,"Can the Blockchain Be Hacked?","Justin Stoltzfus","As blockchain processes become more and more a part of our financial lives, people are asking each other – can you hack the blockchain? Known as an immutable ledger, it would seem that the blockchain is impervious to bad actors. But are the networks comprising the ownership blockchains for these coins and tokens vulnerable to any type of hacking or fraud?The short answer, from a lot of experts, is that the blockchain itself cannot be hacked. But blockchain-adjacent processes certainly can be hacked in a number of ways.
+
+Blockchain transactions can be manipulated. Blockchain assets can be stolen. But that's not a commentary on the blockchain itself. It's a reality of the environment in which people trade and own blockchain assets.The Cryptocurrency Exchange
+Most of the infamous “blockchain hacks” that have occurred in recent years have happened on centralized exchanges. (Read also: Hacking Cryptocurrency.)
+
+In certain situations, you almost have to use an exchange to trade cryptocurrency or blockchain assets. But hackers can get access to digital assets through an exchange network or platform. In other words, Bitcoin, for example, is naturally decentralized, so there’s no central system to hack. But the exchange puts the asset into a “place” that can be exposed to hackers.
+
+The Mt. Gox story, when the exchange was hacked and subject to a massive theft is one example. But there are all sorts of headlines where some malicious actor was able to sniff out a vulnerability in some exchange, and make off with someone else's assets. For that matter, there are also rug pulls, where people can get people invested in an asset and then take off with the money.
+
+Again, though, none of that happens in the blockchain itself.
+
+Now let's talk about one aspect of a peer to peer network that you might think of as an actual “blockchain hack.”
+
+
+
+
+The 51% Attack
+When you ask knowledgeable people about hacking the blockchain, many of them will come up with one crucial exception to a blockchain network’s ironclad verified ownership model.
+
+It's called the 51% attack, and it works this way:
+
+The integrity of network transactions is supported by the community of owners in a given blockchain. So for example, verifying Bitcoin ownership gets done by the consensus of the total community of Bitcoin owners, using the blockchain ledger.
+
+With that in mind, if one party can get control of more than 50% of that ownership, then all sorts of things can be done with blockchain transactions. The accomplishing party of the 51% attack is the majority owner, so what they say goes.
+
+In reality, it's very difficult to execute a 51% attack. In a network of any size, it's prohibitively expensive. Practically speaking, nobody is going to own 51% of Bitcoin or Ethereum or any of those major blockchain assets.
+
+There's also something called a Sybil attack, where people create numerous fraudulent identities and accounts. But that doesn't help with the 51% attack strategy, because no matter how many people you split the assets between, they would have to have a full 51% of the entire blockchain asset model itself. (Read: An Introduction to Blockchain Technology.)
+
+
+
+
+New Changes
+There is another caveat to the idea that you can't hack the blockchain. It has to do with changes that have come about just in the past few years.
+
+When we reported on hacking the blockchain a few years ago, cryptocurrency was still the predominant use case for blockchain ledger transactions.
+
+But in many ways, that's not really true anymore thanks to the introduction of something called the smart contract.
+
+Smart contracts essentially involve putting data and code executions on the blockchain. You could think of smart contracts as nonfinancial blockchain transaction vehicles.
+
+
+Smart contracts started to become more popular as people got deeper into cryptocurrency in the blockchain world. First, Ethereum was the major smart contract blockchain facilitator of note. But then people figured out that Bitcoin SV could handle smart contracts (although “regular” Bitcoin does not.). New coins and tokens like Solana also became known as “Ethereum killers” partially for their ability to handle smart contracts. (Read also: Comparing the Top 3 Cryptocurrencies.)
+
+One of the benefits of smart contracts according to IBM: Blockchain transaction records are encrypted, which makes them very hard to hack. Moreover, because each record is connected to the previous and subsequent records on a distributed ledger, hackers would have to alter the entire chain to change a single record.
+
+The bottom line is that smart contracts can be hacked in ways that cryptocurrencies cannot. In other words, if you can exploit some aspect of the smart contract that's blockchain-adjacent, it can look very much like you’re hacking a blockchain.
+
+
+
+The Human Element
+There's another very important point that we can't forget when we’re talking about blockchain hacking.
+
+That's right, it’s social engineering. If you hook up to a sketchy airport wifi and send your crypto keys over that network, and somebody gets them and steals your crypto, that’s not a “blockchain hack.” (Read: Man in the Middle Attack (MITM)
+
+You can protect data and systems in complicated network setups, but you can't protect them from human error. You can't protect them from people.
+
+
+Many of the hacks and illegitimate activities that attempt to siphon money out of crypto networks, or conduct some type of fraud, are targeted toward the weakest link – the human operator. When they can get the private keys for some digital asset, for example, they’re off to the races.
+
+
+The Bottom Line
+All of that shows you how two sort of similar things can be true at once. When a blockchain related incident hits the news, it's likely people will hear Blockchain hacked! regardless of if it's accurate. As we've seen, on one hand, the blockchain itself as a model is very resistant to almost all kinds of hacking. On the other hand, lots of processes and systems connected to a blockchain and an asset have vulnerabilities. That's important to think about as we continue to see more kinds of crypto coins and smart contracts develop in an ever-expanding network of new finTech assets.",0,"IT","");
+'''
+Mechanical_article = '''INSERT INTO `Article` VALUES
+(0,"","Anonymous","",0,"Mechanical",""),
+(0,"","Anonymous","",0,"Mechanical",""),
+(0,"","Anonymous","",0,"Mechanical",""),
+(0,"","Anonymous","",0,"Mechanical",""),
+(0,"","Anonymous","",0,"Mechanical","");
+'''
+
+BIomedical_article = '''INSERT INTO `Article` VALUES
+(0,"","Anonymous","",0,"BIomedical",""),
+(0,"","Anonymous","",0,"BIomedical",""),
+(0,"","Anonymous","",0,"BIomedical",""),
+(0,"","Anonymous","",0,"Mechanical",""),
+(0,"","Anonymous","",0,"BIomedical","");
+'''
+
