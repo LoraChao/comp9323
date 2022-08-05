@@ -93,7 +93,7 @@ def create_database():
     INSERT INTO `Offer` VALUES 
     (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "IT", "", ""),
     (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "Mechanical", "", ""),
-    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "BIomedical", "");
+    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "BIomedical", "", "");
     '''
 
     Individual_prefer = '''
