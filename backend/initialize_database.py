@@ -1,7 +1,7 @@
 # create tables in database and add some data
 import pymysql
 from config import *
-
+import initialize_article
 
 def create_database():
     conn = pymysql.connect(host=DB_URL,
@@ -305,6 +305,20 @@ def create_database():
     c.execute(insert_Experts)
     db.commit()
     c.execute(insert_sentence)
+    db.commit()
+    c.execute(initialize_article.Mental_article)
+    db.commit()
+    c.execute(initialize_article.Mental_article)
+    db.commit()
+    c.execute(initialize_article.Covid_article)
+    db.commit()
+    c.execute(initialize_article.Fun_article)
+    db.commit()
+    c.execute(initialize_article.Interview_article)
+    db.commit()
+    c.execute(initialize_article.Medicle_article)
+    db.commit()
+    c.execute(initialize_article.Skill_article)
     db.commit()
     
     c.close()

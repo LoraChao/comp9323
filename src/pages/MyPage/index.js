@@ -87,7 +87,7 @@ function JobCheckButton(props){
     
     const navigate = useNavigate()
     function handleCheckJobClick(){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        // 替换职位详情的链接
+       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        
     }
 
     return (
