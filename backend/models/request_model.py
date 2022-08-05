@@ -92,8 +92,14 @@ delete_offer_model = api.model("delete offer model", {
     "OfferId": fields.Integer
 })
 
-preferoffer_model = api.model("get prefer offer model", {
-    "userId": fields.Integer
+delete_preferoffer_model = api.model("delete offer model", {
+    "userId": fields.Integer,
+    "OfferId": fields.Integer
+})
+
+preferoffer_model = api.model("post prefer offer model", {
+    "userId": fields.Integer,
+    "OfferId": fields.Integer
 })
 
 get_article_model = api.model("get article model", {
