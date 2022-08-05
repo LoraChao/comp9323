@@ -219,14 +219,15 @@ def create_database():
     `Skill` int default 0,
     `Fun` int default 0,
     `Covid` int default 0,
+    `IT` int default 0,
     PRIMARY KEY (`TasteID`)
     );
     '''
 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,1,1,0,0,0,0,0),
-    (2,2,0,2,0,0,0,0);
+    (1,1,1,0,0,0,0,0,0),
+    (2,2,0,2,0,0,0,0,0);
     '''
 
     Experts = '''
@@ -305,21 +306,25 @@ def create_database():
     c.execute(insert_Experts)
     db.commit()
     c.execute(insert_sentence)
-#     db.commit()
-#     c.execute(initialize_article.Mental_article)
-#     db.commit()
-#     c.execute(initialize_article.Mental_article)
-#     db.commit()
-#     c.execute(initialize_article.Covid_article)
-#     db.commit()
-#     c.execute(initialize_article.Fun_article)
-#     db.commit()
-#     c.execute(initialize_article.Interview_article)
-#     db.commit()
-#     c.execute(initialize_article.Medicle_article)
-#     db.commit()
-#     c.execute(initialize_article.Skill_article)
-#     db.commit()
+    db.commit()
+    c.execute(initialize_article.Mental_article)
+    db.commit()
+    c.execute(initialize_article.Covid_article)
+    db.commit()
+    c.execute(initialize_article.Fun_article)
+    db.commit()
+    c.execute(initialize_article.Interview_article)
+    db.commit()
+    c.execute(initialize_article.Medicle_article)
+    db.commit()
+    c.execute(initialize_article.Skill_article)
+    db.commit()
+    c.execute(initialize_article.BIomedical_article)
+    db.commit()
+    c.execute(initialize_article.IT_article)
+    db.commit()
+    c.execute(initialize_article.Mechanical_article)
+    db.commit()
     
     c.close()
 
