@@ -137,12 +137,12 @@ class DeleteOffer(Resource):
             delete_sql = f"DELETE FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"
             sql_command(delete_sql)
             output = {
-                "message": "true"
+                "message": "success"
             }
             return output, 200
 
-@offer.route('/preferoffer/<int:userId>')
-class PerferOffer(Resource):
+@offer.route('/get/preferoffer/<int:userId>')
+class GetPreferOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
@@ -179,6 +179,72 @@ class PerferOffer(Resource):
             "output": output_res
         }
         return output, 200
+
+@offer.route('/post/preferoffer')
+class PostPreferOffer(Resource):
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
+    @offer.expect(preferoffer_model)
+    def post(self):
+        data = json.loads(request.get_data())
+        userId = data['userId']
+        OfferId = data['OfferId']
+        if userId == "":
+            output = {
+                "message": "false"
+            }
+            return output, 400
+
+        offer_sql = f"SELECT Requirement FROM Offer WHERE OfferId='{OfferId}';"
+        offer_sql_res = sql_command(offer_sql)
+
+        if userId == "":
+            output = {
+                "message": "false"
+            }
+            return output, 400
+        offer_sql_res = offer_sql_res[0][0]
+        PerferId = 0
+        sql = "INSERT INTO individualpreferoffer VALUES ({}, {}, {}, '{}');".format(PerferId, userId, OfferId, offer_sql_res)
+        sql_command(sql)
+
+        output = {
+            "message": "success",
+            "OfferId": OfferId,
+            "individualId": userId
+        }
+
+        return output, 200
+
+@offer.route('/delete/preferoffer')
+class DeletePreOffer(Resource):
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
+    @offer.expect(delete_preferoffer_model)
+    def delete(self):
+        data = json.loads(request.get_data())
+        userId = data['userId']
+        OfferId= data['OfferId']
+
+        offer_sql = f"SELECT * FROM individualpreferoffer WHERE individualId='{userId}' and OfferId = '{OfferId}';"
+        result_from_offer = sql_command(offer_sql)
+
+        if not result_from_offer:
+            output = {
+                "message": "false"
+            }
+            return output, 400
+        else:
+            delete_sql = f"DELETE FROM individualpreferoffer WHERE individualId='{userId}' and OfferId = '{OfferId}';"
+            sql_command(delete_sql)
+            output = {
+                "message": "success"
+            }
+            return output, 200
 
 @offer.route('/modify/organization', methods=["POST"] ,doc={"description": "modify offer"})
 @api.response(400, 'Bad Request')
