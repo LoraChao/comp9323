@@ -197,16 +197,16 @@ def create_database():
     `MoodID` int NOT NULL AUTO_INCREMENT,
     `IndividualId` int NOT NULL,
     `RecordTime` varchar(255) DEFAULT NULL,
-    `Mood` varchar(255) DEFAULT NULL,
+    `Mood` int DEFAULT NULL,
     PRIMARY KEY (`MoodID`)
     );
     ''' 
 
     insert_mood = '''
     INSERT INTO `Mood` VALUES 
-    (1, 1, "01/01/2022", "Well"),
-    (2, 2, "01/02/2022", "Bad"),
-    (3, 3, "01/03/2022", "Average");
+    (1, 1, "01/01/2022", 3),
+    (2, 2, "01/02/2022", 1),
+    (3, 3, "01/03/2022", 2);
     '''
     
     Individual_taste = '''
