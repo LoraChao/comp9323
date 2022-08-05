@@ -66,6 +66,11 @@ class Login_individual extends PureComponent {
                 Don't have account?
                 <a href="./signup">Sign up</a>
             </div>
+            <div class="msg">
+                Visit as tourist。
+                <a href="./home">Home</a> 
+                {/* 这里需要homepage的链接 */}
+            </div>
           </div>
         </div>  
       )

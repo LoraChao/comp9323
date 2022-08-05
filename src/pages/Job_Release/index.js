@@ -9,7 +9,16 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class JobRelease extends PureComponent{
-
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props)
@@ -197,7 +206,7 @@ class JobRelease extends PureComponent{
               body: send
           }).then(res => res.json()).then(
               data => {
-                  if (data.success){
+                  if (data['message'] === 'Success Post'){
                       window.alert("Offer Released!")
                       let url =  "http://localhost:3000/mypage";
                       window.location.replace(url)

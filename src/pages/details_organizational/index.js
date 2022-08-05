@@ -12,11 +12,13 @@ class Details_organizational extends PureComponent{
   constructor(props) {
     super(props)
     this.state = {
+      company_username: 'test',
       companyname_name: '', //string
       location_name: '', //string
-      field_name: '', //int
+      field_name: '', //
       scale_name: '', //string
       description_name: '', //string
+      icon_name: ''
     }
   }
   render(){
@@ -27,9 +29,8 @@ class Details_organizational extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username">Company Name: {this.state.companyname_name}</span>
+            <span className="username">{this.state.companyname_name}</span>
             <br/>
-            <span className="user-identity">Location:(Kingsford/Sydney/NSW)</span>
            
         </div>
     </Header>
@@ -41,7 +42,6 @@ class Details_organizational extends PureComponent{
       autoComplete="off"
       style = {{height: 1000}}
     >
-      <form method="post" action="http://127.0.0.1:5000/auth/login">
       <div>
         <TextField
           id="companyname_id"
@@ -119,12 +119,38 @@ class Details_organizational extends PureComponent{
         <Button variant="contained" 
         type='submit'
         style = {{left:250, top:230, width:200}}
+        onClick={() => {
+          this.getConnect()}}
         >Update</Button>
       </div>
-      </form>
     </Box>
     </Layout>
   );
+        }
+        getConnect() {
+          let text = {username: this.state.company_username,
+                      companyname_name: this.state.companyname_name, //string
+                      location_name: this.state.location_name, //string
+                      field_name: this.state.field_name, //int
+                      scale_name: this.state.scale_name, //string
+                      description_name: this.state.description_name, //string
+                      icon_name: this.state.icon_name
+                      };//获取数据
+          // console.log(text);
+          let send = JSON.stringify(text);//将对象转成json字符串
+          fetch("http://127.0.0.1:5000/auth/details/organization", {
+              method: "POST",
+              headers: {"Content-Type": "application/json;charset=utf-8"},
+              body: send
+          }).then(res => res.json()).then(
+              data => {
+                  if (data['message'] === 'success'){
+                      window.alert("Detail updated!")
+                      let url =  "http://localhost:3000/mypage";
+                      window.location.replace(url)
+                  }else window.alert("Something went wrong")
+              }
+          )
         }
 }
 

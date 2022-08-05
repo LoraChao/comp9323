@@ -77,7 +77,23 @@
     // text-align: center;
     padding-top:20px;
 }
-
+.edit{
+    position:absolute;
+    right:120px;
+    top:90px;
+}
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+  
+.fa:hover {
+    color: darkblue;
+    position:absolute;
+    right:120px;
+    top:90px;
+}
 .display-wrapper {
     background-color: #fff;
     width: 70%;

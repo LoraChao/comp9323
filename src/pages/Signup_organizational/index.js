@@ -40,6 +40,11 @@ class Signup_organizational extends PureComponent {
                 Already have account?
                 <a href="./login_organizational">Company Login</a>
             </div>
+            <div class="msg">
+                Visit as tourist。
+                <a href="./home">Home</a> 
+                {/* 这里需要homepage的链接 */}
+            </div>
           </div>
         </div>  
       )
@@ -65,7 +70,7 @@ class Signup_organizational extends PureComponent {
       }).then(res => res.json()).then(
           data => {
               if (data['message'] === 'Success register'){
-                  let url =  "http://localhost:3000/profile";
+                  let url =  "http://localhost:3000/profile_organizational";
                   this.setcookie('islogin', '1', 1)
                   this.setcookie("userid", data["userid"], 1)
                   window.location.replace(url)
