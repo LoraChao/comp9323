@@ -38,9 +38,9 @@ def create_database():
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456","","","","","",""),
-    (2, "Enterprise", "qwerty","","","","","",""),
-    (3, "Company", "zxcvbn","","","","","","");
+    (1, "Anonymous", "123456","","","IT","","",""),
+    (2, "Enterprise", "qwerty","","","Mechanical","","",""),
+    (3, "Company", "zxcvbn","","","BIomedical","","","");
     '''
     
     Individual_table = '''
@@ -67,9 +67,9 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "", "", "", "", "", "", "", "", "","", "", 0,""),
-    (2, "John", "qwerty", "", "", "", "", "", "", "", "", "","", "", 0,""),
-    (3, "Elen", "zxcvbn", "", "", "", "", "", "", "", "", "","", "", 0,"");
+    (1, "Anonymous", "123456", "", "", "", "", "", "IT", "", "", "","", "", 0,""),
+    (2, "John", "qwerty", "", "", "", "", "", "Mechanical", "", "", "","", "", 0,""),
+    (3, "Elen", "zxcvbn", "", "", "", "", "", "BIomedical", "", "", "","", "", 0,"");
     '''
 
     Organization_offer = '''
@@ -91,9 +91,9 @@ def create_database():
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "", "", ""),
-    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "", "", ""),
-    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "", "");
+    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "IT", "", ""),
+    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "Mechanical", "", ""),
+    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "", "BIomedical", "");
     '''
 
     Individual_prefer = '''
@@ -243,9 +243,9 @@ def create_database():
 
     insert_Experts = '''
     INSERT INTO `Experts` VALUES
-    (1,"a","","sdjkslajdklsjdl","sadasdas@gmail.com",""),
-    (2,"b","","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
-    (3,"c","","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
+    (1,"a","IT","sdjkslajdklsjdl","sadasdas@gmail.com",""),
+    (2,"b","Mechanical","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
+    (3,"c","BIomedical","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
     '''
 
     Sentence = '''
