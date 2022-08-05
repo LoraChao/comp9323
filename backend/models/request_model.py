@@ -45,7 +45,7 @@ search_organizations_details_model = api.model("search organization details", {
 post_dairy_model = api.model("dairy post", {
     "IndividualId": fields.Integer,
     "RecordTime": fields.String,
-    "Mood": fields.String,
+    "Mood": fields.Integer,
 })
 
 search_dairy_model = api.model("dairy search", {
