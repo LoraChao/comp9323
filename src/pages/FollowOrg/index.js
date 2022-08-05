@@ -45,13 +45,26 @@ class FollowButton extends React.Component{    // individual follow tab
 
 function BackButton(){ 
 
-    // for re-navigation
     const navigate = useNavigate()
 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    const deleteOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
-    const addOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'                 // For testing: Post new follow request 
+    // get cookies
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        console.log(document.cookie)
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+  
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+
+    const deleteOrgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'
+    const addOrgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'                 // For testing: Post new follow request 
 
 
     // click back handler
@@ -72,9 +85,9 @@ function BackButton(){
         });
 
         // Jump back to myPage
-        navigate(`/MyPage?currUserId=${currUserId}`, {replace: true})
+        navigate('/MyPage', {replace: true})
 
-        // const postOptions = {                                                       // For testing: send POST to add new follower 
+        // const postOptions = {                                          // For testing: send POST to add new follower 
         //     method: 'POST',
         //     headers: {'Content-Type': 'application/json'},
         //     body: JSON.stringify({
@@ -97,9 +110,23 @@ function BackButton(){
 
 const FollowOrg = () => {
 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    const orgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'              
+    // get cookies
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        console.log(document.cookie)
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+  
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+
+    const orgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'              
 
 
     // set state for storing org like list

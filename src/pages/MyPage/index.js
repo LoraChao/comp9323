@@ -6,15 +6,6 @@ import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 
-const currUserId = '2'
-
-const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
-const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId+''
-const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
-const postMoodStar = 'http://127.0.0.1:5000/mood/post'
-const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
-
 
 const {  Header, Content, Footer} = Layout;
 
@@ -70,24 +61,28 @@ const customIcons = {
     
 
 function ArticleCheckButton(props){ 
+    // get article's id
     const articleId = props.articleId 
     
+    // jump with article's id
     const navigate = useNavigate()
-    function handleCheckArtileClick(id){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+    function handleCheckArtileClick(){
+        navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
     }
 
     return (
-       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
-     )
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
+    )
 }
 
 function JobCheckButton(props){ 
+    // get job's id
     const OfferId = props.OfferId 
     
+    // jump with params: 'job's id'
     const navigate = useNavigate()
     function handleCheckJobClick(){
-       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        
+        navigate(`/check?offer_id=${OfferId}`, {replace: true})        
     }
 
     return (
@@ -97,9 +92,10 @@ function JobCheckButton(props){
 
 function ArticleMoreButton(){ 
     
+    // jump without params
     const navigate = useNavigate()
-    function ArtMoreButton(id){
-       navigate(`/ArticleList?currUserId=${currUserId}`, {replace: true})
+    function ArtMoreButton(){
+       navigate('/ArticleList', {replace: true})
     }
 
     return (
@@ -108,10 +104,11 @@ function ArticleMoreButton(){
 }
 
 function JobMoreButton(){ 
-    
+
+    // jump without params
     const navigate = useNavigate()
-    function OfferMoreButton(id){
-       navigate(`/JobPreference?currUserId=${currUserId}`, {replace: true})
+    function OfferMoreButton(){
+       navigate('/JobPreference', {replace: true})
     }
 
     return (
@@ -120,23 +117,26 @@ function JobMoreButton(){
 }
 
 function IndCheckButton(props){ 
-        const checkUserId = props.checkUserId 
-        
-        const navigate = useNavigate()
-        function handleCheckIndClick(){
-           navigate(`/OthersPage?currUserId=${currUserId}&checkUserId=${checkUserId}`, {replace: true})
-        }
-    
-        return (
-           <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
-         )
+    // get target person's id
+    const checkUserId = props.checkUserId 
+
+    // jump with params: target user's id
+    const navigate = useNavigate()
+    function handleCheckIndClick(){
+        navigate(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
 }
 
 function IndividualMoreButton(){ 
-    
+
+    // jump without params
     const navigate = useNavigate()
-    function IndMoreButton(id){
-       navigate(`/FollowInd?currUserId=${currUserId}`, {replace: true})
+    function IndMoreButton(){
+       navigate('/FollowInd', {replace: true})
     }
 
     return (
@@ -145,10 +145,11 @@ function IndividualMoreButton(){
 }
 
 function OrganizationMoreButton(){ 
-    
+
+    // jump without params
     const navigate = useNavigate()
     function OrgMoreButton(id){
-       navigate(`/FollowOrg?currUserId=${currUserId}`, {replace: true})
+       navigate('/FollowOrg', {replace: true})
     }
 
     return (
@@ -156,6 +157,17 @@ function OrganizationMoreButton(){
     )
 }
 
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    console.log(document.cookie)
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
 
 // function RateStar(){
     
@@ -229,6 +241,17 @@ const MyPage = () => {
     const [userMoodData, setUserMoodData] = useState(0);
     const [userMoodValue, setUserMoodValue] = useState(0);
 
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+    console.log("userid", currUserId)
+
+    // apis, thanks for your effort, backend guys, if you could see me here lol ;-)
+    const followOrgURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'
+    const followIndURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'
+    const preferJobURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+currUserId+''
+    const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
+    const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
 
     // generate date string for later get and post
     var currDate = new Date();
@@ -347,7 +370,7 @@ const MyPage = () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
                             "IndividualId": currUserId,
-                            "RecordTime": currTimeString,
+                            "RecordTime": currDate,
                             "Mood": moodString
                     })
                 };
@@ -370,7 +393,7 @@ const MyPage = () => {
     const userInfo = userInfoData 
     
     
-    //console.log(userMood)
+    console.log(preferJobData)
 
     return (
         <Layout>
@@ -389,8 +412,6 @@ const MyPage = () => {
                 </div>
                 
                 <div className="rate">
-                    {/* <Rate onClick={() => {handleRateClick("1")}}/>  */}
-                    {/* <RateStar/> */}
                     <Rate defaultValue={userMoodValue} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setUserMoodValue} value={userMoodValue}  />
                 </div>
 
@@ -432,7 +453,7 @@ const MyPage = () => {
                             title={<a href="@">{item.IndividualName}</a>}             
                             description={item.Occupation}
                             />
-                            {/* <div><Button>check</Button></div> */}
+
                             <IndCheckButton checkUserId={item.IndividualId} />
                         </List.Item>
                         
@@ -504,7 +525,6 @@ const MyPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            {/* <div><Button>check</Button></div> */}
                             <JobCheckButton OfferId={item.OfferId} />
                         </List.Item>
                         

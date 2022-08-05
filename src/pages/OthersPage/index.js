@@ -89,6 +89,34 @@ function OrganizationMoreButton(){
     )
 }
 
+function JobCheckButton(props){ 
+    const OfferId = props.OfferId 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    
+    const navigate = useNavigate()
+    function handleCheckJobClick(){
+       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        
+    }
+
+    return (
+       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+     )
+}
+
+function JobMoreButton(){ 
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
+    const navigate = useNavigate()
+    function OfferMoreButton(id){
+       navigate(`/JobPreference?currUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
+    )
+}
 
 const OthersPage = () => {
 
@@ -267,7 +295,7 @@ const OthersPage = () => {
               method: 'DELETE',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
-                "indID": checkUserId
+                "Individual": [checkUserId]
             })
           }
 
@@ -405,7 +433,7 @@ const OthersPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    extra={<a href="./MyPage/JobPreference">More</a>}
+                    extra={<JobMoreButton/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -414,7 +442,6 @@ const OthersPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        //dataSource={companyData}
                         pagination={{
                             onChange: (page) => {
                               console.log(page);
@@ -431,7 +458,7 @@ const OthersPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            <div><Button>check</Button></div>
+                            <JobCheckButton OfferId={item.OfferId} />
                         </List.Item>
                         
                         )}

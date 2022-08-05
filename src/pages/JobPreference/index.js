@@ -9,15 +9,13 @@ const jobPic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.
 
 
 function JobCheckButton(props){ 
-    
+    // get job's id
     const OfferId = props.OfferId 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
 
-
+    // jump with params: job's id
     const navigate = useNavigate()
     function handleCheckJobClick(){
-       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})             
+       navigate(`/check?offer_id=${OfferId}`, {replace: true})             
     }
 
     return (
@@ -26,16 +24,29 @@ function JobCheckButton(props){
 }
 
 const JobPreference = () => {
+    // get cookies
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        console.log(document.cookie)
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    //console.log("user id: ", currUserId)
-
-    const jobListURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId
+    // apis
+    const jobListURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+currUserId
     
 
     const [data, setData ] = useState(0);
 
+    // GET user's liked jobs
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -54,7 +65,6 @@ const JobPreference = () => {
     },[])
     
     
-
     const jobList = data.output                                             
     //console.log(jobList)
 

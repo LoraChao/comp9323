@@ -19,15 +19,31 @@ import { useSearchParams } from 'react-router-dom';
 
 const ArticleDetails = () => {
     
+    // get cookies
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      console.log(document.cookie)
+      for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+  }
 
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+
+    // get current article's id
     const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
     const articleId =  params.get('articleId')
-    console.log("user id: ", currUserId, " article id: ", articleId)
 
-  
+    console.log("current user id: ", currUserId, " article id: ", articleId)
+
+    // apis
     const articleUrl = 'http://127.0.0.1:5000/article/get/'+articleId;
-    const getLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+articleId;
+    const getLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferstate/'+articleId;
     const postLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList';
     const deleteLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList';
   
@@ -38,9 +54,6 @@ const ArticleDetails = () => {
     
     // GET page data
     useEffect(() => {
-
-        // const articleUrl = 'http://127.0.0.1:5000/article/get/'+articleId;
-        // const getLikeUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+articleId;
 
         const requestOptions = {
             method: 'GET',
@@ -68,14 +81,12 @@ const ArticleDetails = () => {
 
       },[])
 
-
+    // toggle "like" button and POST/DELETE like request
     function handleClick(currState){
-        // console.log("currState",currState)
-        if(currState.states === 0){
 
-          //console.log("0 -> 1")
+        if(currState.states === 0){                                 // change "dislike to like" and send POST request
+
           setLikeData({states: 1})
-          //console.log(likeData)
 
           const postOptions = {
               method: 'POST',
@@ -96,10 +107,9 @@ const ArticleDetails = () => {
           postLikeData(postLikeUrl);
         }
 
-        else if(currState.states === 1){
-          //console.log("1 -> 0")
+        else if(currState.states === 1){                            // change "like to dislike" and send DELETE request
+
           setLikeData({states: 0})
-          //console.log(likeData)
 
           const deleteOptions = {
               method: 'DELETE',
@@ -120,13 +130,12 @@ const ArticleDetails = () => {
         deleteLikeData(deleteLikeUrl);
         }
 
-        else if(currState.states === 2){
-          //console.log("keep 2")
-          //console.log(likeData)
-        }
+        else if(currState.states === 2){                // for org users or visitors, they don't have like states
+        }   
     }
 
-    const loadWord = (like) => {
+    // conditional renders
+    const loadWord = (like) => {          
       if(like === 0){
         return <div>Like</div>
       }

@@ -30,32 +30,47 @@ const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZ
 // ];
 
 function ArticleCheckButton(props){ 
-    
+    // get article's id
     const articleId = props.articleId 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
 
-
+    // jump with params: article's id
     const navigate = useNavigate()
-    function handleCheckArtileClick(id){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+    function handleCheckArtileClick(){
+       navigate(`/ArticleDetails?articleId=${articleId}`, {replace: true})
     }
 
     return (
-       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
      )
 }
 
 const ArticleList = () => {
 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    //console.log("user id: ", currUserId)
+    // get cookies
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        console.log(document.cookie)
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
 
+    
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+
+
+    // apis
     const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
 
     const [data, setData ] = useState(0);
 
+
+    // GET liked article's list
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -74,7 +89,6 @@ const ArticleList = () => {
     },[])
     
     
-
     const articleList = data.message                                             
     //console.log(articleList)
 
@@ -113,7 +127,6 @@ const ArticleList = () => {
                                 <img width={80} alt="logo" 
                                     src={articlePic}/>}
                                 title={<a href="@">{item.ArticleTitle}</a>}
-                                //description={item.description}
                                 description={<Tag>{item.ArticleTag}</Tag>}
                             />
                             <Space
@@ -123,7 +136,6 @@ const ArticleList = () => {
                                 display: 'flex',
                                 }}
                             >
-                                {/* <div><Button href={item.ArticleLink}>Check</Button></div> */}
                                 <ArticleCheckButton articleId={item.ArticleID} />
                             </Space>
                         </List.Item>
