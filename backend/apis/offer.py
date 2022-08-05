@@ -159,9 +159,9 @@ class GetPreferOffer(Resource):
 
         if not result_from_preferoffer:
             output = {
-                "message": "false"
+                "message": "This account does not follow anyone"
             }
-            return output, 400
+            return output, 200
 
         offerId_list = []
         for i in result_from_preferoffer:
