@@ -6,28 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const jobPic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-//const currUserId = '1'
 
-// const jobListData = [                                                               
-//     {
-//       JobName: 'Job_1',
-//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-//       tag: 'tag of this job',
-//       JobID: 1
-//     },
-//     {
-//       JobName: 'Job_2',
-//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-//       tag: 'tag of this job', 
-//       JobID: 2
-//     },
-//     {
-//       JobName: 'Job_3',
-//       JobIcon: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-//       tag: 'tag of this job',
-//       JobID: 3
-//     },
-// ];
 
 function JobCheckButton(props){ 
     
@@ -38,7 +17,7 @@ function JobCheckButton(props){
 
     const navigate = useNavigate()
     function handleCheckJobClick(){
-       navigate(`/JobDetails?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})             // 替换职位详情的链接
+       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})             
     }
 
     return (
