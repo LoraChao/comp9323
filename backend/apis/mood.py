@@ -64,14 +64,17 @@ class SearchDairy(Resource):
             }
             return output, 400
         
-        dairy_sql = f"SELECT * FROM mood WHERE IndividualId='{IndividualId}';" #database_info
+        dairy_sql = f"SELECT * FROM mood WHERE IndividualId='{IndividualId}' and RecordTime = '{Date}';" #database_info
         result_from_dairy = sql_command(dairy_sql)
        
         if not result_from_dairy:
             output = {
-                "message": "false"
+                "message": "success get",
+                "IndividualId": IndividualId,
+                "RecordTime": Date,
+                "Mood": "average"
             }
-            return output, 403
+            return output, 200
         for day in result_from_dairy:
             if Date == day[2]:
                 output = {
