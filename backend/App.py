@@ -7,6 +7,7 @@ try:
     import apis.mood
     import apis.offer
     import apis.article
+    import apis.follow
 
     app.run(debug=True)
 except ImportError as e:
