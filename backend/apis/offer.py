@@ -78,7 +78,7 @@ class SearchOffer(Resource):
                 "message": "success",
                 "output": output_res
             }
-            return output, 400
+            return output, 200
 
 
 @offer.route('/search/detail/<int:OrganizationId>&<int:OfferId>')
