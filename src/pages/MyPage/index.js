@@ -157,10 +157,60 @@ function OrganizationMoreButton(){
     )
 }
 
+function LogoutButton(){
+    // jump without params
+    const navigate = useNavigate()
+    function LogoutButton(id){
+        document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        navigate('/login', {replace: true})
+    }
+
+    return (
+        <Button onClick={() => {LogoutButton()}}>Logout</Button>
+    )
+}
+
+function ConfirmChangeMood(props){
+    const moodValue = props.mood
+    const currTimeString = props.currTimeString
+    const currUserId = props.currUserId
+    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
+
+    // when click confirm mood change
+    function handleMoodChangeClick(){
+        console.log("mood",moodValue,"time",currTimeString, "id",currUserId)
+
+        // post mood change
+        const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                            "IndividualId": currUserId,
+                            "RecordTime": currTimeString,
+                            "Mood": moodValue
+                    })
+                };
+
+        const postMoodRate = async (postMoodStar) => {
+            fetch(postMoodStar, requestOptions)
+                    .then(res =>  res.json())
+                    .then(data => {
+                        console.log(data)
+                    });
+        }
+
+        postMoodRate(postMoodStar)
+        //console.log("post")
+        
+    }
+    return(
+        <Button type="primary" onClick={handleMoodChangeClick}>confirm</Button>
+    )
+}
+
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    console.log(document.cookie)
     for(var i=0;i < ca.length;i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
@@ -169,65 +219,7 @@ function getCookie(name) {
     return null;
 }
 
-// function RateStar(){
-    
-//     // get storage mood state
-//     var initialMood;
-//     if(userInfo.Mood === "well"){
-//         initialMood = 3
-//     }
-//     else if(userInfo.Mood === "average"){
-//         initialMood = 2
-//     }
-//     else{
-//         initialMood = 1
-//     }
-//     const [value, setValue] = useState(initialMood);
 
-//     // set new mood state
-//     useEffect(() => {
-//         var mood = ''
-//         var date = new Date();
-//         if (value === 1)
-//             {
-//                 mood = 'bad'
-//             }
-//             else if (value === 2)
-//             {
-//                 mood = 'average'
-//             }
-//             else
-//             {
-//                 mood = 'well'
-//             }
-
-//         const requestOptions = {
-//                     method: 'POST',
-//                     headers: {'Content-Type': 'application/json'},
-//                     body: JSON.stringify({
-//                             "IndividualId": currUserId,
-//                             "RecordTime": date,
-//                             "Mood": mood
-//                     })
-//                 };
-
-//         const postMoodRate = async (postMoodStar) => {
-//             fetch(postMoodStar, requestOptions)
-//                     .then(res =>  res.json())
-//                     .then(data => {
-//                         console.log(data)
-//                     });
-//         }
-
-//         postMoodRate(postMoodStar);
-//     },[value])
-
-
-//     return (
-//        <Rate defaultValue={initialMood} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
-
-//      );
-// }
    
 
 const MyPage = () => {
@@ -250,7 +242,6 @@ const MyPage = () => {
     const followIndURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'
     const preferJobURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+currUserId+''
     const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
-    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
     const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
 
     // generate date string for later get and post
@@ -268,7 +259,6 @@ const MyPage = () => {
     var currTimeString = currDate.getFullYear()+'-'+months[currDate.getMonth()]+'-'+days[currDate.getDay()]
     //console.log()
 
-    currTimeString = '2022-02-01'
     const getUserMood = 'http://127.0.0.1:5000/mood/search/'+currUserId+'&'+currTimeString
 
 
@@ -324,18 +314,8 @@ const MyPage = () => {
             .then(res =>  res.json())
             .then(json =>{
                 setUserMoodData(json) 
-                if(userMoodData.Mood === "well"){
-                    setUserMoodValue(3)
-                    //console.log("well:",userMoodValue)
-                }
-                else if(userMoodData.Mood === "average"){
-                    setUserMoodValue(2)
-                    //console.log("average:",userMoodValue)
-                }
-                else{
-                    setUserMoodValue(1)
-                    //console.log("bad:",userMoodValue)
-                }                         
+                console.log(json)    
+                setUserMoodValue(json.Mood)                   
             }) 
         }
 
@@ -349,42 +329,6 @@ const MyPage = () => {
 
     },[])
 
-    // POST new mood state
-    useEffect(() => {
-        var moodString = ''
-        if (userMoodValue === 1)
-            {
-                moodString = 'bad'
-            }
-            else if (userMoodValue === 2)
-            {
-                moodString = 'average'
-            }
-            else
-            {
-                moodString = 'well'
-            }
-
-        const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                            "IndividualId": currUserId,
-                            "RecordTime": currDate,
-                            "Mood": moodString
-                    })
-                };
-
-        const postMoodRate = async (postMoodStar) => {
-            fetch(postMoodStar, requestOptions)
-                    .then(res =>  res.json())
-                    .then(data => {
-                        console.log(data)
-                    });
-        }
-
-        postMoodRate(postMoodStar);
-    },[userMoodValue])
 
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
@@ -393,7 +337,7 @@ const MyPage = () => {
     const userInfo = userInfoData 
     
     
-    console.log(preferJobData)
+    console.log("get mood",userMoodValue)
 
     return (
         <Layout>
@@ -412,7 +356,11 @@ const MyPage = () => {
                 </div>
                 
                 <div className="rate">
-                    <Rate defaultValue={userMoodValue} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setUserMoodValue} value={userMoodValue}  />
+                    <Rate value={userMoodValue} character={({ index }) => customIcons[index + 1]} onChange={setUserMoodValue} count = "3" />; 
+                </div>
+
+                <div className="saveMood">
+                    <ConfirmChangeMood mood={userMoodValue} currTimeString = {currTimeString} currUserId = {currUserId}/>
                 </div>
 
                 <div className="edit">
@@ -420,7 +368,8 @@ const MyPage = () => {
                 </div>
 
                 <div className="logout">
-                                <Button type="dashed"> logout</Button>
+                    <LogoutButton/>
+
                 </div> 
 
             </Header>
