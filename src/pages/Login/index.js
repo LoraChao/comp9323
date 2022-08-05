@@ -98,7 +98,7 @@ class Login_individual extends PureComponent {
                   let url =  "http://localhost:3000/mypage";
                   window.alert(data["userid"])
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", data["userid"], 1)
+                  this.setcookie("userid", data["id"], 1)
                   window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }
