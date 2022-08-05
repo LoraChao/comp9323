@@ -11,23 +11,25 @@ import { useSearchParams } from 'react-router-dom';
 class LikeButton extends React.Component{    // individual follow tab
 
   state = {
-      like: 1
+      like: 1,
+      currUserId: 1,
+      offer_id: 1
   }
 
   handleClick(){
       let text = {
         userId: this.state.currUserId,
-        offerId: this.state.offer_id
+        OfferId: this.state.offer_id
       };
       let send = JSON.stringify(text);
-      if(this.state.like === 0){
+      if(this.state.like === 1){
           fetch("http://127.0.0.1:5000/offer/post/preferoffer", { //这里需要like offer的链接**********
           method: "POST",
           headers: {"Content-Type": "application/json;charset=utf-8"},
           body: send
         }).then(res => res.json()).then(
           data => {
-              if (data['message'] === 'Success'){
+              if (data['message'] === 'success'){
                   window.alert("Offer liked!")
                   this.setState({
                     like: (this.state.like + 1)%2
@@ -43,7 +45,7 @@ class LikeButton extends React.Component{    // individual follow tab
           body: send
       }).then(res => res.json()).then(
         data => {
-            if (data['message'] === 'Success'){
+            if (data['message'] === 'success'){
                 window.alert("Offer unliked!")
                 this.setState({
                   like: (this.state.like + 1)%2
@@ -55,9 +57,12 @@ class LikeButton extends React.Component{    // individual follow tab
   }
 
   render(){
+    // 这里要调用赵经理给的function然后把org id和offer id拿到
+    //并且调用cookie把userid拿到
+    
       return <div>
           <Button onClick={() => {this.handleClick()}}> 
-              {this.state.like === 1 ? 'unlike' : 'like'}
+              {this.state.like === 1 ? 'like' : 'unlike'}
           </Button>
       </div>
       
@@ -79,8 +84,8 @@ function Getorg_id(){
   return organization_id
 }
 
-var organization_id = Getoffer_id();
-var offer_id = Getoffer_id();
+var organization_id = 1;
+var offer_id = 1;
 
 
 class JobCheck extends PureComponent{
@@ -89,27 +94,6 @@ class JobCheck extends PureComponent{
     x.classList.toggle("fa-thumbs-down");
   }
 
-  // LikeOffer(x) {
-  //   let text = {userid: this.currUserId, offerid: this.offer_id};//获取数据
-  //   // console.log(text);
-  //   let send = JSON.stringify(text);//将对象转成json字符串
-  //   if(x.class === "fa-thumbs-up"){
-  //     fetch("http://127.0.0.1:5000/auth/login", { //这里需要like offer的链接**********
-  //       method: "POST",
-  //       headers: {"Content-Type": "application/json;charset=utf-8"},
-  //       body: send
-  //     })
-  //     x.classList.toggle("fa-thumbs-down");
-  //   }
-  //   else if(x.class === "fa-thumbs-down"){
-  //     fetch("http://127.0.0.1:5000/auth/login", { //这里需要like offer的链接**********
-  //       method: "DELETE",
-  //       headers: {"Content-Type": "application/json;charset=utf-8"},
-  //       body: send
-  //     })
-  //     x.classList.toggle("fa-thumbs-up");
-  // }
-  // }  
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -156,9 +140,10 @@ class JobCheck extends PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      currUserId:'',
-      offer_id:'',
-      organization_id:'',
+      like: 1,
+      currUserId:1,
+      offer_id:1,
+      organization_id:1,
       company_name: '',//data[0]['CompanyName'], //string
       company_location:'', //data[0]['CompanyName'], //string
       position_name:'', //data[0]['Position'],
@@ -181,7 +166,6 @@ class JobCheck extends PureComponent{
             </div>
             <span className="username">{this.state.company_name}</span>{/* 这里要读取用户数据 */}
             <br/>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
             <LikeButton/>
         </div>
     </Header>
@@ -226,14 +210,14 @@ class JobCheck extends PureComponent{
     <div>
         <Button variant="contained" 
         type='submit'
-        style = {{left:250, top:230, width:200}}
+        style = {{left:250, top:0, width:200}}
         onClick={() => {
           this.Tohomepage()
         }}
         >Back to Home</Button>
         <Button variant="contained" 
         type='submit'
-        style = {{left:100, top:230, width:200}}
+        style = {{left:-250, top:0, width:200}}
         onClick={() => {
           this.Toprofilepage()
         }}
