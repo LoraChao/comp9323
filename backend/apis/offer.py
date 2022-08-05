@@ -65,8 +65,6 @@ class SearchOffer(Resource):
         label_name = ["offerId", "CompanyName", "Responsibility", "Requirement"]
         offer_sql = f"SELECT offerId, CompanyName, Responsibility, Requirement FROM Offer WHERE OrganizationId='{OrganizationId}';" #database_info
         result_from_offer = sql_command(offer_sql)
-        # result_from_offer = sql_dicresult_with_decription(offer_sql)
-        # test.extend(result_from_db)
         if not result_from_offer:
             output = {
                 "message": "false"
@@ -200,7 +198,10 @@ class PostPreferOffer(Resource):
         offer_sql = f"SELECT Requirement FROM Offer WHERE OfferId='{OfferId}';"
         offer_sql_res = sql_command(offer_sql)
 
-        if userId == "":
+        check_sql = f"SELECT PreferID FROM individualpreferoffer WHERE OfferID='{OfferId}' and IndividualId = '{userId}';"
+        check_sql_res = sql_command(check_sql)
+
+        if check_sql_res:
             output = {
                 "message": "false"
             }
