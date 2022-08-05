@@ -146,9 +146,10 @@ class indFollowList(Resource):
                 ind_follow = []
                 for e in result_from_db:
                     ind_sql = f"SELECT * FROM Individual WHERE IndividualID ='{e['IndID']}';"
+                    result_from_db = sql_dicresult_with_decription(ind_sql)
                     for e in result_from_db:
                         e.pop("Password")
-                    result_from_db = sql_dicresult_with_decription(ind_sql)
+                    
                     ind_follow.extend(result_from_db)
                 output = {
                     'ind_follow': ind_follow,
