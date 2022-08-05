@@ -3,12 +3,8 @@ import { Layout, Card, List, Button, Space} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const currUserId = '1'
-
-const orgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'                    
-const deleteOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
-const addOrgFollowListURL = "http://127.0.0.1:5000/cont/1/orgFollowList"                 // For testing: Post new follow request 
+import { useSearchParams } from 'react-router-dom';
+      
 
 global.unfollowList = []
 
@@ -52,6 +48,12 @@ function BackButton(){
     // for re-navigation
     const navigate = useNavigate()
 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const deleteOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
+    const addOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'                 // For testing: Post new follow request 
+
+
     // click back handler
     const handleBackClick = (deleteList) =>{ 
         
@@ -89,11 +91,16 @@ function BackButton(){
         // console.log(deleteList)
     }
     return (
-       <Button onClick={() => {handleBackClick("unfollowList")}}>Back</Button>
+       <Button type="link" onClick={() => {handleBackClick("unfollowList")}}>Back</Button>
      )
 }
 
 const FollowOrg = () => {
+
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const orgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'              
+
 
     // set state for storing org like list
     const [data, setData ] = useState(0);

@@ -104,6 +104,20 @@ test_model = api.model("get article model", {
     "userId": fields.Integer,
 })
 
+update_offer_model = api.model("update offer model", {
+    "OfferId": fields.Integer,
+    "OrganizationId": fields.Integer,
+    "company_name": fields.String,
+    "position_name": fields.String,
+    "working_location_name": fields.String,
+    "working_hour_name": fields.String,
+    "salary_name": fields.String,
+    "responsibility_name": fields.String,
+    "requirement_name": fields.String,
+    "contact_name": fields.String,
+    "icon_name": fields.String,
+})
+
 
 #Jundi
 prefer_model = api.model("article model",{

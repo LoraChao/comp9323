@@ -79,7 +79,7 @@ def create_database():
     `CompanyName` varchar(255) DEFAULT NULL,
     `Position` varchar(255) DEFAULT NULL,
     `WorkingLocation` varchar(255) DEFAULT NULL,
-    `Working hours` varchar(255) DEFAULT NULL,
+    `WorkingHours` varchar(255) DEFAULT NULL,
     `Salary` varchar(255) DEFAULT NULL,
     `Responsibility` varchar(255) DEFAULT NULL,
     `Requirement` varchar(255) DEFAULT NULL,

@@ -27,7 +27,7 @@ class CheckLikeStates(Resource):
                 output = {'states': 1}
                 return output,200
             else:
-                output = {'states': 1}
+                output = {'states': 0}
                 return output,200
         else:
             output = {'states': 2}
@@ -129,14 +129,14 @@ class PreferList(Resource):
             result_from_db = sql_dicresult_with_decription(ind_sql)[0]
             if result_from_db:
                 type = result_from_db['ArticleTag']
-                like_sql = f"insert into IndividualPrefer (individualID,ArticleID,type) select {individualID},{ArticleID},{type} where not exists(select individualID from IndividualPrefer where individualID = {individualID} and ArticleID={ArticleID} and type={type});"
-                count_sql = f"UPDATE Article set ArticleLikeNum = ArticleLikeNum + 1 where ArticleID = {ArticleID}"
-                taste_sql = f"UPDATE Taste {type} = {type} + 1 where individualID = {individualID};"
+                like_sql = f"INSERT INTO IndividualPrefer (individualID,ArticleID,type) SELECT {individualID},{ArticleID},'{type}' WHERE NOT EXISTS(SELECT individualID FROM IndividualPrefer WHERE individualID = {individualID} AND ArticleID={ArticleID} AND type='{type}');"
+                count_sql = f"UPDATE Article SET ArticleLikeNum = ArticleLikeNum + 1 WHERE ArticleID = {ArticleID};"
+                taste_sql = f"UPDATE Taste SET {type} = {type} + 1 where individualID = {individualID};"
                 sql_command(like_sql)
                 sql_command(count_sql)
                 sql_command(taste_sql)
                 output = {
-                    'message': 'well done'
+                    'message': 'POST well done'
                 }
                 return output,200
             else:
@@ -156,17 +156,18 @@ class PreferList(Resource):
         user_sql = f"SELECT IndividualName FROM Individual WHERE IndividualID={individualID};"
         if sql_command(user_sql):
             ArticleID = request.json['articleID']
-            ind_sql = f"SELECT * FROM Article WHERE ArticleID={ArticleID};"
-            if sql_command(ind_sql):
-                type='article'
+            ind_sql = f"SELECT ArticleTag FROM Article WHERE ArticleID={ArticleID};"
+            result_from_db = sql_dicresult_with_decription(ind_sql)[0]
+            if result_from_db:
+                type = result_from_db['ArticleTag']
                 like_sql = f"DELETE from IndividualPrefer WHERE individualID = {individualID} and ArticleID = {ArticleID};"
                 count_sql =f"UPDATE Article set ArticleLikeNum = ArticleLikeNum - 1 where ArticleID ={ArticleID};"
-                taste_sql = f"UPDATE Taste {type} = {type} - 1 where individualID = {individualID};"
+                taste_sql = f"UPDATE Taste SET {type} = {type} - 1 where individualID = {individualID};"
                 sql_command(like_sql)
                 sql_command(count_sql)
                 sql_command(taste_sql)
                 output = {
-                    'message': 'well done'
+                    'message': 'DELETE well done'
                 }
                 return output,200
             else:

@@ -3,13 +3,9 @@ import { Layout, Card, List, Button, Space, Avatar} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
-const currUserId = '1'
 
-
-const indFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 
-const deleteIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-const addIndFollowListURL = "http://127.0.0.1:5000/cont/1/indFollowList"                 // For testing: Post new follow request 
 
 global.unfollowList = []
 
@@ -52,6 +48,12 @@ function BackButton(){
     // for re-navigation
     const navigate = useNavigate()
 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const deleteIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
+    const addIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 // For testing: Post new follow request 
+
+
     // click back handler
     const handleBackClick = () =>{ 
         
@@ -86,14 +88,19 @@ function BackButton(){
         //     console.log("add:",data)
         // });
 
-        //console.log(deleteList)
     }
     return (
-       <Button onClick={() => {handleBackClick()}}>Back</Button>
+       <Button type="link" onClick={() => {handleBackClick()}}>Back</Button>
      )
 }
 
 const FollowInd = () => {
+
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+
+    const indFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 
+   
 
     // set state for storing ind like list
     const [data, setData ] = useState(0);

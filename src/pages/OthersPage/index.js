@@ -1,19 +1,10 @@
-import './MyPage.scss'
+import './OthersPage.scss'
 import React, { useState, useEffect }  from 'react';
 import { Layout, Avatar, Button, Card, Space, List, Rate, Tag} from "antd"
 import { UserOutlined} from '@ant-design/icons';
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-
-
-const currUserId = '2'
-
-const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
-const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId+''
-const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
-const postMoodStar = 'http://127.0.0.1:5000/mood/post'
-const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
+import { useSearchParams } from 'react-router-dom';
 
 
 const {  Header, Content, Footer} = Layout;
@@ -24,82 +15,30 @@ const customIcons = {
     3: <SmileOutlined />,
 };
 
-//  test data
-// const companyData = [
-//     {
-//       title: 'Microsoft',
-//       description: 'AI Developer' 
-//     },
-//     {
-//       title: 'Amazon',
-//       description: 'UI Developer' 
-//     },
-//     {
-//       title: 'Google',
-//       description: 'DevOps' 
-//     },
-// ];
-
-// const c = [
-//       {
-//         "ArticleID": 1,
-//         "ArticleTitle": "t1",
-//         "Author": "a",
-//         "Article": "asd",
-//         "ArticleLikeNum": 1,
-//         "ArticleTag": "Mental",
-//         "Icon": ""
-//       },
-//       {
-//         "ArticleID": 2,
-//         "ArticleTitle": "t2",
-//         "Author": "b",
-//         "Article": "fdgsdfgdf",
-//         "ArticleLikeNum": 2,
-//         "ArticleTag": "Medicle",
-//         "Icon": ""
-//       }
-// ]
-
-// const userInfo = {
-//     name: "Micky Mouse",
-//     description: "unsw, it, student",
-//     icon: <UserOutlined />,
-//     mood: "average",
-// }
     
-
 function ArticleCheckButton(props){ 
+
     const articleId = props.articleId 
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
     
     const navigate = useNavigate()
-    function handleCheckArtileClick(id){
+    function handleCheckArtileClick(){
        navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
     }
 
     return (
-       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
-     )
-}
-
-function JobCheckButton(props){ 
-    const OfferId = props.OfferId 
-    
-    const navigate = useNavigate()
-    function handleCheckJobClick(){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        // 替换职位详情的链接
-    }
-
-    return (
-       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
      )
 }
 
 function ArticleMoreButton(){ 
-    
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
     const navigate = useNavigate()
     function ArtMoreButton(id){
-       navigate(`/ArticleList?currUserId=${currUserId}`, {replace: true})
+       navigate(`/ArticleList?currUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -107,24 +46,14 @@ function ArticleMoreButton(){
     )
 }
 
-function JobMoreButton(){ 
-    
-    const navigate = useNavigate()
-    function OfferMoreButton(id){
-       navigate(`/JobPreference?currUserId=${currUserId}`, {replace: true})
-    }
-
-    return (
-       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
-    )
-}
-
 function IndCheckButton(props){ 
         const checkUserId = props.checkUserId 
+        const [params] = useSearchParams()
+        const currUserId =  params.get('currUserId')
         
         const navigate = useNavigate()
         function handleCheckIndClick(){
-           navigate(`/OthersPage?currUserId=${currUserId}&checkUserId=${checkUserId}`, {replace: true})
+           navigate(`/OthersPage?currUserId=${currUserId}&articleId=${checkUserId}`, {replace: true})
         }
     
         return (
@@ -133,10 +62,12 @@ function IndCheckButton(props){
 }
 
 function IndividualMoreButton(){ 
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
     
     const navigate = useNavigate()
     function IndMoreButton(id){
-       navigate(`/FollowInd?currUserId=${currUserId}`, {replace: true})
+       navigate(`/FollowInd?currUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -145,10 +76,12 @@ function IndividualMoreButton(){
 }
 
 function OrganizationMoreButton(){ 
-    
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
     const navigate = useNavigate()
     function OrgMoreButton(id){
-       navigate(`/FollowOrg?currUserId=${currUserId}`, {replace: true})
+       navigate(`/FollowOrg?currUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -157,68 +90,21 @@ function OrganizationMoreButton(){
 }
 
 
-// function RateStar(){
-    
-//     // get storage mood state
-//     var initialMood;
-//     if(userInfo.Mood === "well"){
-//         initialMood = 3
-//     }
-//     else if(userInfo.Mood === "average"){
-//         initialMood = 2
-//     }
-//     else{
-//         initialMood = 1
-//     }
-//     const [value, setValue] = useState(initialMood);
+const OthersPage = () => {
 
-//     // set new mood state
-//     useEffect(() => {
-//         var mood = ''
-//         var date = new Date();
-//         if (value === 1)
-//             {
-//                 mood = 'bad'
-//             }
-//             else if (value === 2)
-//             {
-//                 mood = 'average'
-//             }
-//             else
-//             {
-//                 mood = 'well'
-//             }
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const checkUserId =  params.get('checkUserId')
 
-//         const requestOptions = {
-//                     method: 'POST',
-//                     headers: {'Content-Type': 'application/json'},
-//                     body: JSON.stringify({
-//                             "IndividualId": currUserId,
-//                             "RecordTime": date,
-//                             "Mood": mood
-//                     })
-//                 };
-
-//         const postMoodRate = async (postMoodStar) => {
-//             fetch(postMoodStar, requestOptions)
-//                     .then(res =>  res.json())
-//                     .then(data => {
-//                         console.log(data)
-//                     });
-//         }
-
-//         postMoodRate(postMoodStar);
-//     },[value])
-
-
-//     return (
-//        <Rate defaultValue={initialMood} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
-
-//      );
-// }
-   
-
-const MyPage = () => {
+    const followOrgURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/orgFollowList'
+    const followIndURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/indFollowList'
+    const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+checkUserId+''
+    const preferArticleURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/preferList'
+    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
+    const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+checkUserId+''
+    const getFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+checkUserId;         // 这个链接要换成follow的
+    const postFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
+    const deleteFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList';
 
     // state of page data
     const [followIndData, setIndData ] = useState(0);
@@ -228,6 +114,7 @@ const MyPage = () => {
     const [userInfoData, setUserInfoData ] = useState(0);
     const [userMoodData, setUserMoodData] = useState(0);
     const [userMoodValue, setUserMoodValue] = useState(0);
+    const [followThisPerson, setfollowThisPerson ] = useState(0);
 
 
     // generate date string for later get and post
@@ -247,7 +134,6 @@ const MyPage = () => {
 
     currTimeString = '2022-02-01'
     const getUserMood = 'http://127.0.0.1:5000/mood/search/'+currUserId+'&'+currTimeString
-
 
     // GET page data
     useEffect(() => {
@@ -316,6 +202,14 @@ const MyPage = () => {
             }) 
         }
 
+        const getFollowData = async (getFollowUrl) => {
+            fetch(getFollowUrl, requestOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+                setfollowThisPerson(json)                       
+            }) 
+        }
+
 
         getFollowOrgData(followOrgURL);
         getFollowIndData(followIndURL);
@@ -323,45 +217,10 @@ const MyPage = () => {
         getPreferArticleData(preferArticleURL);
         getUserInfoData(getUserInfo);
         getUserMoodData(getUserMood);
+        getFollowData(getFollowUrl)
 
     },[])
 
-    // POST new mood state
-    useEffect(() => {
-        var moodString = ''
-        if (userMoodValue === 1)
-            {
-                moodString = 'bad'
-            }
-            else if (userMoodValue === 2)
-            {
-                moodString = 'average'
-            }
-            else
-            {
-                moodString = 'well'
-            }
-
-        const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                            "IndividualId": currUserId,
-                            "RecordTime": currTimeString,
-                            "Mood": moodString
-                    })
-                };
-
-        const postMoodRate = async (postMoodStar) => {
-            fetch(postMoodStar, requestOptions)
-                    .then(res =>  res.json())
-                    .then(data => {
-                        console.log(data)
-                    });
-        }
-
-        postMoodRate(postMoodStar);
-    },[userMoodValue])
 
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
@@ -372,6 +231,75 @@ const MyPage = () => {
     
     //console.log(userMood)
 
+    function handleClick(currState){
+        // console.log("currState",currState)
+        if(currState.states === 0){
+
+          //console.log("0 -> 1")
+          setfollowThisPerson({states: 1})
+          //console.log(likeData)
+
+          const postOptions = {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                "indID": checkUserId
+            })
+          }
+
+          const postLikeData = async (postFollowUrl) => {
+              fetch(postFollowUrl, postOptions)
+              .then(res =>  res.json())
+              .then(json =>{
+                console.log(json)                   
+              }) 
+          }
+    
+          postLikeData(postFollowUrl);
+        }
+
+        else if(currState.states === 1){
+          //console.log("1 -> 0")
+          setfollowThisPerson({states: 0})
+          //console.log(likeData)
+
+          const deleteOptions = {
+              method: 'DELETE',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                "indID": checkUserId
+            })
+          }
+
+        const deleteLikeData = async (deleteFollowUrl) => {
+            fetch(deleteFollowUrl, deleteOptions)
+            .then(res =>  res.json())
+            .then(json =>{
+              console.log(json)                   
+            }) 
+        }
+  
+        deleteLikeData(deleteFollowUrl);
+        }
+
+        else if(currState.states === 2){
+          //console.log("keep 2")
+          //console.log(likeData)
+        }
+    }
+
+    const loadWord = (follow) => {
+      if(follow === 0){
+        return <div>Like</div>
+      }
+      else if(follow === 1){
+        return <div>Unlike</div>
+      }
+      else if(follow === 2){
+        return <div>You can't follow this user</div>
+      }
+    }
+    
     return (
         <Layout>
             <Header className="myPage_header">
@@ -389,13 +317,13 @@ const MyPage = () => {
                 </div>
                 
                 <div className="rate">
-                    {/* <Rate onClick={() => {handleRateClick("1")}}/>  */}
-                    {/* <RateStar/> */}
-                    <Rate defaultValue={userMoodValue} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setUserMoodValue} value={userMoodValue}  />
+                    <Rate disabled defaultValue={userMoodValue} count = "3" />
+
                 </div>
 
                 <div className="edit">
-                    <Button type="dashed"> edit</Button>
+                    {/* <Button type="dashed"> follow</Button> */}
+                    <Button key="1" onClick={() => {handleClick(followThisPerson)}}>{loadWord(followThisPerson.states)}  </Button>
                 </div>
 
                 <div className="logout">
@@ -477,8 +405,7 @@ const MyPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    // extra={<a href="./MyPage/JobPreference">More</a>}
-                    extra={<JobMoreButton/>}
+                    extra={<a href="./MyPage/JobPreference">More</a>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -504,8 +431,7 @@ const MyPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            {/* <div><Button>check</Button></div> */}
-                            <JobCheckButton OfferId={item.OfferId} />
+                            <div><Button>check</Button></div>
                         </List.Item>
                         
                         )}
@@ -567,4 +493,4 @@ const MyPage = () => {
     )
 }
 
-export default MyPage
+export default OthersPage
