@@ -30,7 +30,7 @@ class PostDairy(Resource):
             sql = "INSERT INTO mood VALUES ({}, '{}', '{}', '{}');".format(MoodID, IndividualId, RecordTime, Mood)
             sql_command(sql)
             output = {
-                "message": "Success Post",
+                "message": "success post",
                 "IndividualId": IndividualId,
                 "RecordTime": RecordTime,
                 "Mood": Mood
@@ -76,7 +76,7 @@ class SearchDairy(Resource):
         for day in result_from_dairy:
             if Date == day[2]:
                 output = {
-                    "message": "success",
+                    "message": "success get",
                     "MoodID": day[0],
                     "IndividualId": day[1],
                     "RecordTime": day[2],
@@ -122,7 +122,8 @@ class CheckDairy(Resource):
             sql = "UPDATE individual SET Emo='{}' WHERE individualId = '{}';".format(1, IndividualId)
             sql_command(sql)
             output = {
-                "message": "You are bad mood",
+                "message": "success get",
+                "mood": "bad",
                 "well day": count_well,
                 "bad day": count_bad
             }
@@ -131,7 +132,8 @@ class CheckDairy(Resource):
             sql = "UPDATE individual SET Emo='{}' WHERE individualId = '{}';".format(0, IndividualId)
             sql_command(sql)
             output = {
-                "message": "You are well mood",
+                "message": "success get",
+                "mood": "well",
                 "well day": count_well,
                 "bad day": count_bad
             }
