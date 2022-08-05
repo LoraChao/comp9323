@@ -6,6 +6,7 @@ from flask_restx import reqparse
 from requests import delete
 from models.request_model import *
 from tool import *
+import random
 
 
 # define namespace
@@ -54,23 +55,30 @@ class RecommandationList(Resource):
                         if sum(recommend_vector.values()) <9:
                             recommend_vector['Mental'] = recommend_vector['Mental'] + 1
                     recommendation = []
+                    more = []
                     other = recommend_vector.keys()
                     for key,value in recommend_vector.items():
                         sql = f"SELECT * FROM Article WHERE ArticleTag = '{key}' and not exists(select 1 from individualprefer where IndividualID = {individualID} and Article.ArticleID = individualprefer.ArticleID);"
-                        
                         if value == 0:
-                            other = "','".join(key)
-                        try:
-                            recommendation.extend(sql_dicresult_with_decription(sql))[:value]
-                        except:
-                            pass
-                    if len(recommendation)<12:
-                        sql = f"SELECT * FROM Article WHERE ArticleTag in '{other}';"
-                        try:
-                            recommendation.extend(sql_dicresult_with_decription(sql)[:12-len(recommendation)])
-                        except:
-                            pass
+                            more.append(key)
+                        else:
+                            list = sql_dicresult_with_decription(sql)
+                            random.shuffle(list)
+                            recommendation.extend(list[:value])
+                        
+                    if len(more):
+                            other = "','".join(more)
+                    else:
+                            other = "','".join(other)
+                    print(other)
+                    if len(recommendation)<9:
+                        sql = f"SELECT * FROM Article WHERE ArticleTag in ('{other}');"
+                        list = sql_dicresult_with_decription(sql)
+                        random.shuffle(list)
+                        recommendation.extend(list[:9-len(recommendation)])
+                        
                     return recommendation, 200
+
                 else:
                     output = {
                     'message': 'This account does not like anything'
