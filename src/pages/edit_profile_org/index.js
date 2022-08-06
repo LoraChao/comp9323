@@ -8,7 +8,7 @@ import { UserOutlined} from '@ant-design/icons';
 
 
 const {  Header, Content, Footer} = Layout;
-class edit_details_organizational extends PureComponent{
+class Edit_details_organizational extends PureComponent{
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -189,4 +189,4 @@ class edit_details_organizational extends PureComponent{
         
 }
 
-export default edit_details_organizational
+export default Edit_details_organizational

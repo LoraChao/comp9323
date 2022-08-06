@@ -15,8 +15,8 @@ import JobCheck from '@/pages/Job_check';
 import Details_organizational from '@/pages/details_organizational';
 import ArticleDetails from '@/pages/ArticleDetails';
 import ArticleList from '@/pages/ArticleList';
-import edit_details_personal from '@/pages/edit_profile_personal';
-import edit_details_organizational from '@/pages/edit_profile_org';
+import Edit_details_personal from '@/pages/edit_profile_personal';
+import Edit_details_organizational from '@/pages/edit_profile_org';
 import JobEdit from '@/pages/job_modification';
 //import React from 'react';
 
