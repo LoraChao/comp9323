@@ -76,9 +76,10 @@ class RecommandationList(Resource):
                         list = sql_dicresult_with_decription(sql)
                         random.shuffle(list)
                         recommendation.extend(list[:9-len(recommendation)])
-                        
+                    for e in recommendation:
+                        e['description'] = e['Article'][:50]+'...'
                     return recommendation, 200
-
+                    
                 else:
                     output = {
                     'message': 'This account does not like anything'
