@@ -30,7 +30,7 @@ class Edit_details_personal extends PureComponent{
   }
   getuserinfo(userid){
     let url = "http://127.0.0.1:5000/auth/brief/individual/"+userid;
-  //    window.alert(url)
+    window.alert(url)
     fetch(url, {
           method: "GET",
           headers: {"Content-Type": "application/json;charset=utf-8"},
