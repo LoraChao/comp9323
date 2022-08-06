@@ -89,14 +89,14 @@ function IndividualMoreButton(props){
     )
 }
 
-function OrganizationCheckButton(props){                                        // 这个链接要改成子恒的
+function OrganizationCheckButton(props){                                        
     // get target person's id
     const checkUserId = props.checkUserId 
 
     // jump with params: target user's id
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -384,7 +384,7 @@ const MyPage = () => {
                 </div>
 
                 <div className="edit">
-                    <Button type="dashed"> edit</Button>
+                    <Button href="/editprofile" type="dashed"> edit</Button>
                 </div>
 
                 <div className="logout">
@@ -419,7 +419,7 @@ const MyPage = () => {
                         <List.Item>
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
-                            title={<a href="@">{item.IndividualName}</a>}             
+                            title={<p >{item.IndividualName}</p>}             
                             description={item.Occupation}
                             />
 
@@ -454,7 +454,7 @@ const MyPage = () => {
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
                             // title={<a href="@">{item.title}</a>}
-                            title={<a href="@">{item.OrganizationName}</a>}             
+                            title={<p>{item.OrganizationName}</p>}             
                             description={item.Description}
                             />
                             <OrganizationCheckButton checkUserId={item.OrganizationId}/>
@@ -490,7 +490,7 @@ const MyPage = () => {
                             <List.Item.Meta
                             avatar={<Avatar size={50} icon={<UserOutlined />} />}
                             // title={<a href="@">{item.title}</a>}
-                            title={<a href="@">{item.CompanyName}</a>}             
+                            title={<p>{item.CompanyName}</p>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
                             <JobCheckButton OfferId={item.OfferId} />
@@ -528,7 +528,7 @@ const MyPage = () => {
                             avatar={
                                 <img width={80} alt="logo" 
                                     src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>}
-                                title={<a href="@">{item.ArticleTitle}</a>}
+                                title={<p>{item.ArticleTitle}</p>}
                                 description={<Tag>{item.ArticleTag}</Tag>}
                             />
                             <Space

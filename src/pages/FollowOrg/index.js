@@ -78,14 +78,14 @@ class FollowButton extends React.Component{
     }
 }
 
-function OrganizationCheckButton(props){                                            // 这个链接要换成子恒的
+function OrganizationCheckButton(props){                                            
 
     // get user's id want to check
     const checkUserId = props.checkUserId 
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})                 
     }
 
     return (
