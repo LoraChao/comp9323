@@ -47,8 +47,8 @@ function App() {
           <Route path='/release' element={<JobRelease />}></Route>
           <Route path='/check' element={<JobCheck />}></Route>
           <Route path='/profile_organizational' element={<Details_organizational />}></Route>
-          <Route path='/editprofile' element={<edit_details_personal />}></Route>
-          <Route path='/editprofile_organizational' element={<edit_details_organizational />}></Route>
+          <Route path='/editprofile' element={<Edit_details_personal />}></Route>
+          <Route path='/editprofile_organizational' element={<Edit_details_organizational />}></Route>
           <Route path='/editjob' element={<JobEdit />}></Route>
         </Routes>
       </div>
