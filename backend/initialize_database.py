@@ -74,16 +74,16 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "None", "test1", "None", "30", "None", "IT", "None", "None", "","", "None", 0,""),
-    (2, "John", "qwerty", "Mr", "test2", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "None", "","", "", 0,""),
-    (3, "Elen", "zxcvbn", "Mrs", "test3", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "None", "","", "", 0,""),
-    (4, "test4", "zxcvbn", "Mrs", "test4", "Female", "29", "dsjiaodj123@gmail.com", "BIomedical", "university", "None", "","", "", 0,""),
-    (5, "test5", "zxcvbn", "Mr", "test5", "Male", "29", "2sfadds21@gmail.com", "It", "graduate", "None", "","", "", 0,""),
-    (6, "test6", "zxcvbn", "Mrs", "test6", "Female", "35", "2213123dml@gmail.com", "Mechanical", "Phd", "None", "","", "", 0,""),
-    (7, "test7", "zxcvbn", "Mrs", "test7", "Female", "45", "789djsaiddml@gmail.com", "Mechanical", "university", "None", "","", "", 0,""),
-    (8, "test8", "zxcvbn", "Mr", "test8", "Male", "40", "mcsacicsa@gmail.com", "BIomedical", "graduate", "None", "","", "", 0,""),
-    (9, "test9", "zxcvbn", "Mrs", "test9", "Female", "39", "90csja0cs@gmail.com", "IT", "graduate", "None", "","", "", 0,""),
-    (10, "test10", "zxcvbn", "Mr", "test10", "Male", "37", "cj9s0ajcmasjmc@gmail.com", "IT", "university", "None", "","", "", 0,"");
+    (1, "Anonymous", "123456", "None", "test1", "None", "30", "None", "IT", "None", "Experience1", "Achievement1","Professional1", "CV1", 0,""),
+    (2, "John", "qwerty", "Mr", "test2", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "Experience2", "Achievement2","Professional2", "CV2", 0,""),
+    (3, "Elen", "zxcvbn", "Mrs", "test3", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "Experience3", "Achievement3","Professional3", "CV3", 0,""),
+    (4, "test4", "zxcvbn", "Mrs", "test4", "Female", "29", "dsjiaodj123@gmail.com", "BIomedical", "university", "Experience4", "Achievement4","Professional4", "CV4", 0,""),
+    (5, "test5", "zxcvbn", "Mr", "test5", "Male", "29", "2sfadds21@gmail.com", "It", "graduate", "Experience5", "Achievement5","Professional5", "CV5", 0,""),
+    (6, "test6", "zxcvbn", "Mrs", "test6", "Female", "35", "2213123dml@gmail.com", "Mechanical", "Phd", "Experience6", "Achievement6","Professional6", "CV6", 0,""),
+    (7, "test7", "zxcvbn", "Mrs", "test7", "Female", "45", "789djsaiddml@gmail.com", "Mechanical", "university", "Experience7", "Achievement7","Professional7", "CV7", 0,""),
+    (8, "test8", "zxcvbn", "Mr", "test8", "Male", "40", "mcsacicsa@gmail.com", "BIomedical", "graduate", "Experience8", "Achievement8","Professional8", "CV8", 0,""),
+    (9, "test9", "zxcvbn", "Mrs", "test9", "Female", "39", "90csja0cs@gmail.com", "IT", "graduate", "Experience9", "Achievement9","Professional9", "CV9", 0,""),
+    (10, "test10", "zxcvbn", "Mr", "test10", "Male", "37", "cj9s0ajcmasjmc@gmail.com", "IT", "university", "Experience10", "Achievement10","Professional10", "CV10", 0,"");
     '''
 
     Organization_offer = '''
@@ -105,18 +105,18 @@ def create_database():
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "", "IT", "", ""),
-    (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "", "Mechanical", "", ""),
-    (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "", "BIomedical", "", ""),
-    (4, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "", "IT", "", ""),
-    (5, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "", "BIomedical", "", ""),
-    (6, 2, "USYD","Aus","Aus", "9h per day", "100,000 per year", "", "IT", "", ""),
-    (7, 2, "USYD","Aus","Aus", "9h per day", "90,000 per year", "", "BIomedical", "", ""),
-    (8, 1, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "", "Mechanical", "", ""),
-    (9, 1, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "", "BIomedical", "", ""),
-    (10, 2, "USYD","Aus","Aus", "9h per day", "80,000 per year", "", "Mechanical", "", ""),
-    (11, 1, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "", "BIomedical", "", ""),
-    (12, 2, "USYD","Aus","Aus", "7h per day", "90,000 per year", "", "IT", "", "");
+    (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "Responsibility1", "IT", "contact1", ""),
+    (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "Responsibility2", "Mechanical", "contact2", ""),
+    (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "Responsibility3", "BIomedical", "contact3", ""),
+    (4, 4, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility4", "IT", "contact4", ""),
+    (5, 5, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility5", "BIomedical", "contact5", ""),
+    (6, 6, "USYD","Aus","Aus", "9h per day", "100,000 per year", "Responsibility6", "IT", "contact6", ""),
+    (7, 7, "USYD","Aus","Aus", "9h per day", "90,000 per year", "Responsibility7", "BIomedical", "contact7", ""),
+    (8, 8, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "Responsibility8", "Mechanical", "contact8", ""),
+    (9, 9, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "Responsibility9", "BIomedical", "contact9", ""),
+    (10, 10, "USYD","Aus","Aus", "9h per day", "80,000 per year", "Responsibility10", "Mechanical", "contact10", ""),
+    (11, 4, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "Responsibility11", "BIomedical", "contact11", ""),
+    (12, 5, "USYD","Aus","Aus", "7h per day", "90,000 per year", "Responsibility12", "IT", "contact12", "");
     '''
 
     Individual_prefer = '''
