@@ -9,6 +9,15 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class Edit_details_personal extends PureComponent{
+  setcookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -27,22 +36,24 @@ class Edit_details_personal extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ title_name: data['output'][0]['Title'] })
-            this.setState({ name_name: data['output'][0]['Name'] })
-            this.setState({ gender_name: data['output'][0]['Gender'] })
-            this.setState({ age_name: data['output'][0]['Age'] })
-            this.setState({ email_name: data['output'][0]['Email'] })
-            this.setState({ skill_name: data['output'][0]['Skill'] })
-            this.setState({ education_name: data['output'][0]['Education'] })
-            this.setState({ experience_name: data['output'][0]['Experience'] })
-            this.setState({ achievement_name: data['output'][0]['Achievement'] })
-            this.setState({ professional_summary_name: data['output'][0]['Professional Summary'] })
-            this.setState({ cv_name: data['output'][0]['CV'] })
+            this.setState({ username: data['IndividualName'] })
+            this.setState({ title_name: data['Title'] })
+            this.setState({ name_name: data['Name'] })
+            this.setState({ gender_name: data['Gender'] })
+            this.setState({ age_name: data['Age'] })
+            this.setState({ email_name: data['Email'] })
+            this.setState({ skill_name: data['Skill'] })
+            this.setState({ education_name: data['Education'] })
+            this.setState({ experience_name: data['Experience'] })
+            this.setState({ achievement_name: data['Achievement'] })
+            this.setState({ professional_summary_name: data['Professional'] })
+            this.setState({ cv_name: data['CV'] })
   }
       )}
   constructor(props) {
     super(props)
     this.state = {
+      userid:'',
       username: '',
       title_name: '', //string
       name_name: '', //string
@@ -61,11 +72,10 @@ class Edit_details_personal extends PureComponent{
   }
   render(){
     var currUserId = this.getCookie('userid')
-    window.alert(currUserId)
     this.setState({
-      username: currUserId
+      userid: currUserId
     })
-    this.getuserinfo(this.state.username)
+    this.getuserinfo(this.state.userid)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
