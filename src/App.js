@@ -15,7 +15,9 @@ import JobCheck from '@/pages/Job_check';
 import Details_organizational from '@/pages/details_organizational';
 import ArticleDetails from '@/pages/ArticleDetails';
 import ArticleList from '@/pages/ArticleList';
-
+import edit_details_personal from '@/pages/edit_profile_personal';
+import edit_details_organizational from '@/pages/edit_profile_org';
+import JobEdit from '@/pages/job_modification';
 //import React from 'react';
 
 //import { Button } from 'antd';
@@ -45,6 +47,9 @@ function App() {
           <Route path='/release' element={<JobRelease />}></Route>
           <Route path='/check' element={<JobCheck />}></Route>
           <Route path='/profile_organizational' element={<Details_organizational />}></Route>
+          <Route path='/editprofile' element={<edit_details_personal />}></Route>
+          <Route path='/editprofile_organizational' element={<edit_details_organizational />}></Route>
+          <Route path='/editjob' element={<JobEdit />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
