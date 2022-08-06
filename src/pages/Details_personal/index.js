@@ -9,10 +9,20 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class Details_personal extends PureComponent{
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
   constructor(props) {
     super(props)
     this.state = {
-      username: 'test7',
+      username: '',
       title_name: '', //string
       name_name: '', //string
       gender_name: '', //string
@@ -29,6 +39,9 @@ class Details_personal extends PureComponent{
     }
   }
   render(){
+    this.setState({
+      username: this.getCookie('userid')
+    })
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -36,9 +49,8 @@ class Details_personal extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username">Username</span>
+            <span className="username">{this.state.title_name} {this.state.name_name}</span>
             <br/>
-            <span className="user-identity">User Identity(University/Company, Position, Program)</span>
            
         </div>
     </Header>

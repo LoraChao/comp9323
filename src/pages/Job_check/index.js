@@ -11,9 +11,9 @@ import { useSearchParams } from 'react-router-dom';
 class LikeButton extends React.Component{    // individual follow tab
 
   state = {
-      like: 1,
-      currUserId: 1,
-      offer_id: 1
+      like: this.state.like,
+      currUserId: this.state.currUserId,
+      offer_id: this.state.offer_id
   }
 
   handleClick(){
@@ -22,7 +22,7 @@ class LikeButton extends React.Component{    // individual follow tab
         OfferId: this.state.offer_id
       };
       let send = JSON.stringify(text);
-      if(this.state.like === 1){
+      if(this.state.like === 0){
           fetch("http://127.0.0.1:5000/offer/post/preferoffer", { //这里需要like offer的链接**********
           method: "POST",
           headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -39,7 +39,7 @@ class LikeButton extends React.Component{    // individual follow tab
       )
       }
       else{
-          fetch("http://127.0.0.1:5000/offer/delete/preferoffer", { //这里需要like offer的链接**********
+          fetch("http://127.0.0.1:5000/offer/delete/preferoffer", { //这里需要delete offer的链接**********
           method: "DELETE",
           headers: {"Content-Type": "application/json;charset=utf-8"},
           body: send
@@ -59,7 +59,7 @@ class LikeButton extends React.Component{    // individual follow tab
   render(){
     // 这里要调用赵经理给的function然后把org id和offer id拿到
     //并且调用cookie把userid拿到
-    
+    // Getoffer_id()
       return <div>
           <Button onClick={() => {this.handleClick()}}> 
               {this.state.like === 1 ? 'like' : 'unlike'}
@@ -84,16 +84,12 @@ function Getorg_id(){
   return organization_id
 }
 
-var organization_id = 1;
-var offer_id = 1;
+// var read_organization_id = Getoffer_id();
+// var read_offer_id = Getorg_id();
 
 
 class JobCheck extends PureComponent{
   
-  myFunction(x) {
-    x.classList.toggle("fa-thumbs-down");
-  }
-
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -104,7 +100,18 @@ class JobCheck extends PureComponent{
     }
     return null;
   }
-
+  getLikeData(currUserId, offer_id){
+    let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+"&"+offer_id;
+    fetch(url, {
+      method: "GET",
+      headers: {"Content-Type": "application/json;charset=utf-8"},
+    }).then(res => res.json()).then(
+      data => {
+          if(data['message'] === 'success'){
+            this.setState({ like: 1 })
+          }else this.setState({ like: 0 })
+      })
+    }
   getOfferData(organization_id, offer_id){
     let url = "http://127.0.0.1:5000/offer/search/detail/"+organization_id+"&"+offer_id;
   //    window.alert(url)
@@ -140,7 +147,7 @@ class JobCheck extends PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      like: 1,
+      like: 0,
       currUserId:1,
       offer_id:1,
       organization_id:1,
@@ -156,7 +163,15 @@ class JobCheck extends PureComponent{
     }
   }
   render(){
-      this.getOfferData(organization_id, offer_id)
+      var read_organization_id = Getoffer_id();
+      var read_offer_id = Getorg_id();
+      this.setState({
+        organization_id: read_organization_id,
+        offer_id: read_offer_id,
+        currUserId: this.getCookie('userid')
+        })
+      this.getLikeData(this.state.currUserId, this.state.offer_id)
+      this.getOfferData(this.state.organization_id, this.state.offer_id)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -166,11 +181,11 @@ class JobCheck extends PureComponent{
             </div>
             <span className="username">{this.state.company_name}</span>{/* 这里要读取用户数据 */}
             <br/>
-            <LikeButton/>
+            
         </div>
     </Header>
-    <content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
-
+    <Content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
+    <LikeButton/>
     <div className='display-wrapper'>
     	<h1>Position</h1>
     	<div className='description'>
@@ -223,8 +238,7 @@ class JobCheck extends PureComponent{
         }}
         >Back to Profile</Button>
       </div>
-    </content>
-    <Footer style={{ textAlign: 'center', index: '2 2 2' }}></Footer>
+    </Content>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
     </Layout>
   );

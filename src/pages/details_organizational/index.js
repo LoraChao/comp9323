@@ -9,10 +9,26 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class Details_organizational extends PureComponent{
+  checklogin() {
+    if (this.getCookie('islogin') === '0') {
+      let url =  "http://localhost:3000/login_organizational";
+      window.location.replace(url)
+    }
+  }
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
   constructor(props) {
     super(props)
     this.state = {
-      company_username: 'test',
+      company_username: '',
       companyname_name: '', //string
       location_name: '', //string
       field_name: '', //
@@ -22,6 +38,9 @@ class Details_organizational extends PureComponent{
     }
   }
   render(){
+    this.setState({
+      company_username: this.getCookie('userid')
+    })
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -146,12 +165,13 @@ class Details_organizational extends PureComponent{
               data => {
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
-                      let url =  "http://localhost:3000/mypage";
+                      let url =  "http://localhost:3000//home/org";
                       window.location.replace(url)
                   }else window.alert("Something went wrong")
               }
           )
         }
+        
 }
 
 export default Details_organizational

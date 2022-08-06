@@ -32,34 +32,34 @@ class Login_organizational extends PureComponent {
       this.checklogin()
       return (
         <div className="container">
-          <div class="login-wrapper">
-            <div class="header">Company Login</div>
-            <div class="form-wrapper">
-                    <input type="text" name="username" placeholder="username" class="input-item" 
+          <div className="login-wrapper">
+            <div className="header">Company Login</div>
+            <div className="form-wrapper">
+                    <input type="text" name="username" placeholder="username" className="input-item" 
                     value={this.state.username}
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input type="password" name="password" placeholder="password" class="input-item"
+                    <input type="password" name="password" placeholder="password" className="input-item"
                     value={this.state.password}
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input class="btn" type="submit" value="Log in"
+                    <input className="btn" type="submit" value="Log in"
                     onClick={() => {
                       this.handleLogin()
                     }}></input>
             </div>
-            <div class="msg">
+            <div className="msg">
                 An individual user?
                 <a href="./login">individual Login</a>
             </div>
-            <div class="msg">
+            <div className="msg">
                 Don't have account?
                 <a href="./signup_organizational">Sign up</a>
             </div>
-            <div class="msg">
-                Visit as tourist。
+            <div className="msg">
+                Visit as tourist.
                 <a href="./home">Home</a> 
                 {/* 这里需要homepage的链接 */}
             </div>
@@ -90,7 +90,8 @@ class Login_organizational extends PureComponent {
               if (data.success && data['usergroup'] === 'organization'){
                   let url =  "http://localhost:3000/mypage";
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", data["userid"], 1)
+                  this.setcookie("userid", data["id"], 1)
+                  this.setcookie("usertype", 'organization', 1)
                   window.location.replace(url)
               }else window.alert("Authorization failure, incorrect username or password")
           }

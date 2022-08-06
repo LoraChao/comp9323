@@ -19,12 +19,23 @@ class JobRelease extends PureComponent{
     }
     return null;
   }
-
+  getCompanyinfo(company_username){
+    let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
+  //    window.alert(url)
+    fetch(url, {
+          method: "GET",
+          headers: {"Content-Type": "application/json;charset=utf-8"},
+      }).then(res => res.json()).then(
+        data => {
+            this.setState({ company_name: data['output'][0]['CompanyName'] })
+            this.setState({ location_name: data['output'][0]['Location'] })
+  }
+      )}
   constructor(props) {
     super(props)
     this.state = {
-      company_name: 'UNSW', //string
-      company_location: 'Kingsford Sydney NSW', //string
+      company_name: '', //string
+      company_location: '', //string
       position_name: '', //string
       working_location_name: '', //string
       working_hour_name: '', //string
@@ -32,10 +43,14 @@ class JobRelease extends PureComponent{
       responsibility_name: '', //string
       requirement_name: '', //string
       contact_name: '', //string
-      OrganizationId: '1',
+      OrganizationId: '',
     }
   }
   render(){
+    this.setState({
+      OrganizationId: this.getCookie('userid')
+      })
+    this.getCompanyinfo(this.state.OrganizationId)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -208,7 +223,7 @@ class JobRelease extends PureComponent{
               data => {
                   if (data['message'] === 'Success Post'){
                       window.alert("Offer Released!")
-                      let url =  "http://localhost:3000/mypage";
+                      let url =  "http://localhost:3000/home/org";
                       window.location.replace(url)
                   }else window.alert("Something went wrong")
               }
