@@ -70,7 +70,7 @@ class RecommandationList(Resource):
                             other = "','".join(more)
                     else:
                             other = "','".join(other)
-                    print(other)
+                    
                     if len(recommendation)<9:
                         sql = f"SELECT * FROM Article WHERE ArticleTag in ('{other}');"
                         list = sql_dicresult_with_decription(sql)
