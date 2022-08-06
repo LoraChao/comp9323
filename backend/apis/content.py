@@ -113,7 +113,7 @@ class PreferList(Resource):
                     result_from_db = sql_dicresult_with_decription(org_sql)
                     result.extend(result_from_db)
                 output = {
-                    'message': result,
+                    'art_like': result,
                 }
                 return output, 200
             else:
