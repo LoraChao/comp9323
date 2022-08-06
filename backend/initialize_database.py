@@ -38,9 +38,16 @@ def create_database():
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456","","","IT","","",""),
-    (2, "Enterprise", "qwerty","","","Mechanical","","",""),
-    (3, "Company", "zxcvbn","","","BIomedical","","","");
+    (1, "Anonymous", "123456","test1","Aus","IT","50","test1",""),
+    (2, "Enterprise", "qwerty","test2","Aus","Mechanical","50","test2",""),
+    (3, "Company1", "zxcvbn","test3","Aus","BIomedical","100","test3",""),
+    (4, "Company2", "zxcvbn","test4","Aus","IT","60","test4",""),
+    (5, "Company3", "zxcvbn","test5","Aus","BIomedical","70","test5",""),
+    (6, "Company4", "zxcvbn","test6","Aus","BIomedical","80","test6",""),
+    (7, "Company5", "zxcvbn","test7","Aus","IT","100","test7",""),
+    (8, "Company6", "zxcvbn","test8","Aus","Mechanical","90","test8",""),
+    (9, "Company7", "zxcvbn","test9","Aus","Mechanical","110","test9",""),
+    (10, "Company8", "zxcvbn","test10","Aus","BIomedical","120","test10","");
     '''
     
     Individual_table = '''
@@ -67,9 +74,16 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "", "", "", "", "", "IT", "", "", "","", "", 0,""),
-    (2, "John", "qwerty", "", "", "", "", "", "Mechanical", "", "", "","", "", 0,""),
-    (3, "Elen", "zxcvbn", "", "", "", "", "", "BIomedical", "", "", "","", "", 0,"");
+    (1, "Anonymous", "123456", "None", "test1", "None", "30", "None", "IT", "None", "None", "","", "None", 0,""),
+    (2, "John", "qwerty", "Mr", "test2", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "None", "","", "", 0,""),
+    (3, "Elen", "zxcvbn", "Mrs", "test3", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "None", "","", "", 0,""),
+    (4, "test4", "zxcvbn", "Mrs", "test4", "Female", "29", "dsjiaodj123@gmail.com", "BIomedical", "university", "None", "","", "", 0,""),
+    (5, "test5", "zxcvbn", "Mr", "test5", "Male", "29", "2sfadds21@gmail.com", "It", "graduate", "None", "","", "", 0,""),
+    (6, "test6", "zxcvbn", "Mrs", "test6", "Female", "35", "2213123dml@gmail.com", "Mechanical", "Phd", "None", "","", "", 0,""),
+    (7, "test7", "zxcvbn", "Mrs", "test7", "Female", "45", "789djsaiddml@gmail.com", "Mechanical", "university", "None", "","", "", 0,""),
+    (8, "test8", "zxcvbn", "Mr", "test8", "Male", "40", "mcsacicsa@gmail.com", "BIomedical", "graduate", "None", "","", "", 0,""),
+    (9, "test9", "zxcvbn", "Mrs", "test9", "Female", "39", "90csja0cs@gmail.com", "IT", "graduate", "None", "","", "", 0,""),
+    (10, "test10", "zxcvbn", "Mr", "test10", "Male", "37", "cj9s0ajcmasjmc@gmail.com", "IT", "university", "None", "","", "", 0,"");
     '''
 
     Organization_offer = '''
@@ -91,9 +105,18 @@ def create_database():
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","", "7h per day", "100,000 per year", "", "IT", "", ""),
-    (2, 2, "USYD","Aus","", "7h per day", "80,000 per year", "", "Mechanical", "", ""),
-    (3, 3, "UQ","Aus","", "7h per day", "90,000 per year", "", "BIomedical", "", "");
+    (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "", "IT", "", ""),
+    (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "", "Mechanical", "", ""),
+    (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "", "BIomedical", "", ""),
+    (4, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "", "IT", "", ""),
+    (5, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "", "BIomedical", "", ""),
+    (6, 2, "USYD","Aus","Aus", "9h per day", "100,000 per year", "", "IT", "", ""),
+    (7, 2, "USYD","Aus","Aus", "9h per day", "90,000 per year", "", "BIomedical", "", ""),
+    (8, 1, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "", "Mechanical", "", ""),
+    (9, 1, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "", "BIomedical", "", ""),
+    (10, 2, "USYD","Aus","Aus", "9h per day", "80,000 per year", "", "Mechanical", "", ""),
+    (11, 1, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "", "BIomedical", "", ""),
+    (12, 2, "USYD","Aus","Aus", "7h per day", "90,000 per year", "", "IT", "", "");
     '''
 
     Individual_prefer = '''
@@ -259,12 +282,16 @@ def create_database():
 
     insert_sentence = '''
     INSERT INTO `Sentence` VALUES
-    (1,"test1"),
-    (2,"test2"),
-    (3,"test3"),
-    (4,"test4"),
-    (5,"test5"),
-    (6,"test6");
+    (1,"Wasting time is robbing oneself."),
+    (2,"Zero in your target,and go for it."),
+    (3,"Take control of your own desting."),
+    (4,"Be more opti mistic! Its not the end of the world."),
+    (5,"Dont get down. Things will work out eventually."),
+    (6,"Hang in there! Stick to it! The victory will go to you in theend."),
+    (7,"Life is full of trial and error. One failure doesnt mean youre out of the picture."),
+    (8,"Keep your chin up. Everything will be all right."),
+    (9,"Do not,for one repulse,give up the purpose that you resolved to effect."),
+    (10,"Is not my persistence, but because you deserve let me for you.");
     '''
 
 
