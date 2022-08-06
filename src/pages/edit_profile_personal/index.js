@@ -101,7 +101,6 @@ class Edit_details_personal extends PureComponent{
           placeholder="Mr/Mrs/Ms/Miss"
           multiline
           variant="outlined"
-          defaultValue={this.state.title_name}
           style = {{top: 20, width: 400}}
           value={this.state.title_name}
           onChange={(e) => {
@@ -115,7 +114,6 @@ class Edit_details_personal extends PureComponent{
           placeholder=".."
           multiline
           variant="outlined"
-          defaultValue={this.state.name_name}
           style = {{top: 20, width: 400}}
           value={this.state.name_name}
           onChange={(e) => {
@@ -131,7 +129,6 @@ class Edit_details_personal extends PureComponent{
           placeholder="Male/Female/Other genders.."
           multiline
           variant="outlined"
-          defaultValue={this.state.gender_name}
           style = {{top: 20, width: 400}}
           value={this.state.gender_name}
           onChange={(e) => {
@@ -145,7 +142,6 @@ class Edit_details_personal extends PureComponent{
           placeholder=".."
           multiline
           variant="outlined"
-          defaultValue={this.state.age_name}
           style = {{top: 20, width: 400}}
           value={this.state.age_name}
           onChange={(e) => {
@@ -161,7 +157,6 @@ class Edit_details_personal extends PureComponent{
             placeholder="xxx@xxx.com"
             multiline
             variant="outlined"
-            defaultValue={this.state.email_name}
             style = {{top: 20, width: 400}}
             value={this.state.email_name}
             onChange={(e) => {
@@ -175,7 +170,6 @@ class Edit_details_personal extends PureComponent{
           placeholder="Computer Science/Mechanical/Biomedical"
           multiline
           variant="outlined"
-          defaultValue={this.state.skill_name}
           style = {{top: 20, width: 400}}
           value={this.state.skill_name}
           onChange={(e) => {
@@ -191,7 +185,6 @@ class Edit_details_personal extends PureComponent{
             placeholder="Bachelor/Master/PhD.."
             multiline
             variant="outlined"
-            defaultValue={this.state.education_name}
             style = {{top: 20, width: 400}}
             value={this.state.education_name}
             onChange={(e) => {
@@ -205,7 +198,6 @@ class Edit_details_personal extends PureComponent{
           placeholder="achievement1, achievement2, achievement3..."
           multiline
           variant="outlined"
-          defaultValue={this.state.achievement_name}
           style = {{top: 20, width: 400}}
           value={this.state.achievement_name}
           onChange={(e) => {
@@ -221,7 +213,6 @@ class Edit_details_personal extends PureComponent{
           placeholder="Start-End:Experience."
           multiline
           variant="outlined"
-          defaultValue={this.state.experience_name}
           minRows={4}
           style = {{top:20, width: 800}}
           value={this.state.experience_name}
@@ -239,7 +230,6 @@ class Edit_details_personal extends PureComponent{
         placeholder=".."
         multiline
         variant="outlined"
-        defaultValue={this.state.professional_summary_name}
         minRows={4}
         style = {{top:80, width: 800}}
         value={this.state.professional_summary_name}
@@ -256,7 +246,6 @@ class Edit_details_personal extends PureComponent{
         placeholder=".."
         multiline
         variant="outlined"
-        defaultValue={this.state.cv_name}
         minRows={4}
         style = {{top:140, width: 800}}
         value={this.state.cv_name}
