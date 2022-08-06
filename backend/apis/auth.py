@@ -249,7 +249,7 @@ class Individual_brief(Resource):
     def get(self, userId):
         # data = json.loads(request.get_data())
         # userId = data["userId"]
-        ind_sql = f"SELECT IndividualName, Email, Icon FROM Individual WHERE IndividualId='{userId}';"
+        ind_sql = f"SELECT IndividualName, Title, Name, Gender, Age, Email, Skill, Education, Experience, Achievement, Professional, CV, Icon FROM Individual WHERE IndividualId='{userId}';"
         result_sql = sql_command(ind_sql)
 
         if not result_sql:
@@ -261,8 +261,18 @@ class Individual_brief(Resource):
             output = {
                 "message": "success",
                 "IndividualName": result_sql[0][0],
-                "Email:": result_sql[0][1],
-                "Icon": result_sql[0][2]
+                "Title":  result_sql[0][1],
+                "Name":  result_sql[0][2],
+                "Gender":  result_sql[0][3],
+                "Age":  result_sql[0][4],
+                "Email:": result_sql[0][5],
+                "Skill":  result_sql[0][6],
+                "Education": result_sql[0][7],
+                "Experience": result_sql[0][8],
+                "Achievement":  result_sql[0][9],
+                "Professional":  result_sql[0][10],
+                "CV":  result_sql[0][11],
+                "Icon": result_sql[0][12]
             }
             return output, 200
 
@@ -276,7 +286,7 @@ class organization_brief(Resource):
     def get(self, userId):
         # data = json.loads(request.get_data())
         # userId = data["userId"]
-        org_sql = f"SELECT Companyname, Location, Icon FROM organization WHERE OrganizationId='{userId}';"
+        org_sql = f"SELECT OrganizationName, Companyname, Location, Field, Scale, Description, Icon FROM organization WHERE OrganizationId='{userId}';"
         result_sql = sql_command(org_sql)
 
         if not result_sql:
@@ -287,9 +297,15 @@ class organization_brief(Resource):
         else:
             output = {
                 "message": "success",
-                "Companyname": result_sql[0][0],
-                "Location:": result_sql[0][1],
-                "Icon": result_sql[0][2]
+                "OrganizationName": result_sql[0][0],
+                "Companyname": result_sql[0][1],
+                "Location:": result_sql[0][2],
+                "Field": result_sql[0][3],
+                "Scale": result_sql[0][4],
+                "Description": result_sql[0][5],
+                "Icon": result_sql[0][6]
             }
             return output, 200
+
+
 
