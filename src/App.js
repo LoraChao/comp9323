@@ -18,6 +18,7 @@ import ArticleList from '@/pages/ArticleList';
 import Edit_details_personal from '@/pages/edit_profile_personal';
 import Edit_details_organizational from '@/pages/edit_profile_org';
 import JobEdit from '@/pages/job_modification';
+import Individual_Home from '@/pages/Individual_Home';
 //import React from 'react';
 
 //import { Button } from 'antd';
@@ -50,6 +51,7 @@ function App() {
           <Route path='/editprofile' element={<Edit_details_personal />}></Route>
           <Route path='/editprofile_organizational' element={<Edit_details_organizational />}></Route>
           <Route path='/editjob' element={<JobEdit />}></Route>
+          <Route path='/Individual_Home' element={<Individual_Home />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
