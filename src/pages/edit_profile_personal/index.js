@@ -60,8 +60,10 @@ class Edit_details_personal extends PureComponent{
     }
   }
   render(){
+    var currUserId = this.getCookie('userid')
+    window.alert(currUserId)
     this.setState({
-      username: this.getCookie('userid')
+      username: currUserId
     })
     this.getuserinfo(this.state.username)
   return (
