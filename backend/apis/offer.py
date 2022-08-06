@@ -159,9 +159,9 @@ class GetPreferOffer(Resource):
 
         if not result_from_preferoffer:
             output = {
-                "message": "false"
+                "message": "This account does not follow anyone"
             }
-            return output, 400
+            return output, 200
 
         offerId_list = []
         for i in result_from_preferoffer:
@@ -177,6 +177,36 @@ class GetPreferOffer(Resource):
             "output": output_res
         }
         return output, 200
+
+@offer.route('/get/preferoffer/detail/<int:userId>&<int:offerId>')
+class GetPreferOffer_detail(Resource):
+    @api.response(200, 'OK')
+    @api.response(400, 'Bad Request')
+    @api.response(404, 'Not Found')
+    @api.response(201, 'Created')
+    # @offer.expect(preferoffer_model)
+    def get(self, userId, offerId):
+        # data = request.args.to_dict()
+        if userId == "" or offerId == "":
+            output = {
+                "message": "false"
+            }
+            return output, 400
+
+        offer_sql = f"SELECT * FROM individualpreferoffer WHERE IndividualId='{userId}' and OfferID='{offerId}';"  # database_info
+        result_from_preferoffer = sql_command(offer_sql)
+
+        if not result_from_preferoffer:
+            output = {
+                "message": "fail"
+            }
+            return output, 200
+
+        output = {
+            "message": "success"
+        }
+        return output, 200
+
 
 @offer.route('/post/preferoffer')
 class PostPreferOffer(Resource):

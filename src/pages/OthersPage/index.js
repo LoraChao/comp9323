@@ -15,50 +15,22 @@ const customIcons = {
     3: <SmileOutlined />,
 };
 
-    
-function ArticleCheckButton(props){ 
 
-    const articleId = props.articleId 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    
-    const navigate = useNavigate()
-    function handleCheckArtileClick(){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
-    }
 
-    return (
-       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
-     )
-}
-
-function ArticleMoreButton(){ 
-    const [params] = useSearchParams()
-    const checkUserId =  params.get('checkUserId')
-
-    const navigate = useNavigate()
-    function ArtMoreButton(id){
-       navigate(`/ArticleList?currUserId=${checkUserId}`, {replace: true})
-    }
-
-    return (
-       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
-    )
-}
 
 function IndCheckButton(props){ 
-        const checkUserId = props.checkUserId 
-        const [params] = useSearchParams()
-        const currUserId =  params.get('currUserId')
-        
-        const navigate = useNavigate()
-        function handleCheckIndClick(){
-           navigate(`/OthersPage?currUserId=${currUserId}&articleId=${checkUserId}`, {replace: true})
-        }
+
+    // get user's id want to check
+    const checkUserId = props.checkUserId 
     
-        return (
-           <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
-         )
+    // const navigate = useNavigate()
+    function handleCheckIndClick(){
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
 }
 
 function IndividualMoreButton(){ 
@@ -66,8 +38,8 @@ function IndividualMoreButton(){
     const checkUserId =  params.get('checkUserId')
     
     const navigate = useNavigate()
-    function IndMoreButton(id){
-       navigate(`/FollowInd?currUserId=${checkUserId}`, {replace: true})
+    function IndMoreButton(){
+       navigate(`/FollowInd?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -75,13 +47,28 @@ function IndividualMoreButton(){
     )
 }
 
+function OrganizationCheckButton(props){                                            // 这个链接要换成子恒的
+
+    // get user's id want to check
+    const checkUserId = props.checkUserId 
+    
+    // const navigate = useNavigate()
+    function handleCheckIndClick(){
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
+}
+
 function OrganizationMoreButton(){ 
     const [params] = useSearchParams()
     const checkUserId =  params.get('checkUserId')
 
     const navigate = useNavigate()
-    function OrgMoreButton(id){
-       navigate(`/FollowOrg?currUserId=${checkUserId}`, {replace: true})
+    function OrgMoreButton(){
+       navigate(`/FollowOrg?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -89,22 +76,93 @@ function OrganizationMoreButton(){
     )
 }
 
+function JobCheckButton(props){ 
+    // get job's id
+    const OfferId = props.OfferId 
+    
+    // jump with params offer_id
+    // const navigate = useNavigate()
+    function handleCheckJobClick(){
+        window.open(`/check?offer_id=${OfferId}`, {replace: true})        
+    }
+
+    return (
+       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+     )
+}
+
+function JobMoreButton(){ 
+    const [params] = useSearchParams()
+    const checkUserId =  params.get('checkUserId')
+
+    const navigate = useNavigate()
+    function OfferMoreButton(){
+       navigate(`/JobPreference?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
+    )
+}
+
+function ArticleCheckButton(props){ 
+    // get article's id
+    const articleId = props.articleId 
+    
+    // jump with article's id
+    // const navigate = useNavigate()
+    function handleCheckArtileClick(){
+        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+    }
+
+    return (
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
+    )
+}
+
+function ArticleMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
+
+    const navigate = useNavigate()
+    function ArtMoreButton(id){
+       navigate(`/ArticleList?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
+    )
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
 
 const OthersPage = () => {
 
+    // get user's id of this checking one
     const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
     const checkUserId =  params.get('checkUserId')
 
-    const followOrgURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/orgFollowList'
-    const followIndURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/indFollowList'
-    const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+checkUserId+''
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+    console.log("userid", checkUserId)
+
+    const followOrgURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/orgFollowList'
+    const followIndURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/indFollowList'
+    const preferJobURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+checkUserId+''
     const preferArticleURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/preferList'
-    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
     const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+checkUserId+''
-    const getFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/prefer/'+checkUserId;         // 这个链接要换成follow的
-    const postFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-    const deleteFollowUrl = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList';
+    const getFollowUrl = 'http://127.0.0.1:5000/follow/'+currUserId+'/indfollowstate/'+checkUserId;        
+    const postFollowUrl = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'
+    const deleteFollowUrl = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList';
 
     // state of page data
     const [followIndData, setIndData ] = useState(0);
@@ -187,18 +245,8 @@ const OthersPage = () => {
             .then(res =>  res.json())
             .then(json =>{
                 setUserMoodData(json) 
-                if(userMoodData.Mood === "well"){
-                    setUserMoodValue(3)
-                    //console.log("well:",userMoodValue)
-                }
-                else if(userMoodData.Mood === "average"){
-                    setUserMoodValue(2)
-                    //console.log("average:",userMoodValue)
-                }
-                else{
-                    setUserMoodValue(1)
-                    //console.log("bad:",userMoodValue)
-                }                         
+                console.log(json)    
+                setUserMoodValue(json.Mood)                   
             }) 
         }
 
@@ -229,7 +277,7 @@ const OthersPage = () => {
     const userInfo = userInfoData 
     
     
-    //console.log(userMood)
+    console.log(userMoodValue)
 
     function handleClick(currState){
         // console.log("currState",currState)
@@ -267,7 +315,7 @@ const OthersPage = () => {
               method: 'DELETE',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
-                "indID": checkUserId
+                "Individual": [checkUserId]
             })
           }
 
@@ -317,18 +365,14 @@ const OthersPage = () => {
                 </div>
                 
                 <div className="rate">
-                    <Rate disabled defaultValue={userMoodValue} count = "3" />
+                    <Rate disabled value={userMoodValue} character={({ index }) => customIcons[index + 1]} count = "3" />
 
                 </div>
 
                 <div className="edit">
-                    {/* <Button type="dashed"> follow</Button> */}
                     <Button key="1" onClick={() => {handleClick(followThisPerson)}}>{loadWord(followThisPerson.states)}  </Button>
                 </div>
 
-                <div className="logout">
-                                <Button type="dashed"> logout</Button>
-                </div> 
 
             </Header>
 
@@ -360,7 +404,6 @@ const OthersPage = () => {
                             title={<a href="@">{item.IndividualName}</a>}             
                             description={item.Occupation}
                             />
-                            {/* <div><Button>check</Button></div> */}
                             <IndCheckButton checkUserId={item.IndividualId} />
                         </List.Item>
                         
@@ -395,7 +438,7 @@ const OthersPage = () => {
                             title={<a href="@">{item.OrganizationName}</a>}             
                             description={item.Description}
                             />
-                            <div><Button>check</Button></div>
+                            <OrganizationCheckButton checkUserId={item.OrganizationId}/>
                         </List.Item>
                         
                         )}
@@ -405,7 +448,7 @@ const OthersPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    extra={<a href="./MyPage/JobPreference">More</a>}
+                    extra={<JobMoreButton/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -414,7 +457,6 @@ const OthersPage = () => {
                 >
                     <List
                         itemLayout="horizontal"
-                        //dataSource={companyData}
                         pagination={{
                             onChange: (page) => {
                               console.log(page);
@@ -431,7 +473,7 @@ const OthersPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            <div><Button>check</Button></div>
+                            <JobCheckButton OfferId={item.OfferId} />
                         </List.Item>
                         
                         )}
@@ -441,7 +483,7 @@ const OthersPage = () => {
 
                 <Card
                     title="Liked Articles"
-                    extra={<ArticleMoreButton/>}
+                    extra={<ArticleMoreButton checkUserId={checkUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',

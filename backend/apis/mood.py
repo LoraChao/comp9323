@@ -20,6 +20,7 @@ class PostDairy(Resource):
         IndividualId = data['IndividualId']
         RecordTime = data['RecordTime']
         Mood = data['Mood']
+
         if IndividualId == "" or RecordTime == "" or Mood == "":
             output = {
                 "message": "false"
@@ -27,7 +28,9 @@ class PostDairy(Resource):
             return output, 400
         else:
             MoodID = 0
-            sql = "INSERT INTO mood VALUES ({}, '{}', '{}', '{}');".format(MoodID, IndividualId, RecordTime, Mood)
+            tmp_Date = RecordTime[0:10].split("-")
+            Date = tmp_Date[2] + '/' + tmp_Date[1] + '/' + tmp_Date[0]
+            sql = "INSERT INTO mood VALUES ({}, '{}', '{}', '{}');".format(MoodID, IndividualId, Date, Mood)
             sql_command(sql)
             output = {
                 "message": "success post",
@@ -53,10 +56,6 @@ class SearchDairy(Resource):
             }
             return output, 400
         tmp_Date = RecordTime[0:10].split("-")
-        # output = {
-        #     "message": tmp_Date
-        # }
-        # return output, 200
         Date = tmp_Date[2]+'/'+tmp_Date[1]+'/'+tmp_Date[0]
 
         if IndividualId == "":
@@ -65,14 +64,17 @@ class SearchDairy(Resource):
             }
             return output, 400
         
-        dairy_sql = f"SELECT * FROM mood WHERE IndividualId='{IndividualId}';" #database_info
+        dairy_sql = f"SELECT * FROM mood WHERE IndividualId='{IndividualId}' and RecordTime = '{Date}';" #database_info
         result_from_dairy = sql_command(dairy_sql)
        
         if not result_from_dairy:
             output = {
-                "message": "false"
+                "message": "success get",
+                "IndividualId": IndividualId,
+                "RecordTime": Date,
+                "Mood": 2
             }
-            return output, 403
+            return output, 200
         for day in result_from_dairy:
             if Date == day[2]:
                 output = {
@@ -112,9 +114,9 @@ class CheckDairy(Resource):
         count_well = 0
         count_bad = 0
         for day in result_from_dairy:
-            if day[3].lower() == 'well':
+            if day[3] == 3:
                 count_well += 1
-            if day[3].lower() == 'bad':
+            if day[3].lower() == 1:
                 count_bad += 1
             # return day[3].upper()
 
@@ -123,7 +125,7 @@ class CheckDairy(Resource):
             sql_command(sql)
             output = {
                 "message": "success get",
-                "mood": "bad",
+                "mood": 1,
                 "well day": count_well,
                 "bad day": count_bad
             }
@@ -133,7 +135,7 @@ class CheckDairy(Resource):
             sql_command(sql)
             output = {
                 "message": "success get",
-                "mood": "well",
+                "mood": 3,
                 "well day": count_well,
                 "bad day": count_bad
             }

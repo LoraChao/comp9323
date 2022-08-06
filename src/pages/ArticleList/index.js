@@ -30,32 +30,34 @@ const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZ
 // ];
 
 function ArticleCheckButton(props){ 
-    
+    // get article's id
     const articleId = props.articleId 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
 
-
-    const navigate = useNavigate()
-    function handleCheckArtileClick(id){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
+    // jump with params: article's id
+    // const navigate = useNavigate()
+    function handleCheckArtileClick(){
+        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
     }
 
     return (
-       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
      )
 }
 
 const ArticleList = () => {
 
+    // get user's id for checking
     const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    //console.log("user id: ", currUserId)
+    const checkUserId =  params.get('checkUserId')
 
-    const articleListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+
+    // apis
+    const articleListURL = 'http://127.0.0.1:5000/cont/'+checkUserId+'/preferList'
 
     const [data, setData ] = useState(0);
 
+
+    // GET liked article's list
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -74,7 +76,6 @@ const ArticleList = () => {
     },[])
     
     
-
     const articleList = data.message                                             
     //console.log(articleList)
 
@@ -113,7 +114,6 @@ const ArticleList = () => {
                                 <img width={80} alt="logo" 
                                     src={articlePic}/>}
                                 title={<a href="@">{item.ArticleTitle}</a>}
-                                //description={item.description}
                                 description={<Tag>{item.ArticleTag}</Tag>}
                             />
                             <Space
@@ -123,7 +123,6 @@ const ArticleList = () => {
                                 display: 'flex',
                                 }}
                             >
-                                {/* <div><Button href={item.ArticleLink}>Check</Button></div> */}
                                 <ArticleCheckButton articleId={item.ArticleID} />
                             </Space>
                         </List.Item>

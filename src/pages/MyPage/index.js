@@ -6,15 +6,6 @@ import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 
-const currUserId = '2'
-
-const followOrgURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
-const followIndURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-const preferJobURL = 'http://127.0.0.1:5000/offer/preferoffer/'+currUserId+''
-const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
-const postMoodStar = 'http://127.0.0.1:5000/mood/post'
-const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
-
 
 const {  Header, Content, Footer} = Layout;
 
@@ -69,74 +60,28 @@ const customIcons = {
 // }
     
 
-function ArticleCheckButton(props){ 
-    const articleId = props.articleId 
-    
-    const navigate = useNavigate()
-    function handleCheckArtileClick(id){
-       navigate(`/ArticleDetails?currUserId=${currUserId}&articleId=${articleId}`, {replace: true})
-    }
-
-    return (
-       <Button onClick={() => {handleCheckArtileClick("unfollowList")}}>Check</Button>
-     )
-}
-
-function JobCheckButton(props){ 
-    const OfferId = props.OfferId 
-    
-    const navigate = useNavigate()
-    function handleCheckJobClick(){
-       navigate(`/check?currUserId=${currUserId}&offer_id=${OfferId}`, {replace: true})        
-    }
-
-    return (
-       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
-     )
-}
-
-function ArticleMoreButton(){ 
-    
-    const navigate = useNavigate()
-    function ArtMoreButton(id){
-       navigate(`/ArticleList?currUserId=${currUserId}`, {replace: true})
-    }
-
-    return (
-       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
-    )
-}
-
-function JobMoreButton(){ 
-    
-    const navigate = useNavigate()
-    function OfferMoreButton(id){
-       navigate(`/JobPreference?currUserId=${currUserId}`, {replace: true})
-    }
-
-    return (
-       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
-    )
-}
-
 function IndCheckButton(props){ 
-        const checkUserId = props.checkUserId 
-        
-        const navigate = useNavigate()
-        function handleCheckIndClick(){
-           navigate(`/OthersPage?currUserId=${currUserId}&checkUserId=${checkUserId}`, {replace: true})
-        }
-    
-        return (
-           <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
-         )
+    // get target person's id
+    const checkUserId = props.checkUserId 
+
+    // jump with params: target user's id
+    // const navigate = useNavigate()
+    function handleCheckIndClick(){
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
 }
 
-function IndividualMoreButton(){ 
+function IndividualMoreButton(props){ 
+    // get target person's id
+    const checkUserId = props.checkUserId 
     
     const navigate = useNavigate()
     function IndMoreButton(id){
-       navigate(`/FollowInd?currUserId=${currUserId}`, {replace: true})
+       navigate(`/FollowInd?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -144,11 +89,29 @@ function IndividualMoreButton(){
     )
 }
 
-function OrganizationMoreButton(){ 
-    
+function OrganizationCheckButton(props){                                        // 这个链接要改成子恒的
+    // get target person's id
+    const checkUserId = props.checkUserId 
+
+    // jump with params: target user's id
+    // const navigate = useNavigate()
+    function handleCheckIndClick(){
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
+}
+
+function OrganizationMoreButton(props){ 
+    // get target person's id
+    const checkUserId = props.checkUserId 
+
+    // jump without params
     const navigate = useNavigate()
-    function OrgMoreButton(id){
-       navigate(`/FollowOrg?currUserId=${currUserId}`, {replace: true})
+    function OrgMoreButton(){
+       navigate(`/FollowOrg?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -156,66 +119,127 @@ function OrganizationMoreButton(){
     )
 }
 
-
-// function RateStar(){
+function JobCheckButton(props){ 
+    // get job's id
+    const OfferId = props.OfferId 
     
-//     // get storage mood state
-//     var initialMood;
-//     if(userInfo.Mood === "well"){
-//         initialMood = 3
-//     }
-//     else if(userInfo.Mood === "average"){
-//         initialMood = 2
-//     }
-//     else{
-//         initialMood = 1
-//     }
-//     const [value, setValue] = useState(initialMood);
+    // jump with params: 'job's id'
+    function handleCheckJobClick(){
+        window.open(`/check?offer_id=${OfferId}`, {replace: true})        
+    }
 
-//     // set new mood state
-//     useEffect(() => {
-//         var mood = ''
-//         var date = new Date();
-//         if (value === 1)
-//             {
-//                 mood = 'bad'
-//             }
-//             else if (value === 2)
-//             {
-//                 mood = 'average'
-//             }
-//             else
-//             {
-//                 mood = 'well'
-//             }
+    return (
+       <Button onClick={() => {handleCheckJobClick()}}>Check</Button>
+     )
+}
 
-//         const requestOptions = {
-//                     method: 'POST',
-//                     headers: {'Content-Type': 'application/json'},
-//                     body: JSON.stringify({
-//                             "IndividualId": currUserId,
-//                             "RecordTime": date,
-//                             "Mood": mood
-//                     })
-//                 };
+function JobMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
 
-//         const postMoodRate = async (postMoodStar) => {
-//             fetch(postMoodStar, requestOptions)
-//                     .then(res =>  res.json())
-//                     .then(data => {
-//                         console.log(data)
-//                     });
-//         }
+    const navigate = useNavigate()
+    function OfferMoreButton(){
+       navigate(`/JobPreference?checkUserId=${checkUserId}`, {replace: true})
+    }
 
-//         postMoodRate(postMoodStar);
-//     },[value])
+    return (
+       <Button type="link" onClick={() => {OfferMoreButton()}}>More</Button>
+    )
+}
+
+function ArticleCheckButton(props){ 
+    // get article's id
+    const articleId = props.articleId 
+    
+    // jump with article's id
+    // const navigate = useNavigate()
+    function handleCheckArtileClick(){
+        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+    }
+
+    return (
+       <Button onClick={() => {handleCheckArtileClick()}}>Check</Button>
+    )
+}
+
+function ArticleMoreButton(props){ 
+    // get current user's id
+    const checkUserId = props.checkUserId 
+        
+    // jump with params: 'current user id'
+    const navigate = useNavigate()
+    function ArtMoreButton(){
+       navigate(`/ArticleList?checkUserId=${checkUserId}`, {replace: true})
+    }
+
+    return (
+       <Button type="link" onClick={() => {ArtMoreButton()}}>More</Button>
+    )
+}
+
+function LogoutButton(){
+    // jump without params
+    const navigate = useNavigate()
+    function LogoutButton(id){
+        document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        navigate('/login', {replace: true})
+    }
+
+    return (
+        <Button onClick={() => {LogoutButton()}}>Logout</Button>
+    )
+}
+
+function ConfirmChangeMood(props){
+    const moodValue = props.mood
+    const currTimeString = props.currTimeString
+    const currUserId = props.currUserId
+    const postMoodStar = 'http://127.0.0.1:5000/mood/post'
+
+    // when click confirm mood change
+    function handleMoodChangeClick(){
+        console.log("mood",moodValue,"time",currTimeString, "id",currUserId)
+
+        // post mood change
+        const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                            "IndividualId": currUserId,
+                            "RecordTime": currTimeString,
+                            "Mood": moodValue
+                    })
+                };
+
+        const postMoodRate = async (postMoodStar) => {
+            fetch(postMoodStar, requestOptions)
+                    .then(res =>  res.json())
+                    .then(data => {
+                        console.log(data)
+                    });
+        }
+
+        postMoodRate(postMoodStar)
+        //console.log("post")
+        
+    }
+    return(
+        <Button type="primary" onClick={handleMoodChangeClick}>confirm</Button>
+    )
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
 
 
-//     return (
-//        <Rate defaultValue={initialMood} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setValue} value={value}  />
-
-//      );
-// }
    
 
 const MyPage = () => {
@@ -229,6 +253,16 @@ const MyPage = () => {
     const [userMoodData, setUserMoodData] = useState(0);
     const [userMoodValue, setUserMoodValue] = useState(0);
 
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+    console.log("userid", currUserId)
+
+    // apis, thanks for your effort, backend guys, if you could see me here lol ;-)
+    const followOrgURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'
+    const followIndURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'
+    const preferJobURL = 'http://127.0.0.1:5000/offer/get/preferoffer/'+currUserId+''
+    const preferArticleURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/preferList'
+    const getUserInfo = 'http://127.0.0.1:5000/auth/brief/individual/'+currUserId+''
 
     // generate date string for later get and post
     var currDate = new Date();
@@ -245,7 +279,6 @@ const MyPage = () => {
     var currTimeString = currDate.getFullYear()+'-'+months[currDate.getMonth()]+'-'+days[currDate.getDay()]
     //console.log()
 
-    currTimeString = '2022-02-01'
     const getUserMood = 'http://127.0.0.1:5000/mood/search/'+currUserId+'&'+currTimeString
 
 
@@ -301,18 +334,8 @@ const MyPage = () => {
             .then(res =>  res.json())
             .then(json =>{
                 setUserMoodData(json) 
-                if(userMoodData.Mood === "well"){
-                    setUserMoodValue(3)
-                    //console.log("well:",userMoodValue)
-                }
-                else if(userMoodData.Mood === "average"){
-                    setUserMoodValue(2)
-                    //console.log("average:",userMoodValue)
-                }
-                else{
-                    setUserMoodValue(1)
-                    //console.log("bad:",userMoodValue)
-                }                         
+                console.log(json)    
+                setUserMoodValue(json.Mood)                   
             }) 
         }
 
@@ -326,42 +349,6 @@ const MyPage = () => {
 
     },[])
 
-    // POST new mood state
-    useEffect(() => {
-        var moodString = ''
-        if (userMoodValue === 1)
-            {
-                moodString = 'bad'
-            }
-            else if (userMoodValue === 2)
-            {
-                moodString = 'average'
-            }
-            else
-            {
-                moodString = 'well'
-            }
-
-        const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                            "IndividualId": currUserId,
-                            "RecordTime": currTimeString,
-                            "Mood": moodString
-                    })
-                };
-
-        const postMoodRate = async (postMoodStar) => {
-            fetch(postMoodStar, requestOptions)
-                    .then(res =>  res.json())
-                    .then(data => {
-                        console.log(data)
-                    });
-        }
-
-        postMoodRate(postMoodStar);
-    },[userMoodValue])
 
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
@@ -370,7 +357,7 @@ const MyPage = () => {
     const userInfo = userInfoData 
     
     
-    //console.log(userMood)
+    //console.log(userMoodValue)
 
     return (
         <Layout>
@@ -389,9 +376,11 @@ const MyPage = () => {
                 </div>
                 
                 <div className="rate">
-                    {/* <Rate onClick={() => {handleRateClick("1")}}/>  */}
-                    {/* <RateStar/> */}
-                    <Rate defaultValue={userMoodValue} count = "3" character={({ index }) => customIcons[index + 1]}  onChange={setUserMoodValue} value={userMoodValue}  />
+                    <Rate value={userMoodValue} character={({ index }) => customIcons[index + 1]} onChange={setUserMoodValue} count = "3" />; 
+                </div>
+
+                <div className="saveMood">
+                    <ConfirmChangeMood mood={userMoodValue} currTimeString = {currTimeString} currUserId = {currUserId}/>
                 </div>
 
                 <div className="edit">
@@ -399,7 +388,8 @@ const MyPage = () => {
                 </div>
 
                 <div className="logout">
-                                <Button type="dashed"> logout</Button>
+                    <LogoutButton/>
+
                 </div> 
 
             </Header>
@@ -407,7 +397,7 @@ const MyPage = () => {
             <Content style={{ padding: '0 50px'}}>
                 <Card
                     title="Followed Individuals"
-                    extra={<IndividualMoreButton/>}
+                    extra={<IndividualMoreButton checkUserId={currUserId} />}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -432,7 +422,7 @@ const MyPage = () => {
                             title={<a href="@">{item.IndividualName}</a>}             
                             description={item.Occupation}
                             />
-                            {/* <div><Button>check</Button></div> */}
+
                             <IndCheckButton checkUserId={item.IndividualId} />
                         </List.Item>
                         
@@ -443,7 +433,7 @@ const MyPage = () => {
                 
                 <Card
                     title="Followed Organisations"
-                    extra = {<OrganizationMoreButton/>}
+                    extra = {<OrganizationMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -467,7 +457,7 @@ const MyPage = () => {
                             title={<a href="@">{item.OrganizationName}</a>}             
                             description={item.Description}
                             />
-                            <div><Button>check</Button></div>
+                            <OrganizationCheckButton checkUserId={item.OrganizationId}/>
                         </List.Item>
                         
                         )}
@@ -477,8 +467,7 @@ const MyPage = () => {
 
                 <Card
                     title="Preferred Jobs"
-                    // extra={<a href="./MyPage/JobPreference">More</a>}
-                    extra={<JobMoreButton/>}
+                    extra={<JobMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',
@@ -504,7 +493,6 @@ const MyPage = () => {
                             title={<a href="@">{item.CompanyName}</a>}             
                             description={<Tag>{item.Requirement}</Tag>}
                             />
-                            {/* <div><Button>check</Button></div> */}
                             <JobCheckButton OfferId={item.OfferId} />
                         </List.Item>
                         
@@ -515,7 +503,7 @@ const MyPage = () => {
 
                 <Card
                     title="Liked Articles"
-                    extra={<ArticleMoreButton/>}
+                    extra={<ArticleMoreButton checkUserId={currUserId}/>}
                     style={{
                         width: '100%',
                         textAlign: 'left',

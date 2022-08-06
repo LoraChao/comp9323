@@ -31,6 +31,9 @@ class GetJob_ind(Resource):
             output_info = search_list(select_str, random_list)
             label_name = ["CompanyName", "Position", "Contact"]
             output_res = output_list(output_info, label_name)
+            fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
+            while len(output_res) < 12:
+                output_res.append(fill_list)
             output = {
                 "message": "success",
                 "output": output_res
@@ -59,11 +62,22 @@ class GetJob_ind(Resource):
             for i in skill_match:
                 skill_match_list.append(i[0])
             rec_list = list(set(skill_match_list) - set(preferId_list))
-
+            fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
+            if len(rec_list) == 0:
+                output_res = []
+                while len(output_res) < 12:
+                    output_res.append(fill_list)
+                output = {
+                    "message": "success",
+                    "output": output_res
+                }
+                return output, 200
             select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(rec_list))
             output_info = search_list(select_str, rec_list)
             label_name = ["CompanyName","Position","Contact"]
             output_res = output_list(output_info, label_name)
+            while len(output_res) < 12:
+                output_res.append(fill_list)
             output = {
                 "message": "success",
                 "output": output_res

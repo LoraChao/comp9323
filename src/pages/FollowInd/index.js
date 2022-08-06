@@ -7,35 +7,66 @@ import { useSearchParams } from 'react-router-dom';
 
 
 
-global.unfollowList = []
 
-
-class FollowButton extends React.Component{    // individual follow tab
+class FollowButton extends React.Component{    // individual follow switch
 
     state = {
         follow: 1
     }
+    
+    // click back handler
+    handleClick = () =>{ 
+        const currUserId = this.props.currUserId
+        const targetUserId = this.props.targetUserId
+        const deleteIndFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'
+        const addIndFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/indFollowList'     // For testing: Post new follow request 
 
-    handleClick(id){
-      this.setState({
-        follow: (this.state.follow + 1)%2
+
+        this.setState({
+            follow: (this.state.follow + 1)%2
         })
-        //console.log(id)
 
-        //  renew unfollow list
-        if(global.unfollowList.includes(id)){
-            global.unfollowList = global.unfollowList.filter((item) => item !== id)
-            //console.log("add:", global.unfollowList)
+        if(this.state.follow === 1){
+            const requestOptions = {                                                        //  send DELETE request
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "Individual": [targetUserId]
+                })
+            };
+    
+            fetch(deleteIndFollowListURL, requestOptions)
+            .then(res =>  res.json())
+            .then(data => {
+                console.log(data)
+            });
+            console.log("delete")
         }
-        else{
-            global.unfollowList.push(id)
-            //console.log("add:", global.unfollowList)
+        else if(this.state.follow === 0){
+            const postOptions = {                                                       
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "indID": targetUserId
+                })
+            };
+
+            fetch(addIndFollowListURL, postOptions)
+            .then(res =>  res.json())
+            .then(data => {
+                console.log("add:",data)
+            });
+            console.log("add")
         }
+        else if(this.state.follow === 2){                 // for organization users ... not sure, just leave it in case..
+            
+        }
+
     }
 
     render(){
         return <div>
-            <Button onClick={() => {this.handleClick(this.props.id)}}> 
+            <Button disabled={false||(this.props.currUserId != this.props.checkUserId)} onClick={() => {this.handleClick(this.props.id)}}> 
                 {this.state.follow === 1 ? 'unfollow' : 'follow'}
             </Button>
         </div>
@@ -43,51 +74,30 @@ class FollowButton extends React.Component{    // individual follow tab
     }
 }
 
-function BackButton(){ 
+function IndCheckButton(props){ 
 
-    // for re-navigation
+    // get user's id want to check
+    const checkUserId = props.checkUserId 
+    
+    // const navigate = useNavigate()
+    function handleCheckIndClick(){
+        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 // 要新开一页
+    }
+
+    return (
+        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
+        )
+}
+
+function BackButton(){ 
+        
     const navigate = useNavigate()
 
-    const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
-    const deleteIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'
-    const addIndFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 // For testing: Post new follow request 
+    const handleBackClick = () => {
 
-
-    // click back handler
-    const handleBackClick = () =>{ 
-        
-        const requestOptions = {                                                        //  send DELETE request
-            method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                "Individual": global.unfollowList
-            })
-        };
-
-        fetch(deleteIndFollowListURL, requestOptions)
-        .then(res =>  res.json())
-        .then(data => {
-            console.log(data)
-        });
 
         //Jump back to myPage
-        navigate(`/MyPage?currUserId=${currUserId}`, {replace: true})
-
-        // const postOptions = {                                                       // For testing: send POST to add new follower 
-        //     method: 'POST',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify({
-        //         "indID": 2
-        //     })
-        // };
-
-        // fetch(addIndFollowListURL, postOptions)
-        // .then(res =>  res.json())
-        // .then(data => {
-        //     console.log("add:",data)
-        // });
-
+        navigate('/MyPage', {replace: true})
     }
     return (
        <Button type="link" onClick={() => {handleBackClick()}}>Back</Button>
@@ -96,16 +106,32 @@ function BackButton(){
 
 const FollowInd = () => {
 
+    // get cookies
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        console.log(document.cookie)
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+  
+    // get current user's id using cookies
+    const currUserId = getCookie('userid')
+
+    // get user's id for checking
     const [params] = useSearchParams()
-    const currUserId =  params.get('currUserId')
+    const checkUserId =  params.get('checkUserId')
 
-    const indFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/indFollowList'                 
+    // apis
+    const indFollowListURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/indFollowList'                 
    
-
-    // set state for storing ind like list
     const [data, setData ] = useState(0);
 
-    // for send GET request to get follow ind list
+    // GET to get following individual users list
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -169,8 +195,8 @@ const FollowInd = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <div><Button href={item.ArticleLink}>Check</Button></div>
-                                <FollowButton id={item.IndividualId}/>
+                                <IndCheckButton checkUserId={item.IndividualId} />
+                                <FollowButton targetUserId={item.IndividualId} currUserId ={currUserId} checkUserId={checkUserId}/>
                             </Space>
                         </List.Item>
                         
