@@ -265,7 +265,7 @@ class Individual_brief(Resource):
                 "Name":  result_sql[0][2],
                 "Gender":  result_sql[0][3],
                 "Age":  result_sql[0][4],
-                "Email:": result_sql[0][5],
+                "Email": result_sql[0][5],
                 "Skill":  result_sql[0][6],
                 "Education": result_sql[0][7],
                 "Experience": result_sql[0][8],

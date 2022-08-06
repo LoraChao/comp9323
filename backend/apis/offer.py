@@ -79,21 +79,21 @@ class SearchOffer(Resource):
             return output, 200
 
 
-@offer.route('/search/detail/<int:OrganizationId>&<int:OfferId>')
+@offer.route('/search/detail/<int:OfferId>')
 class SearchOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
     # @offer.expect(search_organizations_details_model)
-    def get(self, OrganizationId, OfferId):
-        if OrganizationId == "" or OfferId == "":
+    def get(self, OfferId):
+        if  OfferId == "":
             output = {
                 "message": "false"
             }
             return output, 400
 
-        offer_sql = f"SELECT * FROM Offer WHERE OrganizationId='{OrganizationId}' and OfferId = '{OfferId}';"
+        offer_sql = f"SELECT * FROM Offer WHERE OfferId = '{OfferId}';"
         result_from_offer = sql_command(offer_sql)
         label_name = ["OfferId", "OrganizationId", "CompanyName", "Position", "WorkingLocation", "Workinghours", "Salary", "Responsibility", "Requirement", "Contact", "Icon"]
 
@@ -179,21 +179,21 @@ class GetPreferOffer(Resource):
         return output, 200
 
 @offer.route('/get/preferoffer/detail/<int:userId>&<int:offerId>')
-class GetPreferOffer_detail(Resource):
+class GetPreferOfferDetail(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
     @api.response(404, 'Not Found')
     @api.response(201, 'Created')
     # @offer.expect(preferoffer_model)
-    def get(self, userId, offerId):
+    def get(self,userId, offerId):
         # data = request.args.to_dict()
-        if userId == "" or offerId == "":
+        if userId=="" or offerId == "":
             output = {
                 "message": "false"
             }
             return output, 400
 
-        offer_sql = f"SELECT * FROM individualpreferoffer WHERE IndividualId='{userId}' and OfferID='{offerId}';"  # database_info
+        offer_sql = f"SELECT * FROM individualpreferoffer WHERE IndividualId='{userId}' and OfferID='{offerId}';"
         result_from_preferoffer = sql_command(offer_sql)
 
         if not result_from_preferoffer:
@@ -203,7 +203,19 @@ class GetPreferOffer_detail(Resource):
             return output, 200
 
         output = {
-            "message": "success"
+            "message": "success",
+            # "output": [{
+            #     "OrganizationId": result_from_preferoffer[0][0],
+            #     "CompanyName": result_from_preferoffer[0][1],
+            #     "Position": result_from_preferoffer[0][2],
+            #     "WorkingLocation": result_from_preferoffer[0][3],
+            #     "WorkingHours": result_from_preferoffer[0][4],
+            #     "Salary": result_from_preferoffer[0][5],
+            #     "Responsibility": result_from_preferoffer[0][6],
+            #     "Requirement": result_from_preferoffer[0][7],
+            #     "Contact": result_from_preferoffer[0][8],
+            #     "Icon": result_from_preferoffer[0][9],
+            # }]
         }
         return output, 200
 
