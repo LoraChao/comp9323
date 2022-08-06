@@ -108,15 +108,15 @@ def create_database():
     (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "Responsibility1", "IT", "contact1", ""),
     (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "Responsibility2", "Mechanical", "contact2", ""),
     (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "Responsibility3", "BIomedical", "contact3", ""),
-    (4, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility4", "IT", "contact4", ""),
-    (5, 3, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility5", "BIomedical", "contact5", ""),
-    (6, 2, "USYD","Aus","Aus", "9h per day", "100,000 per year", "Responsibility6", "IT", "contact6", ""),
-    (7, 2, "USYD","Aus","Aus", "9h per day", "90,000 per year", "Responsibility7", "BIomedical", "contact7", ""),
-    (8, 1, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "Responsibility8", "Mechanical", "contact8", ""),
-    (9, 1, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "Responsibility9", "BIomedical", "contact9", ""),
-    (10, 2, "USYD","Aus","Aus", "9h per day", "80,000 per year", "Responsibility10", "Mechanical", "contact10", ""),
-    (11, 1, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "Responsibility11", "BIomedical", "contact11", ""),
-    (12, 2, "USYD","Aus","Aus", "7h per day", "90,000 per year", "Responsibility12", "IT", "contact12", "");
+    (4, 4, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility4", "IT", "contact4", ""),
+    (5, 5, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility5", "BIomedical", "contact5", ""),
+    (6, 6, "USYD","Aus","Aus", "9h per day", "100,000 per year", "Responsibility6", "IT", "contact6", ""),
+    (7, 7, "USYD","Aus","Aus", "9h per day", "90,000 per year", "Responsibility7", "BIomedical", "contact7", ""),
+    (8, 8, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "Responsibility8", "Mechanical", "contact8", ""),
+    (9, 9, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "Responsibility9", "BIomedical", "contact9", ""),
+    (10, 10, "USYD","Aus","Aus", "9h per day", "80,000 per year", "Responsibility10", "Mechanical", "contact10", ""),
+    (11, 4, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "Responsibility11", "BIomedical", "contact11", ""),
+    (12, 5, "USYD","Aus","Aus", "7h per day", "90,000 per year", "Responsibility12", "IT", "contact12", "");
     '''
 
     Individual_prefer = '''
