@@ -70,15 +70,16 @@ class RecommandationList(Resource):
                             other = "','".join(more)
                     else:
                             other = "','".join(other)
-                    print(other)
+                    
                     if len(recommendation)<9:
                         sql = f"SELECT * FROM Article WHERE ArticleTag in ('{other}');"
                         list = sql_dicresult_with_decription(sql)
                         random.shuffle(list)
                         recommendation.extend(list[:9-len(recommendation)])
-                        
+                    for e in recommendation:
+                        e['description'] = e['Article'][:50]+'...'
                     return recommendation, 200
-
+                    
                 else:
                     output = {
                     'message': 'This account does not like anything'
