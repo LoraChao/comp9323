@@ -150,7 +150,24 @@ def create_database():
     INSERT INTO `IndividualPreferOffer` VALUES 
     (1, 1, 1, "Offer1"),
     (2, 1, 2, "Offer2"),
-    (3, 2, 2, "Offer3");
+    (3, 2, 2, "Offer3"),
+    (4, 10, 12, "Offer4"),
+    (5, 8, 8, "Offer5"),
+    (6, 8, 7, "Offer6"),
+    (7, 6, 5, "Offer7"),
+    (8, 9, 11, "Offer8"),
+    (9, 7, 12, "Offer9"),
+    (10, 5, 3, "Offer10"),
+    (11, 4, 12, "Offer11"),
+    (12, 9, 3, "Offer12"),
+    (13, 7, 5, "Offer13"),
+    (14, 9, 11, "Offer14"),
+    (15, 5, 5, "Offer15"),
+    (16, 6, 7, "Offer16"),
+    (17, 3, 4, "Offer17"),
+    (18, 5, 3, "Offer18"),
+    (19, 6, 2, "Offer19"),
+    (20, 9, 3, "Offer20");
     '''
     
     Vedio_table = '''
@@ -267,9 +284,14 @@ def create_database():
 
     insert_Experts = '''
     INSERT INTO `Experts` VALUES
-    (1,"a","IT","sdjkslajdklsjdl","sadasdas@gmail.com",""),
-    (2,"b","Mechanical","sajidjasdiojasoipdjkop","swjqioenqwoen@gmail.com",""),
-    (3,"c","BIomedical","hasniodjnioascnoainc","123no12no3k2nokcbha@gmail.com","");
+    (1,"a","IT","test1","sadasdas@gmail.com",""),
+    (2,"b","Mechanical","test2","swjqioenqwoen@gmail.com",""),
+    (3,"c","BIomedical","test3","123no12no3k2nokcbha@gmail.com",""),
+    (4,"d","BIomedical","test4","sdasqwoen@gmail.com",""),
+    (5,"e","Mechanical","test5","swjqioenqwoen@gmail.com",""),
+    (6,"f","IT","test6","io0nion93@gmail.com",""),
+    (7,"g","Mechanical","test7","u90jonsakodm@gmail.com",""),
+    (8,"h","IT","test8","j908scnja0cnmas0@gmail.com","");
     '''
 
     Sentence = '''
