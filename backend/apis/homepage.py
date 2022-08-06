@@ -96,7 +96,8 @@ class GetSentencey(Resource):
         sentence_sql = f"SELECT SentenceID FROM sentence;"
         result_from_sentence = sql_command(sentence_sql)
         lenth = len(result_from_sentence)
-        Id_list = np.arange(lenth)
+        Id_list = np.arange(lenth+1)
+        Id_list = np.array(Id_list[1:])
         np.random.shuffle(Id_list)
 
         sentence_sql = f"SELECT Content FROM sentence where SentenceID = '{Id_list[0]}';"
@@ -114,6 +115,7 @@ class GetSentencey(Resource):
 class GetExpert(Resource):
     @api.doc(description='get experts')
     def get(self, userId):
+        fit_empty = [{"ExpertsName": "", "Tag": "", "Introduce": "", "Email": "", "Icon": ""}]
         if userId == 0:
             random_sql = f"SELECT ExpertsId FROM Experts;"
             random_id = sql_command(random_sql)
@@ -128,6 +130,8 @@ class GetExpert(Resource):
             output_info = search_list(select_str, random_list)
             label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
             output_res = output_list(output_info, label_name)
+            while len(output_res) < 3:
+                output_res.append(fit_empty)
             output = {
                 "message": "success",
                 "output": output_res
@@ -144,10 +148,12 @@ class GetExpert(Resource):
                 return output, 400
             else:
                 skill = result_from_skill[0][0]
-                skill_match_sql = f"SELECT * FROM experts WHERE Tag = '{skill}';"
+                skill_match_sql = f"SELECT ExpertsName, Tag, Introduce, Email, Icon FROM experts WHERE Tag = '{skill}';"
                 skill_match = sql_command(skill_match_sql)
-                label_name = ["ExpertsId", "ExpertsName", "Tag", "Introduce", "Email", "Icon"]
+                label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
                 output_res = output_list(skill_match, label_name)
+                while len(output_res) < 3:
+                    output_res.append(fit_empty)
                 output = {
                     "message": "success",
                     "output": output_res
@@ -162,8 +168,7 @@ class Getorg_ind(Resource):
     # @auth.expect(post_dairy_model)
     @api.doc(description='get prefer org')
     def get(self, userId):
-        # data = json.loads(request.get_data())
-        # userId = data["userId"]
+        fit_empty = [{"OrganizationName":"", "Location":"", "Field":"", "Icon":""}]
         if userId == 0:
             random_sql = f"SELECT OrganizationId FROM Organization;"
             random_id = sql_command(random_sql)
@@ -173,11 +178,13 @@ class Getorg_ind(Resource):
             np.random.shuffle(random_list)
             random_list = list(random_list[0:6])
 
-            select_str = 'select CompanyName, Location, Field, Icon from organization where OrganizationId in (%s)' % ','.join(
+            select_str = 'select OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)' % ','.join(
                 ['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
-            label_name = ["CompanyName", "Location", "Field", "Icon"]
+            label_name = ["OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(output_info, label_name)
+            while len(output_res) < 3:
+                output_res.append(fit_empty)
             output = {
                 "message": "success",
                 "output": output_res
@@ -191,6 +198,8 @@ class Getorg_ind(Resource):
             result_from_offer = sql_command(offer_sql)
             label_name = ["OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(result_from_offer, label_name)
+            while len(output_res) < 3:
+                output_res.append(fit_empty)
             output = {
                 "message": "success",
                 "output": output_res
