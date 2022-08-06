@@ -273,7 +273,7 @@ const OthersPage = () => {
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
     const preferJobList = preferJobData.output                                      
-    const preferArticleList = preferArticleData.message    
+    const preferArticleList = preferArticleData.art_like    
     const userInfo = userInfoData 
     
     

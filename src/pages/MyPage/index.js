@@ -353,11 +353,12 @@ const MyPage = () => {
     const followIndList = followIndData.ind_follow   
     const followOrgList = followOrgData.org_follow 
     const preferJobList = preferJobData.output                                      
-    const preferArticleList = preferArticleData.message    
+    const preferArticleList = preferArticleData.art_like   
     const userInfo = userInfoData 
     
     
-    //console.log(userMoodValue)
+    //console.log(preferArticleData)
+    //console.log(followOrgData)
 
     return (
         <Layout>
@@ -538,8 +539,9 @@ const MyPage = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <ArticleCheckButton articleId={item.ArticleID} />
+                                
                             </Space>
+                            <ArticleCheckButton articleId={item.ArticleID} />
                         </List.Item>
                         
                         )}

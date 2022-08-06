@@ -76,7 +76,7 @@ const ArticleList = () => {
     },[])
     
     
-    const articleList = data.message                                             
+    const articleList = data.art_like                                             
     //console.log(articleList)
 
     return(
