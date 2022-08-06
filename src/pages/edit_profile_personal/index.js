@@ -30,7 +30,6 @@ class Edit_details_personal extends PureComponent{
   }
   getuserinfo(userid){
     let url = "http://127.0.0.1:5000/auth/brief/individual/"+userid;
-    window.alert(url)
     fetch(url, {
           method: "GET",
           headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -75,7 +74,8 @@ class Edit_details_personal extends PureComponent{
     this.setState({
       userid: currUserId
     })
-    this.getuserinfo(this.state.userid)
+    window.alert(currUserId)
+    this.getuserinfo(currUserId)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
