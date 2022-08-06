@@ -35,6 +35,7 @@ class Edit_details_personal extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
+            this.setState({ userid: userid })
             this.setState({ username: data['IndividualName'] })
             this.setState({ title_name: data['Title'] })
             this.setState({ name_name: data['Name'] })
@@ -71,10 +72,6 @@ class Edit_details_personal extends PureComponent{
   }
   render(){
     var currUserId = this.getCookie('userid')
-    this.setState({
-      userid: currUserId
-    })
-    window.alert(currUserId)
     this.getuserinfo(currUserId)
   return (
     <Layout>
