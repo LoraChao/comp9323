@@ -28,11 +28,11 @@ class ArticleGet(Resource):
         else:
             output = {
                 "ArticleID": result_from_article[0][0],
-                "title": result_from_article[0][2],
+                "title": result_from_article[0][1],
                 "label": result_from_article[0][5],
-                "wordContent": result_from_article[0][1],
-                "LikeNum": result_from_article[0][3],
-                "Author": result_from_article[0][4],
+                "wordContent": result_from_article[0][3],
+                "LikeNum": result_from_article[0][4],
+                "Author": result_from_article[0][2],
             }
 
             return output, 200
