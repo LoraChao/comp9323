@@ -1,0 +1,71 @@
+.ant-layout {
+    height: 100%;
+}
+ 
+.header-content {
+    height:150px;
+    background: rgb(13, 59, 56);
+    position: relative;
+}
+
+.user-icon {
+    position: absolute;
+    top: 40px;
+    left: 120px;   
+}
+
+
+.username{
+    position: absolute;
+    color: white;
+    top: 40px;
+    left:250px;
+    font-size: 30px;
+
+
+}
+
+.user-identity{
+    position: absolute;
+    color: white;
+    top: 80px;
+    left:250px;
+    font-size: 20px;
+}
+
+
+.edit{
+    position:absolute;
+    right:120px;
+    top:90px;
+}
+
+.logout{
+    position:absolute;
+    right:30px;
+    top:90px;
+}
+
+#job-company{
+    font-size: 23px;
+}
+
+#job-position{
+    font-size: 15px;
+    line-height: 3px;
+}
+
+.text-under-avatar{
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+
+.button-in-cols {
+    // vertical-align: middle;
+    // display: table-cell;
+    // text-align: center;
+    padding-top:20px;
+}
+
