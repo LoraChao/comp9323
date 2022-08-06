@@ -11,11 +11,36 @@ import { useSearchParams } from 'react-router-dom';
 class LikeButton extends React.Component{    // individual follow tab
 
   state = {
-      like: this.state.like,
-      currUserId: this.state.currUserId,
-      offer_id: this.state.offer_id
+      like: 0,
+      currUserId: 1,
+      offer_id: 1
   }
-
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  getLikeData(currUserId, offer_id){
+    this.setState({
+      currUserId: currUserId,
+      offer_id: offer_id
+    })
+    let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+"&"+offer_id;
+    fetch(url, {
+      method: "GET",
+      headers: {"Content-Type": "application/json;charset=utf-8"},
+    }).then(res => res.json()).then(
+      data => {
+          if(data['message'] === 'success'){
+            this.setState({ like: 1 })
+          }else this.setState({ like: 0 })
+      })
+    }
   handleClick(){
       let text = {
         userId: this.state.currUserId,
@@ -57,12 +82,13 @@ class LikeButton extends React.Component{    // individual follow tab
   }
 
   render(){
-    // 这里要调用赵经理给的function然后把org id和offer id拿到
-    //并且调用cookie把userid拿到
-    // Getoffer_id()
+    var read_organization_id = Getoffer_id();
+    var read_offer_id = Getorg_id();
+    var currUserId = this.getCookie('userid');
+    this.getLikeData(currUserId, read_offer_id);
       return <div>
-          <Button onClick={() => {this.handleClick()}}> 
-              {this.state.like === 1 ? 'like' : 'unlike'}
+          <Button variant="contained"  onClick={() => {this.handleClick()}}> 
+              {this.state.like === 0 ? 'like' : 'unlike'}
           </Button>
       </div>
       
@@ -101,6 +127,7 @@ class JobCheck extends PureComponent{
     return null;
   }
   getLikeData(currUserId, offer_id){
+    this.setState({ currUserId: currUserId })
     let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+"&"+offer_id;
     fetch(url, {
       method: "GET",
@@ -120,6 +147,8 @@ class JobCheck extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
+            this.setState({ organization_id: organization_id })
+            this.setState({ offer_id: offer_id })
             this.setState({ company_name: data['output'][0]['CompanyName'] })
             this.setState({ position_name: data['output'][0]['Position'] })
             this.setState({ working_location_name: data['output'][0]['WorkingLocation'] })
@@ -165,13 +194,9 @@ class JobCheck extends PureComponent{
   render(){
       var read_organization_id = Getoffer_id();
       var read_offer_id = Getorg_id();
-      this.setState({
-        organization_id: read_organization_id,
-        offer_id: read_offer_id,
-        currUserId: this.getCookie('userid')
-        })
-      this.getLikeData(this.state.currUserId, this.state.offer_id)
-      this.getOfferData(this.state.organization_id, this.state.offer_id)
+      var currUserId = this.getCookie('userid');
+      this.getLikeData(currUserId, read_offer_id)
+      this.getOfferData(read_organization_id, read_offer_id);
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -185,7 +210,7 @@ class JobCheck extends PureComponent{
         </div>
     </Header>
     <Content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
-    <LikeButton/>
+    
     <div className='display-wrapper'>
     	<h1>Position</h1>
     	<div className='description'>
@@ -223,7 +248,13 @@ class JobCheck extends PureComponent{
         </div>
     </div>
     <div>
-        <Button variant="contained" 
+        <LikeButton/>
+        
+      </div>
+    </Content>
+    <Footer style={{ textAlign: 'center', index: '2 2 2' }}>
+    <div>
+    <Button variant="contained" 
         type='submit'
         style = {{left:250, top:0, width:200}}
         onClick={() => {
@@ -237,8 +268,8 @@ class JobCheck extends PureComponent{
           this.Toprofilepage()
         }}
         >Back to Profile</Button>
-      </div>
-    </Content>
+        </div>
+    </Footer>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
     </Layout>
   );

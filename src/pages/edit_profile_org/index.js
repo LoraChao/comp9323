@@ -9,6 +9,15 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class Edit_details_organizational extends PureComponent{
+  setcookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -20,6 +29,9 @@ class Edit_details_organizational extends PureComponent{
     return null;
   }
   getCompanyinfo(company_username){
+    this.setState({
+      company_username: company_username
+    })
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
   //    window.alert(url)
     fetch(url, {
@@ -27,11 +39,12 @@ class Edit_details_organizational extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ companyname_name: data['output'][0]['CompanyName'] })
-            this.setState({ location_name: data['output'][0]['Location'] })
-            this.setState({ field_name: data['output'][0]['Field'] })
-            this.setState({ scale_name: data['output'][0]['Scale'] })
-            this.setState({ description_name: data['output'][0]['Description'] })
+            this.setState({ company_username: data['OrganizationName'] })
+            this.setState({ companyname_name: data['Companyname'] })
+            this.setState({ location_name: data['Location'] })
+            this.setState({ field_name: data['Field'] })
+            this.setState({ scale_name: data['Scale'] })
+            this.setState({ description_name: data['Description'] })
   }
       )}
   constructor(props) {
@@ -47,10 +60,10 @@ class Edit_details_organizational extends PureComponent{
     }
   }
   render(){
-    this.setState({
-      company_username: this.getCookie('userid')
-    })
-    this.getCompanyinfo(this.state.company_username)
+    
+    var currUserId = this.getCookie('userid')
+    
+    this.getCompanyinfo(currUserId)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -77,7 +90,6 @@ class Edit_details_organizational extends PureComponent{
           label="Company Name"
           name='companyname_name'
           placeholder=".."
-          defaultValue={this.state.companyname_name}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -91,7 +103,6 @@ class Edit_details_organizational extends PureComponent{
           label="Location"
           name='location_name'
           placeholder="Kingsford/Sydney/NSW"
-          defaultValue={this.state.location_name}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -107,7 +118,6 @@ class Edit_details_organizational extends PureComponent{
           label="Field"
           name='field_name'
           placeholder="IT/Biomedical/Mechanical.."
-          defaultValue={this.state.field_name}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -121,7 +131,6 @@ class Edit_details_organizational extends PureComponent{
           label="Scale"
           name='scale_name'
           placeholder="50+/200+/100+.."
-          defaultValue={this.state.scale_name}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -137,7 +146,6 @@ class Edit_details_organizational extends PureComponent{
           label="Description of Company"
           name='description_name'
           placeholder="Start-End:Experience."
-          defaultValue={this.state.description_name}
           multiline
           variant="outlined"
           minRows={4}

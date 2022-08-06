@@ -32,6 +32,10 @@ class JobEdit extends PureComponent{
     return null;
   }
   getOfferData(organization_id, offer_id){
+    this.setState({
+      organization_id: organization_id,
+      offer_id: offer_id
+    })
     let url = "http://127.0.0.1:5000/offer/search/detail/"+organization_id+"&"+offer_id;
   //    window.alert(url)
     fetch(url, {
@@ -56,6 +60,7 @@ class JobEdit extends PureComponent{
       )
   }
   getCompanyinfo(company_username){
+    this.setState({ currUserId: company_username })
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
   //    window.alert(url)
     fetch(url, {
@@ -63,8 +68,8 @@ class JobEdit extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ company_name: data['output'][0]['CompanyName'] })
-            this.setState({ company_location: data['output'][0]['Location'] })
+            this.setState({ company_name: data['Companyname'] })
+            this.setState({ company_location: data['Location'] })
   }
       )}
   constructor(props) {
@@ -85,13 +90,9 @@ class JobEdit extends PureComponent{
   render(){
     var read_organization_id = Getoffer_id();
     var read_offer_id = Getorg_id();
-    this.setState({
-      organization_id: read_organization_id,
-      offer_id: read_offer_id,
-      currUserId: this.getCookie('userid')
-      })
-    this.getCompanyinfo(this.state.currUserId)
-    this.getOfferData(this.state.organization_id, this.state.offer_id)
+    var currUserId = this.getCookie('userid')
+    this.getCompanyinfo(currUserId)
+    this.getOfferData(read_organization_id, read_offer_id)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -118,7 +119,6 @@ class JobEdit extends PureComponent{
           label="Position"
           name='position_name'
           placeholder="Front end developer/Assistant..."
-          defaultValue={this.state.position_name}
           multiline
           variant="outlined"
           minRows={1}
@@ -136,7 +136,6 @@ class JobEdit extends PureComponent{
           label="Location"
           name='working_location_name'
           placeholder="Randwick/Sydney/NSW"
-          defaultValue={this.state.working_location_name}
           multiline
           variant="outlined"
           minRows={1}
@@ -154,7 +153,6 @@ class JobEdit extends PureComponent{
         label="Working Hour"
         name='working_hour_name'
         placeholder="40 hrs/wk.."
-        defaultValue={this.state.working_hour_name}
         multiline
         variant="outlined"
         minRows={1}
@@ -171,7 +169,6 @@ class JobEdit extends PureComponent{
         label="Salary per Year"
         name='salary_name'
         placeholder="$70000/yr.."
-        defaultValue={this.state.salary_name}
         multiline
         variant="outlined"
         minRows={1}
@@ -187,7 +184,6 @@ class JobEdit extends PureComponent{
         id="responsibility_id"
         label="Responsibility"
         name='responsibility_name'
-        defaultValue={this.state.responsibility_name}
         placeholder=".."
         multiline
         variant="outlined"
@@ -205,7 +201,6 @@ class JobEdit extends PureComponent{
         label="Requirement"
         name='requirement_name'
         placeholder=".."
-        defaultValue={this.state.requirement_name}
         multiline
         variant="outlined"
         minRows={4}
@@ -222,7 +217,6 @@ class JobEdit extends PureComponent{
         label="Contact"
         name='contact_name'
         placeholder="Mr Wang: 04xxxxxxx/xxx@xxx.com"
-        defaultValue={this.state.contact_name}
         multiline
         variant="outlined"
         minRows={1}
