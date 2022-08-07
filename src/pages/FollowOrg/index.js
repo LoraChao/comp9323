@@ -1,5 +1,5 @@
 import './FollowOrg.scss'
-import { Layout, Card, List, Button, Space} from "antd"
+import { Layout, Card, List, Button, Space, Avatar} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -85,7 +85,7 @@ function OrganizationCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})                 
     }
 
     return (
@@ -189,9 +189,7 @@ const FollowOrg = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={
-                                <img width={80} alt="logo" 
-                                    src={item.ArticleIcon}/>}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                                 title={<a href="@">{item.OrganizationName}</a>}
                                 description={item.Description}
                             />

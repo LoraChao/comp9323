@@ -128,8 +128,8 @@ def create_database():
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
     (1, 1, 1, "Mental"),
-    (2, 1, 2, "Medicle"),
-    (3, 2, 2, "Medicle");
+    (2, 2, 1, "Mental"),
+    (3, 3, 1, "Mental");
     '''
     
     Individual_preferOffer = '''
@@ -249,10 +249,10 @@ def create_database():
 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,0,1,2,3,1,0,3,0),
-    (2,1,1,0,0,6,0,0,0),
-    (3,0,1,0,4,0,0,4,0),
-    (4,0,0,0,0,0,0,0,0);
+    (1,1,1,2,3,1,0,3,0),
+    (2,2,0,0,6,0,0,0),
+    (3,3,1,0,4,0,0,4,0),
+    (4,4,0,0,0,0,0,0,0);
     '''
 
     Experts = '''

@@ -6,7 +6,6 @@ import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const {  Header, Content, Footer} = Layout;
 
 const customIcons = {
@@ -96,7 +95,7 @@ function OrganizationCheckButton(props){
     // jump with params: target user's id
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})
     }
 
     return (
@@ -178,15 +177,16 @@ function ArticleMoreButton(props){
 }
 
 function LogoutButton(){
+
     // jump without params
     const navigate = useNavigate()
-    function LogoutButton(id){
+    function LogoutButton(){
         document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         navigate('/login', {replace: true})
     }
 
     return (
-        <Button onClick={() => {LogoutButton()}}>Logout</Button>
+        <Button danger onClick={() => {LogoutButton()}} >Logout</Button>
     )
 }
 
@@ -364,11 +364,11 @@ const MyPage = () => {
         <Layout>
             <Header className="myPage_header">
                 <div className="user_icon">
-                    <Avatar size={100} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />
+                    <Avatar size={100} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />
                 </div>
 
                 <div>
-                    <span className="user_name">{userInfo.IndividualName}</span>
+                    <span className="user_name">{userInfo.Name}</span>
                     <span className="user_identity">{userInfo.Emails}</span>
                 </div>
 
@@ -388,7 +388,7 @@ const MyPage = () => {
                     <Button href="/editprofile" type="dashed"> edit</Button>
                 </div>
 
-                <div className="logout">
+                <div className="logout" type="dashed">
                     <LogoutButton/>
 
                 </div> 
@@ -419,7 +419,7 @@ const MyPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
                             title={<p >{item.IndividualName}</p>}             
                             description={item.Occupation}
                             />
@@ -453,7 +453,7 @@ const MyPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                             // title={<a href="@">{item.title}</a>}
                             title={<p>{item.OrganizationName}</p>}             
                             description={item.Description}
@@ -489,7 +489,7 @@ const MyPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                             // title={<a href="@">{item.title}</a>}
                             title={<p>{item.CompanyName}</p>}             
                             description={<Tag>{item.Requirement}</Tag>}

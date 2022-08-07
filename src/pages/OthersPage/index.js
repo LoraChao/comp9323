@@ -54,7 +54,7 @@ function OrganizationCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})                 
     }
 
     return (
@@ -352,11 +352,11 @@ const OthersPage = () => {
         <Layout>
             <Header className="myPage_header">
                 <div className="user_icon">
-                    <Avatar size={100} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />
+                avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
                 </div>
 
                 <div>
-                    <span className="user_name">{userInfo.IndividualName}</span>
+                    <span className="user_name">{userInfo.Name}</span>
                     <span className="user_identity">{userInfo.Emails}</span>
                 </div>
 
@@ -370,7 +370,7 @@ const OthersPage = () => {
                 </div>
 
                 <div className="edit">
-                    <Button key="1" onClick={() => {handleClick(followThisPerson)}}>{loadWord(followThisPerson.states)}  </Button>
+                    <Button key="1" type="primary" ghost onClick={() => {handleClick(followThisPerson)}}>{loadWord(followThisPerson.states)}  </Button>
                 </div>
 
 
@@ -400,7 +400,7 @@ const OthersPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
                             title={<p>{item.IndividualName}</p>}             
                             description={item.Occupation}
                             />
@@ -433,7 +433,7 @@ const OthersPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                             // title={<a href="@">{item.title}</a>}
                             title={<p> {item.OrganizationName}</p>}             
                             description={item.Description}
@@ -468,7 +468,7 @@ const OthersPage = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<UserOutlined />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                             // title={<a href="@">{item.title}</a>}
                             title={<p>{item.CompanyName}</p>}             
                             description={<Tag>{item.Requirement}</Tag>}

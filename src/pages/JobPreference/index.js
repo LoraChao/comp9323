@@ -1,5 +1,5 @@
 import './JobPreference.scss'
-import { Layout, Card, List, Button, Space, Tag} from "antd"
+import { Layout, Card, List, Button, Space, Tag, Avatar} from "antd"
 import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -103,9 +103,10 @@ const JobPreference = () => {
                             key={item.JobID}
                             >
                             <List.Item.Meta
-                            avatar={
-                                <img width={80} alt="logo" 
-                                    src={jobPic}/>}
+                            // avatar={
+                            //     <img width={80} alt="logo" 
+                            //         src={jobPic}/>}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                                 title={<a href="@">{item.CompanyName}</a>}
                                 //description={item.description}
                                 description={<Tag>{item.Requirement}</Tag>}
