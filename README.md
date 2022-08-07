@@ -57,7 +57,7 @@ yarn add react-router-dom
 For using some outer components library:
 ```
 yarn add antd
-yarn add @mui/material @emotion/react @emotion/style
+yarn add @mui/material @emotion/react @emotion/styled
 yarn add @mui/material @mui/styled-engine-sc styled-components
 yarn add @mui/icons-material
 ```
