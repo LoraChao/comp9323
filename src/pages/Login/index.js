@@ -34,6 +34,8 @@ class Login_individual extends PureComponent {
       }
     } 
     render() {
+      var a = document.cookie;
+      console.log(a)
       const { match, location, history } = this.props
       this.checklogin()
       return (
