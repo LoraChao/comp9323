@@ -29,7 +29,7 @@ class Signup_organizational extends PureComponent {
     render() {
       this.checklogin()
       return (
-        <div className="auth_container">
+        <div className="container">
           <div className="login-wrapper">
             <div className="header">Company Signup</div>
             <div className="form-wrapper">
