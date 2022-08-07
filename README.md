@@ -1,6 +1,8 @@
-# Backend
-## Enviroment requirement
+# Enviroment requirement
 Python 3.6+
+Npm
+
+# Backend
 
 ## Mysql
 Install Mysql from https://www.mysql.com/ \
