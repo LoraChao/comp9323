@@ -57,6 +57,7 @@ class SearchOffer(Resource):
     @api.doc(description='search offer')
     def get(self, OrganizationId):
         # OrganizationName = data['OrganizationName']
+        fit_empty = [{"offerId": "", "CompanyName": "", "Responsibility": "", "Requirement": ""}]
         if OrganizationId == "":
             output = {
                 "message": "false"
@@ -72,6 +73,8 @@ class SearchOffer(Resource):
             return output, 400
         else:
             output_res = output_list(result_from_offer, label_name)
+            while len(output_res) < 12:
+                output_res.append(fit_empty)
             output = {
                 "message": "success",
                 "output": output_res
