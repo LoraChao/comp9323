@@ -1,6 +1,20 @@
 import React,{PureComponent} from 'react';
 import Image1 from "../assets/pexels-photo-10282820.jpg";
+import {Button} from "antd";
+function JobCheckButton(props){ 
+  // get article's id
+  const articleId = props.articleId 
+  
+  // jump with article's id
+  // const navigate = useNavigate()
+  function handleCheckArtileClick(){
+      window.open(`/ArticleDetails?offer_id=${articleId}`, {replace: true})
+  }
 
+  return (
+     <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" onClick={() => {handleCheckArtileClick()}}>Edit</Button>
+  )
+}
 
 class ImageCard extends PureComponent{
   getCookie(name) {
@@ -28,7 +42,7 @@ class ImageCard extends PureComponent{
           // window.alert(data['output'][0]['CompanyName'])
           // return data
           var return_value = data
-          console.log(return_value)
+          //console.log(return_value)
           return return_value
       }
   )
@@ -75,9 +89,7 @@ render(){
                 <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{this.state.company_data[v]["Responsibility"]}</div>
                 <p class="mt-2 text-gray-500">{this.state.company_data[v]["Requirement"]}</p>
                 <div>
-                  <button className="rounded bg-black text-base text-white py-2 px-4">
-                    Edit
-                  </button>
+                <JobCheckButton articleId={this.state.company_data[v]["offerId"]}/>
                 </div>
               </div>
             </div>
