@@ -1,7 +1,7 @@
 # Enviroment requirement
-Python 3.6+
-Npm
-Network connection (For third-party service purpose)
+Python 3.6+\
+Npm\
+Network connection (For third-party service purpose)\
 
 # Getting Started with Create React App
 
