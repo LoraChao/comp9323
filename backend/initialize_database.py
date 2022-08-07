@@ -38,16 +38,16 @@ def create_database():
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456","test1","Aus","IT","50","test1",""),
-    (2, "Enterprise", "qwerty","test2","Aus","Mechanical","50","test2",""),
-    (3, "Company1", "zxcvbn","test3","Aus","BIomedical","100","test3",""),
-    (4, "Company2", "zxcvbn","test4","Aus","IT","60","test4",""),
-    (5, "Company3", "zxcvbn","test5","Aus","BIomedical","70","test5",""),
-    (6, "Company4", "zxcvbn","test6","Aus","BIomedical","80","test6",""),
-    (7, "Company5", "zxcvbn","test7","Aus","IT","100","test7",""),
-    (8, "Company6", "zxcvbn","test8","Aus","Mechanical","90","test8",""),
-    (9, "Company7", "zxcvbn","test9","Aus","Mechanical","110","test9",""),
-    (10, "Company8", "zxcvbn","test10","Aus","BIomedical","120","test10","");
+    (1, "HCS", "123456","HCS","Aus","IT","100","Health care",""),
+    (2, "Work & Training Ltd", "qwerty","Work & Training Ltd","Aus","IT","50","Customer service",""),
+    (3, "ETS IT", "zxcvbn","ETS IT","Aus","IT","100","Sydney • Parramatta & Western Suburbs",""),
+    (4, "RNA", "zxcvbn","RNA","Aus","IT","100","tBrisbane • CBD & Inner Suburbs",""),
+    (5, "Figure8 Services", "zxcvbn","Figure8 Services","Aus","BIomedical","70","To provide service delivery and end to end customer  support whilst ensuring all client accounts are meeting SLA.",""),
+    (6, "OzShut", "zxcvbn","OzShut","Aus","BIomedical","200","OzShut Roller Shutters is WA's leading Roller Shutter company based right here in Malaga, Perth. OzShut completes all custom made orders locally with a 5 day installation turnaround!",""),
+    (7, "JRA ACT Pty Ltd", "zxcvbn","JRA ACT Pty Ltd","Aus","Mechanical","100","Canberra",""),
+    (8, "Saluda Medical", "zxcvbn","Saluda Medical","Aus","Mechanical","100","Sydney • North Shore & Northern Beaches",""),
+    (9, "Radiant Recruitment", "zxcvbn","Radiant Recruitment","Aus","Mechanical","110","Melbourne • Eastern Suburbs",""),
+    (10, "Programmed", "zxcvbn","Programmed","Aus","Mechanical","120","Sydney","");
     '''
     
     Individual_table = '''
@@ -99,18 +99,20 @@ def create_database():
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "Responsibility1", "IT", "contact1", ""),
-    (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "Responsibility2", "Mechanical", "contact2", ""),
-    (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "Responsibility3", "BIomedical", "contact3", ""),
-    (4, 4, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility4", "IT", "contact4", ""),
-    (5, 5, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility5", "BIomedical", "contact5", ""),
-    (6, 6, "USYD","Aus","Aus", "9h per day", "100,000 per year", "Responsibility6", "IT", "contact6", ""),
-    (7, 7, "USYD","Aus","Aus", "9h per day", "90,000 per year", "Responsibility7", "BIomedical", "contact7", ""),
-    (8, 8, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "Responsibility8", "Mechanical", "contact8", ""),
-    (9, 9, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "Responsibility9", "BIomedical", "contact9", ""),
-    (10, 10, "USYD","Aus","Aus", "9h per day", "80,000 per year", "Responsibility10", "Mechanical", "contact10", ""),
-    (11, 4, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "Responsibility11", "BIomedical", "contact11", ""),
-    (12, 5, "USYD","Aus","Aus", "7h per day", "90,000 per year", "Responsibility12", "IT", "contact12", "");
+    (1, 1, "HCS","Aus","IT Support Officer", "Full time", "$65,000 - $75,000 + super", "Help Desk & IT Support (Information & Communication Technology)", "IT", "HCS is looking for an IT support officer to join our team and grow our customer support offering. ", ""),
+    (2, 2, "Work & Training Ltd","Aus","Information Technology Traineeships", "Contract/Temp", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "Work & Training are seeking expressions of interest for upcoming Information Technology traineeships in Hobart!", ""),
+    (3, 3, "ETS IT","Aus","IT Support Technician", "Full time", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "Sydney • Parramatta & Western Suburbs", ""),
+    (4, 4, "RNA","Aus","ICT Support Officer", "Full time", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "The ICT Support Officer is primarily responsible for assisting in the resolution of Service Desk Requests both formal and informal within the RNA showgrounds, responding and achieving outcomes in a satisfactory time frame. ", ""),
+    (5, 5, "Figure8 Services","Aus","Service Delivery Coordinator/Field Service Technician", "Full time", "$55,000 - $59,999", "Technicians (Trades & Services)", "BIomedical", "Service Delivery Coordinator/Field Service Technician", ""),
+    (6, 5, "Figure8 Services","Aus","Service Delivery Manager", "Full time", "$65,000 - $69,999", "Management (Information & Communication Technology)", "BIomedical", "To provide service delivery and end to end customer  support whilst ensuring all client accounts are meeting SLA.", ""),
+    (7, 6, "OzShut","Aus","Service Technician", "Full time", "$50,488.03 plus super", "Technicians (Trades & Services)", "BIomedical", "OzShut Roller Shutters is WA's leading Roller Shutter company based right here in Malaga, Perth. OzShut completes all custom made orders locally with a 5 day installation turnaround!", ""),
+    (8, 6, "OzShut","Aus","Appointment Setter and Qualifier", "Full time", "$25 - $34.99 per hour + Super + Comms + Bonuses", "Sales - Outbound (Call Centre & Customer Service)", "BIomedical", "Perth • Eastern Suburbs", ""),
+    (9, 7, "Saluda Medical","Aus","Mechanical Engineer", "Full time", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "Sydney • North Shore & Northern Beaches", ""),
+    (10, 8, "JRA ACT Pty Ltd","Aus","Mechanical Engineer Discipline Leader", "Full time", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "Canberra", ""),
+    (11, 9, "Radiant Recruitment","Aus","Mechanical Engineer", "Contract/Temp", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "contact11", "Melbourne • Eastern Suburbs"),
+    (12, 9, "Radiant Recruitment","Aus","Electronics Technician", "Full time", "Negotiable", "Technicians (Trades & Services)", "Mechanical", "Melbourne • Eastern Suburbs", ""),
+    (13, 9, "Radiant Recruitment","Aus","Customer Service | Administration | Marketing Officer", "Part time", "Negotiable", "Client & Sales Administration (Administration & Office Support)", "Mechanical", "Melbourne • CBD & Inner Suburbs", ""),
+    (14, 10, "Programmed","Aus","Mechanical Tradesperson", "Full time", "Competitive rates + Great Benefits", "Fitters, Turners & Machinists (Trades & Services)", "Mechanical", "Sydney", "");
     '''
 
     Individual_prefer = '''
