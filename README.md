@@ -1,7 +1,11 @@
 # Enviroment requirement
 Python 3.6+\
 Npm\
-Network connection (For third-party service purpose)\
+Network connection (For third-party service purpose)
+
+# Mysql
+Install Mysql from https://www.mysql.com/ \
+Setting parameters backend/config.py 
 
 # Getting Started with Create React App
 
