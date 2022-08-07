@@ -45,27 +45,27 @@ npm install --global yarn
 ```
 
 ## Step4:Install other packages
-### For run this project, we still need to setup some packages:
-### For running scss style file.
+For run this project, we still need to setup some packages:
+For running scss style file.
 ```
 yarn add sass
 ```
-### For running route code:
+For running route code:
 ```
 yarn add react-router-dom
 ```
-### For using some outer components library:
+For using some outer components library:
 ```
 yarn add antd
 yarn add @mui/material @emotion/react @emotion/style
 yarn add @mui/material @mui/styled-engine-sc styled-components
 yarn add @mui/icons-material
 ```
-### For running route url which we use to make the route url much simplier:
+For running route url which we use to make the route url much simplier:
 ```
 yarn add -D @craco/craco
 ```
-### For realize some css style:
+For realize some css style:
 ```
 yarn install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9 
 ```
