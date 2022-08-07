@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import MyPage from '@/pages/MyPage';
 import OthersPage from '@/pages/OthersPage';
 import FollowInd from '@/pages/FollowInd';
@@ -52,6 +52,7 @@ function App() {
           <Route path='/editprofile' element={<Edit_details_personal />}></Route>
           <Route path='/editprofile_organizational' element={<Edit_details_organizational />}></Route>
           <Route path='/editjob' element={<JobEdit />}></Route>
+          <Route path="/" element={<Navigate to="/Individual_Home" />} />
           <Route path='/Individual_Home' element={<Individual_Home />}></Route>
           <Route path='/Organization_Home' element={<Organization_Home />}></Route>
         </Routes>
