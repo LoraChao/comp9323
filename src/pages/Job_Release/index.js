@@ -54,9 +54,9 @@ class JobRelease extends PureComponent{
 
     var OrganizationId = this.getCookie('userid');
     if (this.state.flag === true){
-      window.alert(OrganizationId)
+      // window.alert(OrganizationId)
       this.getCompanyinfo(OrganizationId)
-      window.alert(this.state.company_name)
+      // window.alert(this.state.company_name)
     }
     
   return (
