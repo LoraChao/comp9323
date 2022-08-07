@@ -246,7 +246,7 @@ class Edit_details_personal extends PureComponent{
       <div>
       	<TextField
         id="cv_id"
-        label="CV"
+        label="Hobby"
         name='cv_name'
         InputLabelProps={{ shrink: true }}
         multiline
