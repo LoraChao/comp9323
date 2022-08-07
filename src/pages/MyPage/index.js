@@ -66,7 +66,9 @@ function IndCheckButton(props){
     // jump with params: target user's id
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})
+        // window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true}, '_blank');
+        window.open(`/OthersPage?checkUserId=${checkUserId}`);
+        //window.location.replace(`/OthersPage?checkUserId=${checkUserId}`)
     }
 
     return (
@@ -95,7 +97,7 @@ function OrganizationCheckButton(props){
     // jump with params: target user's id
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`)
     }
 
     return (
@@ -124,7 +126,7 @@ function JobCheckButton(props){
     
     // jump with params: 'job's id'
     function handleCheckJobClick(){
-        window.open(`/check?offer_id=${OfferId}`, {replace: true})        
+        window.open(`/check?offer_id=${OfferId}`)        
     }
 
     return (
@@ -153,7 +155,7 @@ function ArticleCheckButton(props){
     // jump with article's id
     // const navigate = useNavigate()
     function handleCheckArtileClick(){
-        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+        window.open(`/ArticleDetails?articleId=${articleId}`)
     }
 
     return (
@@ -178,14 +180,26 @@ function ArticleMoreButton(props){
 
 function LogoutButton(){
 
+    function setcookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+
     // jump without params
     const navigate = useNavigate()
     function LogoutButton(){
-        document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path =/"; 
-        //this.setcookie("userid", '', -1)
+        //document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path =/"; 
 
-        var ca = document.cookie;
-        console.log(ca)
+        setcookie('islogin', '', -1)
+        setcookie("userid", '', -1)
+
+        // var ca = document.cookie;
+        console.log(document.cookie)
         navigate('/login', {replace: true})
     }
 

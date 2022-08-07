@@ -36,7 +36,7 @@ function ArticleCheckButton(props){
     // jump with params: article's id
     // const navigate = useNavigate()
     function handleCheckArtileClick(){
-        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+        window.open(`/ArticleDetails?articleId=${articleId}`)
     }
 
     return (

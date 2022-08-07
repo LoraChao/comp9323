@@ -51,6 +51,7 @@ constructor(props) {
   super(props)
   this.state = {
     flag: true,
+    organizationid: "",
     company_data:[{"offerId": "","CompanyName": "","Responsibility": "","Requirement": ""},
     {"offerId": "","CompanyName": "","Responsibility": "","Requirement": ""},
     {"offerId": "","CompanyName": "","Responsibility": "","Requirement": ""},

@@ -85,7 +85,7 @@ function OrganizationCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`)                 
     }
 
     return (
