@@ -150,7 +150,7 @@ def create_database():
     (0, 2, 39, "BIomedical"),
     (0, 2, 40, "BIomedical"),
     (0, 3, 49, "Mechanical"),
-    (0, 3, 50, "Mechanical"),;
+    (0, 3, 50, "Mechanical");
     '''
     
     Individual_preferOffer = '''
