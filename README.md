@@ -6,6 +6,8 @@ Python 3.6+\
 Install Mysql from https://www.mysql.com/ \
 Setting parameters backend/config.py 
 
+
+# Frontend
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
