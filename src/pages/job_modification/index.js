@@ -24,7 +24,7 @@ class JobEdit extends PureComponent{
       organization_id: organization_id,
       offer_id: offer_id
     })
-    let url = "http://127.0.0.1:5000/offer/search/detail/"+organization_id+"&"+offer_id;
+    let url = "http://127.0.0.1:5000/offer/search/detail/"+offer_id;
   //    window.alert(url)
     fetch(url, {
           method: "GET",

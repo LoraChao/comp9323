@@ -28,8 +28,8 @@ class JobRelease extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ company_name: data['output'][0]['CompanyName'] })
-            this.setState({ location_name: data['output'][0]['Location'] })
+            this.setState({ company_name: data['Companyname'] })
+            this.setState({ location_name: data['Location'] })
             this.setState({ flag: false })
             
   }
