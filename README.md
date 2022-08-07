@@ -58,8 +58,6 @@ For using some outer components library:
 ```
 yarn add antd
 yarn add @mui/material @emotion/react @emotion/styled
-yarn add @mui/material @mui/styled-engine-sc styled-components
-yarn add @mui/icons-material
 ```
 For running route url which we use to make the route url much simplier:
 ```
