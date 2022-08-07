@@ -1,5 +1,5 @@
 import React,{PureComponent} from 'react';
-
+import SectionHeading from "./SectionHeading";
 class ImageCard extends PureComponent{
 
   getOfferData() {
@@ -43,7 +43,10 @@ render(){
   return (
 
     <div>
-
+      <SectionHeading
+        title="Maybe you are interested in these articles"
+        subTitle=""
+      />
       <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
 
         {[0,1, 2, 3, 4, 5, 6, 7, 8].map((v) => (

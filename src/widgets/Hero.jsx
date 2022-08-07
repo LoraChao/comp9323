@@ -19,7 +19,7 @@ function Hero() {
         </button>
       </div>
 
-      <div className="relative grid justify-items-center">
+      {/* <div className="relative grid justify-items-center">
         <video
           src={Video}
           controls
@@ -39,7 +39,7 @@ function Hero() {
           </svg>
           Video introduction
         </div>
-      </div>
+      </div> */}
       <svg
         width="128"
         height="128"
