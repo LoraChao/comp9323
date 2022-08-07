@@ -52,6 +52,7 @@ class ImageCard extends PureComponent{
 constructor(props) {
   super(props)
   this.state = {
+    userid: "",
     flag: true,
     company_data:[ {"ArticleID": '',"ArticleTitle": '',"Author": '',"Article": '',"ArticleLikeNum": '',"ArticleTag": '',"Icon": '',"description": ''},
     {"ArticleID": '',"ArticleTitle": '',"Author": '',"Article": '',"ArticleLikeNum": '',"ArticleTag": '',"Icon": '',"description": ''},
