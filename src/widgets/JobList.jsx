@@ -3,9 +3,20 @@ import Image1 from "../assets/pexels-photo-10282820.jpg";
 
 
 class ImageCard extends PureComponent{
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
 
-  getOfferData() {
-  let url = "http://127.0.0.1:5000/offer/search/brief/1";
+  getOfferData(company_username) {
+    let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
+    this.setState({organizationid:company_username})
   //window.alert(url)
   fetch(url, {
       method: "GET",
@@ -17,7 +28,7 @@ class ImageCard extends PureComponent{
           // window.alert(data['output'][0]['CompanyName'])
           // return data
           var return_value = data
-          //console.log(return_value)
+          console.log(return_value)
           return return_value
       }
   )
@@ -42,8 +53,9 @@ constructor(props) {
 
 }
 render(){
+    var organizationid = this.getCookie('userid')
   if(this.state.flag === true){
-  this.getOfferData()
+  this.getOfferData(organizationid)
   }
   return (
 

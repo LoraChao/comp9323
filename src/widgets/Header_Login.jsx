@@ -1,12 +1,22 @@
 import React from "react";
-import Logo from "../logo.svg";
+import {Button} from "antd"
+function MyPageButton(){ 
+  // jump with params: 'job's id'
+  function handleCheckJobClick(){
+      window.open(`/MyPage`, {replace: true})        
+  }
+
+  return (
+     <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" onClick={() => {handleCheckJobClick()}}>MyPage</Button>
+   )
+}
 
 function Header() {
   return (
     <header className="flex justify-between items-center h-20">
-      <img src={Logo} alt="" className="w-8 h-8" />
       <nav className="flex items-center">
-        <a href="#">My Profile</a>
+        <p>Hello, User!</p>
+        <MyPageButton/>
       </nav>
     </header>
   );

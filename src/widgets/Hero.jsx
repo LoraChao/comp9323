@@ -1,5 +1,18 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import {Button} from "antd"
+function SignUp(){ 
+  // get target person's id
+  
+  const navigate = useNavigate()
+  function IndMoreButton(id){
+     navigate(`/signup`, {replace: true})
+  }
 
+  return (
+      <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" type="link" onClick={() => {IndMoreButton()}}>SignUp</Button>
+  )
+}
 function Hero() {
   return (
     <div className="grid justify-items-center gap-8 pb-28 relative">
@@ -9,14 +22,6 @@ function Hero() {
       <p className="text-xl text-gray-700 md:w-1/2 text-center">
         by github is savior
       </p>
-      <div>
-        <button className="rounded bg-blue-500 text-base text-white py-3 px-8">
-        Job opportunities
-        </button>
-        <button className="rounded bg-gray-900 text-base text-white py-3 px-8 ml-3">
-        Psychological help
-        </button>
-      </div>
 
       {/* <div className="relative grid justify-items-center">
         <video

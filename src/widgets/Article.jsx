@@ -19,9 +19,20 @@ function ArticleCheckButton(props){
 
 
 class ImageCard extends PureComponent{
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
 
-  getOfferData() {
-  let url = "http://127.0.0.1:5000/cont/1/recommandationList";
+  getOfferData(userid) {
+  let url = "http://127.0.0.1:5000/cont/"+userid+"/recommandationList";
+  this.setState({userid:userid})
   //window.alert(url)
   fetch(url, {
       method: "GET",
@@ -55,8 +66,10 @@ constructor(props) {
 
 }
 render(){
+  var UserId = this.getCookie('userid')
+
   if(this.state.flag === true){
-  this.getOfferData()
+  this.getOfferData(UserId)
   }
   return (
 

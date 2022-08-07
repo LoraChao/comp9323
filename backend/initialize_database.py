@@ -141,7 +141,7 @@ def create_database():
     (0, 2, 27, "Interview"),
     (0, 2, 28, "Interview"),
     (0, 2, 29, "Interview"),
-    (0, 3, 1, "Mental");
+    (0, 3, 1, "Mental"),
     (0, 3, 38, "Skill"),
     (0, 3, 17, "Covid"),
     (0, 3, 16, "Covid"),
@@ -150,7 +150,7 @@ def create_database():
     (0, 2, 39, "BIomedical"),
     (0, 2, 40, "BIomedical"),
     (0, 3, 49, "Mechanical"),
-    (0, 3, 50, "Mechanical"),;
+    (0, 3, 50, "Mechanical");
     '''
     
     Individual_preferOffer = '''
@@ -273,7 +273,7 @@ def create_database():
     insert_taste = '''
     INSERT INTO `Taste` VALUES
     (1,1,1,2,3,1,0,3,0,0,0),
-    (2,2,0,0,4,0,0,0,2,0),
+    (2,2,0,0,4,0,0,0,0,2,0),
     (3,3,1,0,1,0,0,4,0,0,2),
     (4,4,0,0,0,0,0,0,0,0,0);
     '''

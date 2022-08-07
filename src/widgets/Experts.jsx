@@ -51,9 +51,10 @@ class Experts extends PureComponent{
           <p className="text-lg font-bold">{this.state.expert_data[v]['Introduce']}</p>
           <p className="text-gray-500 mb-8">
             {" "}
-            <a href="#" className="text-blue-500">
-            {this.state.expert_data[v]['Email']}
-            </a>
+            <p className="text-blue-500">
+
+            Emial:  {this.state.expert_data[v]['Email']}
+            </p>
           </p>
         </div>
         ))}
