@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import './Login_organizational.scss'
-
+import Button from '@mui/material/Button';
 class Login_organizational extends PureComponent {
   checklogin() {
     if (this.getCookie('islogin') === '1') {

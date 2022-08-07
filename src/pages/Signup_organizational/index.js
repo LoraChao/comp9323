@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import './Signup_organizational.scss'
-
+import Button from '@mui/material/Button';
 class Signup_organizational extends PureComponent {
     getCookie(name) {
       var nameEQ = name + "=";
