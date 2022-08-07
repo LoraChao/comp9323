@@ -25,6 +25,7 @@ python App.py
 
 ## Step1: Install "Node.js" and "npm"
 For setup environment, we first need to install "Node.js" , and npm tools will be also installed simutaneously, this is for the later installment:
+
 Go to website https://nodejs.org/en/, choose your version, we recommend the "common use version" as shown in page, and then follow the setup instuction.
 
 ## Step2: Install "React"
