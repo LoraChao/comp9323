@@ -68,5 +68,10 @@ For realize some css style:
 yarn install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9 
 ```
 
-
+## Step5: Run the project!
+Now go to your project directory, and run the code:
+```
+cd project
+yarn start
+```
 ### Now you could run this website successfully, enjoy it!
