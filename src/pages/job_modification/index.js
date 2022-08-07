@@ -9,6 +9,17 @@ import { useSearchParams } from 'react-router-dom';
 
 const {  Header, Content, Footer} = Layout;
 class JobEdit extends PureComponent{
+  checkavalidity(){
+    var usertype = this.getCookie('usertype')
+    if ( this.getCookie('islogin') === '1'&& usertype === 'organization' ){
+      this.setState({ OrganizationId: this.getCookie('userid')})
+    }
+    else{
+      window.alert('Woops, you are not this organization user, guiding you back to mypage')
+      let url = "http://localhost:3000/login"
+      window.location.replace(url)
+    }
+  }
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -85,6 +96,7 @@ class JobEdit extends PureComponent{
 
     var currUserId = this.getCookie('userid')
     if (this.state.flag === true){
+      this.checkavalidity();
       this.getCompanyinfo(currUserId)
       this.getOfferData(currUserId, read_offer_id)
     }

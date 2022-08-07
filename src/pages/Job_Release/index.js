@@ -16,6 +16,7 @@ class JobRelease extends PureComponent{
       this.setState({ OrganizationId: this.getCookie('userid')})
     }
     else{
+      window.alert('Woops, you are not this organization user, guiding you back to mypage')
       let url = "http://localhost:3000/login"
       window.location.replace(url)
     }
