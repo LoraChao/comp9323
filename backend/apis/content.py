@@ -40,7 +40,6 @@ class CheckLikeStates(Resource):
 @cont.response(200, 'Ok')
 class RecommandationList(Resource):
     def get(self, individualID):
-        print(individualID)
         if individualID !=0:
             user_sql = f"SELECT IndividualName, Emo FROM Individual WHERE IndividualID = {individualID};"
             user = sql_dicresult_with_decription(user_sql)
