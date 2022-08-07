@@ -41,22 +41,20 @@ class Login_individual extends PureComponent {
           <div className="login-wrapper">
             <div className="header">Individual Login</div>
             <div className="form-wrapper">
-                {/* <form action="http://127.0.0.1:5000/auth/login" method="post"> */}
-                    <input type="text" name="username" placeholder="username" className="input-item" 
-                    value={this.state.username}
-                    onChange={(e) => {
-                      this.setState({ username: e.target.value })
-                    }}></input>
-                    <input type="password" name="password" placeholder="password" className="input-item"
-                    value={this.state.password}
-                    onChange={(e) => {
-                      this.setState({ password: e.target.value })
-                    }}></input>
-                    <input className="btn" type="button" value="Log in"
-                    onClick={() => {
-                      this.getConnect()
-                    }}></input>
-                {/* </form>     */}
+                  <input type="text" name="username" placeholder="username" className="input-item" 
+                  value={this.state.username}
+                  onChange={(e) => {
+                    this.setState({ username: e.target.value })
+                  }}></input>
+                  <input type="password" name="password" placeholder="password" className="input-item"
+                  value={this.state.password}
+                  onChange={(e) => {
+                    this.setState({ password: e.target.value })
+                  }}></input>
+                  <input className="btn" type="button" value="Log in"
+                  onClick={() => {
+                    this.getConnect()
+                  }}></input>
             </div>
             <div className="msg">
                 An organization user?
