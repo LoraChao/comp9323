@@ -10,8 +10,11 @@ import { message } from 'antd'
 
 class Login_individual extends PureComponent {
     checklogin() {
-      if (this.getCookie('islogin') === '1') {
+      if (this.getCookie('islogin') === '1' && this.getCookie('usertype') === 'individual') {
         let url =  "http://localhost:3000/mypage";
+        window.location.replace(url)
+      }else if (this.getCookie('islogin') === '1' && this.getCookie('usertype') === 'organization') {
+        let url =  "http://localhost:3000/Organization_Home";
         window.location.replace(url)
       }
     }
