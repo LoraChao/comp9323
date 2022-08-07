@@ -95,7 +95,7 @@ class Signup_individual extends PureComponent {
               if (data['message'] === 'Success register'){
                   let url =  "http://localhost:3000/profile";
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", data["id"], 1)
+                  this.setcookie("userid", data["individualID"], 1)
                   this.setcookie("usertype", 'individual', 1)
                   window.location.replace(url)
               }else window.alert("Username exists or invalid register info")
