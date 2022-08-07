@@ -13,7 +13,7 @@ class JobRelease extends PureComponent{
   checkavalidity(){
     var usertype = this.getCookie('usertype')
     if ( this.getCookie('islogin') === '1'&& usertype === 'organization' ){
-      window.alert('Please fill in the details and press release button to release offer')
+      this.setState({ OrganizationId: this.getCookie('userid')})
     }
     else{
       let url = "http://localhost:3000/login"
@@ -220,34 +220,39 @@ class JobRelease extends PureComponent{
   );
         }
         publish() {
-          let text = {
-                      OrganizationId: this.state.OrganizationId,
-                      company_name: this.state.company_name, 
-                      company_location: this.state.company_location,
-                      position_name: this.state.position_name,
-                      working_location_name: this.state.working_location_name,
-                      working_hour_name: this.state.working_hour_name,
-                      salary_name: this.state.salary_name,
-                      responsibility_name: this.state.responsibility_name,
-                      requirement_name: this.state.requirement_name,
-                      contact_name: this.state.contact_name,
-                      icon_name: ''
-                    };//获取数据
-          // console.log(text);
-          let send = JSON.stringify(text);//将对象转成json字符串
-          fetch("http://127.0.0.1:5000/offer/post/organization", {
-              method: "POST",
-              headers: {"Content-Type": "application/json;charset=utf-8"},
-              body: send
-          }).then(res => res.json()).then(
-              data => {
-                  if (data['message'] === 'Success Post'){
-                      window.alert("Offer Released!")
-                      let url =  "http://localhost:3000/Organization_Home";
-                      window.location.replace(url)
-                  }else window.alert("Something went wrong")
-              }
-          )
+          if ( this.state.position_name != '' && this.state.working_location_name != '' && this.state.working_hour_name != '' && this.state.salary_name != '' && this.state.responsibility_name != '' && this.state.requirement_name != '' && this.state.contact_name != ''){
+            let text = {
+              OrganizationId: this.state.OrganizationId,
+              company_name: this.state.company_name, 
+              company_location: this.state.company_location,
+              position_name: this.state.position_name,
+              working_location_name: this.state.working_location_name,
+              working_hour_name: this.state.working_hour_name,
+              salary_name: this.state.salary_name,
+              responsibility_name: this.state.responsibility_name,
+              requirement_name: this.state.requirement_name,
+              contact_name: this.state.contact_name,
+              icon_name: ''
+            };//获取数据
+            // console.log(text);
+            let send = JSON.stringify(text);//将对象转成json字符串
+            fetch("http://127.0.0.1:5000/offer/post/organization", {
+                method: "POST",
+                headers: {"Content-Type": "application/json;charset=utf-8"},
+                body: send
+            }).then(res => res.json()).then(
+                data => {
+                    if (data['message'] === 'Success Post'){
+                        window.alert("Offer Released!")
+                        let url =  "http://localhost:3000/Organization_Home";
+                        window.location.replace(url)
+                    }else window.alert("Something went wrong")
+                }
+            )
+          } else{
+            window.alert("Field can't be empty!")
+          }
+          
         }
 }
 
