@@ -6,7 +6,7 @@ Python 3.6+
 Install Mysql from https://www.mysql.com/ \
 Setting parameters backend/config.py 
 
-# Run
+## Run
 Install requirement
 ```
 cd backend
