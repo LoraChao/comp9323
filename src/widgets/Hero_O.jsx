@@ -1,5 +1,5 @@
 import React from "react";
-import Video from "../assets/Pitch Video 9323 Github is Savior.mp4";
+
 
 function Hero() {
   return (
