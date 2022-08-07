@@ -1,4 +1,5 @@
 
+import Header_Login from "../../widgets/Header_Login";
 import Header from "../../widgets/Header";
 import Hero from "../../widgets/Hero";
 import Solutions from "../../widgets/Position";
@@ -14,37 +15,9 @@ const Index= () => {
       // get user's id for checking
   const [params] = useSearchParams()
   const checkUserId =  params.get('checkUserId')
-
-
-  // apis
-  const articleListURL = 'http://127.0.0.1:5000/cont/1/recommandationList';
-
-  const [data, setData ] = useState(0);
-
-
-  // GET liked article's list
-  useEffect(() => {
-      const requestOptions = {
-          method: 'GET',
-          headers: {'Content-Type': 'application/json'},
-      }
-
-      const getData = async (articleListURL) => {
-          fetch(articleListURL, requestOptions)
-          .then(res =>  res.json())
-          .then(json =>{
-              setData(json)
-          }) 
-      }
-
-      getData(articleListURL);
-  },[])
   
-  
-  const articleList = data.art_like                                             
-  console.log(articleList)
     return (<div className="container mx-auto p-4">
-        <Header />
+        <Header_Login />
         <main className="mt-20">
             <Hero />
             <section className="mt-20">
