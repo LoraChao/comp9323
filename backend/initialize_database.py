@@ -146,7 +146,11 @@ def create_database():
     (0, 3, 17, "Covid"),
     (0, 3, 16, "Covid"),
     (0, 3, 15, "Covid"),
-    (0, 3, 14, "Covid");
+    (0, 3, 14, "Covid"),
+    (0, 2, 39, "BIomedical"),
+    (0, 2, 40, "BIomedical"),
+    (0, 3, 49, "Mechanical"),
+    (0, 3, 50, "Mechanical"),;
     '''
     
     Individual_preferOffer = '''
