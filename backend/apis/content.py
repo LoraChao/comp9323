@@ -104,6 +104,8 @@ class RecommandationList(Resource):
             list = sql_dicresult_with_decription(sql)
             random.shuffle(list)
             recommendation.extend(list[:9])
+            for e in recommendation:
+                e['description'] = e['Article'][:50]+'...'
             return recommendation, 200
 
 @cont.route('/<int:individualID>/preferList', doc={'description': 'preference list opration'})
