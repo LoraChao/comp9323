@@ -181,7 +181,11 @@ function LogoutButton(){
     // jump without params
     const navigate = useNavigate()
     function LogoutButton(){
-        document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path =/"; 
+        //this.setcookie("userid", '', -1)
+
+        var ca = document.cookie;
+        console.log(ca)
         navigate('/login', {replace: true})
     }
 
