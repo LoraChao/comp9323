@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../logo.svg";
 import { useNavigate } from 'react-router-dom';
 import {Button} from "antd"
 function Login(){ 
@@ -31,7 +30,6 @@ function Header() {
   return (
     
     <header className="flex justify-between items-center h-20">
-      <img src={Logo} alt="" className="w-8 h-8" />
       <nav className="flex items-center">
         <Login/>
         <SignUp/>

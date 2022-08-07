@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Hero() {
   return (
     <div className="grid justify-items-center gap-8 pb-28 relative">
