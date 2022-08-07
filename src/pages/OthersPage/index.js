@@ -25,7 +25,7 @@ function IndCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/OthersPage?checkUserId=${checkUserId}`)                 
     }
 
     return (
@@ -54,7 +54,7 @@ function OrganizationCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/Organization_Home?checkUserId=${checkUserId}`, {replace: true})                 
+        window.open(`/Organization_Home?checkUserId=${checkUserId}`)                 
     }
 
     return (
@@ -83,7 +83,7 @@ function JobCheckButton(props){
     // jump with params offer_id
     // const navigate = useNavigate()
     function handleCheckJobClick(){
-        window.open(`/check?offer_id=${OfferId}`, {replace: true})        
+        window.open(`/check?offer_id=${OfferId}`)        
     }
 
     return (
@@ -112,7 +112,7 @@ function ArticleCheckButton(props){
     // jump with article's id
     // const navigate = useNavigate()
     function handleCheckArtileClick(){
-        window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+        window.open(`/ArticleDetails?articleId=${articleId}`)
     }
 
     return (

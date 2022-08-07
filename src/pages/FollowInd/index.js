@@ -81,7 +81,7 @@ function IndCheckButton(props){
     
     // const navigate = useNavigate()
     function handleCheckIndClick(){
-        window.open(`/OthersPage?checkUserId=${checkUserId}`, {replace: true})                 // 要新开一页
+        window.open(`/OthersPage?checkUserId=${checkUserId}`)                 
     }
 
     return (
