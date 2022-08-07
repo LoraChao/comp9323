@@ -28,9 +28,9 @@ class GetJob_ind(Resource):
             np.random.shuffle(random_list)
             random_list = list(random_list[0:5])
 
-            select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(random_list))
+            select_str = 'select OfferId, CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
-            label_name = ["CompanyName", "Position", "Contact"]
+            label_name = ["OfferId", "CompanyName", "Position", "Contact"]
             output_res = output_list(output_info, label_name)
             while len(output_res) < 5:
                 output_res.append(fill_list)
@@ -71,9 +71,9 @@ class GetJob_ind(Resource):
             new = list(set(test))
             new.sort(key=test.index)
             new = new[0:5]
-            select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(new))
+            select_str = 'select OfferId, CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(new))
             output_info = search_list(select_str, new)
-            label_name = ["CompanyName","Position","Contact"]
+            label_name = ["OfferId", "CompanyName", "Position", "Contact"]
             output_res = output_list(output_info, label_name)
             while len(output_res) < 5:
                 output_res.append(fill_list)
