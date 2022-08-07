@@ -58,7 +58,7 @@ class Signup_individual extends PureComponent {
             </div>
             <div className="msg">
                 Visit as tourist.
-                <a href="./home">Home</a> 
+                <a href="./Individual_Home">Home</a> 
                 {/* 这里需要homepage的链接 */}
             </div>
           </div>
@@ -86,10 +86,9 @@ class Signup_individual extends PureComponent {
       }).then(res => res.json()).then(
           data => {
               if (data['message'] === 'Success register'){
-                  window.alert('Sign up successful, please fill in some detail')
                   let url =  "http://localhost:3000/profile";
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", data["individualID"], 1)
+                  this.setcookie("userid", data["id"], 1)
                   this.setcookie("usertype", 'individual', 1)
                   window.location.replace(url)
               }else window.alert("Username exists or invalid register info")

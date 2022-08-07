@@ -229,7 +229,7 @@ class JobRelease extends PureComponent{
               data => {
                   if (data['message'] === 'Success Post'){
                       window.alert("Offer Released!")
-                      let url =  "http://localhost:3000/home/org";
+                      let url =  "http://localhost:3000/Organization_Home";
                       window.location.replace(url)
                   }else window.alert("Something went wrong")
               }

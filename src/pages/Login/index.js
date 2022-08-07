@@ -68,7 +68,7 @@ class Login_individual extends PureComponent {
             </div>
             <div className="msg">
                 Visit as tourist.
-                <a href="./home">Home</a> 
+                <a href="./Individual_Home">Home</a> 
                 {/* 这里需要homepage的链接 */}
             </div>
           </div>
