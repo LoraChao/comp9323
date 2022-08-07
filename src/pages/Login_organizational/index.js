@@ -45,10 +45,17 @@ class Login_organizational extends PureComponent {
                     onChange={(e) => {
                       this.setState({ password: e.target.value })
                     }}></input>
-                    <input className="btn" type="submit" value="Log in"
+                    {/* <input className="btn" type="submit" value="Log in"
                     onClick={() => {
                       this.handleLogin()
-                    }}></input>
+                    }}></input> */}
+                    <Button variant="contained" 
+                    type='submit'
+                    // style = {{left:250, top:230, width:200}}
+                    onClick={() => {
+                      this.getConnect()
+                    }}
+                    >Log in</Button>
             </div>
             <div className="msg">
                 An individual user?
