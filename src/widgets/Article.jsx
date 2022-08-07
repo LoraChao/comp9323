@@ -1,5 +1,23 @@
 import React,{PureComponent} from 'react';
 import SectionHeading from "./SectionHeading";
+import {Button} from "antd";
+
+function ArticleCheckButton(props){ 
+  // get article's id
+  const articleId = props.articleId 
+  
+  // jump with article's id
+  // const navigate = useNavigate()
+  function handleCheckArtileClick(){
+      window.open(`/ArticleDetails?articleId=${articleId}`, {replace: true})
+  }
+
+  return (
+     <Button onClick={() => {handleCheckArtileClick()}}>More</Button>
+  )
+}
+
+
 class ImageCard extends PureComponent{
 
   getOfferData() {
@@ -57,9 +75,10 @@ render(){
               </div>
               <div class="p-8">
 
-                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{this.state.company_data[v]["ArticleTitle"]}</a>
+                <p class="block mt-1 text-lg leading-tight font-medium text-black">{this.state.company_data[v]["ArticleTitle"]}</p>
                 <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{this.state.company_data[v]["Author"]}</div>
                 <p class="mt-2 text-gray-500">{this.state.company_data[v]["description"]}</p>
+                <ArticleCheckButton articleId={this.state.company_data[v]["ArticleID"]}/>
                 <div>
                 </div>
               </div>
