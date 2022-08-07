@@ -1,26 +1,44 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
-import {Button} from "antd"
-function SignUp(){ 
-  // get target person's id
-  
-  const navigate = useNavigate()
-  function IndMoreButton(id){
-     navigate(`/signup`, {replace: true})
-  }
 
-  return (
-      <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" type="link" onClick={() => {IndMoreButton()}}>SignUp</Button>
+import React,{PureComponent} from 'react';
+
+
+class Board extends PureComponent{
+  getSentence() {
+    let url = "http://127.0.0.1:5000/homepage/PostSentence";
+  //window.alert(url)
+  fetch(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+  }).then(res => res.json()).then(
+      data => {
+          this.setState({sentence: data['Content']})
+          this.setState({flag: false})
+          // window.alert(data['output'][0]['CompanyName'])
+          // return data
+          var return_value = data
+          console.log(return_value)
+          return return_value
+      }
   )
 }
-function Hero() {
+constructor(props) {
+  super(props)
+  this.state = {
+    flag: true,
+    sentence: "",
+}
+}
+render(){
+if(this.state.flag === true){
+this.getSentence()
+}
   return (
     <div className="grid justify-items-center gap-8 pb-28 relative">
       <p className="text-4xl md:text-6xl font-black text-center leading-normal md:leading-normal">
         Wellbeing Online Services
       </p>
-      <p className="text-xl text-gray-700 md:w-1/2 text-center">
-        by github is savior
+      <p className="text-2xl text-gray-700 md:w-1/2 text-center">
+        {this.state.sentence}
       </p>
 
       {/* <div className="relative grid justify-items-center">
@@ -70,5 +88,5 @@ function Hero() {
       </svg>
     </div>
   );
-}
-export default Hero;
+}}
+export default Board;

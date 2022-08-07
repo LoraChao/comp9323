@@ -352,7 +352,7 @@ const OthersPage = () => {
         <Layout>
             <Header className="myPage_header">
                 <div className="user_icon">
-                avatar={<Avatar size={80} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
+                avatar={<Avatar size={100} style={{float:"left" }} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
                 </div>
 
                 <div>

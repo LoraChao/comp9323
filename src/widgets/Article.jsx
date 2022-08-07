@@ -1,6 +1,7 @@
 import React,{PureComponent} from 'react';
 import SectionHeading from "./SectionHeading";
 import {Button} from "antd";
+import picture from "../assets/pexels-photo-11123438.jpg";
 
 function ArticleCheckButton(props){ 
   // get article's id
@@ -85,7 +86,7 @@ render(){
           <div key={v} class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="md:flex">
               <div class="md:flex-shrink-0">
-                <img class="h-48 w-full object-cover md:w-48" src='C:\Users\J33\Desktop\comp9323-main\comp9323-main\src\assets\pexels-photo-11123438.jpg' alt="np pic"></img>
+                <img class="h-48 w-full object-cover md:w-48" src={picture} alt="np pic"></img>
               </div>
               <div class="p-8">
 

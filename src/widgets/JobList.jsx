@@ -1,6 +1,7 @@
 import React,{PureComponent} from 'react';
 import Image1 from "../assets/pexels-photo-10282820.jpg";
 import {Button} from "antd";
+
 function JobCheckButton(props){ 
   // get article's id
   const articleId = props.articleId 
@@ -78,7 +79,7 @@ render(){
 
       <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
 
-        {[0,1, 2, 3, 4, 5, 6, 7, 8,9,10,11].map((v) => (
+        {[0].map((v) => (
           <div key={v} class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="md:flex">
               <div class="md:flex-shrink-0">
