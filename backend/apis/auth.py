@@ -301,7 +301,7 @@ class organization_brief(Resource):
                 "message": "success",
                 "OrganizationName": result_sql[0][0],
                 "Companyname": result_sql[0][1],
-                "Location:": result_sql[0][2],
+                "Location": result_sql[0][2],
                 "Field": result_sql[0][3],
                 "Scale": result_sql[0][4],
                 "Description": result_sql[0][5],
