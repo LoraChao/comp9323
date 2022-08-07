@@ -170,10 +170,9 @@ class Individual_details(Resource):
         professional = data['professional_name']
         cv = data['cv_name']
         icon = data['icon_name']
-
-        user_sql = f"SELECT IndividualID,IndividualName,Password FROM Individual WHERE IndividualName='{userName}';"  # database_info
+        user_sql = f"SELECT IndividualID,IndividualName,Password FROM Individual WHERE IndividualId='{userName}';"  # database_info
         result_from_user = sql_command(user_sql)
-
+        # print(data)
         if result_from_user:
             type_flag = 'individual'
         else:
@@ -181,9 +180,12 @@ class Individual_details(Resource):
                 "message": " not signup as individual / organization"
             }
             return output, 403
-
+        # output = {
+        #     "output": data
+        # }
+        # return output, 200
         if type_flag == 'individual':
-            sql = "UPDATE individual SET Title='{}',Name='{}',Gender='{}',Age='{}',Email='{}',Skill='{}',Education='{}',Experience='{}',Achievement='{}',Professional='{}',CV='{}', Icon='{}' WHERE IndividualName = '{}';"\
+            sql = "UPDATE individual SET Title='{}',Name='{}',Gender='{}',Age='{}',Email='{}',Skill='{}',Education='{}',Experience='{}',Achievement='{}',Professional='{}',CV='{}', Icon='{}' WHERE IndividualId = '{}';"\
                 .format(title, name, gender, age, email, skill, education, experience, achievement, professional, cv, icon, userName)
             sql_command(sql)
             output = {
@@ -214,7 +216,7 @@ class Organization_details(Resource):
         description = data['description_name']
         icon = data['icon_name']
 
-        org_sql = f"SELECT OrganizationID FROM Organization WHERE OrganizationName='{userName}';"  # database_info
+        org_sql = f"SELECT OrganizationID FROM Organization WHERE OrganizationId='{userName}';"  # database_info
         result_from_user = sql_command(org_sql)
 
         if result_from_user:
@@ -226,7 +228,7 @@ class Organization_details(Resource):
             return output, 403
 
         if type_flag == 'organization':
-            sql = "UPDATE organization SET Companyname='{}',Location='{}',Field='{}',Scale='{}',Description='{}', Icon='{}' WHERE OrganizationName = '{}';"\
+            sql = "UPDATE organization SET Companyname='{}',Location='{}',Field='{}',Scale='{}',Description='{}', Icon='{}' WHERE OrganizationId = '{}';"\
                 .format(companyname, location, field, scale, description, icon, userName)
             sql_command(sql)
             output = {
@@ -299,7 +301,7 @@ class organization_brief(Resource):
                 "message": "success",
                 "OrganizationName": result_sql[0][0],
                 "Companyname": result_sql[0][1],
-                "Location:": result_sql[0][2],
+                "Location": result_sql[0][2],
                 "Field": result_sql[0][3],
                 "Scale": result_sql[0][4],
                 "Description": result_sql[0][5],

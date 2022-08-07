@@ -75,11 +75,12 @@ const ArticleDetails = () => {
             setLikeData(json)                       
           }) 
         }
-  
+
         getarticleData(articleUrl);
         getlikeData(getLikeUrl);
 
       },[])
+
 
     // toggle "like" button and POST/DELETE like request
     function handleClick(currState){
