@@ -16,7 +16,7 @@ class Details_personal extends PureComponent{
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) {
-          this.setState({ username: c.substring(nameEQ.length,c.length)})
+          this.setState({ username: c.substring(1,c.length) })
           return c.substring(nameEQ.length,c.length);
         }
     }
@@ -261,6 +261,7 @@ class Details_personal extends PureComponent{
               body: send
           }).then(res => res.json()).then(
               data => {
+                  
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
                       let url =  "http://localhost:3000/mypage";
