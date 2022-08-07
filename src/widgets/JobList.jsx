@@ -16,7 +16,7 @@ class ImageCard extends PureComponent{
 
   getOfferData(company_username) {
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
-    this.setState({organizationid:organizationid})
+    this.setState({organizationid:company_username})
   //window.alert(url)
   fetch(url, {
       method: "GET",
