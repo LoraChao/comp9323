@@ -4,73 +4,38 @@ import { Footer, Content, Header } from "antd/lib/layout/layout";
 import React, { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
-import { display } from '@mui/system';
-import { DisabledByDefault } from '@mui/icons-material';
       
 
 global.unfollowList = []
 
-// org follow switch
-class FollowButton extends React.Component{    
+
+
+class FollowButton extends React.Component{    // individual follow tab
 
     state = {
         follow: 1
     }
-    
-    // click back handler
-    handleClick = () =>{ 
-        const currUserId = this.props.currUserId
-        const checkUserId = this.props.checkUserId
-        const targetUserId = this.props.targetUserId
-        const deleteOrgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'
-        const addOrgFollowListURL = 'http://127.0.0.1:5000/follow/'+currUserId+'/orgFollowList'     // For testing: Post new follow request 
 
-
-        this.setState({
-            follow: (this.state.follow + 1)%2
+    handleClick(id){
+      this.setState({
+        follow: (this.state.follow + 1)%2
         })
+        //console.log(id)
 
-        if(this.state.follow === 1){
-            const requestOptions = {                                                        //  send DELETE request
-                method: 'DELETE',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    "Company": [targetUserId]
-                })
-            };
-    
-            fetch(deleteOrgFollowListURL, requestOptions)
-            .then(res =>  res.json())
-            .then(data => {
-                console.log(data)
-            });
-            console.log("delete")
+        //  renew unfollow list
+        if(global.unfollowList.includes(id)){
+            global.unfollowList = global.unfollowList.filter((item) => item !== id)
+            //console.log("add:", global.unfollowList)
         }
-        else if(this.state.follow === 0){
-            const postOptions = {                                                       
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    "orgID": targetUserId
-                })
-            };
-
-            fetch(addOrgFollowListURL, postOptions)
-            .then(res =>  res.json())
-            .then(data => {
-                console.log("add:",data)
-            });
-            console.log("add")
+        else{
+            global.unfollowList.push(id)
+            //console.log("add:", global.unfollowList)
         }
-        else if(this.state.follow === 2){                 // for organization users ... not sure, just leave it in case..
-            
-        }
-
     }
 
     render(){
         return <div>
-            <Button disabled={false||(this.props.currUserId != this.props.checkUserId)} onClick={() => {this.handleClick(this.props.id)}}> 
+            <Button onClick={() => {this.handleClick(this.props.id)}}> 
                 {this.state.follow === 1 ? 'unfollow' : 'follow'}
             </Button>
         </div>
@@ -78,59 +43,63 @@ class FollowButton extends React.Component{
     }
 }
 
-function OrganizationCheckButton(props){                                            
-
-    // get user's id want to check
-    const checkUserId = props.checkUserId 
-    
-    // const navigate = useNavigate()
-    function handleCheckIndClick(){
-        window.open(`/home/org?checkUserId=${checkUserId}`, {replace: true})                 
-    }
-
-    return (
-        <Button onClick={() => {handleCheckIndClick()}}>Check</Button>
-        )
-}
-
 function BackButton(){ 
-        
+
+    // for re-navigation
     const navigate = useNavigate()
 
-    const handleBackClick = () => {
+    const [params] = useSearchParams()
+    const currUserId =  params.get('currUserId')
+    const deleteOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'
+    const addOrgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'                 // For testing: Post new follow request 
 
 
-        //Jump back to myPage
-        navigate('/MyPage', {replace: true})
+    // click back handler
+    const handleBackClick = (deleteList) =>{ 
+        
+        const requestOptions = {                                                        //  send DELETE request
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "Company": global.unfollowList
+            })
+        };
+
+        fetch(deleteOrgFollowListURL, requestOptions)
+        .then(res =>  res.json())
+        .then(data => {
+            console.log(data)
+        });
+
+        // Jump back to myPage
+        navigate(`/MyPage?currUserId=${currUserId}`, {replace: true})
+
+        // const postOptions = {                                                       // For testing: send POST to add new follower 
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({
+        //         "orgID": 1
+        //     })
+        // };
+
+        // fetch(addOrgFollowListURL, postOptions)
+        // .then(res =>  res.json())
+        // .then(data => {
+        //     console.log("add:",data)
+        // });
+
+        // console.log(deleteList)
     }
     return (
-       <Button type="link" onClick={() => {handleBackClick()}}>Back</Button>
+       <Button type="link" onClick={() => {handleBackClick("unfollowList")}}>Back</Button>
      )
 }
 
 const FollowOrg = () => {
 
-    // get cookies
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        console.log(document.cookie)
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-  
-    // get current user's id using cookies
-    const currUserId = getCookie('userid')
-
-    // get user's id for checking
     const [params] = useSearchParams()
-    const checkUserId =  params.get('checkUserId')
-
-    const orgFollowListURL = 'http://127.0.0.1:5000/follow/'+checkUserId+'/orgFollowList'              
+    const currUserId =  params.get('currUserId')
+    const orgFollowListURL = 'http://127.0.0.1:5000/cont/'+currUserId+'/orgFollowList'              
 
 
     // set state for storing org like list
@@ -202,8 +171,8 @@ const FollowOrg = () => {
                                 display: 'flex',
                                 }}
                             >
-                                <OrganizationCheckButton checkUserId={item.OrganizationId}/>
-                                <FollowButton targetUserId={item.OrganizationId} currUserId ={currUserId} checkUserId={checkUserId}/>
+                                <div><Button href={item.ArticleLink}>Check</Button></div>
+                                <FollowButton id={item.OrganizationId}/>
                             </Space>
                         </List.Item>
                         

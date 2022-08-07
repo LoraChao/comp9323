@@ -88,7 +88,7 @@ class Signup_organizational extends PureComponent {
               if (data['message'] === 'Success register'){
                   let url =  "http://localhost:3000/profile_organizational";
                   this.setcookie('islogin', '1', 1)
-                  this.setcookie("userid", data["OrganizationID"], 1)
+                  this.setcookie("userid", data["id"], 1)
                   this.setcookie("usertype", 'organization', 1)
                   window.location.replace(url)
               }else window.alert("Username exists or invalid register info")
