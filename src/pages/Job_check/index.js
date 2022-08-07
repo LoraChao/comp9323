@@ -210,36 +210,40 @@ class JobCheck extends PureComponent{
     <Content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
     
     <div className='display-wrapper'>
-    	<h1>Position</h1>
+      <div>
+    	<h1 style="font-weight:bold;">Position</h1>
     	<div className='description'>
 	    <p>{this.state.position_name}</p>
         </div>
-        <h1>Working Location</h1>
+        <h1 style="font-weight:bold;">Working Location</h1>
         <div className='description'>
          
          <p>{this.state.working_location_name}</p>
         </div>
-        <h1>Working Hour</h1>
+        </div>
+        <div>
+        <h1 style="font-weight:bold;">Working Hour</h1>
         <div className='description'>
          
          <p>{this.state.working_hour_name}</p>
         </div>
-        <h1>Salary</h1>
+        <h1 style="font-weight:bold;">Salary</h1>
         <div className='description'>
          
          <p>{this.state.salary_name}</p>
         </div>
-        <h1>Responsibility</h1>
+        </div>
+        <h1 style="font-weight:bold;">Responsibility</h1>
         <div className='description'>
          
          <p>{this.state.responsibility_name}</p>
         </div>
-        <h1>Requirement</h1>
+        <h1 style="font-weight:bold;">Requirement</h1>
         <div className='description'>
          
          <p>{this.state.requirement_name}</p>
         </div>
-        <h1>Contact</h1>
+        <h1 style="font-weight:bold;">Contact</h1>
         <div className='description'>
          
          <p>{this.state.contact_name}</p>
