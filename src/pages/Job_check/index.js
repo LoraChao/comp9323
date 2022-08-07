@@ -210,7 +210,6 @@ class JobCheck extends PureComponent{
     <Content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
     
     <div className='display-wrapper'>
-      <div>
     	<h1>Position</h1>
     	<div className='description'>
 	    <p>{this.state.position_name}</p>
@@ -220,8 +219,6 @@ class JobCheck extends PureComponent{
          
          <p>{this.state.working_location_name}</p>
         </div>
-        </div>
-        <div>
         <h1>Working Hour</h1>
         <div className='description'>
          
@@ -231,7 +228,6 @@ class JobCheck extends PureComponent{
         <div className='description'>
          
          <p>{this.state.salary_name}</p>
-        </div>
         </div>
         <h1>Responsibility</h1>
         <div className='description'>
