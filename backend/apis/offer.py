@@ -73,8 +73,6 @@ class SearchOffer(Resource):
             return output, 400
         else:
             output_res = output_list(result_from_offer, label_name)
-            while len(output_res) < 12:
-                output_res.append(fit_empty)
             output = {
                 "message": "success",
                 "output": output_res
