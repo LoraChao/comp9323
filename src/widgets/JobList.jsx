@@ -56,7 +56,7 @@ render(){
     OrganizationId: this.getCookie('userid')
     })
   if(this.state.flag === true){
-  this.getOfferData()
+  this.getOfferData(OrganizationId)
   }
   return (
 
