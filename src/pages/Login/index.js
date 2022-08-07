@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import './Login_individual.scss'
 import { withRouter } from "react-router-dom"
-
+import Button from '@mui/material/Button';
 import {
   BrowserRouter as Router,
   Route
@@ -51,10 +51,17 @@ class Login_individual extends PureComponent {
                   onChange={(e) => {
                     this.setState({ password: e.target.value })
                   }}></input>
-                  <input className="btn" type="button" value="Log in"
+                  {/* <input className="btn" type="button" value="Log in"
                   onClick={() => {
                     this.getConnect()
-                  }}></input>
+                  }}></input> */}
+                  <Button variant="contained" 
+                  type='submit'
+                  // style = {{left:250, top:230, width:200}}
+                  onClick={() => {
+                    this.getConnect()
+                  }}
+                  >Log in</Button>
             </div>
             <div className="msg">
                 An organization user?
