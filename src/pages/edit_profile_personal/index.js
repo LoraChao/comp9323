@@ -75,6 +75,7 @@ class Edit_details_personal extends PureComponent{
   render(){
     var currUserId = this.getCookie('userid')
     if (this.state.flag === true){
+//      window.alert(currUserId)
       this.getuserinfo(currUserId)
     }
     
@@ -273,7 +274,7 @@ class Edit_details_personal extends PureComponent{
   );
         }
         getConnect() {
-          let text = {username: this.state.username,
+          let text = {username: this.state.userid,
                       title_name: this.state.title_name,
                       name_name: this.state.name_name, //string
                       gender_name: this.state.gender_name, //string
@@ -295,6 +296,7 @@ class Edit_details_personal extends PureComponent{
               body: send
           }).then(res => res.json()).then(
               data => {
+//                  window.alert(data['message'])
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
                       let url =  "http://localhost:3000/mypage";

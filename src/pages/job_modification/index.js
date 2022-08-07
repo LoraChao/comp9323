@@ -31,7 +31,6 @@ class JobEdit extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ company_name: data['output'][0]['CompanyName'] })
             this.setState({ position_name: data['output'][0]['Position'] })
             this.setState({ working_location_name: data['output'][0]['WorkingLocation'] })
             this.setState({ working_hour_name: data['output'][0]['Workinghours'] })
@@ -59,6 +58,7 @@ class JobEdit extends PureComponent{
         data => {
             this.setState({ company_name: data['Companyname'] })
             this.setState({ company_location: data['Location'] })
+//            window.alert(company_name)
   }
       )}
   constructor(props) {
@@ -82,7 +82,7 @@ class JobEdit extends PureComponent{
     let index = current_url.indexOf('=');
     var read_offer_id = current_url.substring(index + 1, current_url.length)
     var currUserId = this.getCookie('userid')
-    
+
     var currUserId = this.getCookie('userid')
     if (this.state.flag === true){
       this.getCompanyinfo(currUserId)
@@ -95,7 +95,7 @@ class JobEdit extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username" >{this.company_name}</span>{/* 这里要读取用户数据 */}
+            <span className="username" >{this.state.company_name}</span>{/* 这里要读取用户数据 */}
             <br/>
            
         </div>

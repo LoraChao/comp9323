@@ -39,7 +39,6 @@ class Edit_details_organizational extends PureComponent{
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ company_username: data['OrganizationName'] })
             this.setState({ companyname_name: data['Companyname'] })
             this.setState({ location_name: data['Location'] })
             this.setState({ field_name: data['Field'] })
