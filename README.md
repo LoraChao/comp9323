@@ -51,9 +51,9 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 # Run
 Initialize database\
-'''
+```
 python3 -m venv env
-'''
+```
 
 ## Learn More
 
