@@ -33,7 +33,7 @@ class LikeButton extends PureComponent{    // individual follow tab
       currUserId: currUserId,
       offer_id: offer_id
     })
-     let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+'&'+offer_id;
+    let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+'&'+offer_id;
     fetch(url, {
       method: "GET",
       headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -161,7 +161,7 @@ class JobCheck extends PureComponent{
       )
   }
   Tohomepage() {
-    let url = 'http://localhost:3000/home'
+    let url = 'http://localhost:3000/Individual_Home'
     window.location.replace(url)
   }
   Toprofilepage() {
@@ -251,7 +251,7 @@ class JobCheck extends PureComponent{
       </div>
     </Content>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>
-    <div>
+    {/* <div>
     <Button variant="contained" 
         type='submit'
         style = {{left:250, top:0, width:200}}
@@ -266,7 +266,7 @@ class JobCheck extends PureComponent{
           this.Toprofilepage()
         }}
         >Back to Profile</Button>
-        </div>
+        </div> */}
     </Footer>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
     </Layout>
