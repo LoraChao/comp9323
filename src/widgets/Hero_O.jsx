@@ -1,4 +1,17 @@
 import React from "react";
+import {Button} from "antd";
+function AddNew(){  
+  
+    function handleCheckArtileClick(){
+    window.open(`/release`, {replace: true})
+  }
+
+  return (
+     <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center absolute bottom-0 right-0" onClick={() => {handleCheckArtileClick()}}>Add New</Button>
+  )
+}
+
+
 
 function Hero() {
   return (
@@ -10,9 +23,7 @@ function Hero() {
         by github is savior
       </p>
       <div>
-        <button className="rounded bg-blue-500 text-base text-white py-3 px-8 absolute bottom-0 right-0">
-        Add New
-        </button>
+          <AddNew/>
       </div>
 
       <svg
