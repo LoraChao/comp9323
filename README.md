@@ -77,34 +77,34 @@ Till now, you should be able to use "npm" to start this React project, like:
 npm start
 ```
 
-### Step3: Install "yarn"
+# Step3: Install "yarn"
 However we still need to setup "yarn" function, why is that? Because we will use "yarn" for later package setup to make this project running functionally. 
 ```
 npm install --global yarn
 ```
 
-### Step4:Install other packages
-For run this project, we still need to setup some packages:
-#For using scss instead of common css file.
+# Step4:Install other packages
+## For run this project, we still need to setup some packages:
+### For using scss instead of common css file.
 ```
 yarn add sass
 ```
-# For configurate route:
+### For configurate route:
 ```
 yarn add react-router-dom
 ```
-# For using some outer component library:
+### For using some outer component library:
 ```
 yarn add antd
 yarn add @mui/material @emotion/react @emotion/style
 yarn add @mui/material @mui/styled-engine-sc styled-components
 yarn add @mui/icons-material
 ```
-# For making route configuration much simpler:
+### For making route configuration much simpler:
 ```
 yarn add -D @craco/craco
 ```
-# For realize some css style:
+### For realize some css style:
 ```
 yarn install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9 
 ```
