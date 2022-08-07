@@ -63,9 +63,11 @@ class RecommandationList(Resource):
                             more.append(key)
                         else:
                             list = sql_dicresult_with_decription(sql)
-                            random.shuffle(list)
-                            recommendation.extend(list[:value])
-                        
+                            if list:
+                                random.shuffle(list)
+                                recommendation.extend(list[:value])
+                            else:
+                                pass 
                     if len(more):
                             other = "','".join(more)
                     else:

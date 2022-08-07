@@ -33,8 +33,8 @@ class Position extends PureComponent{
           this.setState({flag: false})
           // window.alert(data['output'][0]['CompanyName'])
           // return data
-          var return_value = data
-          console.log(return_value)
+          const return_value = data
+          //console.log(return_value)
           return return_value
       }
   )

@@ -29,7 +29,7 @@ class ImageCard extends PureComponent{
   }
 
   getOfferData(company_username) {
-    let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
+    let url = "http://127.0.0.1:5000/offer/search/brief/"+company_username;
     this.setState({organizationid:company_username})
   //window.alert(url)
   fetch(url, {
@@ -42,7 +42,7 @@ class ImageCard extends PureComponent{
           // window.alert(data['output'][0]['CompanyName'])
           // return data
           var return_value = data
-          //console.log(return_value)
+          console.log(return_value)
           return return_value
       }
   )

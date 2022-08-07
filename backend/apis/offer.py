@@ -57,7 +57,7 @@ class SearchOffer(Resource):
     @api.doc(description='search offer')
     def get(self, OrganizationId):
         # OrganizationName = data['OrganizationName']
-        fit_empty = [{"offerId": "", "CompanyName": "", "Responsibility": "", "Requirement": ""}]
+        fit_empty = {"offerId": "", "CompanyName": "", "Responsibility": "", "Requirement": ""}
         if OrganizationId == "":
             output = {
                 "message": "false"
