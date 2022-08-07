@@ -263,7 +263,7 @@ class Details_personal extends PureComponent{
               data => {
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
-                      let url =  "http://localhost:3000/mypage";
+                      let url =  "http://localhost:3000/Individual_Home";
                       window.location.replace(url)
                   }else window.alert("Something went wrong")
               }
