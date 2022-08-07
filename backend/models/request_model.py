@@ -58,7 +58,7 @@ brief_individual_model = api.model("brief individual get", {
 })
 
 post_individual_model = api.model("post individual model", {
-    "username": fields.String,
+    "username": fields.Integer,
     "title_name": fields.String,
     "name_name": fields.String,
     "gender_name": fields.String,
@@ -74,7 +74,7 @@ post_individual_model = api.model("post individual model", {
 })
 
 post_organization_model = api.model("post organization model", {
-    "username": fields.String,
+    "username": fields.Integer,
     "companyname_name": fields.String,
     "location_name": fields.String,
     "field_name": fields.String,
