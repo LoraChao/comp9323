@@ -127,9 +127,30 @@ def create_database():
 
     insert_individualPrefer = '''
     INSERT INTO `IndividualPrefer` VALUES 
-    (1, 1, 1, "Mental"),
-    (2, 2, 1, "Mental"),
-    (3, 3, 1, "Mental");
+    (0, 1, 1, "Mental"),
+    (0, 1, 30, "Medicle"),
+    (0, 1, 31, "Medicle"),
+    (0, 1, 26, "Interview"),
+    (0, 1, 27, "Interview"),
+    (0, 1, 28, "Interview"),
+    (0, 1, 38, "Skill"),
+    (0, 1, 10, "Covid"),
+    (0, 1, 11, "Covid"),
+    (0, 1, 12, "Covid"),
+    (0, 2, 26, "Interview"),
+    (0, 2, 27, "Interview"),
+    (0, 2, 28, "Interview"),
+    (0, 2, 29, "Interview"),
+    (0, 3, 1, "Mental");
+    (0, 3, 38, "Skill"),
+    (0, 3, 17, "Covid"),
+    (0, 3, 16, "Covid"),
+    (0, 3, 15, "Covid"),
+    (0, 3, 14, "Covid"),
+    (0, 2, 39, "BIomedical"),
+    (0, 2, 40, "BIomedical"),
+    (0, 3, 49, "Mechanical"),
+    (0, 3, 50, "Mechanical"),;
     '''
     
     Individual_preferOffer = '''
@@ -147,23 +168,23 @@ def create_database():
     (1, 1, 1, "Offer1"),
     (2, 1, 2, "Offer2"),
     (3, 2, 2, "Offer3"),
-    (4, 10, 12, "Offer4"),
-    (5, 8, 8, "Offer5"),
-    (6, 8, 7, "Offer6"),
-    (7, 6, 5, "Offer7"),
-    (8, 9, 11, "Offer8"),
-    (9, 7, 12, "Offer9"),
-    (10, 5, 3, "Offer10"),
-    (11, 4, 12, "Offer11"),
-    (12, 9, 3, "Offer12"),
-    (13, 7, 5, "Offer13"),
-    (14, 9, 11, "Offer14"),
-    (15, 5, 5, "Offer15"),
-    (16, 6, 7, "Offer16"),
-    (17, 3, 4, "Offer17"),
-    (18, 5, 3, "Offer18"),
-    (19, 6, 2, "Offer19"),
-    (20, 9, 3, "Offer20");
+    (4, 2, 12, "Offer4"),
+    (5, 2, 8, "Offer5"),
+    (6, 3, 7, "Offer6"),
+    (7, 3, 5, "Offer7"),
+    (8, 4, 11, "Offer8"),
+    (9, 4, 12, "Offer9"),
+    (10, 4, 3, "Offer10"),
+    (11, 1, 12, "Offer11"),
+    (12, 2, 3, "Offer12"),
+    (13, 2, 5, "Offer13"),
+    (14, 3, 11, "Offer14"),
+    (15, 4, 5, "Offer15"),
+    (16, 4, 7, "Offer16"),
+    (17, 2, 4, "Offer17"),
+    (18, 1, 3, "Offer18"),
+    (19, 3, 2, "Offer19"),
+    (20, 1, 3, "Offer20");
     '''
     
     Vedio_table = '''
@@ -243,16 +264,18 @@ def create_database():
     `Fun` int default 0,
     `Covid` int default 0,
     `IT` int default 0,
+    `BIomedical` int default 0,
+    `Mechanical` int default 0,
     PRIMARY KEY (`TasteID`)
     );
     '''
 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,1,1,2,3,1,0,3,0),
-    (2,2,0,0,6,0,0,0),
-    (3,3,1,0,4,0,0,4,0),
-    (4,4,0,0,0,0,0,0,0);
+    (1,1,1,2,3,1,0,3,0,0,0),
+    (2,2,0,0,4,0,0,0,2,0),
+    (3,3,1,0,1,0,0,4,0,0,2),
+    (4,4,0,0,0,0,0,0,0,0,0);
     '''
 
     Experts = '''

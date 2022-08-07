@@ -5,8 +5,6 @@ import React, { useState, useEffect }  from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const jobPic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-
 
 function JobCheckButton(props){ 
     // get job's id
@@ -108,7 +106,6 @@ const JobPreference = () => {
                             //         src={jobPic}/>}
                             avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Org" />} />}
                                 title={<a href="@">{item.CompanyName}</a>}
-                                //description={item.description}
                                 description={<Tag>{item.Requirement}</Tag>}
                             />
                             <Space
@@ -118,7 +115,6 @@ const JobPreference = () => {
                                 display: 'flex',
                                 }}
                             >
-                                {/* <div><Button href={item.JobLink}>Check</Button></div> */}
                                 <JobCheckButton OfferId={item.OfferId} />
                             </Space>
                         </List.Item>
