@@ -141,7 +141,7 @@ def create_database():
     (0, 2, 27, "Interview"),
     (0, 2, 28, "Interview"),
     (0, 2, 29, "Interview"),
-    (0, 3, 1, "Mental");
+    (0, 3, 1, "Mental"),
     (0, 3, 38, "Skill"),
     (0, 3, 17, "Covid"),
     (0, 3, 16, "Covid"),
