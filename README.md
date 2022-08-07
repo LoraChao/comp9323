@@ -67,7 +67,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Step1: install "npm"
 For setup environment, we first need to use "npm", so let's install npm first:
 
-## Step2: Install "npm"
+## Step2: Install "React"
 After install "npm", we could use this to install React environment, let's start! Open your terminal and input as follows:
 ```
 npm i react react-dom 
