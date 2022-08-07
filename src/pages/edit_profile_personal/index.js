@@ -48,6 +48,7 @@ class Edit_details_personal extends PureComponent{
             this.setState({ achievement_name: data['Achievement'] })
             this.setState({ professional_summary_name: data['Professional'] })
             this.setState({ cv_name: data['CV'] })
+            this.setState({ flag: false })
   }
       )}
   constructor(props) {
@@ -67,12 +68,16 @@ class Edit_details_personal extends PureComponent{
       professional_summary_name: '', //string
       cv_name: '', //string
       icon_name: '',
-      usertype: 'individual' //string
+      usertype: 'individual', //string
+      flag: true
     }
   }
   render(){
     var currUserId = this.getCookie('userid')
-    this.getuserinfo(currUserId)
+    if (this.state.flag === true){
+      this.getuserinfo(currUserId)
+    }
+    
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -98,11 +103,11 @@ class Edit_details_personal extends PureComponent{
           id="title_id"
           label="Title"
           name='title_name'
-          placeholder="Mr/Mrs/Ms/Miss"
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.title_name}
+          defaultValue={this.state.title_name}
           onChange={(e) => {
             this.setState({ title_name: e.target.value })
           }}
@@ -111,11 +116,11 @@ class Edit_details_personal extends PureComponent{
           id="name_id"
           label="Name"
           name='name_name'
-          placeholder=".."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.name_name}
+          defaultValue={this.state.name_name}
           onChange={(e) => {
             this.setState({ name_name: e.target.value })
           }}
@@ -126,11 +131,11 @@ class Edit_details_personal extends PureComponent{
           id="gender_id"
           label="Gender"
           name='gender_name'
-          placeholder="Male/Female/Other genders.."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.gender_name}
+          defaultValue={this.state.gender_name}
           onChange={(e) => {
             this.setState({ gender_name: e.target.value })
           }}
@@ -139,11 +144,11 @@ class Edit_details_personal extends PureComponent{
           id="age_id"
           label="Age"
           name='age_name'
-          placeholder=".."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.age_name}
+          defaultValue={this.state.age_name}
           onChange={(e) => {
             this.setState({ age_name: e.target.value })
           }}
@@ -154,11 +159,11 @@ class Edit_details_personal extends PureComponent{
             id="email_id"
             label="Email"
             name='email_name'
-            placeholder="xxx@xxx.com"
+            InputLabelProps={{ shrink: true }}
             multiline
             variant="outlined"
             style = {{top: 20, width: 400}}
-            value={this.state.email_name}
+            defaultValue={this.state.email_name}
             onChange={(e) => {
               this.setState({ email_name: e.target.value })
             }}
@@ -167,11 +172,11 @@ class Edit_details_personal extends PureComponent{
           id="skill_id"
           label="Skill"
           name='skill_name'
-          placeholder="Computer Science/Mechanical/Biomedical"
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.skill_name}
+          defaultValue={this.state.skill_name}
           onChange={(e) => {
             this.setState({ skill_name: e.target.value })
           }}
@@ -182,11 +187,11 @@ class Edit_details_personal extends PureComponent{
             id="education_id"
             label="Education"
             name='education_name'
-            placeholder="Bachelor/Master/PhD.."
+            InputLabelProps={{ shrink: true }}
             multiline
             variant="outlined"
             style = {{top: 20, width: 400}}
-            value={this.state.education_name}
+            defaultValue={this.state.education_name}
             onChange={(e) => {
               this.setState({ education_name: e.target.value })
             }}
@@ -195,11 +200,11 @@ class Edit_details_personal extends PureComponent{
           id="achievement_id"
           label="achievement(separate with '.')"
           name='achievement_name'
-          placeholder="achievement1, achievement2, achievement3..."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.achievement_name}
+          defaultValue={this.state.achievement_name}
           onChange={(e) => {
             this.setState({ achievement_name: e.target.value })
           }}
@@ -209,13 +214,13 @@ class Edit_details_personal extends PureComponent{
       <TextField
           id="experience_id"
           label="Experience"
+          InputLabelProps={{ shrink: true }}
           name='experience_name'
-          placeholder="Start-End:Experience."
           multiline
           variant="outlined"
           minRows={4}
           style = {{top:20, width: 800}}
-          value={this.state.experience_name}
+          defaultValue={this.state.experience_name}
           onChange={(e) => {
             this.setState({ experience_name: e.target.value })
           }}
@@ -227,12 +232,12 @@ class Edit_details_personal extends PureComponent{
         id="professional_summary_id"
         label="Professional Summary"
         name='professional_summary_name'
-        placeholder=".."
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={4}
         style = {{top:80, width: 800}}
-        value={this.state.professional_summary_name}
+        defaultValue={this.state.professional_summary_name}
         onChange={(e) => {
           this.setState({ professional_summary_name: e.target.value })
         }}
@@ -243,12 +248,12 @@ class Edit_details_personal extends PureComponent{
         id="cv_id"
         label="CV"
         name='cv_name'
-        placeholder=".."
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={4}
         style = {{top:140, width: 800}}
-        value={this.state.cv_name}
+        defaultValue={this.state.cv_name}
         onChange={(e) => {
           this.setState({ cv_name: e.target.value })
         }}

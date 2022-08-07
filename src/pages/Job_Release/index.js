@@ -20,6 +20,7 @@ class JobRelease extends PureComponent{
     return null;
   }
   getCompanyinfo(company_username){
+    this.setState({ OrganizationId: company_username })
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
   //    window.alert(url)
     fetch(url, {
@@ -29,6 +30,8 @@ class JobRelease extends PureComponent{
         data => {
             this.setState({ company_name: data['output'][0]['CompanyName'] })
             this.setState({ location_name: data['output'][0]['Location'] })
+            this.setState({ flag: false })
+            
   }
       )}
   constructor(props) {
@@ -44,13 +47,16 @@ class JobRelease extends PureComponent{
       requirement_name: '', //string
       contact_name: '', //string
       OrganizationId: '',
+      flag: true,
     }
   }
   render(){
-    this.setState({
-      OrganizationId: this.getCookie('userid')
-      })
-    this.getCompanyinfo(this.state.OrganizationId)
+
+    var OrganizationId = this.getCookie('userid');
+    if (this.state.flag === true){
+      this.getCompanyinfo(OrganizationId)
+    }
+    
   return (
     <Layout>
     <Header style={{ height:'150px'}}>

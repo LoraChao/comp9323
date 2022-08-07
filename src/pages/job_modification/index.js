@@ -8,18 +8,6 @@ import { UserOutlined} from '@ant-design/icons';
 import { useSearchParams } from 'react-router-dom';
 
 const {  Header, Content, Footer} = Layout;
-function Getoffer_id(){
-  const [params] = useSearchParams()
-  const offer_id =  params.get('offer_id')
-  this.setState({ offer_id: offer_id })
-  return offer_id
-}
-function Getorg_id(){
-  const [params] = useSearchParams()   
-  const organization_id = params.get('organization_id')
-  this.setState({ organization_id: organization_id })
-  return organization_id
-}
 class JobEdit extends PureComponent{
   getCookie(name) {
     var nameEQ = name + "=";
@@ -50,7 +38,8 @@ class JobEdit extends PureComponent{
             this.setState({ salary_name: data['output'][0]['Salary'] })
             this.setState({ responsibility_name: data['output'][0]['Responsibility'] })
             this.setState({ requirement_name: data['output'][0]['Requirement'] })
-            this.setState({ requirement_name: data['output'][0]['Contact'] })
+            this.setState({ contact_name: data['output'][0]['Contact'] })
+            this.setState({ flag: false })
 //           window.alert(data['output'][0]['CompanyName'])
 //            return data
             var return_value = data
@@ -85,14 +74,20 @@ class JobEdit extends PureComponent{
       requirement_name: '', //string
       contact_name: '', //string
       currUserId: '',
+      flag: true
     }
   }
   render(){
-    var read_organization_id = Getoffer_id();
-    var read_offer_id = Getorg_id();
+    var current_url = window.location.href;
+    let index = current_url.indexOf('=');
+    var read_offer_id = current_url.substring(index + 1, current_url.length)
     var currUserId = this.getCookie('userid')
-    this.getCompanyinfo(currUserId)
-    this.getOfferData(read_organization_id, read_offer_id)
+    
+    var currUserId = this.getCookie('userid')
+    if (this.state.flag === true){
+      this.getCompanyinfo(currUserId)
+      this.getOfferData(currUserId, read_offer_id)
+    }
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -118,6 +113,7 @@ class JobEdit extends PureComponent{
           id="position_id"
           label="Position"
           name='position_name'
+          InputLabelProps={{ shrink: true }}
           placeholder="Front end developer/Assistant..."
           multiline
           variant="outlined"
@@ -136,6 +132,7 @@ class JobEdit extends PureComponent{
           label="Location"
           name='working_location_name'
           placeholder="Randwick/Sydney/NSW"
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           minRows={1}
@@ -153,6 +150,7 @@ class JobEdit extends PureComponent{
         label="Working Hour"
         name='working_hour_name'
         placeholder="40 hrs/wk.."
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={1}
@@ -169,6 +167,7 @@ class JobEdit extends PureComponent{
         label="Salary per Year"
         name='salary_name'
         placeholder="$70000/yr.."
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={1}
@@ -185,6 +184,7 @@ class JobEdit extends PureComponent{
         label="Responsibility"
         name='responsibility_name'
         placeholder=".."
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={4}
@@ -200,6 +200,7 @@ class JobEdit extends PureComponent{
         id="requirement_id"
         label="Requirement"
         name='requirement_name'
+        InputLabelProps={{ shrink: true }}
         placeholder=".."
         multiline
         variant="outlined"
@@ -217,6 +218,7 @@ class JobEdit extends PureComponent{
         label="Contact"
         name='contact_name'
         placeholder="Mr Wang: 04xxxxxxx/xxx@xxx.com"
+        InputLabelProps={{ shrink: true }}
         multiline
         variant="outlined"
         minRows={1}

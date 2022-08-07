@@ -1,121 +1,23 @@
-import React, { PureComponent, useState, useEffect } from 'react'
+import React, { PureComponent } from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Container from '@mui/material/Container';
 import './index.scss'
 import { Layout, Avatar, Card, Space, List} from "antd"
 import { UserOutlined} from '@ant-design/icons';
-import { useSearchParams } from 'react-router-dom';
 
-class LikeButton extends React.Component{    // individual follow tab
-
-  state = {
-      like: 0,
-      currUserId: 1,
-      offer_id: 1
-  }
-  getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-  }
-  getLikeData(currUserId, offer_id){
-    this.setState({
-      currUserId: currUserId,
-      offer_id: offer_id
-    })
-    let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+"&"+offer_id;
-    fetch(url, {
-      method: "GET",
-      headers: {"Content-Type": "application/json;charset=utf-8"},
-    }).then(res => res.json()).then(
-      data => {
-          if(data['message'] === 'success'){
-            this.setState({ like: 1 })
-          }else this.setState({ like: 0 })
-      })
-    }
-  handleClick(){
-      let text = {
-        userId: this.state.currUserId,
-        OfferId: this.state.offer_id
-      };
-      let send = JSON.stringify(text);
-      if(this.state.like === 0){
-          fetch("http://127.0.0.1:5000/offer/post/preferoffer", { //这里需要like offer的链接**********
-          method: "POST",
-          headers: {"Content-Type": "application/json;charset=utf-8"},
-          body: send
-        }).then(res => res.json()).then(
-          data => {
-              if (data['message'] === 'success'){
-                  window.alert("Offer liked!")
-                  this.setState({
-                    like: (this.state.like + 1)%2
-                    })
-              }else window.alert("Something went wrong")
-          }
-      )
-      }
-      else{
-          fetch("http://127.0.0.1:5000/offer/delete/preferoffer", { //这里需要delete offer的链接**********
-          method: "DELETE",
-          headers: {"Content-Type": "application/json;charset=utf-8"},
-          body: send
-      }).then(res => res.json()).then(
-        data => {
-            if (data['message'] === 'success'){
-                window.alert("Offer unliked!")
-                this.setState({
-                  like: (this.state.like + 1)%2
-                  })
-            }else window.alert("Something went wrong")
-        }
-      )
-      }
-  }
-
-  render(){
-    var read_organization_id = Getoffer_id();
-    var read_offer_id = Getorg_id();
-    var currUserId = this.getCookie('userid');
-    this.getLikeData(currUserId, read_offer_id);
-      return <div>
-          <Button variant="contained"  onClick={() => {this.handleClick()}}> 
-              {this.state.like === 0 ? 'like' : 'unlike'}
-          </Button>
-      </div>
-      
-  }
-}
 
 const {  Header, Content, Footer} = Layout;
-
-function Getoffer_id(){
-  const [params] = useSearchParams()
-  const offer_id =  params.get('offer_id')
-  this.setState({ offer_id: offer_id })
-  return offer_id
-}
-function Getorg_id(){
-  const [params] = useSearchParams()   
-  const organization_id = params.get('organization_id')
-  this.setState({ organization_id: organization_id })
-  return organization_id
-}
-
-// var read_organization_id = Getoffer_id();
-// var read_offer_id = Getorg_id();
-
-
-class JobCheck extends PureComponent{
-  
+class Edit_details_personal extends PureComponent{
+  setcookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -126,77 +28,56 @@ class JobCheck extends PureComponent{
     }
     return null;
   }
-  getLikeData(currUserId, offer_id){
-    this.setState({ currUserId: currUserId })
-    let url = "http://127.0.0.1:5000/offer/get/preferoffer/detail/"+currUserId+"&"+offer_id;
-    fetch(url, {
-      method: "GET",
-      headers: {"Content-Type": "application/json;charset=utf-8"},
-    }).then(res => res.json()).then(
-      data => {
-          if(data['message'] === 'success'){
-            this.setState({ like: 1 })
-          }else this.setState({ like: 0 })
-      })
-    }
-  getOfferData(organization_id, offer_id){
-    let url = "http://127.0.0.1:5000/offer/search/detail/"+organization_id+"&"+offer_id;
-  //    window.alert(url)
+  getuserinfo(userid){
+    let url = "http://127.0.0.1:5000/auth/brief/individual/"+userid;
     fetch(url, {
           method: "GET",
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            this.setState({ organization_id: organization_id })
-            this.setState({ offer_id: offer_id })
-            this.setState({ company_name: data['output'][0]['CompanyName'] })
-            this.setState({ position_name: data['output'][0]['Position'] })
-            this.setState({ working_location_name: data['output'][0]['WorkingLocation'] })
-            this.setState({ working_hour_name: data['output'][0]['Workinghours'] })
-            this.setState({ salary_name: data['output'][0]['Salary'] })
-            this.setState({ responsibility_name: data['output'][0]['Responsibility'] })
-            this.setState({ requirement_name: data['output'][0]['Requirement'] })
-            this.setState({ requirement_name: data['output'][0]['Contact'] })
-//           window.alert(data['output'][0]['CompanyName'])
-//            return data
-            var return_value = data
-//            window.alert(return_value)
-//            return return_value
-        }
-      )
+            this.setState({ userid: userid })
+            this.setState({ username: data['IndividualName'] })
+            this.setState({ title_name: data['Title'] })
+            this.setState({ name_name: data['Name'] })
+            this.setState({ gender_name: data['Gender'] })
+            this.setState({ age_name: data['Age'] })
+            this.setState({ email_name: data['Email'] })
+            this.setState({ skill_name: data['Skill'] })
+            this.setState({ education_name: data['Education'] })
+            this.setState({ experience_name: data['Experience'] })
+            this.setState({ achievement_name: data['Achievement'] })
+            this.setState({ professional_summary_name: data['Professional'] })
+            this.setState({ cv_name: data['CV'] })
+            this.setState({ flag: false })
   }
-  Tohomepage() {
-    let url = 'http://localhost:3000/home'
-    window.location.replace(url)
-  }
-  Toprofilepage() {
-    let url = 'http://localhost:3000/mypage'
-    window.location.replace(url)
-  }
+      )}
   constructor(props) {
     super(props)
     this.state = {
-      like: 0,
-      currUserId:1,
-      offer_id:1,
-      organization_id:1,
-      company_name: '',//data[0]['CompanyName'], //string
-      company_location:'', //data[0]['CompanyName'], //string
-      position_name:'', //data[0]['Position'],
-      working_location_name: '',//data[0]['WorkingLocation'],
-      working_hour_name: '',//data[0]['Workinghours'], //string
-      salary_name: '',//data[0]['Salary'], //string
-      responsibility_name:'',//data[0]['Resposibility'], //string
-      requirement_name: '',//data[0]['Requirement'], //string
-      contact_name: ''//data[0]['Contact'], //string
+      userid:'',
+      username: '',
+      title_name: '', //string
+      name_name: '', //string
+      gender_name: '', //string
+      age_name: '', //int
+      email_name: '', //string
+      skill_name: '', //string
+      education_name: '', //string
+      experience_name: '', //string
+      achievement_name: '', //string
+      professional_summary_name: '', //string
+      cv_name: '', //string
+      icon_name: '',
+      usertype: 'individual', //string
+      flag: true
     }
   }
   render(){
-      var read_organization_id = Getoffer_id();
-      var read_offer_id = Getorg_id();
-      var currUserId = this.getCookie('userid');
-      this.getLikeData(currUserId, read_offer_id)
-      this.getOfferData(read_organization_id, read_offer_id);
+    var currUserId = this.getCookie('userid')
+    if (this.state.flag === true){
+      this.getuserinfo(currUserId)
+    }
+    
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -204,76 +85,224 @@ class JobCheck extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username">{this.state.company_name}</span>{/* 这里要读取用户数据 */}
+            <span className="username">{this.state.title_name} {this.state.name_name}</span>
             <br/>
-            
+           
         </div>
     </Header>
-    <Content style={{ padding: '0px 50px 50px 50px', index: '1 1 1'}}>
-    
-    <div className='display-wrapper'>
-    	<h1>Position</h1>
-    	<div className='description'>
-	    <p>{this.state.position_name}</p>
-        </div>
-        <h1>Working Location</h1>
-        <div className='description'>
-         
-         <p>{this.state.working_location_name}</p>
-        </div>
-        <h1>Working Hour</h1>
-        <div className='description'>
-         
-         <p>{this.state.working_hour_name}</p>
-        </div>
-        <h1>Salary</h1>
-        <div className='description'>
-         
-         <p>{this.state.salary_name}</p>
-        </div>
-        <h1>Responsibility</h1>
-        <div className='description'>
-         
-         <p>{this.state.responsibility_name}</p>
-        </div>
-        <h1>Requirement</h1>
-        <div className='description'>
-         
-         <p>{this.state.requirement_name}</p>
-        </div>
-        <h1>Contact</h1>
-        <div className='description'>
-         
-         <p>{this.state.contact_name}</p>
-        </div>
-    </div>
-    <div>
-        <LikeButton/>
-        
+    <Box
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch', height: '10ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      style = {{height: 1000}}
+    >
+      <div>
+        <TextField
+          id="title_id"
+          label="Title"
+          name='title_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.title_name}
+          onChange={(e) => {
+            this.setState({ title_name: e.target.value })
+          }}
+        />
+        <TextField
+          id="name_id"
+          label="Name"
+          name='name_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.name_name}
+          onChange={(e) => {
+            this.setState({ name_name: e.target.value })
+          }}
+        />
       </div>
-    </Content>
-    <Footer style={{ textAlign: 'center', index: '2 2 2' }}>
-    <div>
-    <Button variant="contained" 
-        type='submit'
-        style = {{left:250, top:0, width:200}}
-        onClick={() => {
-          this.Tohomepage()
+      <div>
+        <TextField
+          id="gender_id"
+          label="Gender"
+          name='gender_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.gender_name}
+          onChange={(e) => {
+            this.setState({ gender_name: e.target.value })
+          }}
+        />
+        <TextField
+          id="age_id"
+          label="Age"
+          name='age_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.age_name}
+          onChange={(e) => {
+            this.setState({ age_name: e.target.value })
+          }}
+        />
+      </div>
+      <div>
+        <TextField
+            id="email_id"
+            label="Email"
+            name='email_name'
+            InputLabelProps={{ shrink: true }}
+            multiline
+            variant="outlined"
+            style = {{top: 20, width: 400}}
+            defaultValue={this.state.email_name}
+            onChange={(e) => {
+              this.setState({ email_name: e.target.value })
+            }}
+          />
+        <TextField
+          id="skill_id"
+          label="Skill"
+          name='skill_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.skill_name}
+          onChange={(e) => {
+            this.setState({ skill_name: e.target.value })
+          }}
+        />
+      </div>
+      <div>
+        <TextField
+            id="education_id"
+            label="Education"
+            name='education_name'
+            InputLabelProps={{ shrink: true }}
+            multiline
+            variant="outlined"
+            style = {{top: 20, width: 400}}
+            defaultValue={this.state.education_name}
+            onChange={(e) => {
+              this.setState({ education_name: e.target.value })
+            }}
+          />
+        <TextField
+          id="achievement_id"
+          label="achievement(separate with '.')"
+          name='achievement_name'
+          InputLabelProps={{ shrink: true }}
+          multiline
+          variant="outlined"
+          style = {{top: 20, width: 400}}
+          defaultValue={this.state.achievement_name}
+          onChange={(e) => {
+            this.setState({ achievement_name: e.target.value })
+          }}
+        />
+      </div>
+      <div>
+      <TextField
+          id="experience_id"
+          label="Experience"
+          InputLabelProps={{ shrink: true }}
+          name='experience_name'
+          multiline
+          variant="outlined"
+          minRows={4}
+          style = {{top:20, width: 800}}
+          defaultValue={this.state.experience_name}
+          onChange={(e) => {
+            this.setState({ experience_name: e.target.value })
+          }}
+        />
+      
+      </div>
+      <div>
+      	<TextField
+        id="professional_summary_id"
+        label="Professional Summary"
+        name='professional_summary_name'
+        InputLabelProps={{ shrink: true }}
+        multiline
+        variant="outlined"
+        minRows={4}
+        style = {{top:80, width: 800}}
+        defaultValue={this.state.professional_summary_name}
+        onChange={(e) => {
+          this.setState({ professional_summary_name: e.target.value })
         }}
-        >Back to Home</Button>
+      />
+      </div>
+      <div>
+      	<TextField
+        id="cv_id"
+        label="CV"
+        name='cv_name'
+        InputLabelProps={{ shrink: true }}
+        multiline
+        variant="outlined"
+        minRows={4}
+        style = {{top:140, width: 800}}
+        defaultValue={this.state.cv_name}
+        onChange={(e) => {
+          this.setState({ cv_name: e.target.value })
+        }}
+      />
+      </div>
+      <div>
         <Button variant="contained" 
         type='submit'
-        style = {{left:-250, top:0, width:200}}
+        style = {{left:250, top:230, width:200}}
         onClick={() => {
-          this.Toprofilepage()
-        }}
-        >Back to Profile</Button>
-        </div>
-    </Footer>
-    <Footer style={{ textAlign: 'center', index: '2 2 2' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
+          this.getConnect()}}
+        >Update</Button>
+      </div>
+
+    </Box>
     </Layout>
   );
         }
+        getConnect() {
+          let text = {username: this.state.username,
+                      title_name: this.state.title_name,
+                      name_name: this.state.name_name, //string
+                      gender_name: this.state.gender_name, //string
+                      age_name: this.state.age_name, //int
+                      email_name: this.state.email_name, //string
+                      skill_name: this.state.skill_name, //string
+                      education_name: this.state.education_name, //string
+                      experience_name: this.state.experience_name, //string
+                      achievement_name: this.state.achievement_name, //string
+                      professional_name: this.state.professional_summary_name, //string
+                      cv_name: this.state.cv_name, //string
+                      icon_name: this.state.icon_name
+                      };//获取数据
+          // console.log(text);
+          let send = JSON.stringify(text);//将对象转成json字符串
+          fetch("http://127.0.0.1:5000/auth/details/individual", {
+              method: "POST",
+              headers: {"Content-Type": "application/json;charset=utf-8"},
+              body: send
+          }).then(res => res.json()).then(
+              data => {
+                  if (data['message'] === 'success'){
+                      window.alert("Detail updated!")
+                      let url =  "http://localhost:3000/mypage";
+                      window.location.replace(url)
+                  }else window.alert("Something went wrong")
+              }
+          )
+        }
 }
 
-export default JobCheck
+export default Edit_details_personal

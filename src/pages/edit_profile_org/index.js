@@ -45,6 +45,7 @@ class Edit_details_organizational extends PureComponent{
             this.setState({ field_name: data['Field'] })
             this.setState({ scale_name: data['Scale'] })
             this.setState({ description_name: data['Description'] })
+            this.setState({ flag: false })
   }
       )}
   constructor(props) {
@@ -56,14 +57,18 @@ class Edit_details_organizational extends PureComponent{
       field_name: '', //
       scale_name: '', //string
       description_name: '', //string
-      icon_name: ''
+      icon_name: '',
+      flag: true
     }
   }
   render(){
     
     var currUserId = this.getCookie('userid')
+    if (this.state.flag === true){
+      this.getCompanyinfo(currUserId)
+
+    }
     
-    this.getCompanyinfo(currUserId)
   return (
     <Layout>
     <Header style={{ height:'150px'}}>
@@ -89,6 +94,7 @@ class Edit_details_organizational extends PureComponent{
           id="companyname_id"
           label="Company Name"
           name='companyname_name'
+          InputLabelProps={{ shrink: true }}
           placeholder=".."
           multiline
           variant="outlined"
@@ -103,6 +109,7 @@ class Edit_details_organizational extends PureComponent{
           label="Location"
           name='location_name'
           placeholder="Kingsford/Sydney/NSW"
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -118,6 +125,7 @@ class Edit_details_organizational extends PureComponent{
           label="Field"
           name='field_name'
           placeholder="IT/Biomedical/Mechanical.."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -131,6 +139,7 @@ class Edit_details_organizational extends PureComponent{
           label="Scale"
           name='scale_name'
           placeholder="50+/200+/100+.."
+          InputLabelProps={{ shrink: true }}
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
@@ -145,6 +154,7 @@ class Edit_details_organizational extends PureComponent{
           id="description_id"
           label="Description of Company"
           name='description_name'
+          InputLabelProps={{ shrink: true }}
           placeholder="Start-End:Experience."
           multiline
           variant="outlined"
@@ -188,7 +198,7 @@ class Edit_details_organizational extends PureComponent{
               data => {
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
-                      let url =  "http://localhost:3000//home/org";
+                      let url =  "http://localhost:3000/home/org";
                       window.location.replace(url)
                   }else window.alert("Something went wrong")
               }
