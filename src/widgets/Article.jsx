@@ -32,6 +32,7 @@ class ImageCard extends PureComponent{
 
   getOfferData(userid) {
   let url = "http://127.0.0.1:5000/cont/"+userid+"/recommandationList";
+  this.setState({userid:userid})
   //window.alert(url)
   fetch(url, {
       method: "GET",
@@ -65,8 +66,8 @@ constructor(props) {
 
 }
 render(){
-  this.setState({
-    UserId: this.getCookie('userid')})
+  var UserId = this.getCookie('userid')
+
   if(this.state.flag === true){
   this.getOfferData(UserId)
   }

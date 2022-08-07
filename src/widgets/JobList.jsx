@@ -14,8 +14,9 @@ class ImageCard extends PureComponent{
     return null;
   }
 
-  getOfferData() {
+  getOfferData(company_username) {
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
+    this.setState({organizationid:organizationid})
   //window.alert(url)
   fetch(url, {
       method: "GET",
@@ -52,11 +53,9 @@ constructor(props) {
 
 }
 render(){
-  this.setState({
-    OrganizationId: this.getCookie('userid')
-    })
+    var organizationid = this.getCookie('userid')
   if(this.state.flag === true){
-  this.getOfferData(OrganizationId)
+  this.getOfferData(organizationid)
   }
   return (
 
