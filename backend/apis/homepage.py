@@ -1,4 +1,6 @@
 import json
+import random
+
 from flask import request
 from flask_restx import Resource
 from pymysql.converters import escape_string
@@ -137,27 +139,91 @@ class GetExpert(Resource):
             }
             return output, 200
         else:
-            skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
-            result_from_skill = sql_command(skill_sql)
+            emo_sql = f"SELECT Emo FROM individual WHERE IndividualId = '{userId}';"
+            res_emo = sql_command(emo_sql)[0][0]
+            if res_emo == '0':
+                skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
+                result_from_skill = sql_command(skill_sql)
 
-            if not result_from_skill:
-                output = {
-                    "message": "fail"
-                }
-                return output, 400
+                if not result_from_skill:
+                    output = {
+                        "message": "fail"
+                    }
+                    return output, 400
+                else:
+                    skill = result_from_skill[0][0]
+                    if skill == "":
+                        random_sql = f"SELECT ExpertsId FROM Experts;"
+                        random_id = sql_command(random_sql)
+                        lenth = len(random_id)
+                        random_list = []
+                        random_list = np.arange(1, lenth + 1)
+                        np.random.shuffle(random_list)
+                        random_list = list(random_list[0:3])
+
+                        select_str = 'select ExpertsName, Tag, Introduce, Email, Icon from Experts where ExpertsId in (%s)' % ','.join(
+                            ['%s'] * len(random_list))
+                        output_info = search_list(select_str, random_list)
+                        label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
+                        output_res = output_list(output_info, label_name)
+                        while len(output_res) < 3:
+                            output_res.append(fit_empty)
+                        output = {
+                            "message": "success",
+                            "output": output_res
+                        }
+                        return output, 200
+                    skill_match_sql = f"SELECT ExpertsName, Tag, Introduce, Email, Icon FROM experts WHERE Tag = '{skill}';"
+                    skill_match = sql_command(skill_match_sql)
+                    label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
+                    output_res = output_list(skill_match, label_name)
+                    while len(output_res) < 3:
+                        output_res.append(fit_empty)
+                    output = {
+                        "message": "success",
+                        "output": output_res
+                    }
+                    return output, 200
             else:
-                skill = result_from_skill[0][0]
-                skill_match_sql = f"SELECT ExpertsName, Tag, Introduce, Email, Icon FROM experts WHERE Tag = '{skill}';"
-                skill_match = sql_command(skill_match_sql)
-                label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
-                output_res = output_list(skill_match, label_name)
-                while len(output_res) < 3:
-                    output_res.append(fit_empty)
-                output = {
-                    "message": "success",
-                    "output": output_res
-                }
-                return output, 200
+                skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
+                result_from_skill = sql_command(skill_sql)
+
+                if not result_from_skill:
+                    output = {
+                        "message": "fail"
+                    }
+                    return output, 400
+                else:
+                    skill = result_from_skill[0][0]
+                    # skill_match_sql = f"SELECT ExpertsName, Tag, Introduce, Email, Icon FROM experts WHERE Tag = '{skill}';"
+                    skill_match_sql = f"SELECT ExpertsID FROM experts WHERE Tag = '{skill}';"
+                    skill_match = sql_command(skill_match_sql)
+                    skill_match_list = []
+                    for i in skill_match:
+                        skill_match_list.append(i[0])
+                    Psychology = 'Psychology'
+                    skill_match_psy_sql = f"SELECT ExpertsID FROM experts WHERE Tag = '{Psychology}';"
+                    skill_match_psy = sql_command(skill_match_psy_sql)
+                    skill_match_psy_list = []
+                    for i in skill_match_psy:
+                        skill_match_psy_list.append(i[0])
+                    print(skill_match_psy_list)
+                    a = []
+                    a.append(random.choice(skill_match_psy_list))
+                    rec_list = a + skill_match_list[0:2]
+                    select_str = 'select ExpertsName, Tag, Introduce, Email, Icon from experts where ExpertsID in (%s)' % ','.join(
+                        ['%s'] * len(rec_list))
+                    output_info = search_list(select_str, rec_list)
+                    label_name = ["ExpertsName", "Tag", "Introduce", "Email", "Icon"]
+                    output_res = output_list(output_info, label_name)
+                    # while len(output_res) < 3:
+                    #     output_res.append(fit_empty)
+                    output = {
+                        "message": "success",
+                        "output": output_res,
+                        # "output2": skill_match_sql
+                    }
+                    return output, 200
 
 @home.route('/prefer_org/<int:userId>')
 @api.response(400, 'Bad Request')
@@ -177,7 +243,7 @@ class Getorg_ind(Resource):
             np.random.shuffle(random_list)
             random_list = list(random_list[0:6])
 
-            select_str = 'select OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)' % ','.join(
+            select_str = 'select OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)'% ','.join(
                 ['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
             label_name = ["OrganizationName", "Location", "Field", "Icon"]
