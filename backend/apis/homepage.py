@@ -116,7 +116,7 @@ class GetSentencey(Resource):
 class GetExpert(Resource):
     @api.doc(description='get experts')
     def get(self, userId):
-        fit_empty = [{"ExpertsName": "", "Tag": "", "Introduce": "", "Email": "", "Icon": ""}]
+        fit_empty = {"ExpertsName": "", "Tag": "", "Introduce": "", "Email": "", "Icon": ""}
         if userId == 0:
             random_sql = f"SELECT ExpertsId FROM Experts;"
             random_id = sql_command(random_sql)
@@ -233,7 +233,7 @@ class Getorg_ind(Resource):
     # @auth.expect(post_dairy_model)
     @api.doc(description='get prefer org')
     def get(self, userId):
-        fit_empty = [{"OrganizationName":"", "Location":"", "Field":"", "Icon":""}]
+        fit_empty = {"OrganizationName":"", "Location":"", "Field":"", "Icon":""}
         if userId == 0:
             random_sql = f"SELECT OrganizationId FROM Organization;"
             random_id = sql_command(random_sql)
