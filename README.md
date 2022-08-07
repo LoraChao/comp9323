@@ -1,8 +1,6 @@
 # Backend
 ## Enviroment requirement
 Python 3.6+\
-Npm\
-Network connection (For third-party service purpose)
 
 ## Mysql
 Install Mysql from https://www.mysql.com/ \
