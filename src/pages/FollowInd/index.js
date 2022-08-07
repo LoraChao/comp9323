@@ -184,7 +184,7 @@ const FollowInd = () => {
                         renderItem={(item) => (
                         <List.Item>
                             <List.Item.Meta
-                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/random" />} />}
+                            avatar={<Avatar size={50} icon={<Avatar src="https://joeschmoe.io/api/v1/Ind" />} />}
                                 title={<a href="@">{item.IndividualName}</a>}
                                 description={item.Email}
                             />
