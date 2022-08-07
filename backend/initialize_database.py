@@ -38,16 +38,16 @@ def create_database():
     
     insert_organization = '''
     INSERT INTO `Organization` VALUES 
-    (1, "Anonymous", "123456","test1","Aus","IT","50","test1",""),
-    (2, "Enterprise", "qwerty","test2","Aus","Mechanical","50","test2",""),
-    (3, "Company1", "zxcvbn","test3","Aus","BIomedical","100","test3",""),
-    (4, "Company2", "zxcvbn","test4","Aus","IT","60","test4",""),
-    (5, "Company3", "zxcvbn","test5","Aus","BIomedical","70","test5",""),
-    (6, "Company4", "zxcvbn","test6","Aus","BIomedical","80","test6",""),
-    (7, "Company5", "zxcvbn","test7","Aus","IT","100","test7",""),
-    (8, "Company6", "zxcvbn","test8","Aus","Mechanical","90","test8",""),
-    (9, "Company7", "zxcvbn","test9","Aus","Mechanical","110","test9",""),
-    (10, "Company8", "zxcvbn","test10","Aus","BIomedical","120","test10","");
+    (1, "HCS", "123456","HCS","Aus","IT","100","Health care",""),
+    (2, "Work & Training Ltd", "qwerty","Work & Training Ltd","Aus","IT","50","Customer service",""),
+    (3, "ETS IT", "zxcvbn","ETS IT","Aus","IT","100","Sydney • Parramatta & Western Suburbs",""),
+    (4, "RNA", "zxcvbn","RNA","Aus","IT","100","tBrisbane • CBD & Inner Suburbs",""),
+    (5, "Figure8 Services", "zxcvbn","Figure8 Services","Aus","BIomedical","70","To provide service delivery and end to end customer  support whilst ensuring all client accounts are meeting SLA.",""),
+    (6, "OzShut", "zxcvbn","OzShut","Aus","BIomedical","200","OzShut Roller Shutters is WA's leading Roller Shutter company based right here in Malaga, Perth. OzShut completes all custom made orders locally with a 5 day installation turnaround!",""),
+    (7, "JRA ACT Pty Ltd", "zxcvbn","JRA ACT Pty Ltd","Aus","Mechanical","100","Canberra",""),
+    (8, "Saluda Medical", "zxcvbn","Saluda Medical","Aus","Mechanical","100","Sydney • North Shore & Northern Beaches",""),
+    (9, "Radiant Recruitment", "zxcvbn","Radiant Recruitment","Aus","Mechanical","110","Melbourne • Eastern Suburbs",""),
+    (10, "Programmed", "zxcvbn","Programmed","Aus","Mechanical","120","Sydney","");
     '''
     
     Individual_table = '''
@@ -74,16 +74,10 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Anonymous", "123456", "None", "test1", "None", "30", "None", "IT", "None", "Experience1", "Achievement1","Professional1", "CV1", 0,""),
-    (2, "John", "qwerty", "Mr", "test2", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "Experience2", "Achievement2","Professional2", "CV2", 0,""),
-    (3, "Elen", "zxcvbn", "Mrs", "test3", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "Experience3", "Achievement3","Professional3", "CV3", 0,""),
-    (4, "test4", "zxcvbn", "Mrs", "test4", "Female", "29", "dsjiaodj123@gmail.com", "BIomedical", "university", "Experience4", "Achievement4","Professional4", "CV4", 0,""),
-    (5, "test5", "zxcvbn", "Mr", "test5", "Male", "29", "2sfadds21@gmail.com", "It", "graduate", "Experience5", "Achievement5","Professional5", "CV5", 0,""),
-    (6, "test6", "zxcvbn", "Mrs", "test6", "Female", "35", "2213123dml@gmail.com", "Mechanical", "Phd", "Experience6", "Achievement6","Professional6", "CV6", 0,""),
-    (7, "test7", "zxcvbn", "Mrs", "test7", "Female", "45", "789djsaiddml@gmail.com", "Mechanical", "university", "Experience7", "Achievement7","Professional7", "CV7", 0,""),
-    (8, "test8", "zxcvbn", "Mr", "test8", "Male", "40", "mcsacicsa@gmail.com", "BIomedical", "graduate", "Experience8", "Achievement8","Professional8", "CV8", 0,""),
-    (9, "test9", "zxcvbn", "Mrs", "test9", "Female", "39", "90csja0cs@gmail.com", "IT", "graduate", "Experience9", "Achievement9","Professional9", "CV9", 0,""),
-    (10, "test10", "zxcvbn", "Mr", "test10", "Male", "37", "cj9s0ajcmasjmc@gmail.com", "IT", "university", "Experience10", "Achievement10","Professional10", "CV10", 0,"");
+    (1, "Michelle", "123456", "Dr", "Michelle", "None", "30", "None", "IT", "graduate", "None", "Achievement1","Professional1", "swimming", 1,""),
+    (2, "John", "qwerty", "Mr", "John", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "Experience2", "Achievement2","Professional2", "jogging", 0,""),
+    (3, "Elen", "asdfghjk", "Mrs", "Elen", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "Experience3", "Achievement3","Professional3", "movie", 0,""),
+    (4, "dsjiaodj123@gmail.com", "zxcvbn", "Mr", "Mark", "Male", "29", "dsjiaodj123@gmail.com", "", "", "", "","", "", 0,"");
     '''
 
     Organization_offer = '''
@@ -105,18 +99,20 @@ def create_database():
     
     insert_offer = '''
     INSERT INTO `Offer` VALUES 
-    (1, 1, "UNSW","Aus","Aus", "7h per day", "100,000 per year", "Responsibility1", "IT", "contact1", ""),
-    (2, 2, "USYD","Aus","Aus", "7h per day", "80,000 per year", "Responsibility2", "Mechanical", "contact2", ""),
-    (3, 3, "UQ","Aus","Aus", "7h per day", "100,000 per year", "Responsibility3", "BIomedical", "contact3", ""),
-    (4, 4, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility4", "IT", "contact4", ""),
-    (5, 5, "UQ","Aus","Aus", "8h per day", "90,000 per year", "Responsibility5", "BIomedical", "contact5", ""),
-    (6, 6, "USYD","Aus","Aus", "9h per day", "100,000 per year", "Responsibility6", "IT", "contact6", ""),
-    (7, 7, "USYD","Aus","Aus", "9h per day", "90,000 per year", "Responsibility7", "BIomedical", "contact7", ""),
-    (8, 8, "UNSW","Aus","Aus", "7h per day", "70,000 per year", "Responsibility8", "Mechanical", "contact8", ""),
-    (9, 9, "UNSW","Aus","Aus", "6h per day", "80,000 per year", "Responsibility9", "BIomedical", "contact9", ""),
-    (10, 10, "USYD","Aus","Aus", "9h per day", "80,000 per year", "Responsibility10", "Mechanical", "contact10", ""),
-    (11, 4, "UNSW","Aus","Aus", "8h per day", "10,000 per year", "Responsibility11", "BIomedical", "contact11", ""),
-    (12, 5, "USYD","Aus","Aus", "7h per day", "90,000 per year", "Responsibility12", "IT", "contact12", "");
+    (1, 1, "HCS","Aus","IT Support Officer", "Full time", "$65,000 - $75,000 + super", "Help Desk & IT Support (Information & Communication Technology)", "IT", "HCS is looking for an IT support officer to join our team and grow our customer support offering. ", ""),
+    (2, 2, "Work & Training Ltd","Aus","Information Technology Traineeships", "Contract/Temp", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "Work & Training are seeking expressions of interest for upcoming Information Technology traineeships in Hobart!", ""),
+    (3, 3, "ETS IT","Aus","IT Support Technician", "Full time", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "Sydney • Parramatta & Western Suburbs", ""),
+    (4, 4, "RNA","Aus","ICT Support Officer", "Full time", "Negotiable", "Help Desk & IT Support (Information & Communication Technology)", "IT", "The ICT Support Officer is primarily responsible for assisting in the resolution of Service Desk Requests both formal and informal within the RNA showgrounds, responding and achieving outcomes in a satisfactory time frame. ", ""),
+    (5, 5, "Figure8 Services","Aus","Service Delivery Coordinator/Field Service Technician", "Full time", "$55,000 - $59,999", "Technicians (Trades & Services)", "BIomedical", "Service Delivery Coordinator/Field Service Technician", ""),
+    (6, 5, "Figure8 Services","Aus","Service Delivery Manager", "Full time", "$65,000 - $69,999", "Management (Information & Communication Technology)", "BIomedical", "To provide service delivery and end to end customer  support whilst ensuring all client accounts are meeting SLA.", ""),
+    (7, 6, "OzShut","Aus","Service Technician", "Full time", "$50,488.03 plus super", "Technicians (Trades & Services)", "BIomedical", "OzShut Roller Shutters is WA's leading Roller Shutter company based right here in Malaga, Perth. OzShut completes all custom made orders locally with a 5 day installation turnaround!", ""),
+    (8, 6, "OzShut","Aus","Appointment Setter and Qualifier", "Full time", "$25 - $34.99 per hour + Super + Comms + Bonuses", "Sales - Outbound (Call Centre & Customer Service)", "BIomedical", "Perth • Eastern Suburbs", ""),
+    (9, 7, "Saluda Medical","Aus","Mechanical Engineer", "Full time", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "Sydney • North Shore & Northern Beaches", ""),
+    (10, 8, "JRA ACT Pty Ltd","Aus","Mechanical Engineer Discipline Leader", "Full time", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "Canberra", ""),
+    (11, 9, "Radiant Recruitment","Aus","Mechanical Engineer", "Contract/Temp", "Negotiable", "Mechanical Engineering (Engineering)", "Mechanical", "contact11", "Melbourne • Eastern Suburbs"),
+    (12, 9, "Radiant Recruitment","Aus","Electronics Technician", "Full time", "Negotiable", "Technicians (Trades & Services)", "Mechanical", "Melbourne • Eastern Suburbs", ""),
+    (13, 9, "Radiant Recruitment","Aus","Customer Service | Administration | Marketing Officer", "Part time", "Negotiable", "Client & Sales Administration (Administration & Office Support)", "Mechanical", "Melbourne • CBD & Inner Suburbs", ""),
+    (14, 10, "Programmed","Aus","Mechanical Tradesperson", "Full time", "Competitive rates + Great Benefits", "Fitters, Turners & Machinists (Trades & Services)", "Mechanical", "Sydney", "");
     '''
 
     Individual_prefer = '''
@@ -191,19 +187,6 @@ def create_database():
     `Icon` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`ArticleID`));'''
 
-    insert_article = '''
-    INSERT INTO `Article` VALUES 
-    (1,"title1","a", "asd", 1, "Mental", ""),
-    (2,"title2","b", "fdgsdfgdf", 2, "Medicle", ""),
-    (3,"title3","c", "asdfasdfsfasdf",0, "Interview", ""),
-    (4,"title4","f", "asdfasdf",0, "Skill", ""),
-    (5,"title5","g", "asfsfasdf",0, "Fun", ""),
-    (6,"title6","a", "asd", 0, "Mental", ""),
-    (7,"title7","b", "fdgsdgdf", 0, "Medicle", ""),
-    (8,"title8","e", "sdffasdf",0, "Interview", ""),
-    (9,"title9","d", "asdff",0, "Covid", ""),
-    (10,"title10","c", "afasdf",0, "Fun", "");
-    '''
     
     FollowList_ind ='''
     CREATE TABLE IF NOT EXISTS `indfollowlist` (
@@ -244,8 +227,8 @@ def create_database():
 
     insert_mood = '''
     INSERT INTO `Mood` VALUES 
-    (1, 1, "01/01/2022", 3),
-    (2, 2, "01/02/2022", 1),
+    (1, 1, "01/01/2022", 1),
+    (2, 2, "01/02/2022", 3),
     (3, 3, "01/03/2022", 2);
     '''
     
@@ -266,8 +249,10 @@ def create_database():
 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,1,1,0,0,0,0,0,0),
-    (2,2,0,2,0,0,0,0,0);
+    (1,0,1,2,3,1,0,3,0),
+    (2,1,1,0,0,6,0,0,0),
+    (3,0,1,0,4,0,0,4,0),
+    (4,0,0,0,0,0,0,0,0);
     '''
 
     Experts = '''
@@ -284,14 +269,14 @@ def create_database():
 
     insert_Experts = '''
     INSERT INTO `Experts` VALUES
-    (1,"a","IT","test1","sadasdas@gmail.com",""),
-    (2,"b","Mechanical","test2","swjqioenqwoen@gmail.com",""),
-    (3,"c","BIomedical","test3","123no12no3k2nokcbha@gmail.com",""),
-    (4,"d","BIomedical","test4","sdasqwoen@gmail.com",""),
-    (5,"e","Mechanical","test5","swjqioenqwoen@gmail.com",""),
-    (6,"f","IT","test6","io0nion93@gmail.com",""),
-    (7,"g","Mechanical","test7","u90jonsakodm@gmail.com",""),
-    (8,"h","IT","test8","j908scnja0cnmas0@gmail.com","");
+    (1,"Carol","IT","test1","sadasdas@gmail.com",""),
+    (2,"May","Mechanical","test2","swjqioenqwoen@gmail.com",""),
+    (3,"Linda","Psychology","test3","123no12no3k2nokcbha@gmail.com",""),
+    (4,"Jennifer","BIomedical","test4","sdasqwoen@gmail.com",""),
+    (5,"Francis","Mechanical","test5","swjqioenqwoen@gmail.com",""),
+    (6,"Michael","Psychology","test6","io0nion93@gmail.com",""),
+    (7,"Jack","Mechanical","test7","u90jonsakodm@gmail.com",""),
+    (8,"Monica","IT","test8","j908scnja0cnmas0@gmail.com","");
     '''
 
     Sentence = '''
@@ -339,8 +324,6 @@ def create_database():
     c.execute(insert_offer)
     db.commit()
     c.execute(insert_individualPrefer)
-    db.commit()
-    c.execute(insert_article)
     db.commit()
     c.execute(insert_follow_org)
     db.commit()
