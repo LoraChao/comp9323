@@ -64,7 +64,49 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 
-### `yarn add @mui/material @emotion/react @emotion/style`
-### `yarn add @mui/material @mui/styled-engine-sc styled-components`
-### `yarn add @mui/icons-material`
+### Step1: install "npm"
+For setup environment, we first need to use "npm", so let's install npm first:
+
+### Step2: Install "npm"
+After install "npm", we could use this to install React environment, let's start! Open your terminal and input as follows:
+```
+npm i react react-dom 
+```
+Till now, you should be able to use "npm" to start this React project, like:
+```
+npm start
+```
+
+### Step3: Install "yarn"
+However we still need to setup "yarn" function, why is that? Because we will use "yarn" for later package setup to make this project running functionally. 
+```
+npm install --global yarn
+```
+
+### Step4:Install other packages
+For run this project, we still need to setup some packages:
+```
+yarn add sass
+```
+```
+yarn add react-router-dom
+```
+```
+yarn add antd
+```
+```
+yarn add @mui/material @emotion/react @emotion/style
+```
+
+```
+yarn add @mui/material @mui/styled-engine-sc styled-components
+```
+
+```
+yarn add @mui/icons-material
+```
+
+```
+yarn add -D @craco/craco
+```
 
