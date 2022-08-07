@@ -28,9 +28,9 @@ class IndividualRegister(Resource):
         Requirement = data['requirement_name']
         Contact = data['contact_name']
         Icon = data['icon_name']
-        if OrganizationId == "":
+        if OrganizationId == "" or CompanyName == "" or PositionName == "" or WorkLocation == "" or WorkHour == "" or Salary == "" or Responsibility == "" or Requirement == "" or Contact == "":
             output = {
-                "message": "false"
+                "message": "empty"
             }
             return output, 400
         else:
