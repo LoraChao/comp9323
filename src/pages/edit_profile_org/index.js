@@ -99,7 +99,7 @@ class Edit_details_organizational extends PureComponent{
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.companyname_name}
+          defaultValue={this.state.companyname_name}
           onChange={(e) => {
             this.setState({ companyname_name: e.target.value })
           }}
@@ -113,7 +113,7 @@ class Edit_details_organizational extends PureComponent{
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.location_name}
+          defaultValue={this.state.location_name}
           onChange={(e) => {
             this.setState({ location_name: e.target.value })
           }}
@@ -129,7 +129,7 @@ class Edit_details_organizational extends PureComponent{
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.field_name}
+          defaultValue={this.state.field_name}
           onChange={(e) => {
             this.setState({ field_name: e.target.value })
           }}
@@ -143,7 +143,7 @@ class Edit_details_organizational extends PureComponent{
           multiline
           variant="outlined"
           style = {{top: 20, width: 400}}
-          value={this.state.scale_name}
+          defaultValue={this.state.scale_name}
           onChange={(e) => {
             this.setState({ scale_name: e.target.value })
           }}
@@ -160,7 +160,7 @@ class Edit_details_organizational extends PureComponent{
           variant="outlined"
           minRows={4}
           style = {{top:20, width: 800}}
-          value={this.state.description_name}
+          defaultValue={this.state.description_name}
           onChange={(e) => {
             this.setState({ description_name: e.target.value })
           }}
