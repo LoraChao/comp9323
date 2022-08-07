@@ -93,10 +93,8 @@ class JobEdit extends PureComponent{
     let index = current_url.indexOf('=');
     var read_offer_id = current_url.substring(index + 1, current_url.length)
     var currUserId = this.getCookie('userid')
-
-    var currUserId = this.getCookie('userid')
+    this.checkavalidity();
     if (this.state.flag === true){
-      this.checkavalidity();
       this.getCompanyinfo(currUserId)
       this.getOfferData(currUserId, read_offer_id)
     }
