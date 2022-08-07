@@ -38,7 +38,7 @@ class Login_organizational extends PureComponent {
                     <input type="text" name="username" placeholder="username" className="input-item" 
                     value={this.state.username}
                     onChange={(e) => {
-                      this.setState({ password: e.target.value })
+                      this.setState({ username: e.target.value })
                     }}></input>
                     <input type="password" name="password" placeholder="password" className="input-item"
                     value={this.state.password}
