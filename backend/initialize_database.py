@@ -218,9 +218,9 @@ def create_database():
     '''
     insert_follow_ind = '''
     INSERT INTO `indFollowList` VALUES 
-    (1, 1, 1),
+    (1, 1, 3),
     (2, 1, 2),
-    (3, 2, 2);
+    (3, 2, 3);
     '''
     FollowList_org ='''
     CREATE TABLE IF NOT EXISTS `orgfollowlist` (
