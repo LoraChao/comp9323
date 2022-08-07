@@ -29,7 +29,7 @@ class Signup_individual extends PureComponent {
     render() {
       this.checklogin()
       return (
-        <div className="container">
+        <div className="auth_container">
           <div className="login-wrapper">
             <div className="header">Individual Signup</div>
             <div className="form-wrapper">
