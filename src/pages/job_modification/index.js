@@ -119,7 +119,7 @@ class JobEdit extends PureComponent{
           variant="outlined"
           minRows={1}
           style = {{top:20, width: 800}}
-          value={this.state.position_name}
+          defaultValue={this.state.position_name}
           onChange={(e) => {
             this.setState({ position_name: e.target.value })
           }}
@@ -137,7 +137,7 @@ class JobEdit extends PureComponent{
           variant="outlined"
           minRows={1}
           style = {{top:20, width: 800}}
-          value={this.state.working_location_name}
+          defaultValue={this.state.working_location_name}
           onChange={(e) => {
             this.setState({ working_location_name: e.target.value })
           }}
@@ -155,7 +155,7 @@ class JobEdit extends PureComponent{
         variant="outlined"
         minRows={1}
         style = {{top:20, width: 800}}
-        value={this.state.working_hour_name}
+        defaultValue={this.state.working_hour_name}
         onChange={(e) => {
           this.setState({ working_hour_name: e.target.value })
         }}
@@ -172,7 +172,7 @@ class JobEdit extends PureComponent{
         variant="outlined"
         minRows={1}
         style = {{top:20, width: 800}}
-        value={this.state.salary_name}
+        defaultValue={this.state.salary_name}
         onChange={(e) => {
           this.setState({ salary_name: e.target.value })
         }}
@@ -189,7 +189,7 @@ class JobEdit extends PureComponent{
         variant="outlined"
         minRows={4}
         style = {{top:20, width: 800}}
-        value={this.state.responsibility_name}
+        defaultValue={this.state.responsibility_name}
         onChange={(e) => {
           this.setState({ responsibility_name: e.target.value })
         }}
@@ -206,7 +206,7 @@ class JobEdit extends PureComponent{
         variant="outlined"
         minRows={4}
         style = {{top:80, width: 800}}
-        value={this.state.requirement_name}
+        defaultValue={this.state.requirement_name}
         onChange={(e) => {
           this.setState({ requirement_name: e.target.value })
         }}
@@ -223,7 +223,7 @@ class JobEdit extends PureComponent{
         variant="outlined"
         minRows={1}
         style = {{top:140, width: 800}}
-        value={this.state.contact_name}
+        defaultValue={this.state.contact_name}
         onChange={(e) => {
           this.setState({ contact_name: e.target.value })
         }}
