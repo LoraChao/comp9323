@@ -50,6 +50,7 @@ constructor(props) {
   super(props)
   this.state = {
     flag: true,
+    userid:'',
     organization_data:[{OrganizationName: "",Location: "",Field: "",Icon: ""},
     {OrganizationName: "",Location: "",Field: "",Icon: ""},
     {OrganizationName: "",Location: "",Field: "",Icon: ""},
@@ -57,9 +58,9 @@ constructor(props) {
 
 }
 render(){    
-  var userid = this.getCookie('userid')
+  var UserId = this.getCookie('userid')
   if(this.state.flag === true){
-  this.getOrganizationData(userid)
+  this.getOrganizationData(UserId)
   }
   return (
     <div>
