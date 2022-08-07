@@ -9,6 +9,17 @@ import { UserOutlined} from '@ant-design/icons';
 
 const {  Header, Content, Footer} = Layout;
 class JobRelease extends PureComponent{
+
+  checkavalidity(){
+    var usertype = this.getCookie('usertype')
+    if ( this.getCookie('islogin') === '1'&& usertype === 'organization' ){
+      window.alert('Please fill in the details and press release button to release offer')
+    }
+    else{
+      let url = "http://localhost:3000/login"
+      window.location.replace(url)
+    }
+  }
   getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -51,9 +62,10 @@ class JobRelease extends PureComponent{
     }
   }
   render(){
-
+    
     var OrganizationId = this.getCookie('userid');
     if (this.state.flag === true){
+      this.checkavalidity();
       // window.alert(OrganizationId)
       this.getCompanyinfo(OrganizationId)
       // window.alert(this.state.company_name)
