@@ -260,16 +260,18 @@ def create_database():
     `Fun` int default 0,
     `Covid` int default 0,
     `IT` int default 0,
+    `BIomedical` int default 0,
+    `Mechanical` int default 0,
     PRIMARY KEY (`TasteID`)
     );
     '''
 
     insert_taste = '''
     INSERT INTO `Taste` VALUES
-    (1,1,1,2,3,1,0,3,0),
-    (2,2,0,0,4,0,0,0),
-    (3,3,1,0,1,0,0,4,0),
-    (4,4,0,0,0,0,0,0,0);
+    (1,1,1,2,3,1,0,3,0,0,0),
+    (2,2,0,0,4,0,0,0,2,0),
+    (3,3,1,0,1,0,0,4,0,0,2),
+    (4,4,0,0,0,0,0,0,0,0,0);
     '''
 
     Experts = '''
