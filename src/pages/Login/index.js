@@ -100,7 +100,7 @@ class Login_individual extends PureComponent {
       }).then(res => res.json()).then(
           data => {
               if (data.success && data['usergroup'] === 'individual'){
-                  let url =  "http://localhost:3000/mypage";
+                  let url =  "http://localhost:3000/Individual_Home";
                   this.setcookie('islogin', '1', 1)
                   this.setcookie("userid", data["id"], 1)
                   this.setcookie("usertype", 'individual', 1)

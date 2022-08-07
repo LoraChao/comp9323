@@ -88,7 +88,7 @@ class Login_organizational extends PureComponent {
       }).then(res => res.json()).then(
           data => {
               if (data.success && data['usergroup'] === 'organization'){
-                  let url =  "http://localhost:3000/mypage";
+                  let url =  "http://localhost:3000/Organization_Home";
                   this.setcookie('islogin', '1', 1)
                   this.setcookie("userid", data["id"], 1)
                   this.setcookie("usertype", 'organization', 1)
