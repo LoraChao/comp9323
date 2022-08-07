@@ -165,7 +165,7 @@ class Details_organizational extends PureComponent{
               body: send
           }).then(res => res.json()).then(
               data => {
-                window.alert(data['message'])
+                // window.alert(data['message'])
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
                       let url =  "http://localhost:3000/Organization_Home";
