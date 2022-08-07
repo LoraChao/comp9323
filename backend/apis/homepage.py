@@ -18,6 +18,7 @@ class GetJob_ind(Resource):
     # @auth.expect(post_dairy_model)
     @api.doc(description='get prefer job')
     def get(self, userId):
+        fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
         if userId == 0:
             random_sql = f"SELECT OfferId FROM offer;"
             random_id = sql_command(random_sql)
@@ -25,14 +26,13 @@ class GetJob_ind(Resource):
             random_list = []
             random_list = np.arange(1,lenth+1)
             np.random.shuffle(random_list)
-            random_list = list(random_list[0:3])
+            random_list = list(random_list[0:5])
 
             select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
             label_name = ["CompanyName", "Position", "Contact"]
             output_res = output_list(output_info, label_name)
-            fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
-            while len(output_res) < 12:
+            while len(output_res) < 5:
                 output_res.append(fill_list)
             output = {
                 "message": "success",
@@ -62,21 +62,20 @@ class GetJob_ind(Resource):
             for i in skill_match:
                 skill_match_list.append(i[0])
             rec_list = list(set(skill_match_list) - set(preferId_list))
-            fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
-            if len(rec_list) == 0:
-                output_res = []
-                while len(output_res) < 12:
-                    output_res.append(fill_list)
-                output = {
-                    "message": "success",
-                    "output": output_res
-                }
-                return output, 200
-            select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(rec_list))
-            output_info = search_list(select_str, rec_list)
+            offerId_sql = f"SELECT OfferId FROM offer;"
+            offerId_match = sql_command(offerId_sql)
+            offerId_list = []
+            for i in offerId_match:
+                offerId_list.append(i[0])
+            test = rec_list + offerId_list
+            new = list(set(test))
+            new.sort(key=test.index)
+            new = new[0:5]
+            select_str = 'select CompanyName,Position,Contact from offer where OfferId in (%s)' % ','.join(['%s'] * len(new))
+            output_info = search_list(select_str, new)
             label_name = ["CompanyName","Position","Contact"]
             output_res = output_list(output_info, label_name)
-            while len(output_res) < 12:
+            while len(output_res) < 5:
                 output_res.append(fill_list)
             output = {
                 "message": "success",
