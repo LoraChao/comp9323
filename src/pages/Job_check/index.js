@@ -92,6 +92,7 @@ class LikeButton extends PureComponent{    // individual follow tab
     }else {
       window.alert('Hi, please log in to like this article')
       let url = "http://localhost:3000/login"
+      window.location.replace(url)
     }
       
   }
