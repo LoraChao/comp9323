@@ -7,7 +7,7 @@ from tool import *
 from flask_app import api
 
 
-offer = api.namespace('offer', description='Authentication Service')
+offer = api.namespace('offer', description='Offer Service')
 
 @offer.route('/post/organization', methods=["POST"] ,doc={"description": "post new offer"})
 @api.response(400, 'Bad Request')
