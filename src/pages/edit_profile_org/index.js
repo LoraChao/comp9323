@@ -186,9 +186,8 @@ class Edit_details_organizational extends PureComponent{
                       scale_name: this.state.scale_name, //string
                       description_name: this.state.description_name, //string
                       icon_name: this.state.icon_name
-                      };//获取数据
-          // console.log(text);
-          let send = JSON.stringify(text);//将对象转成json字符串
+                      };
+          let send = JSON.stringify(text);
           fetch("http://127.0.0.1:5000/auth/details/organization", {
               method: "POST",
               headers: {"Content-Type": "application/json;charset=utf-8"},

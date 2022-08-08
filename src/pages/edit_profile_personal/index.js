@@ -287,16 +287,14 @@ class Edit_details_personal extends PureComponent{
                       professional_name: this.state.professional_summary_name, //string
                       cv_name: this.state.cv_name, //string
                       icon_name: this.state.icon_name
-                      };//获取数据
-          // console.log(text);
-          let send = JSON.stringify(text);//将对象转成json字符串
+                      };
+          let send = JSON.stringify(text);
           fetch("http://127.0.0.1:5000/auth/details/individual", {
               method: "POST",
               headers: {"Content-Type": "application/json;charset=utf-8"},
               body: send
           }).then(res => res.json()).then(
               data => {
-//                  window.alert(data['message'])
                   if (data['message'] === 'success'){
                       window.alert("Detail updated!")
                       let url =  "http://localhost:3000/mypage";

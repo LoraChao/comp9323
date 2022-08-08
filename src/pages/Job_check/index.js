@@ -11,7 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 
 
 
-class LikeButton extends PureComponent{    // individual follow tab
+class LikeButton extends PureComponent{    
 
   state = {
       like: 0,
@@ -54,7 +54,7 @@ class LikeButton extends PureComponent{    // individual follow tab
       };
       let send = JSON.stringify(text);
       if(this.state.like === 0){
-          fetch("http://127.0.0.1:5000/offer/post/preferoffer", { //这里需要like offer的链接**********
+          fetch("http://127.0.0.1:5000/offer/post/preferoffer", { 
           method: "POST",
           headers: {"Content-Type": "application/json;charset=utf-8"},
           body: send
@@ -65,14 +65,13 @@ class LikeButton extends PureComponent{    // individual follow tab
                   this.setState({
                     like: (this.state.like + 1)%2
                     })
-//                  window.location.reload();
+
               }else window.alert("Something went wrong")
           }
-//          return data
       )
       }
       else{
-          fetch("http://127.0.0.1:5000/offer/delete/preferoffer", { //这里需要delete offer的链接**********
+          fetch("http://127.0.0.1:5000/offer/delete/preferoffer", {
           method: "DELETE",
           headers: {"Content-Type": "application/json;charset=utf-8"},
           body: send
@@ -83,10 +82,8 @@ class LikeButton extends PureComponent{    // individual follow tab
                 this.setState({
                   like: (this.state.like + 1)%2
                   })
-//                window.location.reload();
             }else window.alert("Something went wrong")
         }
-//        return data
       )
       }
     }else {
@@ -98,20 +95,16 @@ class LikeButton extends PureComponent{    // individual follow tab
   }
 
   render(){
-    // var read_organization_id = Getoffer_id();
     var current_url = window.location.href;
     let index = current_url.indexOf('=');
     var read_offer_id = current_url.substring(index + 1, current_url.length)
     var currUserId = this.getCookie('userid');
     this.getLikeData(currUserId, read_offer_id);
-//    window.alert(this.state.like)
       return <div>
           <Button variant="contained"  onClick={() => {this.handleClick()}}>
               {this.state.like === 0 ? 'like' : 'unlike'}
           </Button>
       </div>
-      window.alert(this.state.like)
-//      return
   }
 }
 
@@ -145,13 +138,11 @@ class JobCheck extends PureComponent{
     }
   getOfferData(offer_id){
     let url = "http://127.0.0.1:5000/offer/search/detail/"+offer_id;
-  //    window.alert(url)
     fetch(url, {
           method: "GET",
           headers: {"Content-Type": "application/json;charset=utf-8"},
       }).then(res => res.json()).then(
         data => {
-            // this.setState({ organization_id: organization_id })
             this.setState({ offer_id: offer_id })
             this.setState({ company_name: data['output'][0]['CompanyName'] })
             this.setState({ position_name: data['output'][0]['Position'] })
@@ -161,11 +152,6 @@ class JobCheck extends PureComponent{
             this.setState({ responsibility_name: data['output'][0]['Responsibility'] })
             this.setState({ requirement_name: data['output'][0]['Requirement'] })
             this.setState({ contact_name: data['output'][0]['Contact'] })
-//           window.alert(data['output'][0]['CompanyName'])
-//            return data
-            var return_value = data
-//            window.alert(return_value)
-//            return return_value
         }
       )
   }
@@ -196,13 +182,10 @@ class JobCheck extends PureComponent{
     }
   }
   render(){
-      // var read_organization_id = Getoffer_id();
-      // var read_offer_id = Getorg_id();
       var current_url = window.location.href;
       let index = current_url.indexOf('=');
       var read_offer_id = current_url.substring(index + 1, current_url.length)
       var currUserId = this.getCookie('userid');
-      // this.getLikeData(currUserId, read_offer_id)
       this.getOfferData(read_offer_id);
   return (
     <Layout>
@@ -211,7 +194,7 @@ class JobCheck extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username">{this.state.company_name}</span>{/* 这里要读取用户数据 */}
+            <span className="username">{this.state.company_name}</span>
             <br/>
             
         </div>
@@ -260,22 +243,6 @@ class JobCheck extends PureComponent{
       </div>
     </Content>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>
-    {/* <div>
-    <Button variant="contained" 
-        type='submit'
-        style = {{left:250, top:0, width:200}}
-        onClick={() => {
-          this.Tohomepage()
-        }}
-        >Back to Home</Button>
-        <Button variant="contained" 
-        type='submit'
-        style = {{left:-250, top:0, width:200}}
-        onClick={() => {
-          this.Toprofilepage()
-        }}
-        >Back to Profile</Button>
-        </div> */}
     </Footer>
     <Footer style={{ textAlign: 'center', index: '2 2 2' }}>COMP9323 ©2022 T2 Created by "Github Is Savior"</Footer>
     </Layout>

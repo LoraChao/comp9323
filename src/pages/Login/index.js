@@ -56,13 +56,8 @@ class Login_individual extends PureComponent {
                   onChange={(e) => {
                     this.setState({ password: e.target.value })
                   }}></input>
-                  {/* <input className="btn" type="button" value="Log in"
-                  onClick={() => {
-                    this.getConnect()
-                  }}></input> */}
                   <Button variant="contained" 
                   type='submit'
-                  // style = {{left:250, top:230, width:200}}
                   onClick={() => {
                     this.getConnect()
                   }}
@@ -79,7 +74,6 @@ class Login_individual extends PureComponent {
             <div className="msg">
                 Visit as tourist.
                 <a href="./Individual_Home">Home</a> 
-                {/* 这里需要homepage的链接 */}
             </div>
           </div>
         </div>  
@@ -95,9 +89,8 @@ class Login_individual extends PureComponent {
       document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
     getConnect() {
-      let text = {username: this.state.username, password: this.state.password};//获取数据
-      // console.log(text);
-      let send = JSON.stringify(text);//将对象转成json字符串
+      let text = {username: this.state.username, password: this.state.password};//
+      let send = JSON.stringify(text);//
       fetch("http://127.0.0.1:5000/auth/login", {
           method: "POST",
           headers: {"Content-Type": "application/json;charset=utf-8"},

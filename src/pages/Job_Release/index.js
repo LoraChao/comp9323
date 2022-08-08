@@ -34,7 +34,6 @@ class JobRelease extends PureComponent{
   getCompanyinfo(company_username){
     this.setState({ OrganizationId: company_username })
     let url = "http://127.0.0.1:5000/auth/brief/organization/"+company_username;
-  //    window.alert(url)
     fetch(url, {
           method: "GET",
           headers: {"Content-Type": "application/json;charset=utf-8"},
@@ -66,10 +65,7 @@ class JobRelease extends PureComponent{
     this.checkavalidity();
     var OrganizationId = this.getCookie('userid');
     if (this.state.flag === true){
-      
-      // window.alert(OrganizationId)
       this.getCompanyinfo(OrganizationId)
-      // window.alert(this.state.company_name)
     }
     
   return (
@@ -79,9 +75,8 @@ class JobRelease extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username" >{this.state.company_name}</span>{/* 这里要读取用户数据 */}
+            <span className="username" >{this.state.company_name}</span>
             <br/>
-            <span className="user-identity" >{this.state.company_location}</span>{/* 这里要读取用户数据 */}
            
         </div>
     </Header>
@@ -234,9 +229,8 @@ class JobRelease extends PureComponent{
               requirement_name: this.state.requirement_name,
               contact_name: this.state.contact_name,
               icon_name: ''
-            };//获取数据
-            // console.log(text);
-            let send = JSON.stringify(text);//将对象转成json字符串
+            };
+            let send = JSON.stringify(text);
             fetch("http://127.0.0.1:5000/offer/post/organization", {
                 method: "POST",
                 headers: {"Content-Type": "application/json;charset=utf-8"},

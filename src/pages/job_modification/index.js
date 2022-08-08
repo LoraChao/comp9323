@@ -50,11 +50,6 @@ class JobEdit extends PureComponent{
             this.setState({ requirement_name: data['output'][0]['Requirement'] })
             this.setState({ contact_name: data['output'][0]['Contact'] })
             this.setState({ flag: false })
-//           window.alert(data['output'][0]['CompanyName'])
-//            return data
-            var return_value = data
-//            window.alert(return_value)
-//            return return_value
         }
       )
   }
@@ -69,7 +64,6 @@ class JobEdit extends PureComponent{
         data => {
             this.setState({ company_name: data['Companyname'] })
             this.setState({ company_location: data['Location'] })
-//            window.alert(company_name)
   }
       )}
   constructor(props) {
@@ -105,7 +99,7 @@ class JobEdit extends PureComponent{
             <div className="user-icon">
                 <Avatar size={100} icon={<UserOutlined />} />
             </div>
-            <span className="username" >{this.state.company_name}</span>{/* 这里要读取用户数据 */}
+            <span className="username" >{this.state.company_name}</span>
             <br/>
            
         </div>
@@ -267,9 +261,8 @@ class JobEdit extends PureComponent{
                         requirement_name: this.state.requirement_name,
                         contact_name: this.state.contact_name,
                         icon_name: ''
-                      };//获取数据
-            // console.log(text);
-            let send = JSON.stringify(text);//将对象转成json字符串
+                      };
+            let send = JSON.stringify(text);
             fetch("http://127.0.0.1:5000/offer/modify/organization", {
                 method: "POST",
                 headers: {"Content-Type": "application/json;charset=utf-8"},
