@@ -10,7 +10,7 @@ from flask_app import api
 import numpy as np
 
 # define namespace
-home = api.namespace('homepage', description='Authentication Service')
+home = api.namespace('homepage', description='Homepage Service')
 
 @home.route('/preferJob_ind/<int:userId>')
 @api.response(400, 'Bad Request')
@@ -18,7 +18,7 @@ home = api.namespace('homepage', description='Authentication Service')
 @api.response(201, 'Created')
 class GetJob_ind(Resource):
     # @auth.expect(post_dairy_model)
-    @api.doc(description='get prefer job')
+    @api.doc(description='get prefer job list')
     def get(self, userId):
         fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
         if userId == 0:
@@ -85,7 +85,7 @@ class GetJob_ind(Resource):
             }
             return output, 200
 
-@home.route('/PostSentence')
+@home.route('/PostSentence' doc={'description': 'get one sentence a day'})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
@@ -109,7 +109,7 @@ class GetSentencey(Resource):
         }
         return output, 200
 
-@home.route('/expert/<int:userId>')
+@home.route('/expert/<int:userId>' doc={'description': 'get recommend expert'})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
@@ -225,7 +225,7 @@ class GetExpert(Resource):
                     }
                     return output, 200
 
-@home.route('/prefer_org/<int:userId>')
+@home.route('/prefer_org/<int:userId>' doc={'description': 'get recommend org'})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
@@ -233,7 +233,7 @@ class Getorg_ind(Resource):
     # @auth.expect(post_dairy_model)
     @api.doc(description='get prefer org')
     def get(self, userId):
-        fit_empty = {"OrganizationName":"", "Location":"", "Field":"", "Icon":""}
+        fit_empty = {"OrganizationId":"", "OrganizationName":"", "Location":"", "Field":"", "Icon":""}
         if userId == 0:
             random_sql = f"SELECT OrganizationId FROM Organization;"
             random_id = sql_command(random_sql)
@@ -243,10 +243,10 @@ class Getorg_ind(Resource):
             np.random.shuffle(random_list)
             random_list = list(random_list[0:6])
 
-            select_str = 'select OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)'% ','.join(
+            select_str = 'select OrganizationId, OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)'% ','.join(
                 ['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
-            label_name = ["OrganizationName", "Location", "Field", "Icon"]
+            label_name = ["OrganizationId", "OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(output_info, label_name)
             while len(output_res) < 3:
                 output_res.append(fit_empty)
@@ -259,9 +259,9 @@ class Getorg_ind(Resource):
             skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
             result_from_skill = sql_command(skill_sql)
 
-            offer_sql = f"SELECT OrganizationName, Location, Field, Icon  FROM organization WHERE Field = '{result_from_skill[0][0]}';"
+            offer_sql = f"SELECT OrganizationId, OrganizationName, Location, Field, Icon  FROM organization WHERE Field = '{result_from_skill[0][0]}';"
             result_from_offer = sql_command(offer_sql)
-            label_name = ["OrganizationName", "Location", "Field", "Icon"]
+            label_name = ["OrganizationId", "OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(result_from_offer, label_name)
             while len(output_res) < 3:
                 output_res.append(fit_empty)

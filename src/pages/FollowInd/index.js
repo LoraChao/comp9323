@@ -74,7 +74,7 @@ class FollowButton extends React.Component{    // individual follow switch
     }
 }
 
-function IndCheckButton(props){ 
+function IndCheckButton(props){                 // button for checking others 
 
     // get user's id want to check
     const checkUserId = props.checkUserId 
@@ -89,7 +89,7 @@ function IndCheckButton(props){
         )
 }
 
-function BackButton(){ 
+function BackButton(){                          // back button
         
     const navigate = useNavigate()
 

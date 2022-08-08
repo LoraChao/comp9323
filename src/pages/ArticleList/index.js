@@ -6,7 +6,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const articlePic = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-//const currUserId = '1'
+
+// test data
 
 // const articleListData = [                                                               
 //     {

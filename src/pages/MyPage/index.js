@@ -387,7 +387,8 @@ const MyPage = () => {
 
                 <div>
                     <span className="user_name">{userInfo.Name}</span>
-                    <span className="user_identity">{userInfo.Emails}</span>
+                    {/* <span className="user_identity">{userInfo.Emails}</span> */}
+                    <span className="user_identity"><Tag>{userInfo.Skill}</Tag></span>
                 </div>
 
                 <div className="moodselect">
