@@ -74,7 +74,7 @@ def create_database():
 
     insert_individual = '''
     INSERT INTO `Individual` VALUES 
-    (1, "Michelle", "123456", "Dr", "Michelle", "None", "30", "None", "IT", "graduate", "None", "Achievement1","Professional1", "swimming", 1,""),
+    (1, "Michelle", "123456", "Dr", "Michelle", "Other", "30", "None", "IT", "graduate", "None", "Achievement1","Professional1", "swimming", 1,""),
     (2, "John", "qwerty", "Mr", "John", "Male", "25", "7238971248@gmail.com", "Mechanical", "graduate", "Experience2", "Achievement2","Professional2", "jogging", 0,""),
     (3, "Elen", "asdfghjk", "Mrs", "Elen", "Female", "27", "21412421@gmail.com", "BIomedical", "university", "Experience3", "Achievement3","Professional3", "movie", 0,""),
     (4, "dsjiaodj123@gmail.com", "zxcvbn", "Mr", "Mark", "Male", "29", "dsjiaodj123@gmail.com", "None", "None", "None", "None","None", "None", 0,"");
