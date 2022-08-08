@@ -81,7 +81,7 @@ class Hero extends PureComponent {
       <div>
         <div className="grid justify-items-center gap-8 pb-28 relative">
 
-          <p className="text-4xl md:text-6xl font-black text-center leading-normal md:leading-normal">
+          <p className="text-4xl md:text-6xl font-black text-center leading-normal md:leading-normal text-black">
             Wellbeing Online Services
           </p>
           <p className="text-xl text-gray-700 md:w-1/2 text-center">
@@ -91,7 +91,7 @@ class Hero extends PureComponent {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
           <div class="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
-            <h2 className="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">{this.state.company_data["Companyname"]}</h2>
+            <h2 className="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-5xl">{this.state.company_data["Companyname"]}</h2>
             <div><Edit/></div>
 
           </div>

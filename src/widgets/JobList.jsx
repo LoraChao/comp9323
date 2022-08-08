@@ -102,9 +102,9 @@ class ImageCard extends PureComponent {
     return (
 
       <div>
-
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
         <div><AddNew/></div>
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
+
           {array.map((v) => (
             <div key={v} class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
               <div class="md:flex">
