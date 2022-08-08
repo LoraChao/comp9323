@@ -233,7 +233,7 @@ class Getorg_ind(Resource):
     # @auth.expect(post_dairy_model)
     @api.doc(description='get prefer org')
     def get(self, userId):
-        fit_empty = {"OrganizationName":"", "Location":"", "Field":"", "Icon":""}
+        fit_empty = {"OrganizationId":"", "OrganizationName":"", "Location":"", "Field":"", "Icon":""}
         if userId == 0:
             random_sql = f"SELECT OrganizationId FROM Organization;"
             random_id = sql_command(random_sql)
@@ -243,10 +243,10 @@ class Getorg_ind(Resource):
             np.random.shuffle(random_list)
             random_list = list(random_list[0:6])
 
-            select_str = 'select OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)'% ','.join(
+            select_str = 'select OrganizationId, OrganizationName, Location, Field, Icon from organization where OrganizationId in (%s)'% ','.join(
                 ['%s'] * len(random_list))
             output_info = search_list(select_str, random_list)
-            label_name = ["OrganizationName", "Location", "Field", "Icon"]
+            label_name = ["OrganizationId", "OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(output_info, label_name)
             while len(output_res) < 3:
                 output_res.append(fit_empty)
@@ -259,9 +259,9 @@ class Getorg_ind(Resource):
             skill_sql = f"SELECT Skill FROM individual WHERE IndividualId = '{userId}';"
             result_from_skill = sql_command(skill_sql)
 
-            offer_sql = f"SELECT OrganizationName, Location, Field, Icon  FROM organization WHERE Field = '{result_from_skill[0][0]}';"
+            offer_sql = f"SELECT OrganizationId, OrganizationName, Location, Field, Icon  FROM organization WHERE Field = '{result_from_skill[0][0]}';"
             result_from_offer = sql_command(offer_sql)
-            label_name = ["OrganizationName", "Location", "Field", "Icon"]
+            label_name = ["OrganizationId", "OrganizationName", "Location", "Field", "Icon"]
             output_res = output_list(result_from_offer, label_name)
             while len(output_res) < 3:
                 output_res.append(fit_empty)
