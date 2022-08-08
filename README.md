@@ -91,4 +91,6 @@ Now go to your project directory, and run the code:
 cd project
 yarn start
 ```
+Now your browser should open http://localhost:3000/Individual_Home automatically, and this is the entrance of our website as a visitor. 
+
 ### Now you could run this website successfully, enjoy it!

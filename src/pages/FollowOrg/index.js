@@ -78,6 +78,7 @@ class FollowButton extends React.Component{
     }
 }
 
+// for checking org's page
 function OrganizationCheckButton(props){                                            
 
     // get user's id want to check
@@ -93,6 +94,7 @@ function OrganizationCheckButton(props){
         )
 }
 
+// for back to myPage
 function BackButton(){ 
         
     const navigate = useNavigate()
