@@ -79,7 +79,7 @@ class OrganizationRegister(Resource):
                 }
                 return output, 200
 
-@auth.route('/login', doc={'description': 'login'})
+@auth.route('/login')
 class Login(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')

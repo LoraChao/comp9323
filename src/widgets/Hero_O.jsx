@@ -5,15 +5,18 @@ import Image2 from "../assets/pexels-photo-10058967.webp"
 import Image3 from "../assets/pexels-photo-11021595.jpg"
 
 
-function Edit() {
+function Edit(props) {
 
   function handleCheckArtileClick() {
     window.open(`/editprofile_organizational`, { replace: true })
   }
+  const usertype = props.usertype
 
-  return (
+  if( usertype === 1){
+    return (
     <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" onClick={() => { handleCheckArtileClick() }}>Edit</Button>
-  )
+  ) } return null 
+
 }
 
 
@@ -45,7 +48,7 @@ class Hero extends PureComponent {
         // window.alert(data['output'][0]['CompanyName'])
         // return data
         var return_value = data
-        console.log(this.state.company_data)
+        //console.log(this.state.company_data)
         return return_value
       }
     )
@@ -70,9 +73,30 @@ class Hero extends PureComponent {
 
   }
   render() {
-    var organizationid = this.getCookie('userid')
+    // var organizationid = this.getCookie('userid')
+    var usertype = this.getCookie("usertype")
+    var usertype_num = 0
+    var current_url = window.location.href;
+    let index = current_url.indexOf('=');
+    var read_company_id = current_url.substring(index + 1, current_url.length)
+    var UserId = this.getCookie('userid')
+    var usertype = this.getCookie("usertype")
+    if (UserId === null) {
+      var UserId = 0
+    }
+    if (usertype === "organization") {
+      var page_id = UserId
+    } else {
+      var page_id = read_company_id
+    }
+    if ( organizationid === null ) {
+      var organizationid = 1
+   }
+   if ( usertype === "organization" ) {
+    var usertype_num = 1
+ }
     if (this.state.flag === true) {
-      this.getOrgnizationData(organizationid)
+      this.getOrgnizationData(page_id)
       // const list = this.state.array
     }
 
@@ -92,7 +116,7 @@ class Hero extends PureComponent {
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
           <div class="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black sm:bg-none">
             <h2 className="text-xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-5xl">{this.state.company_data["Companyname"]}</h2>
-            <div><Edit/></div>
+            <div><Edit usertype={usertype_num}/></div>
 
           </div>
           
@@ -101,21 +125,18 @@ class Hero extends PureComponent {
               <svg width="20" height="20" fill="currentColor" class="text-violet-600">
                 <path d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
               </svg>
-              <div>{this.state.company_data["Location"]}</div>
+              <div>Location: {this.state.company_data["Location"]}</div>
             </div>
             <hr class="w-16 border-gray-300 hidden sm:block"></hr>
           </div>
           <div class="col-start-1 row-start-3 space-y-3 px-4">
             <p class="flex items-center text-black text-sm font-medium">
-              <img src="/kevin-francis.jpg" alt="" class="w-6 h-6 rounded-full mr-2 bg-gray-100"></img>
               Description: {this.state.company_data["Description"]}
             </p>
             <p class="flex items-center text-black text-sm font-medium">
-              <img src="/kevin-francis.jpg" alt="" class="w-6 h-6 rounded-full mr-2 bg-gray-100"></img>
               Field: {this.state.company_data["Field"]}
             </p>
             <p class="flex items-center text-black text-sm font-medium">
-              <img src="/kevin-francis.jpg" alt="" class="w-6 h-6 rounded-full mr-2 bg-gray-100"></img>
               Scale: {this.state.company_data["Scale"]}
             </p>
           </div>

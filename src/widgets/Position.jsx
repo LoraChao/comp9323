@@ -20,9 +20,19 @@ function JobCheckButton(props){
 
 
 class Position extends PureComponent{
-
-  getPositionData() {
-  let url = "http://127.0.0.1:5000/homepage/preferJob_ind/1";
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  getPositionData(userid) {
+  let url = "http://127.0.0.1:5000/homepage/preferJob_ind/"+ userid;
+  this.setState({userid:userid})
   //window.alert(url)
   fetch(url, {
       method: "GET",
@@ -42,6 +52,7 @@ class Position extends PureComponent{
 constructor(props) {
   super(props)
   this.state = {
+    userid: "",
     flag: true,
     position_data:[{OfferId:'',CompanyName: '', Position: '', Contact: ''},
     {OfferId:'',CompanyName: '', Position: '', Contact: ''},
@@ -52,8 +63,12 @@ constructor(props) {
 
 }
 render(){
+  var UserId = this.getCookie('userid')
+  if ( UserId === null ) {
+    var UserId = 0
+ }
   if(this.state.flag === true){
-  this.getPositionData()
+  this.getPositionData(UserId)
   }
   return (
     <div>
