@@ -10,7 +10,7 @@ from flask_app import api
 import numpy as np
 
 # define namespace
-home = api.namespace('homepage', description='Authentication Service')
+home = api.namespace('homepage', description='Homepage Service')
 
 @home.route('/preferJob_ind/<int:userId>')
 @api.response(400, 'Bad Request')
@@ -18,7 +18,7 @@ home = api.namespace('homepage', description='Authentication Service')
 @api.response(201, 'Created')
 class GetJob_ind(Resource):
     # @auth.expect(post_dairy_model)
-    @api.doc(description='get prefer job')
+    @api.doc(description='get prefer job list')
     def get(self, userId):
         fill_list = {"CompanyName": "", "Position": "", "Contact": ""}
         if userId == 0:
@@ -85,7 +85,7 @@ class GetJob_ind(Resource):
             }
             return output, 200
 
-@home.route('/PostSentence')
+@home.route('/PostSentence' doc={'description': 'get '})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
