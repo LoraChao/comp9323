@@ -45,6 +45,9 @@ class LikeButton extends PureComponent{    // individual follow tab
       })
     }
   handleClick(){
+    var loginstatus = this.getCookie('islogin')
+    var usertype = this.getCookie('usertype')
+    if ( loginstatus === '1' && usertype === 'individual'){
       let text = {
         userId: this.state.currUserId,
         OfferId: this.state.offer_id
@@ -86,6 +89,11 @@ class LikeButton extends PureComponent{    // individual follow tab
 //        return data
       )
       }
+    }else {
+      window.alert('Hi, please log in to like this article')
+      let url = "http://localhost:3000/login"
+    }
+      
   }
 
   render(){
