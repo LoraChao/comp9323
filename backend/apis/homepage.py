@@ -85,7 +85,7 @@ class GetJob_ind(Resource):
             }
             return output, 200
 
-@home.route('/PostSentence', doc={'description': 'get one sentence a day'})
+@home.route('/PostSentence' ,doc={'description': 'get one sentence a day'})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
@@ -225,7 +225,7 @@ class GetExpert(Resource):
                     }
                     return output, 200
 
-@home.route('/prefer_org/<int:userId>', doc={'description': 'get recommend org'})
+@home.route('/prefer_org/<int:userId>' ,doc={'description': 'get recommend org'})
 @api.response(400, 'Bad Request')
 @api.response(403, 'Forbiddent')
 @api.response(201, 'Created')
