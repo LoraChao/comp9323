@@ -38,6 +38,8 @@ Server running on 127.0.0.1/5000
 To specify running port, change port number in file app.py  
 last line: app.run(debug=True, port=XXXX), where XXXX is your prefer port number  
 open 127.0.0.1/5000 in the browser to check swagger document  
+You can click each API to check the description of it
+You can also find a detailed json file at top left corner of 127.0.0.1/5000
 # Frontend
 
 ## Step1: Install "Node.js" and "npm"
