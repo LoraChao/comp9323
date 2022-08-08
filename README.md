@@ -1,4 +1,4 @@
-# User guide for COMP9323 Group13 Project WellbeingBridge
+# User guide for COMP9323 group Github is saivor
 
 ## Enviroment requirement
 Python 3.6+
@@ -7,22 +7,20 @@ Npm
 ## Database Server
 This project is using local MySQL database, therefore you need to have your MySQL server running on your computer before running the project.
 ### Download MySQL Community Server.
-For Windows users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html
-For Mac users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation-pkg.html
+For Windows users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html  
+For Mac users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation-pkg.html  
 
-
-Setting parameters backend/config.py 
 
 ## Run
 Go to the configuration of system in ./backend/config.py and change following value as you need.
 
-DB_ACCOUNT: The username of database
-DB_PASSWORD: The password for database user
-DB_NAME: The database name on the database server
-DB_URL: The host name of database
-DB_PORT: The running port of database
+DB_ACCOUNT: The username of database  
+DB_PASSWORD: The password for database user  
+DB_NAME: The database name on the database server  
+DB_URL: The host name of database  
+DB_PORT: The running port of database  
 
-Install requirement
+Install requirement  
 ```
 cd backend
 pip install -r requirements.txt
