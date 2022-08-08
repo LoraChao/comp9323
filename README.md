@@ -7,8 +7,8 @@ Npm
 ## Database Server
 This project is using local MySQL database, therefore you need to have your MySQL server running on your computer before running the project.
 ### Download MySQL Community Server.
-For Windows users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html
-For Mac users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation-pkg.html
+For Windows users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html  
+For Mac users, follow steps in https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation-pkg.html  
 
 
 Setting parameters backend/config.py 
