@@ -41,7 +41,7 @@ class PostDairy(Resource):
             return output, 200
 
 
-@mood.route('/search/<int:IndividualId>&<string:RecordTime>' doc={'description': 'get mood'})
+@mood.route('/search/<int:IndividualId>&<string:RecordTime>', doc={'description': 'get mood'})
 class SearchDairy(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -91,7 +91,7 @@ class SearchDairy(Resource):
                 }
                 return output, 403
 
-@mood.route('/check' doc={'description': 'check mood today'})
+@mood.route('/check', doc={'description': 'check mood today'})
 class CheckDairy(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
