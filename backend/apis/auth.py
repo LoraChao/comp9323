@@ -79,7 +79,7 @@ class OrganizationRegister(Resource):
                 }
                 return output, 200
 
-@auth.route('/login')
+@auth.route('/login', doc={'description': 'login'})
 class Login(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')
@@ -278,7 +278,7 @@ class Individual_brief(Resource):
             }
             return output, 200
 
-@auth.route('/brief/organization/<int:userId>', doc={'description': 'get org information'})
+@auth.route('/brief/organization/<int:userId>' ,doc={'description': 'get org information'})
 class organization_brief(Resource):
     @auth.response(200, 'OK')
     @auth.response(400, 'Bad Request')

@@ -47,7 +47,7 @@ class IndividualRegister(Resource):
             return output, 200
 
 
-@offer.route('/search/brief/<int:OrganizationId>',doc={"description": "search offer post by this org"})
+@offer.route('/search/brief/<int:OrganizationId>',doc={"description": "search offer"})
 @api.response(200, 'OK')
 @api.response(400, 'Bad Request')
 @api.response(404, 'Not Found')
@@ -80,7 +80,7 @@ class SearchOffer(Resource):
             return output, 200
 
 
-@offer.route('/search/detail/<int:OfferId>', doc={"description": "get offer detail"})
+@offer.route('/search/detail/<int:OfferId>')
 class SearchOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -112,7 +112,7 @@ class SearchOffer(Resource):
             }
             return output, 200
 
-@offer.route('/delete',doc={"description": "delete one offer"})
+@offer.route('/delete')
 class DeleteOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -140,7 +140,7 @@ class DeleteOffer(Resource):
             }
             return output, 200
 
-@offer.route('/get/preferoffer/<int:userId>', doc={"description": "get like offer"})
+@offer.route('/get/preferoffer/<int:userId>')
 class GetPreferOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -179,7 +179,7 @@ class GetPreferOffer(Resource):
         }
         return output, 200
 
-@offer.route('/get/preferoffer/detail/<int:userId>&<int:offerId>', doc={"description": "search like offer in detail"})
+@offer.route('/get/preferoffer/detail/<int:userId>&<int:offerId>')
 class GetPreferOfferDetail(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -221,7 +221,7 @@ class GetPreferOfferDetail(Resource):
         return output, 200
 
 
-@offer.route('/post/preferoffer', doc={"description": "add one like"})
+@offer.route('/post/preferoffer')
 class PostPreferOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
@@ -262,7 +262,7 @@ class PostPreferOffer(Resource):
 
         return output, 200
 
-@offer.route('/delete/preferoffer', doc={"description": "delete one like"})
+@offer.route('/delete/preferoffer')
 class DeletePreOffer(Resource):
     @api.response(200, 'OK')
     @api.response(400, 'Bad Request')
