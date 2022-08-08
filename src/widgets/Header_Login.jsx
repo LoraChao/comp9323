@@ -18,10 +18,10 @@ class Board extends PureComponent {
     var loginstatus = getCookie('islogin');
     if (loginstatus === '1') {
       let url = "http://localhost:3000/mypage";
-      window.location.replace(url)
+      window.open(url)
     } else {
       let url = "http://localhost:3000/login";
-      window.location.replace(url)
+      window.open(url)
       //   return (
       //     <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center absolute bottom-0 right-0" onClick={() => {ToMyPage() }}>ToMyPage</Button>)
       // 

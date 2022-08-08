@@ -59,6 +59,9 @@ constructor(props) {
 }
 render(){    
   var UserId = this.getCookie('userid')
+  if ( UserId === null ) {
+    var UserId = 0
+ }
   if(this.state.flag === true){
   this.getOrganizationData(UserId)
   }

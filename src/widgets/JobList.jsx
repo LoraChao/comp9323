@@ -2,6 +2,17 @@ import React, { PureComponent } from 'react';
 import Image1 from "../assets/pexels-photo-10282820.jpg";
 import { Button } from "antd";
 
+function AddNew() {
+
+  function handleCheckArtileClick() {
+    window.open(`/release`, { replace: true })
+  }
+
+  return (
+    <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" onClick={() => { handleCheckArtileClick() }}>Add New</Button>
+  )
+}
+
 function JobCheckButton(props) {
   // get article's id
   const articleId = props.articleId
@@ -13,7 +24,7 @@ function JobCheckButton(props) {
   }
 
   return (
-    <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" onClick={() => { handleCheckArtileClick() }}>Edit</Button>
+    <Button  onClick={() => { handleCheckArtileClick() }}>Edit</Button>
   )
 }
 
@@ -93,7 +104,7 @@ class ImageCard extends PureComponent {
       <div>
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
-
+        <div><AddNew/></div>
           {array.map((v) => (
             <div key={v} class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
               <div class="md:flex">

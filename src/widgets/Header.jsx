@@ -1,38 +1,44 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import {Button} from "antd"
-function Login(){ 
-  // get target person's id
-  
+
+function LogoutButton(){
+
+  function setcookie(name, value, days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+  // jump without params
   const navigate = useNavigate()
-  function IndMoreButton(id){
-     navigate(`/login`, {replace: true})
+  function LogoutButton(){
+      //document.cookie = "islogin=; userid = ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path =/"; 
+
+      setcookie('islogin', '', -1)
+      setcookie("userid", '', -1)
+
+      // var ca = document.cookie;
+      console.log(document.cookie)
+      navigate('/login', {replace: true})
   }
 
   return (
-      <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" type="link" onClick={() => {IndMoreButton()}}>Login</Button>
+      <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" danger onClick={() => {LogoutButton()}} >Logout</Button>
   )
 }
-function SignUp(){ 
-  // get target person's id
-  
-  const navigate = useNavigate()
-  function IndMoreButton(id){
-     navigate(`/signup`, {replace: true})
-  }
 
-  return (
-      <Button className="ml-8 bg-gray-900 px-4 py-2 rounded text-blue-50 flex items-center" type="link" onClick={() => {IndMoreButton()}}>SignUp</Button>
-  )
-}
 
 function Header() {
   return (
     
     <header className="flex justify-between items-center h-20">
       <nav className="flex items-center">
-        <Login/>
-        <SignUp/>
+        <LogoutButton/>
       </nav>
     </header>
   );

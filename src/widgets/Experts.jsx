@@ -46,7 +46,9 @@ class Experts extends PureComponent{
     }
     render(){
       var UserId = this.getCookie('userid')
-      if(this.state.flag === true){
+      if ( UserId === null ) {
+        var UserId = 0
+     } if(this.state.flag === true){
       this.getExpertData(UserId)
       }
       return (
