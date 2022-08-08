@@ -1,4 +1,4 @@
-# User guide for COMP9323 Group13 Project WellbeingBridge
+# User guide for COMP9323 group Github is saivor
 
 ## Enviroment requirement
 Python 3.6+
